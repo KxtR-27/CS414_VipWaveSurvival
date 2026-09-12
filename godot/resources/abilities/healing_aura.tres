@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseAbility" format=3 uid="uid://cw05tt3dqmhfx"]
+
+[ext_resource type="Script" uid="uid://c1qvpiklfsumt" path="res://scripts/base_ability.gd" id="1_3p407"]
+
+[resource]
+script = ExtResource("1_3p407")
+ability_name = "healing_aura"
+ability_type = "aura"
+healing = 10
+metadata/_custom_type_script = "uid://c1qvpiklfsumt"

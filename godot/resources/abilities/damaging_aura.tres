@@ -6,4 +6,5 @@
 script = ExtResource("1_4nuw5")
 ability_name = "Damaging Aura"
 ability_type = "aura"
+damage = 10
 metadata/_custom_type_script = "uid://c1qvpiklfsumt"

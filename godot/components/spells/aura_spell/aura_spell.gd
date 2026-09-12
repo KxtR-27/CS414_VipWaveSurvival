@@ -8,15 +8,24 @@ class_name AuraSpell extends BaseSpell
 
 var current_overlapping_targets : Array = []
 var spell_caster : BasePlayer
+var damage : int
+var healing : int
 
 func run(ability : BaseAbility, caster : BaseCharacter) -> void:
 	#remember who cast this spell
 	spell_caster = caster
 	
+	#set damage and healing numbers
+	damage = ability.damage
+	healing = ability.healing
+	
 	#make spell track player's location
 	remote_transform.global_position = caster.global_position
 	remote_transform.reparent(caster, true)
 	remote_transform.remote_path = self.get_path()
+	
+	#add caster to observed targets
+	current_overlapping_targets.append(caster)
 	
 	#turn hitbox on and start spell
 	hitbox.monitoring = true
@@ -26,8 +35,12 @@ func run(ability : BaseAbility, caster : BaseCharacter) -> void:
 
 func on_tick() -> void:
 	for target : BaseCharacter in current_overlapping_targets:
-		if target is BaseEnemy:
-			spell_caster.damage_component.deal_damage(10, target)
+		if target.is_in_group("enemies"):
+			print("target is enemy")
+			spell_caster.damage_component.deal_damage(damage, target)
+		elif target.is_in_group("players") or target.is_in_group("vip"):
+			print("target is ally")
+			spell_caster.damage_component.deal_damage(-healing, target)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
