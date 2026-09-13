@@ -3,7 +3,7 @@ class_name BaseCharacter
 extends CharacterBody2D
 
 
-signal health_changed
+signal health_changed(amount: float, negative: bool)
 
 
 @export_group("")
@@ -16,7 +16,3 @@ signal health_changed
 @export_group("Components")
 @export var health_component: HealthComponent
 @export var damage_component: DamageComponent
-
-
-func take_damage(damage: float) -> void:
-	health -= damage

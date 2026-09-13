@@ -17,11 +17,9 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udkgg"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="BaseEnemy" type="CharacterBody2D" unique_id=1599695685 node_paths=PackedStringArray("health_component", "damage_component") groups=["enemies"]]
+[node name="BaseEnemy" type="CharacterBody2D" unique_id=1599695685 groups=["enemies"]]
 collision_layer = 2
 script = ExtResource("1_72wxb")
-health_component = NodePath("HealthComponent")
-damage_component = NodePath("Components/DamageComponent")
 metadata/_edit_group_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=308880726]
@@ -69,6 +67,6 @@ show_percentage = false
 offset_top = -35.0
 offset_bottom = -35.0
 
+[connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
 [connection signal="timeout" from="TargetPollingTimer" to="." method="_on_target_polling_timer_timeout"]
-[connection signal="target_scanned" from="TargetScanner" to="." method="_on_target_scanned"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

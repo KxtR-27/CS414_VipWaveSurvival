@@ -18,5 +18,3 @@ theme = ExtResource("2_gunwg")
 step = 1.0
 value = 100.0
 show_percentage = false
-
-[connection signal="health_changed" from="." to="." method="_on_health_changed"]

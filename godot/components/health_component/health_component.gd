@@ -1,6 +1,5 @@
 class_name HealthComponent extends Control
 
-signal health_changed(amount_changed: float)
 signal died
 
 @export var max_health : float = 100.0

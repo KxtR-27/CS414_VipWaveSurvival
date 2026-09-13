@@ -103,6 +103,7 @@ libraries/ = SubResource("AnimationLibrary_8c4ei")
 offset_top = -35.0
 offset_bottom = -35.0
 
+[connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
 [connection signal="timeout" from="Cooldowns/Ability1Cooldown" to="." method="_on_ability_1_cooldown_timeout"]
 [connection signal="timeout" from="Cooldowns/Ability2Cooldown" to="." method="_on_ability_2_cooldown_timeout"]
 [connection signal="timeout" from="Cooldowns/AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
