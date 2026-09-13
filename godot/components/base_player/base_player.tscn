@@ -84,6 +84,7 @@ one_shot = true
 
 [node name="AttackHurtbox" type="Area2D" parent="." unique_id=1658078459]
 position = Vector2(0, 10)
+collision_mask = 2
 monitoring = false
 
 [node name="Shape" type="CollisionShape2D" parent="AttackHurtbox" unique_id=567730645]

@@ -35,7 +35,6 @@ position = Vector2(216, 158)
 
 [node name="BaseEnemy" parent="." unique_id=1599695685 instance=ExtResource("3_h2yge")]
 position = Vector2(979, 269)
-collision_layer = 1
 
 [node name="BaseVIP" parent="." unique_id=1927010828 instance=ExtResource("4_1bvp3")]
 
