@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgxdmoiktki2o"]
 
 [ext_resource type="Script" uid="uid://cpka2pwf554vf" path="res://components/health_component/health_component.gd" id="1_pejlg"]
-[ext_resource type="Theme" uid="uid://b7pu7ln4egrj5" path="res://resources/new_theme.tres" id="2_gunwg"]
+[ext_resource type="Theme" uid="uid://b7pu7ln4egrj5" path="res://resources/health_bar_theme.tres" id="2_gunwg"]
 
 [node name="HealthComponent" type="Control" unique_id=1224115467]
 layout_mode = 3
