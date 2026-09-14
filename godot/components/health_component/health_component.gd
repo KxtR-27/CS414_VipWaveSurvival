@@ -12,8 +12,9 @@ func _ready() -> void:
 	health_bar.max_value = max_health
 	pass # Replace with function body.
 
+
+#can be used to heal or damage
 func _on_health_changed(amount_changed: float, negative: bool) -> void:
-	#can be used to heal or damage
 	#negative numbers for damage dealt
 	#positive numbers for healing
 	if negative:

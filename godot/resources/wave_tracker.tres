@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="WaveTracker" format=3 uid="uid://6cen67mpxbk6"]
+
+[ext_resource type="Script" uid="uid://c1cifi0p82t53" path="res://scripts/wave_tracker.gd" id="1_bqn16"]
+
+[resource]
+script = ExtResource("1_bqn16")
