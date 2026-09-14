@@ -49,31 +49,28 @@ func _character_in_scan_groups(character: BaseCharacter) -> bool:
 
 ## check if body is a satisfactory target
 func _on_body_entered(body: Node2D) -> void:
-	if Engine.is_editor_hint():
-		return # silently
-	
-	if body == get_parent():
+	if Engine.is_editor_hint() or body == get_parent() or body == self:
 		return # silently
 	
 	if not body is BaseCharacter:
-		print("scanned body ", body.name, " is not a BaseCharacter")
+		print(get_parent().name, ": scanned body ", body.name, " is not a BaseCharacter")
 		return
 	
 	var character := body as BaseCharacter
 	
 	# if already targeting the body, return early
 	if character == _get_parent_current_target(): 
-		print("already targeting the scanned body ", body.name)
+		print(get_parent().name, ": already targeting the scanned body ", body.name)
 		return
 	# if not switching targets, return early
 	elif not scan_switching: 
-		print("scanned a new target (", body.name ,"), but scan-switching is disabled")
+		print(get_parent().name, ": scanned a new target (", body.name ,"), but scan-switching is disabled")
 		return
 	# if the body isn't a valid target, return early
 	elif not _character_in_scan_groups(character):
-		print("scanned body ", body.name, " is not in current scanning groups")
+		print(get_parent().name, ": scanned body ", body.name, " is not in current scanning groups")
 		return
 	# otherwise, we are scanning, the body is new to us, and it's a valid target
 	else:
-		print("scanned scanned valid target: ", body.name) 
+		print(get_parent().name, ": scanned scanned valid target: ", body.name) 
 		target_scanned.emit(character, scan_purpose == "Flee")

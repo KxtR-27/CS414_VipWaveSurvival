@@ -26,6 +26,7 @@ metadata/_edit_lock_ = true
 shape = SubResource("CapsuleShape2D_kek77")
 
 [node name="TargetScanner" parent="." unique_id=1244760111 instance=ExtResource("4_pb8p3")]
+radius_tool = 13.0
 scan_groups = 1
 scan_purpose = "Flee"
 

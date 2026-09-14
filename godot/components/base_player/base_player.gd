@@ -52,10 +52,32 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	# check pressed action to see if it's an ability
 	var ability_action: String = _get_pressed_ability(event)
-	if not ability_action: return
+	if ability_action:
+		_execute_ability(ability_action)
+		return
+		
+	if event.is_action_pressed("start_follow"):
+		_command_vips_to_follow()
+		return
+	
+	if event.is_action_pressed("stop_follow"):
+		_command_vips_to_stop_following()
+		return
 
+
+## loops through all actions in ABILITY_ACTION_MAP.
+## returns the pressed action String if it exists. 
+## otherwise, returns an empty string "", which is [b]falsy[/b].
+func _get_pressed_ability(event: InputEvent) -> String:
+	for action: String in ABILITY_ACTION_MAP.keys():
+		if event.is_action_pressed(action):
+			return action
+	
+	return ""
+
+## returns true if the input was an ability input; false otherwise
+func _execute_ability(ability_action: String) -> void:
 	# get the Ability enum value
 	var ability: Ability = ABILITY_ACTION_MAP[ability_action]
 	# return early if it's on cooldown
@@ -78,17 +100,31 @@ func _input(event: InputEvent) -> void:
 			#use animationplayer to turn hitbox on and off
 			var sword_animator : AnimationPlayer = $SwordHitboxAnimator
 			sword_animator.play("attack")
+		
+	return
 
 
-## loops through all actions in ABILITY_ACTION_MAP.
-## returns the pressed action String if it exists. 
-## otherwise, returns an empty string "", which is [b]falsy[/b].
-func _get_pressed_ability(event: InputEvent) -> String:
-	for action: String in ABILITY_ACTION_MAP.keys():
-		if event.is_action_pressed(action):
-			return action
-	
-	return ""
+func _command_vips_to_follow() -> void:
+	for vip in _get_vips():
+		var dist_to_player := self.global_position.distance_to(vip.global_position)
+		if dist_to_player < vip.follow_command_range:
+			print(self.name, ": Follow me, ", vip.name, "!")
+			vip.request_to_follow(self)
+
+
+func _command_vips_to_stop_following() -> void:
+	for vip in _get_vips():
+		if vip.target_to_follow == self:
+			print(self.name, ": You should be safe here, ", vip.name, ".")
+			vip.request_to_stop_following(self)
+
+
+func _get_vips() -> Array[BaseVIP]:
+	var all_vip_nodes := get_tree().get_nodes_in_group("vip")
+	var vips := all_vip_nodes.filter(
+			func(vip: Node) -> bool: return vip is BaseVIP
+	)
+	return vips
 
 
 ## sets an ability's cooldown to true and starts its cooldown timer

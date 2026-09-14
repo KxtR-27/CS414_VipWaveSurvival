@@ -24,16 +24,15 @@ func _sort_by_closeness(a: Node2D, b: Node2D) -> bool:
 ## and picks that target to move toward.
 func _poll_for_closest_target() -> void:
 	# run check for closest target
-	print("polling for target_to_follow...")
 	var targets := get_tree().get_nodes_in_group("enemy_targets").slice(0) as Array[Node]
 	if targets.is_empty(): return
 	
 	# sort by closeness
 	targets.sort_custom(_sort_by_closeness)
 	var closest_target := targets[0] as Node2D
+	
 	# stop polling and update target if found
 	if closest_target:
-		print("target_to_follow found!", closest_target.name, closest_target)
 		target_polling_timer.stop()
 		target_to_follow = closest_target
 
@@ -62,7 +61,6 @@ func _on_health_component_died() -> void:
 
 ### change targets when a valid target enters TargetScanner
 func _on_target_scanned(character: BaseCharacter, flee: bool) -> void:
-	print("accepting scanned target")
 	if flee:
 		target_to_flee_from = character
 	else:
