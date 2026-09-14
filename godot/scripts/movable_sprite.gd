@@ -25,3 +25,8 @@ func _process(_delta: float) -> void:
 		flip_h = true
 	elif parent.velocity.x > 0 and flip_h:
 		flip_h = false
+
+
+func _on_attack_hurtbox_body_entered(_body: Node2D) -> void:
+	play("attack")
+	pass # Replace with function body.

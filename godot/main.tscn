@@ -31,7 +31,8 @@ metadata/_edit_lock_ = true
 position = Vector2(579, 329)
 
 [node name="BaseEnemy" parent="." unique_id=1599695685 instance=ExtResource("3_h2yge")]
-position = Vector2(1342, 440)
+process_mode = 4
+position = Vector2(1475, 433)
 
 [node name="BaseVIP" parent="." unique_id=1927010828 instance=ExtResource("4_1bvp3")]
 position = Vector2(363, 171)

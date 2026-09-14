@@ -37,10 +37,10 @@ func on_tick() -> void:
 	for target : BaseCharacter in current_overlapping_targets:
 		if target.is_in_group("enemies"):
 			print("target is enemy")
-			spell_caster.damage_component.deal_damage(damage, target)
+			target.health_changed.emit(damage, true)
 		elif target.is_in_group("players") or target.is_in_group("vip"):
 			print("target is ally")
-			spell_caster.damage_component.deal_damage(-healing, target)
+			target.health_changed.emit(healing, false)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

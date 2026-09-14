@@ -4,6 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://yvri5o1l0rs6" path="res://resources/priest_spriteframes.tres" id="2_rrppm"]
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/movable_sprite.gd" id="3_24cib"]
 [ext_resource type="PackedScene" uid="uid://jcob8jmp4huw" path="res://components/target_scanner/target_scanner.tscn" id="4_pb8p3"]
+[ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_rrppm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kek77"]
 radius = 18.0
@@ -30,4 +31,10 @@ radius_tool = 13.0
 scan_groups = 1
 scan_purpose = "Flee"
 
+[node name="HealthComponent" parent="." unique_id=1224115467 instance=ExtResource("5_rrppm")]
+offset_top = -40.0
+offset_bottom = -40.0
+
+[connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
 [connection signal="target_scanned" from="TargetScanner" to="." method="_on_target_scanned"]
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

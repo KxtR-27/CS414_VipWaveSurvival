@@ -1,7 +1,32 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://dgiwgs50l3elg"]
 
 [ext_resource type="Texture2D" uid="uid://caa7hi6ephb1n" path="res://assets/spritesheets/orc_idle.png" id="1_o20py"]
+[ext_resource type="Texture2D" uid="uid://btlbtjsj2kreb" path="res://assets/spritesheets/orc_attack.png" id="1_y7neq"]
 [ext_resource type="Texture2D" uid="uid://bj7ipsti5no4v" path="res://assets/spritesheets/orc_walk.png" id="2_y7neq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3en6k"]
+atlas = ExtResource("1_y7neq")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wuae"]
+atlas = ExtResource("1_y7neq")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puwg6"]
+atlas = ExtResource("1_y7neq")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2bmn"]
+atlas = ExtResource("1_y7neq")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7dnp"]
+atlas = ExtResource("1_y7neq")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grkgu"]
+atlas = ExtResource("1_y7neq")
+region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_msunv"]
 atlas = ExtResource("1_o20py")
@@ -61,6 +86,29 @@ region = Rect2(700, 0, 100, 100)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3en6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wuae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puwg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2bmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7dnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grkgu")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_msunv")

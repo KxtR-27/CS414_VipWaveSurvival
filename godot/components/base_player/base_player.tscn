@@ -4,7 +4,6 @@
 [ext_resource type="SpriteFrames" uid="uid://dal0adb4yewow" path="res://resources/swordsman_spriteframes.tres" id="2_0n512"]
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/movable_sprite.gd" id="3_ax8wi"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_2q2f4"]
-[ext_resource type="PackedScene" uid="uid://ddl42npad8oop" path="res://components/damage_component/damage_component.tscn" id="6_sd7qx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc5ck"]
 radius = 18.0
@@ -50,19 +49,16 @@ _data = {
 &"attack": SubResource("Animation_sd7qx")
 }
 
-[node name="BasePlayer" type="CharacterBody2D" unique_id=72684832 node_paths=PackedStringArray("health_component", "damage_component") groups=["enemy_targets", "players"]]
+[node name="BasePlayer" type="CharacterBody2D" unique_id=72684832 groups=["enemy_targets", "players"]]
 script = ExtResource("1_qp1xa")
 speed = 10000.0
-health_component = NodePath("HealthComponent")
-damage_component = NodePath("Components/DamageComponent")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=158065505]
 position = Vector2(0, 6)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_0n512")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.61179847
 script = ExtResource("3_ax8wi")
 metadata/_edit_lock_ = true
 
@@ -92,10 +88,6 @@ metadata/_edit_lock_ = true
 [node name="SwordHitboxAnimator" type="AnimationPlayer" parent="." unique_id=469004323]
 libraries/ = SubResource("AnimationLibrary_8c4ei")
 
-[node name="Components" type="Node" parent="." unique_id=2071137038]
-
-[node name="DamageComponent" parent="Components" unique_id=1171977157 instance=ExtResource("6_sd7qx")]
-
 [node name="HealthComponent" parent="." unique_id=1224115467 instance=ExtResource("5_2q2f4")]
 offset_top = -35.0
 offset_bottom = -35.0
@@ -104,6 +96,6 @@ offset_bottom = -35.0
 [connection signal="timeout" from="Cooldowns/Ability1Cooldown" to="." method="_on_ability_1_cooldown_timeout"]
 [connection signal="timeout" from="Cooldowns/Ability2Cooldown" to="." method="_on_ability_2_cooldown_timeout"]
 [connection signal="timeout" from="Cooldowns/AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
-[connection signal="body_entered" from="AttackHurtbox" to="." method="_on_attack_hitbox_body_entered"]
+[connection signal="body_entered" from="AttackHurtbox" to="." method="_on_attack_hurtbox_body_entered"]
 [connection signal="body_entered" from="AttackHurtbox" to="AttackHurtbox" method="_on_body_entered"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

@@ -2,6 +2,9 @@ class_name BaseEnemy
 extends BaseNPC
 
 @onready var target_polling_timer := $TargetPollingTimer as Timer
+@onready var attack_cooldown := $AttackCooldown as Timer
+@onready var attack_hurtbox := $AttackHurtbox as Area2D
+@onready var attack_on_cooldown := false as bool
 
 func _ready() -> void:
 	# return if target already exists
@@ -11,6 +14,12 @@ func _ready() -> void:
 	# if we still didn't find one, poll automatically until we do
 	if not target_to_follow:
 		target_polling_timer.start()
+
+
+func _process(_delta: float) -> void:
+	if attack_on_cooldown:
+		attack_hurtbox.monitoring = false
+	
 
 
 ## sorts targets by their closeness to this enemy
@@ -42,18 +51,6 @@ func _on_target_polling_timer_timeout() -> void:
 	_poll_for_closest_target() 
 
 
-#func take_damage(amount : float) -> void:
-	#self.health -= amount
-	#
-	##update health bar
-	#var progress_bar : ProgressBar = $Health/ProgressBar
-	#progress_bar.value = self.health
-	#
-	##queue_free() if enemy runs out of health
-	#if self.health <= 0.0:
-		#self.queue_free()
-
-
 func _on_health_component_died() -> void:
 	self.queue_free()
 	pass # Replace with function body.
@@ -65,3 +62,17 @@ func _on_target_scanned(character: BaseCharacter, flee: bool) -> void:
 		target_to_flee_from = character
 	else:
 		target_to_follow = character
+
+
+func _on_attack_hurtbox_body_entered(body: BaseCharacter) -> void:
+	if body.is_in_group("enemy_targets"):
+		body.take_damage(10.0)
+		attack_cooldown.start()
+		attack_on_cooldown = true
+	pass # Replace with function body.
+
+
+func _on_attack_cooldown_timeout() -> void:
+	attack_on_cooldown = false
+	attack_hurtbox.monitoring = true
+	pass # Replace with function body.

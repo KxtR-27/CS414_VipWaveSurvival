@@ -145,10 +145,10 @@ func _on_attack_cooldown_timeout() -> void:
 	ability_on_cooldown[Ability.ATTACK] = false
 
 
-func _on_attack_hitbox_body_entered(body: Node2D) -> void:
+func _on_attack_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		var enemy : BaseNPC = body
-		damage_component.deal_damage(25, enemy)
+		enemy.take_damage(25)
 	pass # Replace with function body.
 
 

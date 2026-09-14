@@ -13,6 +13,7 @@ signal health_changed(amount: float, negative: bool)
 		health = new_health
 		health_changed.emit()
 
-@export_group("Components")
-@export var health_component: HealthComponent
-@export var damage_component: DamageComponent
+
+func take_damage(amount: float) -> void:
+	health_changed.emit(amount, true)
+	pass # Replace with function body.
