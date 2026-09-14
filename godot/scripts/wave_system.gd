@@ -20,7 +20,7 @@ enum {
 
 @export var enemy_scene: PackedScene
 @export var wave_tracker: WaveTracker
-@export var enemy_speed: float
+@export var enemy_speed: float = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
