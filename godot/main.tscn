@@ -5,18 +5,19 @@
 [ext_resource type="PackedScene" uid="uid://btj6dn8liccai" path="res://components/statue.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://d1ks7xuvlpa75" path="res://components/base_enemy/base_enemy.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://q8gp3srvu57s" path="res://components/base_vip/base_vip.tscn" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://52qplddan8vs" path="res://wave_system.gd" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://52qplddan8vs" path="res://scripts/wave_system.gd" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://cp0mjy2pkwpr2" path="res://scripts/ability_creator.gd" id="7_kek77"]
+[ext_resource type="Resource" uid="uid://6cen67mpxbk6" path="res://resources/wave_tracker.tres" id="8_5vw27"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_we017"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_g253i"]
 
-[sub_resource type="Curve2D" id="Curve2D_272bh"]
+[sub_resource type="Curve2D" id="Curve2D_5vw27"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -383.4435, -243.5292, 0, 0, 0, 0, 801.7976, -243.5292, 0, 0, 0, 0, 801.7976, 514.5342, 0, 0, 0, 0, -391.24115, 514.5342, 0, 0, 0, 0, -383.4435, -243.5292)
+"points": PackedVector2Array(0, 0, 0, 0, -50, -50, 0, 0, 0, 0, 1202, -50, 0, 0, 0, 0, 1202, 698, 0, 0, 0, 0, -50, 698)
 }
-point_count = 5
+point_count = 4
 
 [node name="Main" type="Node2D" unique_id=218919239]
 
@@ -27,15 +28,16 @@ tile_set = ExtResource("1_lquwl")
 metadata/_edit_lock_ = true
 
 [node name="BasePlayer" parent="." unique_id=72684832 instance=ExtResource("1_0xm2m")]
-position = Vector2(216, 158)
+position = Vector2(579, 329)
 
 [node name="BaseEnemy" parent="." unique_id=1599695685 instance=ExtResource("3_h2yge")]
-position = Vector2(979, 269)
+position = Vector2(1342, 440)
 
 [node name="BaseVIP" parent="." unique_id=1927010828 instance=ExtResource("4_1bvp3")]
+position = Vector2(363, 171)
 
 [node name="Statue" parent="." unique_id=239526835 instance=ExtResource("3_1bvp3")]
-position = Vector2(68, 352)
+position = Vector2(431, 523)
 
 [node name="AbilityCreator" type="Node2D" parent="." unique_id=974074343]
 script = ExtResource("7_kek77")
@@ -43,6 +45,7 @@ script = ExtResource("7_kek77")
 [node name="WaveSystem" type="Node2D" parent="." unique_id=263133682]
 script = ExtResource("7_5vw27")
 enemy_scene = ExtResource("3_h2yge")
+wave_tracker = ExtResource("8_5vw27")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="WaveSystem" unique_id=1010628950]
 
@@ -68,16 +71,16 @@ one_shot = true
 wait_time = 3.0
 autostart = true
 
+[node name="DowntimeTimer" type="Timer" parent="WaveSystem" unique_id=841506693]
+wait_time = 2.0
+
 [node name="EnemySpawnPath" type="Path2D" parent="WaveSystem" unique_id=1375471952]
-position = Vector2(9.39447, 34.16124)
-scale = Vector2(1.0259515, 0.92868215)
-curve = SubResource("Curve2D_272bh")
+curve = SubResource("Curve2D_5vw27")
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="WaveSystem/EnemySpawnPath" unique_id=1556123511]
-position = Vector2(-383.4435, -243.5292)
+position = Vector2(-50, -50)
 
 [connection signal="ability_used" from="BasePlayer" to="AbilityCreator" method="_on_base_player_ability_used"]
-[connection signal="timeout" from="WaveSystem/WaveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="WaveSystem/WaveTimer" to="WaveSystem" method="_on_wave_timer_timeout"]
-[connection signal="timeout" from="WaveSystem/EnemySpawnTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="WaveSystem/EnemySpawnTimer" to="WaveSystem" method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="WaveSystem/DowntimeTimer" to="WaveSystem" method="_on_downtime_timer_timeout"]
