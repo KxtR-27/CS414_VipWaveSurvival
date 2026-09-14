@@ -15,9 +15,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_5vw27"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -50, -50, 0, 0, 0, 0, 1202, -50, 0, 0, 0, 0, 1202, 698, 0, 0, 0, 0, -50, 698)
+"points": PackedVector2Array(0, 0, 0, 0, -50, -50, 0, 0, 0, 0, 1202, -50, 0, 0, 0, 0, 1202, 698, 0, 0, 0, 0, -50, 698, 0, 0, 0, 0, -50, -50)
 }
-point_count = 4
+point_count = 5
 
 [node name="Main" type="Node2D" unique_id=218919239]
 
