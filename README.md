@@ -9,6 +9,7 @@
 
 ### Individual
 - [Kat's Devlogs](https://kxtr-27.github.io/CS414_PersonalDevlogs/)
+- [Alex's Devlogs](https://alx4n.github.io/personal_devlog/)
 
 ### Godot docs
 - [GDScript Style Guide](docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html) >
