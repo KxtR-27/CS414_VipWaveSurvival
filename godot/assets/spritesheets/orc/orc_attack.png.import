@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh6kcwtn40fqp"
-path="res://.godot/imported/swordsman_attack.png-41b0da73f78927ffaec49be8ba048c3c.ctex"
+uid="uid://btlbtjsj2kreb"
+path="res://.godot/imported/orc_attack.png-d40c86000588b7f745add6b1612f04c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/swordsman_attack.png"
-dest_files=["res://.godot/imported/swordsman_attack.png-41b0da73f78927ffaec49be8ba048c3c.ctex"]
+source_file="res://assets/spritesheets/orc/orc_attack.png"
+dest_files=["res://.godot/imported/orc_attack.png-d40c86000588b7f745add6b1612f04c1.ctex"]
 
 [params]
 
