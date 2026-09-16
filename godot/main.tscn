@@ -20,6 +20,7 @@ _data = {
 point_count = 5
 
 [node name="Main" type="Node2D" unique_id=218919239]
+y_sort_enabled = true
 
 [node name="BackgroundTiles" type="TileMapLayer" parent="." unique_id=1746971255]
 scale = Vector2(3, 3)

@@ -19,6 +19,10 @@ signal target_scanned(character: BaseCharacter, flee: bool)
 @export_enum("Follow", "Flee") var scan_purpose := "Follow"
 @export var scan_switching: bool = true
 
+@export_group("Debug")
+@export var should_log: bool = false
+
+
 @onready var scan_shape := ($Shape as CollisionShape2D).shape as CircleShape2D
 
 
@@ -53,24 +57,32 @@ func _on_body_entered(body: Node2D) -> void:
 		return # silently
 	
 	if not body is BaseCharacter:
-		print(get_parent().name, ": scanned body ", body.name, " is not a BaseCharacter")
+		if should_log: 
+			print(get_parent().name, ": scanned body ", body.name, " is not a BaseCharacter")
 		return
 	
 	var character := body as BaseCharacter
 	
 	# if already targeting the body, return early
 	if character == _get_parent_current_target(): 
-		print(get_parent().name, ": already targeting the scanned body ", body.name)
+		if should_log: 
+			print(get_parent().name, ": already targeting the scanned body ", body.name)
 		return
+	
 	# if not switching targets, return early
 	elif not scan_switching: 
-		print(get_parent().name, ": scanned a new target (", body.name ,"), but scan-switching is disabled")
+		if should_log: 
+			print(get_parent().name, ": scanned a new target (", body.name ,"), but scan-switching is disabled")
 		return
+	
 	# if the body isn't a valid target, return early
 	elif not _character_in_scan_groups(character):
-		print(get_parent().name, ": scanned body ", body.name, " is not in current scanning groups")
+		if should_log:
+			print(get_parent().name, ": scanned body ", body.name, " is not in current scanning groups")
 		return
+	
 	# otherwise, we are scanning, the body is new to us, and it's a valid target
 	else:
-		print(get_parent().name, ": scanned scanned valid target: ", body.name) 
+		if should_log:
+			print(get_parent().name, ": scanned scanned valid target: ", body.name) 
 		target_scanned.emit(character, scan_purpose == "Flee")
