@@ -50,6 +50,7 @@ _data = {
 }
 
 [node name="BasePlayer" type="CharacterBody2D" unique_id=72684832 groups=["enemy_targets", "players"]]
+collision_mask = 2
 script = ExtResource("1_qp1xa")
 speed = 10000.0
 

@@ -6,10 +6,8 @@
 resource_local_to_scene = true
 
 [node name="TargetScanner" type="Area2D" unique_id=1244760111]
-collision_layer = 2
 monitorable = false
 script = ExtResource("1_320wc")
-should_log = null
 
 [node name="Shape" type="CollisionShape2D" parent="." unique_id=1811715367]
 scale = Vector2(15.916666, 15.916666)

@@ -11,8 +11,10 @@ radius = 18.0
 height = 56.0
 
 [node name="BaseVIP" type="CharacterBody2D" unique_id=1927010828 groups=["enemy_targets", "vip"]]
+collision_mask = 2
 script = ExtResource("1_kb0sa")
 farthest_flee_distance = 500.0
+speed = 5000.0
 metadata/_custom_type_script = "uid://lt2oeslpqb6n"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1611327213]

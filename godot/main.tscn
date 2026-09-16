@@ -45,6 +45,7 @@ position = Vector2(431, 523)
 script = ExtResource("7_kek77")
 
 [node name="WaveSystem" type="Node2D" parent="." unique_id=263133682]
+y_sort_enabled = true
 script = ExtResource("7_5vw27")
 enemy_scene = ExtResource("3_h2yge")
 wave_tracker = ExtResource("8_5vw27")
