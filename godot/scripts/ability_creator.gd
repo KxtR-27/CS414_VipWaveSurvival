@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 func run_ability(ability : BaseAbility, caster : BaseCharacter) -> void:
 	match ability.ability_type:

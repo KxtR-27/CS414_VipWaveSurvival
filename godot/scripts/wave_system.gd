@@ -22,6 +22,8 @@ enum {
 @export var wave_tracker: WaveTracker
 @export var enemy_speed: float = 0.5
 
+var num_spawned: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	wave_timer.start()
@@ -58,10 +60,10 @@ func _on_enemy_timer_timeout() -> void:
 	enemy.speed *= enemy_speed
 
 	# Spawn the mob by adding it to the Main scene.
-	add_child(enemy)
+	get_parent().add_child(enemy)
 	
+	enemy.name = "BaseEnemy%d" % ++num_spawned
 	enemy_timer.start()
-	pass # Replace with function body.
 
 
 func _on_wave_timer_timeout() -> void:
