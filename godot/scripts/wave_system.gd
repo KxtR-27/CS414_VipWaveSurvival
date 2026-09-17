@@ -7,18 +7,19 @@ signal in_wave_downtime
 @onready var enemy_timer: Timer = $EnemySpawnTimer
 @onready var downtime_timer: Timer = $DowntimeTimer
 @onready var wave_bar: TextureProgressBar = $CanvasLayer/WaveTimerBar
+@onready var initial_spawner_wait_time: float = enemy_timer.wait_time
 
 @onready var wave_dict: Dictionary = {
-	1 : [["wave length", 1], ["enemy speed", 0.5], ["enemy multiplier", 1]],
-	2 : [["wave length", 1.25], ["enemy speed", 1], ["enemy multiplier", 1]],
-	3 : [["wave length", 1.5], ["enemy speed", 1], ["enemy multiplier", 2]],
-	4 : [["wave length", 1.75], ["enemy speed", 1.5], ["enemy multiplier", 2]], 
-	5 : [["wave length", 2], ["enemy speed", 1.5], ["enemy multiplier", 3]]
+	1 : [["wave length", 1], ["enemy speed", 0.5], ["spawning speed multiplier", 1]],
+	2 : [["wave length", 1.25], ["enemy speed", 1], ["spawning speed multiplier", 1]],
+	3 : [["wave length", 1.5], ["enemy speed", 1], ["spawning speed multiplier", 2]],
+	4 : [["wave length", 1.75], ["enemy speed", 1.5], ["spawning speed multiplier", 2]], 
+	5 : [["wave length", 2], ["enemy speed", 1.5], ["spawning speed multiplier", 3]]
 }
 enum {
 	WAVE_LENGTH = 0,
 	ENEMY_SPEED = 1,
-	ENEMY_MULT = 2
+	SPAWN_MULT = 2
 }
 
 @export var enemy_scene: PackedScene
@@ -97,4 +98,10 @@ func _on_downtime_timer_timeout() -> void:
 func prepare_new_wave() -> void:
 	wave_timer.wait_time *= wave_dict[wave_tracker.current_wave][WAVE_LENGTH][1]
 	enemy_speed = wave_dict[wave_tracker.current_wave][ENEMY_SPEED][1]
-	enemy_timer.wait_time /= wave_dict[wave_tracker.current_wave][ENEMY_MULT][1]
+	
+	reset_spawner_timer()
+	enemy_timer.wait_time /= wave_dict[wave_tracker.current_wave][SPAWN_MULT][1]
+	
+
+func reset_spawner_timer() -> void:
+	enemy_timer.wait_time = initial_spawner_wait_time
