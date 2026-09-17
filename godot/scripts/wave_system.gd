@@ -1,5 +1,8 @@
 class_name WaveSystem extends Node2D
 
+signal wave_start
+signal in_wave_downtime
+
 @onready var wave_timer: Timer = $WaveTimer
 @onready var enemy_timer: Timer = $EnemySpawnTimer
 @onready var downtime_timer: Timer = $DowntimeTimer
@@ -27,6 +30,7 @@ var num_spawned: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	wave_timer.start()
+	wave_start.emit()
 	wave_tracker.current_wave = 1
 	
 	wave_bar.max_value = wave_timer.wait_time
@@ -75,6 +79,7 @@ func _on_wave_timer_timeout() -> void:
 	
 	downtime_timer.paused = false
 	downtime_timer.start()
+	in_wave_downtime.emit()
 	pass # Replace with function body.
 
 
@@ -84,6 +89,7 @@ func _on_downtime_timer_timeout() -> void:
 	enemy_timer.paused = false
 	
 	wave_timer.start()
+	wave_start.emit()
 	enemy_timer.start()
 	pass # Replace with function body.
 
