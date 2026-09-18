@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://52qplddan8vs" path="res://scripts/wave_system.gd" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://cp0mjy2pkwpr2" path="res://scripts/ability_creator.gd" id="7_kek77"]
 [ext_resource type="Resource" uid="uid://6cen67mpxbk6" path="res://resources/wave_tracker.tres" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://c1xq7eibhpk2k" path="res://components/screen_border_collider/screen_border_collider.gd" id="9_kek77"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_we017"]
 
@@ -18,6 +19,17 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -50, -50, 0, 0, 0, 0, 1202, -50, 0, 0, 0, 0, 1202, 698, 0, 0, 0, 0, -50, 698, 0, 0, 0, 0, -50, -50)
 }
 point_count = 5
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vw27"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4c57u"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ysw5f"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kek77"]
+normal = Vector2(1, 0)
 
 [node name="Main" type="Node2D" unique_id=218919239]
 y_sort_enabled = true
@@ -30,6 +42,7 @@ metadata/_edit_lock_ = true
 
 [node name="BasePlayer" parent="." unique_id=72684832 instance=ExtResource("1_0xm2m")]
 position = Vector2(579, 329)
+collision_mask = 6
 
 [node name="BaseVIP" parent="." unique_id=1927010828 instance=ExtResource("4_1bvp3")]
 position = Vector2(363, 171)
@@ -78,6 +91,36 @@ curve = SubResource("Curve2D_5vw27")
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="WaveSystem/EnemySpawnPath" unique_id=1556123511]
 position = Vector2(-50, -50)
+
+[node name="ScreenBorderCollider" type="StaticBody2D" parent="." unique_id=348740986]
+position = Vector2(0, 1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("9_kek77")
+metadata/_edit_group_ = true
+
+[node name="TopBorder" type="CollisionShape2D" parent="ScreenBorderCollider" unique_id=1586994128]
+position = Vector2(576, -1)
+shape = SubResource("WorldBoundaryShape2D_5vw27")
+one_way_collision = true
+one_way_collision_direction = Vector2(0, -1)
+
+[node name="RightBorder" type="CollisionShape2D" parent="ScreenBorderCollider" unique_id=1033628617]
+position = Vector2(1152, 323)
+shape = SubResource("WorldBoundaryShape2D_4c57u")
+one_way_collision = true
+one_way_collision_direction = Vector2(1, 0)
+
+[node name="BottomBorder" type="CollisionShape2D" parent="ScreenBorderCollider" unique_id=301298703]
+position = Vector2(576, 647)
+shape = SubResource("WorldBoundaryShape2D_ysw5f")
+one_way_collision = true
+
+[node name="LeftBorder" type="CollisionShape2D" parent="ScreenBorderCollider" unique_id=876378159]
+position = Vector2(0, 323)
+shape = SubResource("WorldBoundaryShape2D_kek77")
+one_way_collision = true
+one_way_collision_direction = Vector2(-1, 0)
 
 [connection signal="ability_used" from="BasePlayer" to="AbilityCreator" method="_on_base_player_ability_used"]
 [connection signal="timeout" from="WaveSystem/WaveTimer" to="WaveSystem" method="_on_wave_timer_timeout"]

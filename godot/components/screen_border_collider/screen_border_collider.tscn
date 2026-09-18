@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bmb26qdeaf63i"]
+
+[ext_resource type="Script" uid="uid://c1xq7eibhpk2k" path="res://components/screen_border_collider/screen_border_collider.gd" id="1_wwbbs"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vw27"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4c57u"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ysw5f"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kek77"]
+normal = Vector2(1, 0)
+
+[node name="ScreenBorderCollider" type="StaticBody2D" unique_id=1741476439]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_wwbbs")
+metadata/_edit_group_ = true
+
+[node name="TopBorder" type="CollisionShape2D" parent="." unique_id=292598020]
+position = Vector2(576, -1)
+shape = SubResource("WorldBoundaryShape2D_5vw27")
+one_way_collision = true
+one_way_collision_direction = Vector2(0, -1)
+
+[node name="RightBorder" type="CollisionShape2D" parent="." unique_id=509072742]
+position = Vector2(1152, 323)
+shape = SubResource("WorldBoundaryShape2D_4c57u")
+one_way_collision = true
+one_way_collision_direction = Vector2(1, 0)
+
+[node name="BottomBorder" type="CollisionShape2D" parent="." unique_id=504567267]
+position = Vector2(576, 647)
+shape = SubResource("WorldBoundaryShape2D_ysw5f")
+one_way_collision = true
+
+[node name="LeftBorder" type="CollisionShape2D" parent="." unique_id=1194695331]
+position = Vector2(0, 323)
+shape = SubResource("WorldBoundaryShape2D_kek77")
+one_way_collision = true
+one_way_collision_direction = Vector2(-1, 0)
