@@ -3,9 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://8ojtytwbd10o" path="res://components/base_player/base_player.tscn" id="1_0xm2m"]
 [ext_resource type="TileSet" uid="uid://x1d1rnuuvue3" path="res://resources/mystic_woods_placeholder_tileset.tres" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://btj6dn8liccai" path="res://components/statue.tscn" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://d1ks7xuvlpa75" path="res://components/base_enemy/base_enemy.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://q8gp3srvu57s" path="res://components/base_vip/base_vip.tscn" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://52qplddan8vs" path="res://scripts/wave_system.gd" id="7_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ddia2pag6mwwm" path="res://wave_system.tscn" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://cp0mjy2pkwpr2" path="res://scripts/ability_creator.gd" id="7_kek77"]
 [ext_resource type="Resource" uid="uid://6cen67mpxbk6" path="res://resources/wave_tracker.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://c1xq7eibhpk2k" path="res://components/screen_border_collider/screen_border_collider.gd" id="9_kek77"]
@@ -53,76 +52,6 @@ position = Vector2(431, 523)
 [node name="AbilityCreator" type="Node2D" parent="." unique_id=974074343]
 script = ExtResource("7_kek77")
 
-[node name="WaveSystem" type="Node2D" parent="." unique_id=263133682]
-y_sort_enabled = true
-script = ExtResource("7_5vw27")
-enemy_scene = ExtResource("3_h2yge")
-wave_tracker = ExtResource("8_5vw27")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="WaveSystem" unique_id=1010628950]
-
-[node name="WaveTimerBar" type="TextureProgressBar" parent="WaveSystem/CanvasLayer" unique_id=1373497526]
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 40.0
-grow_horizontal = 2
-offset_transform_enabled = true
-step = 0.1
-fill_mode = 6
-nine_patch_stretch = true
-texture_under = SubResource("CanvasTexture_we017")
-texture_progress = SubResource("CanvasTexture_g253i")
-tint_under = Color(0, 0, 0, 0.2)
-tint_progress = Color(1, 0, 0, 1)
-
-[node name="WaveTimer" type="Timer" parent="WaveSystem" unique_id=810469267]
-wait_time = 5.0
-one_shot = true
-
-[node name="EnemySpawnTimer" type="Timer" parent="WaveSystem" unique_id=884034459]
-wait_time = 3.0
-autostart = true
-
-[node name="DowntimeTimer" type="Timer" parent="WaveSystem" unique_id=841506693]
-wait_time = 2.0
-
-[node name="EnemySpawnPath" type="Path2D" parent="WaveSystem" unique_id=1375471952]
-curve = SubResource("Curve2D_5vw27")
-
-[node name="EnemySpawnLocation" type="PathFollow2D" parent="WaveSystem/EnemySpawnPath" unique_id=1556123511]
-position = Vector2(-50, -50)
-
-[node name="ScreenBorderCollider" type="StaticBody2D" parent="." unique_id=348740986]
-position = Vector2(0, 1)
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("9_kek77")
-metadata/_edit_group_ = true
-
-[node name="TopBorder" type="CollisionShape2D" parent="ScreenBorderCollider" unique_id=1586994128]
-position = Vector2(576, -1)
-shape = SubResource("WorldBoundaryShape2D_5vw27")
-one_way_collision = true
-one_way_collision_direction = Vector2(0, -1)
-
-[node name="RightBorder" type="CollisionShape2D" parent="ScreenBorderCollider" unique_id=1033628617]
-position = Vector2(1152, 323)
-shape = SubResource("WorldBoundaryShape2D_4c57u")
-one_way_collision = true
-one_way_collision_direction = Vector2(1, 0)
-
-[node name="BottomBorder" type="CollisionShape2D" parent="ScreenBorderCollider" unique_id=301298703]
-position = Vector2(576, 647)
-shape = SubResource("WorldBoundaryShape2D_ysw5f")
-one_way_collision = true
-
-[node name="LeftBorder" type="CollisionShape2D" parent="ScreenBorderCollider" unique_id=876378159]
-position = Vector2(0, 323)
-shape = SubResource("WorldBoundaryShape2D_kek77")
-one_way_collision = true
-one_way_collision_direction = Vector2(-1, 0)
+[node name="WaveSystem" parent="." unique_id=1386286635 instance=ExtResource("6_7mycd")]
 
 [connection signal="ability_used" from="BasePlayer" to="AbilityCreator" method="_on_base_player_ability_used"]
-[connection signal="timeout" from="WaveSystem/WaveTimer" to="WaveSystem" method="_on_wave_timer_timeout"]
-[connection signal="timeout" from="WaveSystem/EnemySpawnTimer" to="WaveSystem" method="_on_enemy_timer_timeout"]
-[connection signal="timeout" from="WaveSystem/DowntimeTimer" to="WaveSystem" method="_on_downtime_timer_timeout"]

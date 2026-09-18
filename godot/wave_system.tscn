@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://ddia2pag6mwwm"]
+
+[ext_resource type="Script" uid="uid://52qplddan8vs" path="res://scripts/wave_system.gd" id="1_ml7t8"]
+[ext_resource type="Resource" uid="uid://6cen67mpxbk6" path="res://resources/wave_tracker.tres" id="2_yxpjt"]
+[ext_resource type="PackedScene" uid="uid://d1ks7xuvlpa75" path="res://components/base_enemy/base_enemy.tscn" id="3_c34u2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
+font_size = 60
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_we017"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_g253i"]
+
+[sub_resource type="Curve2D" id="Curve2D_5vw27"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -50, -50, 0, 0, 0, 0, 1202, -50, 0, 0, 0, 0, 1202, 698, 0, 0, 0, 0, -50, 698, 0, 0, 0, 0, -50, -50)
+}
+point_count = 5
+
+[node name="WaveSystem" type="Node2D" unique_id=1386286635 node_paths=PackedStringArray("wave_timer", "enemy_timer", "downtime_timer", "wave_timer_bar", "wave_notification_layer", "wave_notification_label")]
+y_sort_enabled = true
+script = ExtResource("1_ml7t8")
+wave_timer = NodePath("WaveTimer")
+enemy_timer = NodePath("EnemySpawnTimer")
+downtime_timer = NodePath("DowntimeTimer")
+wave_timer_bar = NodePath("WaveTimerBar/TimerBar")
+wave_notification_layer = NodePath("WaveNotifications")
+wave_notification_label = NodePath("WaveNotifications/Control/HBoxContainer/VBoxContainer/Label")
+wave_tracker = ExtResource("2_yxpjt")
+enemy_scene = ExtResource("3_c34u2")
+
+[node name="WaveNotifications" type="CanvasLayer" parent="." unique_id=2120179839]
+visible = false
+
+[node name="Control" type="Control" parent="WaveNotifications" unique_id=1413546476]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WaveNotifications/Control" unique_id=1316957752]
+layout_mode = 1
+offset_right = 1151.0
+offset_bottom = 648.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WaveNotifications/Control/HBoxContainer" unique_id=366430832]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="WaveNotifications/Control/HBoxContainer/VBoxContainer" unique_id=781276801]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Wave 1 Begin"
+label_settings = SubResource("LabelSettings_n3d2o")
+
+[node name="ColorRect" type="ColorRect" parent="WaveNotifications/Control" unique_id=1232678801]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 644.0
+color = Color(0, 0, 0, 0.14509805)
+
+[node name="WaveTimerBar" type="CanvasLayer" parent="." unique_id=1894434294]
+
+[node name="TimerBar" type="TextureProgressBar" parent="WaveTimerBar" unique_id=1153138741]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+offset_transform_enabled = true
+step = 0.1
+fill_mode = 6
+nine_patch_stretch = true
+texture_under = SubResource("CanvasTexture_we017")
+texture_progress = SubResource("CanvasTexture_g253i")
+tint_under = Color(0, 0, 0, 0.2)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="WaveTimer" type="Timer" parent="." unique_id=1693043172]
+wait_time = 5.0
+one_shot = true
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=1303246443]
+wait_time = 3.0
+autostart = true
+
+[node name="DowntimeTimer" type="Timer" parent="." unique_id=38713125]
+wait_time = 2.0
+
+[node name="EnemySpawnPath" type="Path2D" parent="." unique_id=846817307]
+curve = SubResource("Curve2D_5vw27")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemySpawnPath" unique_id=1179353981]
+position = Vector2(-50, -50)
+
+[connection signal="wave_start" from="." to="." method="_on_wave_start"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="DowntimeTimer" to="." method="_on_downtime_timer_timeout"]
