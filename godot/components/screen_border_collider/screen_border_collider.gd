@@ -1,5 +1,12 @@
 @tool
 extends StaticBody2D
+## via a few different methods, fits world boundaries to the """screen"""
+##
+## for characters/bodies that you want to collide with the wall, 
+## add [b]layer 3[/b] to the characters'/bodies' [b]collision mask[/b].
+## [br][br]
+## affected bodies can enter onto the screen if outside its bounds,
+## but affected bodies CANNOT leave the screen onside inside its bounds.
 
 
 ## the least reliable fit. this is the Godot window size.

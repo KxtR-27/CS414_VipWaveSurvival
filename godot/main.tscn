@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://btj6dn8liccai" path="res://components/statue.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://q8gp3srvu57s" path="res://components/base_vip/base_vip.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://ddia2pag6mwwm" path="res://wave_system.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bmb26qdeaf63i" path="res://components/screen_border_collider/screen_border_collider.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://cp0mjy2pkwpr2" path="res://scripts/ability_creator.gd" id="7_kek77"]
 [ext_resource type="Resource" uid="uid://6cen67mpxbk6" path="res://resources/wave_tracker.tres" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://c1xq7eibhpk2k" path="res://components/screen_border_collider/screen_border_collider.gd" id="9_kek77"]
@@ -45,6 +46,7 @@ collision_mask = 6
 
 [node name="BaseVIP" parent="." unique_id=1927010828 instance=ExtResource("4_1bvp3")]
 position = Vector2(363, 171)
+collision_mask = 6
 
 [node name="Statue" parent="." unique_id=239526835 instance=ExtResource("3_1bvp3")]
 position = Vector2(431, 523)
@@ -53,5 +55,7 @@ position = Vector2(431, 523)
 script = ExtResource("7_kek77")
 
 [node name="WaveSystem" parent="." unique_id=1386286635 instance=ExtResource("6_7mycd")]
+
+[node name="ScreenBorderCollider" parent="." unique_id=1741476439 instance=ExtResource("7_272bh")]
 
 [connection signal="ability_used" from="BasePlayer" to="AbilityCreator" method="_on_base_player_ability_used"]
