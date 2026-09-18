@@ -3,10 +3,6 @@ class_name WaveSystem extends Node2D
 signal wave_start
 signal in_wave_downtime
 
-@onready var wave_timer: Timer = $WaveTimer
-@onready var enemy_timer: Timer = $EnemySpawnTimer
-@onready var downtime_timer: Timer = $DowntimeTimer
-@onready var wave_bar: TextureProgressBar = $CanvasLayer/WaveTimerBar
 @onready var initial_spawner_wait_time: float = enemy_timer.wait_time
 
 @onready var wave_dict: Dictionary = {
@@ -22,33 +18,43 @@ enum {
 	SPAWN_MULT = 2
 }
 
-@export var enemy_scene: PackedScene
+@export_group("Wave Components")
+@export var wave_timer: Timer
+@export var enemy_timer: Timer
+@export var downtime_timer: Timer
+@export var wave_timer_bar: TextureProgressBar
+@export var wave_notification_layer: CanvasLayer
+@export var wave_notification_label: Label
 @export var wave_tracker: WaveTracker
+
+@export_group("Enemy Variables")
+@export var enemy_scene: PackedScene
 @export var enemy_speed: float = 0.5
 
 var num_spawned: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	wave_timer.start()
-	wave_start.emit()
 	wave_tracker.current_wave = 1
 	
-	wave_bar.max_value = wave_timer.wait_time
-	wave_bar.value = wave_bar.max_value
+	wave_timer.start()
+	wave_start.emit()
+	
+	wave_timer_bar.max_value = wave_timer.wait_time
+	wave_timer_bar.value = wave_timer_bar.max_value
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if !wave_timer.paused:
-		wave_bar.max_value = wave_timer.wait_time
-		wave_bar.value = wave_timer.time_left
-		wave_bar.tint_progress = "#ff0000"
+		wave_timer_bar.max_value = wave_timer.wait_time
+		wave_timer_bar.value = wave_timer.time_left
+		wave_timer_bar.tint_progress = "#ff0000"
 	else:
-		wave_bar.max_value = downtime_timer.wait_time
-		wave_bar.value = downtime_timer.wait_time - downtime_timer.time_left 
-		wave_bar.tint_progress = "00ff00" 
+		wave_timer_bar.max_value = downtime_timer.wait_time
+		wave_timer_bar.value = downtime_timer.wait_time - downtime_timer.time_left 
+		wave_timer_bar.tint_progress = "00ff00" 
 	pass
 
 
@@ -110,3 +116,13 @@ func prepare_new_wave() -> void:
 
 func reset_spawner_timer() -> void:
 	enemy_timer.wait_time = initial_spawner_wait_time
+
+
+func _on_wave_start() -> void:
+	wave_notification_layer.visible = true
+	wave_notification_label.text = "Wave %d Start" % wave_tracker.current_wave
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	wave_notification_layer.visible = false
+	pass # Replace with function body.
