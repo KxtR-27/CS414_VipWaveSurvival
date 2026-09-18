@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caa7hi6ephb1n"
-path="res://.godot/imported/orc_idle.png-b96feca20b24fc52a1f12c166f0a80ba.ctex"
+uid="uid://dnr5kiifprrj8"
+path="res://.godot/imported/Swordsman.png-2fa242bf9c9e476f5d357276267d27d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/orc/orc_idle.png"
-dest_files=["res://.godot/imported/orc_idle.png-b96feca20b24fc52a1f12c166f0a80ba.ctex"]
+source_file="res://assets/spritesheets/Swordsman.png"
+dest_files=["res://.godot/imported/Swordsman.png-2fa242bf9c9e476f5d357276267d27d4.ctex"]
 
 [params]
 

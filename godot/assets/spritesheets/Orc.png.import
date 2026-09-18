@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c15erjj7bwnu3"
-path="res://.godot/imported/swordsman_walk.png-aacb3596a681cdf74e1a4a19cbcbc744.ctex"
+uid="uid://cqq8j4qtewu6u"
+path="res://.godot/imported/Orc.png-0d8a310640b41d446efa6130f04a5b62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheets/swordsman/swordsman_walk.png"
-dest_files=["res://.godot/imported/swordsman_walk.png-aacb3596a681cdf74e1a4a19cbcbc744.ctex"]
+source_file="res://assets/spritesheets/Orc.png"
+dest_files=["res://.godot/imported/Orc.png-0d8a310640b41d446efa6130f04a5b62.ctex"]
 
 [params]
 

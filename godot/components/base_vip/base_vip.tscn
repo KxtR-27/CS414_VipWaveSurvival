@@ -22,7 +22,8 @@ metadata/_custom_type_script = "uid://lt2oeslpqb6n"
 position = Vector2(0, 6)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_rrppm")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.6537163
 script = ExtResource("3_24cib")
 metadata/_edit_lock_ = true
 
@@ -33,6 +34,7 @@ shape = SubResource("CapsuleShape2D_kek77")
 radius_tool = 13.0
 scan_groups = 1
 scan_purpose = "Flee"
+metadata/_edit_lock_ = true
 
 [node name="HealthComponent" parent="." unique_id=1224115467 instance=ExtResource("5_rrppm")]
 offset_top = -40.0

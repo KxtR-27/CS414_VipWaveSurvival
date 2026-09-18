@@ -53,12 +53,13 @@ _data = {
 collision_mask = 2
 script = ExtResource("1_qp1xa")
 speed = 10000.0
+metadata/_edit_group_ = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=158065505]
 position = Vector2(0, 6)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_0n512")
-animation = &"hurt"
+animation = &"attack"
 autoplay = "idle"
 script = ExtResource("3_ax8wi")
 metadata/_edit_lock_ = true
@@ -80,6 +81,7 @@ one_shot = true
 [node name="AttackHurtbox" type="Area2D" parent="." unique_id=1658078459]
 position = Vector2(0, 10)
 monitoring = false
+metadata/_edit_lock_ = true
 
 [node name="Shape" type="CollisionShape2D" parent="AttackHurtbox" unique_id=567730645]
 shape = SubResource("RectangleShape2D_bhref")
