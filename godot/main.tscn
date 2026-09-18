@@ -7,29 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://ddia2pag6mwwm" path="res://wave_system.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bmb26qdeaf63i" path="res://components/screen_border_collider/screen_border_collider.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://cp0mjy2pkwpr2" path="res://scripts/ability_creator.gd" id="7_kek77"]
-[ext_resource type="Resource" uid="uid://6cen67mpxbk6" path="res://resources/wave_tracker.tres" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://c1xq7eibhpk2k" path="res://components/screen_border_collider/screen_border_collider.gd" id="9_kek77"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_we017"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_g253i"]
-
-[sub_resource type="Curve2D" id="Curve2D_5vw27"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -50, -50, 0, 0, 0, 0, 1202, -50, 0, 0, 0, 0, 1202, 698, 0, 0, 0, 0, -50, 698, 0, 0, 0, 0, -50, -50)
-}
-point_count = 5
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vw27"]
-normal = Vector2(0, 1)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4c57u"]
-normal = Vector2(-1, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ysw5f"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kek77"]
-normal = Vector2(1, 0)
 
 [node name="Main" type="Node2D" unique_id=218919239]
 y_sort_enabled = true

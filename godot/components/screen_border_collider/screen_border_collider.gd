@@ -13,7 +13,7 @@ extends StaticBody2D
 ## your height ends up being the height of your screen 
 ## - the window titlebar - your taskbar size,
 ## or your screen resolution if in fullscreen.
-@export_tool_button("Fit to window", "FixedSize") \
+@export_tool_button("Fit to window\n(Like, your whole Godot window)", "FixedSize") \
 	var fit_to_window := \
 		func() -> void:
 			var window_size := DisplayServer.window_get_size()
@@ -21,14 +21,14 @@ extends StaticBody2D
 
 ## less reliable than [code]Fit to project settings[/code].
 ## for an unknown reason, this tends to be slightly larger.
-@export_tool_button("Fit to viewport", "SubViewport") \
+@export_tool_button("Fit to viewport\n(Dynamic)", "SubViewport") \
 	var fit_to_viewport := \
 		func() -> void:
 			var viewport_rect := get_viewport_rect()
 			_fit_to_rect(viewport_rect)
 
 ## the most reliable fit. fits to the rectangle you see in the 2D viewport from the editor.
-@export_tool_button("Fit to project settings (initial)", "AnimationAutoFitBezier") \
+@export_tool_button("Fit to project settings\n(Recommended)", "AnimationAutoFitBezier") \
 	var fit_to_settings := \
 		func() -> void:
 			var initial_size_x: int = ProjectSettings.get_setting("display/window/size/viewport_width")
