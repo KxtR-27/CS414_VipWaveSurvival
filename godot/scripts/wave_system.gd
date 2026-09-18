@@ -76,6 +76,7 @@ func _on_wave_timer_timeout() -> void:
 	wave_timer.paused = true
 	
 	wave_tracker.current_wave += 1
+	print("wave ", wave_tracker.current_wave, " complete!")
 	prepare_new_wave()
 	
 	#apply debuff to VIP on every wave past wave 1
@@ -101,11 +102,15 @@ func _on_downtime_timer_timeout() -> void:
 
 
 func prepare_new_wave() -> void:
-	wave_timer.wait_time *= wave_dict[wave_tracker.current_wave][WAVE_LENGTH][1]
-	enemy_speed = wave_dict[wave_tracker.current_wave][ENEMY_SPEED][1]
+	# prevents index out of bounds crash
+	var safe_wave_count: int = (wave_tracker.current_wave % wave_dict.size()) + 1
+	print("using safe wave count: ", safe_wave_count)
+	
+	wave_timer.wait_time *= wave_dict[safe_wave_count][WAVE_LENGTH][1]
+	enemy_speed = wave_dict[safe_wave_count][ENEMY_SPEED][1]
 	
 	reset_spawner_timer()
-	enemy_timer.wait_time /= wave_dict[wave_tracker.current_wave][SPAWN_MULT][1]
+	enemy_timer.wait_time /= wave_dict[safe_wave_count][SPAWN_MULT][1]
 	
 
 func reset_spawner_timer() -> void:
