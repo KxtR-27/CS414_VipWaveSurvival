@@ -36,10 +36,8 @@ func run(ability : BaseAbility, caster : BaseCharacter) -> void:
 func on_tick() -> void:
 	for target : BaseCharacter in current_overlapping_targets:
 		if target.is_in_group("enemies"):
-			print("target is enemy")
 			target.health_changed.emit(damage, true)
 		elif target.is_in_group("players") or target.is_in_group("vip"):
-			print("target is ally")
 			target.health_changed.emit(healing, false)
 
 
