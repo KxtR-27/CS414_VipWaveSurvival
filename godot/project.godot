@@ -34,6 +34,10 @@ vip=""
 enemies=""
 enemy_targets=""
 
+[gui]
+
+theme/custom_font="uid://cnikchxy6j4nx"
+
 [input]
 
 ability_1={
