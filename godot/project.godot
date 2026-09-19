@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="VIP Wave Survival"
-run/main_scene="uid://nvvihonyij1w"
+run/main_scene="uid://cy46i42qeadn0"
 config/features=PackedStringArray("4.8", "Forward Plus")
 
 [debug]
