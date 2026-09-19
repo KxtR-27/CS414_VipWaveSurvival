@@ -19,7 +19,7 @@ script = ExtResource("1_72wxb")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=308880726]
 position = Vector2(-2, 1)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_mvtnl")
 animation = &"attack"
 script = ExtResource("3_hny28")

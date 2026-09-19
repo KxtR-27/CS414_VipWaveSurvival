@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://lt2oeslpqb6n"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1611327213]
 position = Vector2(0, 6)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_rrppm")
 animation = &"walk"
 frame_progress = 0.6537163

@@ -13,7 +13,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1262732320]
 position = Vector2(7.0000005, 3)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 texture = ExtResource("1_svsd3")
 
 [node name="Shape" type="CollisionShape2D" parent="." unique_id=306681969]
