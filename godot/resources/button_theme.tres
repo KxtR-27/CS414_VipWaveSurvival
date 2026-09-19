@@ -1,0 +1,34 @@
+[gd_resource type="Theme" format=3 uid="uid://bekqrbmlv3skf"]
+
+[ext_resource type="StyleBox" uid="uid://ch56fdft5j3ng" path="res://resources/button_style_box.tres" id="1_jjpe7"]
+[ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="2_5nl6s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glbon"]
+bg_color = Color(0.5047145, 0.71453923, 0.9071342, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25103888, 0.5262898, 0.83426994, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlkkf"]
+bg_color = Color(0.21523029, 0.718159, 0.957009, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2509804, 0.7882353, 0.9411765, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+default_font = ExtResource("2_5nl6s")
+Button/styles/hover = SubResource("StyleBoxFlat_glbon")
+Button/styles/normal = ExtResource("1_jjpe7")
+Button/styles/pressed = SubResource("StyleBoxFlat_nlkkf")
