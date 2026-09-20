@@ -1,0 +1,20 @@
+[gd_resource type="Shortcut" format=3 uid="uid://dnooorwxkqi0g"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_3ua8e"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="InputEventKey" id="InputEventKey_3finc"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_3ua8e"]
+axis_value = 1.0
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_3ua8e"]
+button_index = 14
+pressed = true
+
+[resource]
+events = [SubResource("InputEventKey_3ua8e"), SubResource("InputEventKey_3finc"), SubResource("InputEventJoypadMotion_3ua8e"), SubResource("InputEventJoypadButton_3ua8e")]

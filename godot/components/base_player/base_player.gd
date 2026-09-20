@@ -1,6 +1,9 @@
 class_name BasePlayer
 extends BaseCharacter
 
+@export var animated_sprite : AnimatedSprite2D
+@export var sprite_frames : SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
+
 # when you add a new ability action to the InputMap,
 # put a new value in this enum
 enum Ability {
@@ -43,6 +46,10 @@ var ability_on_cooldown: Dictionary[Ability, bool] = {
 	Ability.ABILITY_2: $Cooldowns/Ability2Cooldown,
 	Ability.ATTACK: $Cooldowns/AttackCooldown,
 }
+
+
+func _ready() -> void:
+	animated_sprite.sprite_frames = sprite_frames
 
 
 func _physics_process(delta: float) -> void:
