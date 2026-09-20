@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ddia2pag6mwwm"]
 
-[ext_resource type="Script" uid="uid://52qplddan8vs" path="res://scripts/wave_system.gd" id="1_ml7t8"]
-[ext_resource type="Resource" uid="uid://6cen67mpxbk6" path="res://resources/wave_tracker.tres" id="2_yxpjt"]
-[ext_resource type="PackedScene" uid="uid://d1ks7xuvlpa75" path="res://components/base_enemy/base_enemy.tscn" id="3_c34u2"]
+[ext_resource type="Script" uid="uid://52qplddan8vs" path="res://components/wave_system/wave_system.gd" id="1_lvjw3"]
+[ext_resource type="Resource" uid="uid://6cen67mpxbk6" path="res://resources/wave_tracker.tres" id="2_if5oj"]
+[ext_resource type="PackedScene" uid="uid://d1ks7xuvlpa75" path="res://components/base_enemy/base_enemy.tscn" id="3_elvit"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
 font_size = 60
@@ -19,15 +19,15 @@ point_count = 5
 
 [node name="WaveSystem" type="Node2D" unique_id=1386286635 node_paths=PackedStringArray("wave_timer", "enemy_timer", "downtime_timer", "wave_timer_bar", "wave_notification_layer", "wave_notification_label")]
 y_sort_enabled = true
-script = ExtResource("1_ml7t8")
+script = ExtResource("1_lvjw3")
 wave_timer = NodePath("WaveTimer")
 enemy_timer = NodePath("EnemySpawnTimer")
 downtime_timer = NodePath("DowntimeTimer")
 wave_timer_bar = NodePath("WaveTimerBar/TimerBar")
 wave_notification_layer = NodePath("WaveNotifications")
 wave_notification_label = NodePath("WaveNotifications/Control/HBoxContainer/VBoxContainer/Label")
-wave_tracker = ExtResource("2_yxpjt")
-enemy_scene = ExtResource("3_c34u2")
+wave_tracker = ExtResource("2_if5oj")
+enemy_scene = ExtResource("3_elvit")
 
 [node name="WaveNotifications" type="CanvasLayer" parent="." unique_id=2120179839]
 visible = false
