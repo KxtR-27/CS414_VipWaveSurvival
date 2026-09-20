@@ -1,6 +1,7 @@
 class_name BasePlayer
 extends BaseCharacter
 
+@export var player_index : DeviceIdGlobals.device_id
 @export var animated_sprite : AnimatedSprite2D
 @export var sprite_frames : SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
 
@@ -53,7 +54,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var move_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var move_dir := Input.get_vector("move_left%d" % player_index, "move_right%d" % player_index, "move_up%d" % player_index, "move_down%d" % player_index)
 	self.velocity = move_dir * speed * delta
 	self.move_and_slide()
 
