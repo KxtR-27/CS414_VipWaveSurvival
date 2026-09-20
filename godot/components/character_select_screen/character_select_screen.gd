@@ -70,5 +70,5 @@ func _on_button_pressed() -> void:
 	for player_number in player_array.size():
 		player_array[player_number].name = "BasePlayer%d" % player_number
 		get_tree().root.get_node("Main").add_child(player_array[player_number])
-	get_tree().root.get_node("CharacterSelect").queue_free()
+	get_tree().root.get_node("CharacterSelectScreen").queue_free()
 	pass # Replace with function body.
