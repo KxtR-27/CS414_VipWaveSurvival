@@ -1,6 +1,9 @@
 extends Node2D
 
-func run_ability(ability : BaseAbility, caster : BaseCharacter) -> void:
+@export var caster : BasePlayer
+
+
+func run_ability(ability : BaseAbility) -> void:
 	match ability.ability_type:
 		"aura":
 			#create new node for the aura spell and child it under self
@@ -18,5 +21,5 @@ func run_ability(ability : BaseAbility, caster : BaseCharacter) -> void:
 			new_test_spell.run(ability, caster)
 
 
-func _on_base_player_ability_used(ability: BaseAbility, caster : BaseCharacter) -> void:
-	run_ability(ability, caster)
+func _on_base_player_ability_used(ability: BaseAbility) -> void:
+	run_ability(ability)

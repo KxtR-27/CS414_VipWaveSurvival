@@ -96,10 +96,10 @@ func _execute_ability(ability_action: String) -> void:
 	match (ability):
 		Ability.ABILITY_1:
 			var current_ability : BaseAbility = current_selected_abilities[Ability.ABILITY_1]
-			ability_used.emit(current_ability, self)
+			ability_used.emit(current_ability)
 		Ability.ABILITY_2:
 			var current_ability : BaseAbility = current_selected_abilities[Ability.ABILITY_2]
-			ability_used.emit(current_ability, self)
+			ability_used.emit(current_ability)
 		Ability.ATTACK:
 			#play attack animation
 			var sprite : AnimatedSprite2D = $Sprite

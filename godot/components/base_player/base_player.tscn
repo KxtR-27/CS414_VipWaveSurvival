@@ -4,6 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://dal0adb4yewow" path="res://resources/swordsman_spriteframes.tres" id="2_0n512"]
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/movable_sprite.gd" id="3_ax8wi"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_2q2f4"]
+[ext_resource type="PackedScene" uid="uid://ddgy1aop38jb1" path="res://components/ability_creator/ability_creator.tscn" id="5_bhref"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc5ck"]
 radius = 18.0
@@ -95,6 +96,10 @@ libraries/ = SubResource("AnimationLibrary_8c4ei")
 offset_top = -35.0
 offset_bottom = -35.0
 
+[node name="AbilityCreator" parent="." unique_id=1742922336 node_paths=PackedStringArray("caster") instance=ExtResource("5_bhref")]
+caster = NodePath("..")
+
+[connection signal="ability_used" from="." to="AbilityCreator" method="_on_base_player_ability_used"]
 [connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
 [connection signal="timeout" from="Cooldowns/Ability1Cooldown" to="." method="_on_ability_1_cooldown_timeout"]
 [connection signal="timeout" from="Cooldowns/Ability2Cooldown" to="." method="_on_ability_2_cooldown_timeout"]
