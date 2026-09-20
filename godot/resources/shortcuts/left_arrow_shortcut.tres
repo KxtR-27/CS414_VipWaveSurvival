@@ -9,12 +9,9 @@ device = -1
 keycode = 65
 unicode = 97
 
-[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_6tuus"]
-axis_value = -1.0
-
 [sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_6tuus"]
 button_index = 13
 pressed = true
 
 [resource]
-events = [SubResource("InputEventKey_6tuus"), SubResource("InputEventKey_cln3c"), SubResource("InputEventJoypadMotion_6tuus"), SubResource("InputEventJoypadButton_6tuus")]
+events = [SubResource("InputEventKey_6tuus"), SubResource("InputEventKey_cln3c"), SubResource("InputEventJoypadButton_6tuus")]

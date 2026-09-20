@@ -8,10 +8,10 @@ class_name CharacterSelectScreen extends Node2D
 
 @export var join_label : Label
 @export var begin_button : Button
+@export var player_index : int = 0
 
 var active_players : Array[int] = []
 var player_array : Array[BasePlayer] = []
-var player_index : int = 0
 
 var input_map : Array = [
 	"move_right{n}".format({"n":player_index}),
@@ -29,20 +29,7 @@ func add_player(device_id: int) -> void:
 	var new_char_select_component : CharacterSelectComponent = character_select_component.instantiate()
 	new_char_select_component.character_selected.connect(_on_character_selected)
 	new_char_select_component.device_id = device_id as DeviceIdGlobals.device_id
-	
-	var right_action: String
-	var right_action_event: InputEventJoypadMotion
-	
-	right_action = "move_right{n}".format({"n":device_id})
-	InputMap.add_action(right_action)
-	
-	right_action_event = InputEventJoypadMotion.new()
-	
-	right_action_event.device = device_id
-	right_action_event.axis = JOY_AXIS_LEFT_Y
-	right_action_event.axis_value = 1.0
-	InputMap.action_add_event(right_action, right_action_event)
-	
+
 	container.add_child(new_char_select_component)
 	active_players.append(device_id)
 
@@ -50,6 +37,7 @@ func add_player(device_id: int) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("join") and event.device not in active_players:
 		join_label.hide()
+		player_index = event.device
 		add_player(event.device)
 	pass
 	
@@ -59,6 +47,7 @@ func _on_character_selected(sprite_frames_path: String) -> void:
 	
 	new_player.sprite_frames = load(sprite_frames_path)
 	new_player.position = container.global_position
+	new_player.player_index = player_index as DeviceIdGlobals.device_id
 	
 	player_array.append(new_player)
 	
