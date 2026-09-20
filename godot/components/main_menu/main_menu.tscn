@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cy46i42qeadn0"]
 
 [ext_resource type="TileSet" uid="uid://x1d1rnuuvue3" path="res://resources/mystic_woods_placeholder_tileset.tres" id="1_06t4h"]
-[ext_resource type="Script" uid="uid://um0m5773fec2" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://um0m5773fec2" path="res://components/main_menu/main_menu.gd" id="1_7vrkn"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_fu7sn"]
 [ext_resource type="Theme" uid="uid://bekqrbmlv3skf" path="res://resources/button_theme.tres" id="4_jix8l"]
 
