@@ -53,12 +53,6 @@ _data = {
 [node name="BasePlayer" type="CharacterBody2D" unique_id=72684832 groups=["enemy_targets", "players"]]
 collision_mask = 2
 script = ExtResource("1_qp1xa")
-sprite_frames = null
-device_id = null
-use_kbm = null
-speed = null
-max_speed = null
-health = null
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=158065505]
 position = Vector2(0, 6)

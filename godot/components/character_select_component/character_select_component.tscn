@@ -73,51 +73,7 @@ region = Rect2(43, 42, 12, 11)
 atlas = ExtResource("3_q6r6c")
 region = Rect2(107, 42, 12, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkumq"]
-atlas = ExtResource("3_q6r6c")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1b0c"]
-atlas = ExtResource("3_q6r6c")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_q4obu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lkumq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v1b0c")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3v0dp"]
-atlas = ExtResource("3_q6r6c")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3g77q"]
-atlas = ExtResource("3_q6r6c")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ceued"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3v0dp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3g77q")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="CharacterSelectComponent" type="Control" unique_id=389505716 node_paths=PackedStringArray("background", "player_character", "right_arrow", "left_arrow")]
+[node name="CharacterSelectComponent" type="Control" unique_id=389505716]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 3
 anchor_right = 0.056
@@ -126,10 +82,6 @@ offset_right = -0.51200104
 offset_bottom = 0.24799919
 size_flags_vertical = 3
 script = ExtResource("1_4evgm")
-background = NodePath("BackgroundBox")
-player_character = NodePath("PlayerCharacter")
-right_arrow = NodePath("RightArrow")
-left_arrow = NodePath("LeftArrow")
 
 [node name="BackgroundBox" type="AnimatedSprite2D" parent="." unique_id=1119989607]
 position = Vector2(16, 0)
@@ -142,7 +94,6 @@ scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_7h2xm")
 
 [node name="RightArrow" type="TextureButton" parent="." unique_id=1095767133]
-process_mode = 4
 layout_mode = 0
 offset_left = 52.0
 offset_top = 10.0
@@ -153,7 +104,6 @@ texture_pressed = SubResource("AtlasTexture_i4o4r")
 stretch_mode = 0
 
 [node name="LeftArrow" type="TextureButton" parent="." unique_id=1783777971]
-process_mode = 4
 layout_mode = 0
 offset_top = 10.0
 offset_right = 12.0
@@ -162,15 +112,6 @@ texture_normal = SubResource("AtlasTexture_4d7sh")
 texture_pressed = SubResource("AtlasTexture_3f8vb")
 stretch_mode = 0
 flip_h = true
-
-[node name="RightArrow2" type="AnimatedSprite2D" parent="." unique_id=1448482052]
-position = Vector2(57, 16)
-sprite_frames = SubResource("SpriteFrames_q4obu")
-
-[node name="LeftArrow2" type="AnimatedSprite2D" parent="." unique_id=76757377]
-position = Vector2(7, 15)
-scale = Vector2(-1, -1)
-sprite_frames = SubResource("SpriteFrames_ceued")
 
 [connection signal="character_selected" from="." to="." method="_on_character_selected"]
 [connection signal="index_changed" from="." to="." method="_on_index_changed"]

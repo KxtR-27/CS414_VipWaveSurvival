@@ -175,10 +175,9 @@ func _on_health_component_died() -> void:
 
 func _event_is_from_my_device(event: InputEvent) -> bool:
 	var event_device := event.device
-	var is_kbm_event := event_device == 16 or event_device == 32
 	
 	if use_kbm:
-		return is_kbm_event
+		return DeviceManager.is_kbm(event_device)
 	else:
 		return event_device == self.device_id
 

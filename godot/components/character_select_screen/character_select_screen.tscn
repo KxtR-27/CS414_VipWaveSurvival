@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://x1d1rnuuvue3" path="res://resources/mystic_woods_placeholder_tileset.tres" id="2_ms3bd"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_1w020"]
 [ext_resource type="Theme" uid="uid://bekqrbmlv3skf" path="res://resources/button_theme.tres" id="4_b2fep"]
+[ext_resource type="Script" uid="uid://drygasm6iy8b6" path="res://components/device_listener/device_listener.gd" id="5_ms3bd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
 font = ExtResource("3_1w020")
@@ -19,10 +20,8 @@ events = [SubResource("InputEventAction_7yigr")]
 font = ExtResource("3_1w020")
 font_size = 28
 
-[node name="CharacterSelectScreen" type="Node2D" unique_id=1339988047 node_paths=PackedStringArray("join_label", "begin_button")]
+[node name="CharacterSelectScreen" type="Node2D" unique_id=1339988047]
 script = ExtResource("1_qboi0")
-join_label = NodePath("Control/ClickToJoinLabel")
-begin_button = NodePath("Control/Button")
 
 [node name="BackgroundTiles" type="TileMapLayer" parent="." unique_id=1564321099]
 scale = Vector2(2, 2)
@@ -74,5 +73,8 @@ offset_right = 710.0
 offset_bottom = 367.0
 text = "CLICK E TO JOIN"
 label_settings = SubResource("LabelSettings_vghj2")
+
+[node name="DeviceListener" type="Node" parent="." unique_id=1737700883]
+script = ExtResource("5_ms3bd")
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
