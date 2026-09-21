@@ -33,8 +33,3 @@ func _on_health_component_died() -> void:
 	GlobalEvents.game_lost.emit()
 	self.queue_free()
 	pass # Replace with function body.
-
-
-func award_debuff() -> void: 
-	var debuff_awarder : DebuffAwarder = $DebuffAwarder
-	debuff_awarder.apply_random_debuff()

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://xl4mu4b07oxk"]
+
+[ext_resource type="Script" uid="uid://bo5q6wji1neq" path="res://components/debuffs/slow_down/slow_down.gd" id="1_pavd2"]
+
+[node name="SlowDownDebuff" type="Node2D" unique_id=1949238001]
+script = ExtResource("1_pavd2")
+debuff_name = "Slow Down"
+debuff_description = "The VIP will move slower if he is not following a player!"
+metadata/_custom_type_script = "uid://drkfv55n50oa5"
+
+[connection signal="debuff_activated" from="." to="." method="_on_debuff_activated"]

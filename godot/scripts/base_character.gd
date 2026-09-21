@@ -8,6 +8,7 @@ signal health_changed(amount: float, negative: bool)
 
 @export_group("")
 @export var speed: float = 3000.0
+@export var max_speed: float = 3000.0
 @export var health: float = 100.0:
 	set(new_health):
 		health = new_health

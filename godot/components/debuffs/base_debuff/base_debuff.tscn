@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cgxbvqd2lqlm8"]
+
+[ext_resource type="Script" uid="uid://drkfv55n50oa5" path="res://components/debuffs/base_debuff/base_debuff.gd" id="1_fx051"]
+
+[node name="BaseDebuff" type="Node2D" unique_id=949146268]
+script = ExtResource("1_fx051")
+
+[connection signal="debuff_activated" from="." to="." method="_on_debuff_activated"]

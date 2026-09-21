@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/movable_sprite.gd" id="3_24cib"]
 [ext_resource type="PackedScene" uid="uid://jcob8jmp4huw" path="res://components/target_scanner/target_scanner.tscn" id="4_pb8p3"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_rrppm"]
-[ext_resource type="Script" uid="uid://buho78ybqwjve" path="res://scripts/debuff_awarder.gd" id="6_24cib"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kek77"]
 radius = 18.0
@@ -40,18 +39,8 @@ metadata/_edit_lock_ = true
 offset_top = -40.0
 offset_bottom = -40.0
 
-[node name="DebuffAwarder" type="Node2D" parent="." unique_id=2016027774]
-script = ExtResource("6_24cib")
-
-[node name="DistractionDurationTimer" type="Timer" parent="DebuffAwarder" unique_id=613007263]
-wait_time = 5.0
-one_shot = true
-
-[node name="DistractionTriggerTimer" type="Timer" parent="DebuffAwarder" unique_id=2078900387]
-wait_time = 15.0
+[node name="Debuffs" type="Node2D" parent="." unique_id=2016027774]
 
 [connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
 [connection signal="target_scanned" from="TargetScanner" to="." method="_on_target_scanned"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
-[connection signal="timeout" from="DebuffAwarder/DistractionDurationTimer" to="DebuffAwarder" method="_on_distraction_duration_timer_timeout"]
-[connection signal="timeout" from="DebuffAwarder/DistractionTriggerTimer" to="DebuffAwarder" method="_on_distraction_trigger_timer_timeout"]

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://brheai3jyxrxu"]
+
+[ext_resource type="Script" uid="uid://cysoswq1rb0es" path="res://components/debuffs/ignore_chance/ignore_chance.gd" id="1_uc2ex"]
+
+[node name="IgnoreChanceDebuff" type="Node2D" unique_id=2012393864]
+script = ExtResource("1_uc2ex")
+debuff_name = "Ignore Chance"
+debuff_description = "The VIP will have a 30% chance to ignore \"Follow Me!\" commands."
+metadata/_custom_type_script = "uid://drkfv55n50oa5"
+
+[connection signal="debuff_activated" from="." to="." method="_on_debuff_activated"]

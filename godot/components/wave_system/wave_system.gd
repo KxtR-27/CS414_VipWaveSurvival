@@ -87,8 +87,8 @@ func _on_wave_timer_timeout() -> void:
 	
 	#apply debuff to VIP on every wave past wave 1
 	if wave_tracker.current_wave > 1:
-		var vip : BaseVIP = self.get_parent().get_node("BaseVIP")
-		vip.award_debuff()
+		var debuff_awarder : DebuffAwarder = self.get_parent().get_node("DebuffAwarder")
+		debuff_awarder.award_debuff()
 	
 	downtime_timer.paused = false
 	downtime_timer.start()

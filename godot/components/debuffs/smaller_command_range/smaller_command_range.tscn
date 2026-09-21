@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c6mlvwysierow"]
+
+[ext_resource type="Script" uid="uid://boamcg1ai0sxf" path="res://components/debuffs/smaller_command_range/smaller_command_range.gd" id="1_4oxu4"]
+
+[node name="CmdRangeDebuff" type="Node2D" unique_id=1622460605]
+script = ExtResource("1_4oxu4")
+debuff_name = "Smaller Command Range"
+debuff_description = "The range in which the VIP can hear commands is now smaller!"
+metadata/_custom_type_script = "uid://drkfv55n50oa5"
+
+[connection signal="debuff_activated" from="." to="." method="_on_debuff_activated"]

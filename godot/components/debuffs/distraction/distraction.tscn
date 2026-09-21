@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://do45ollhl0rxx"]
+
+[ext_resource type="Script" uid="uid://c44lmsnnqmq7r" path="res://components/debuffs/distraction/distraction.gd" id="1_gf15c"]
+
+[node name="DistractionDebuff" type="Node2D" unique_id=364696392 node_paths=PackedStringArray("distraction_duration_timer", "distraction_trigger_timer")]
+script = ExtResource("1_gf15c")
+distraction_duration_timer = NodePath("DistractionDurationTimer")
+distraction_trigger_timer = NodePath("DistractionTriggerTimer")
+debuff_name = "Distraction"
+debuff_description = "The VIP will periodically become distracted, causing him to stand still for a while!"
+metadata/_custom_type_script = "uid://drkfv55n50oa5"
+
+[node name="DistractionDurationTimer" type="Timer" parent="." unique_id=1655447525]
+wait_time = 5.0
+one_shot = true
+
+[node name="DistractionTriggerTimer" type="Timer" parent="." unique_id=426982790]
+wait_time = 15.0
+
+[connection signal="debuff_activated" from="." to="." method="_on_debuff_activated"]
+[connection signal="timeout" from="DistractionDurationTimer" to="." method="_on_distraction_duration_timer_timeout"]
+[connection signal="timeout" from="DistractionTriggerTimer" to="." method="_on_distraction_trigger_timer_timeout"]

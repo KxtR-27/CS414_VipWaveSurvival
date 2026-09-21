@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c0odn4iwn58kp"]
+
+[ext_resource type="Script" uid="uid://bge88p4rxtmjf" path="res://components/debuff_awarder/debuff_awarder.gd" id="1_8pl1q"]
+[ext_resource type="PackedScene" uid="uid://xl4mu4b07oxk" path="res://components/debuffs/slow_down/slow_down.tscn" id="2_8mhif"]
+[ext_resource type="PackedScene" uid="uid://do45ollhl0rxx" path="res://components/debuffs/distraction/distraction.tscn" id="3_ls7bd"]
+[ext_resource type="PackedScene" uid="uid://c6mlvwysierow" path="res://components/debuffs/smaller_command_range/smaller_command_range.tscn" id="4_ls7bd"]
+[ext_resource type="PackedScene" uid="uid://brheai3jyxrxu" path="res://components/debuffs/ignore_chance/ignore_chance.tscn" id="5_tidx5"]
+
+[node name="DebuffAwarder" type="Control" unique_id=735813098 node_paths=PackedStringArray("debuffs")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8pl1q")
+debuffs = NodePath("Debuffs")
+
+[node name="Debuffs" type="Node" parent="." unique_id=1739601657]
+
+[node name="SlowDownDebuff" parent="Debuffs" unique_id=1949238001 instance=ExtResource("2_8mhif")]
+
+[node name="DistractionDebuff" parent="Debuffs" unique_id=364696392 instance=ExtResource("3_ls7bd")]
+
+[node name="CmdRangeDebuff" parent="Debuffs" unique_id=1622460605 instance=ExtResource("4_ls7bd")]
+
+[node name="IgnoreChanceDebuff" parent="Debuffs" unique_id=2012393864 instance=ExtResource("5_tidx5")]
