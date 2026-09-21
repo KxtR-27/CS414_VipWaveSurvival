@@ -1,9 +1,9 @@
 class_name DebuffButtonPanel extends CenterContainer
 
-@export var debuff : Debuff
-@export var button : Button
+@export var debuff: Debuff
+@export var button: Button
 
-signal button_pressed(current_debuff : Debuff)
+signal button_pressed(current_debuff: Debuff)
 
 func update_button_text() -> void:
 	if debuff:

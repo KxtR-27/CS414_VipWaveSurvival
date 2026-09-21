@@ -6,11 +6,11 @@ signal in_wave_downtime
 @onready var initial_spawner_wait_time: float = enemy_timer.wait_time
 
 @onready var wave_dict: Dictionary = {
-	1 : [["wave length", 1], ["enemy speed", 0.5], ["spawning speed multiplier", 1]],
-	2 : [["wave length", 1.25], ["enemy speed", 1], ["spawning speed multiplier", 1]],
-	3 : [["wave length", 1.5], ["enemy speed", 1], ["spawning speed multiplier", 2]],
-	4 : [["wave length", 1.75], ["enemy speed", 1.5], ["spawning speed multiplier", 2]], 
-	5 : [["wave length", 2], ["enemy speed", 1.5], ["spawning speed multiplier", 3]]
+	1: [["wave length", 1], ["enemy speed", 0.5], ["spawning speed multiplier", 1]],
+	2: [["wave length", 1.25], ["enemy speed", 1], ["spawning speed multiplier", 1]],
+	3: [["wave length", 1.5], ["enemy speed", 1], ["spawning speed multiplier", 2]],
+	4: [["wave length", 1.75], ["enemy speed", 1.5], ["spawning speed multiplier", 2]], 
+	5: [["wave length", 2], ["enemy speed", 1.5], ["spawning speed multiplier", 3]]
 }
 enum {
 	WAVE_LENGTH = 0,
@@ -87,7 +87,7 @@ func _on_wave_timer_timeout() -> void:
 	
 	#apply debuff to VIP on every wave past wave 1
 	if wave_tracker.current_wave > 1:
-		var debuff_awarder : DebuffAwarder = self.get_parent().get_node("DebuffAwarder")
+		var debuff_awarder := self.get_parent().get_node("DebuffAwarder") as DebuffAwarder
 		debuff_awarder.award_debuff()
 	
 	downtime_timer.paused = false

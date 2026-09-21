@@ -1,10 +1,10 @@
 class_name DebuffAwarder extends Control
 
-@export var debuffs : Node
-@export var vip : BaseVIP
-@export var debuff_menu_canvas_layer : CanvasLayer
+@export var debuffs: Node
+@export var vip: BaseVIP
+@export var debuff_menu_canvas_layer: CanvasLayer
 
-const DEBUFFS_OPTION_POOL_SIZE : int = 2
+const DEBUFFS_OPTION_POOL_SIZE: int = 2
 
 
 func award_debuff() -> void:
@@ -13,7 +13,7 @@ func award_debuff() -> void:
 		debuff_menu_canvas_layer.visible = true
 
 
-func apply_debuff(debuff : Debuff) -> void:
+func apply_debuff(debuff: Debuff) -> void:
 	if vip:
 		debuff.vip = vip
 		debuff.reparent(vip.get_node("Debuffs"))
@@ -22,25 +22,25 @@ func apply_debuff(debuff : Debuff) -> void:
 
 
 func populate_debuff_menu() -> void:
-	var remaining_debuffs : Array[Node] = debuffs.get_children()
-	var num_remaining_debuffs : int = remaining_debuffs.size()
+	var remaining_debuffs: Array[Node] = debuffs.get_children()
+	var num_remaining_debuffs: int = remaining_debuffs.size()
 	
 	#2 or more debuffs remain!
 	if num_remaining_debuffs >= DEBUFFS_OPTION_POOL_SIZE:
 		#select a random number of debuffs equal to DEBUFFS_OPTION_POOL_SIZE
-		var remaining_debuffs_copy : Array[Node] = remaining_debuffs.duplicate(true)
-		var chosen_debuffs : Array[Debuff] = []
+		var remaining_debuffs_copy: Array[Node] = remaining_debuffs.duplicate(true)
+		var chosen_debuffs: Array[Debuff] = []
 		
 		for i in range(DEBUFFS_OPTION_POOL_SIZE):
-			var random_debuff_index : int = randi_range(1, num_remaining_debuffs) - 1 - i
-			var random_debuff : Debuff = remaining_debuffs_copy[random_debuff_index]
+			var random_debuff_index: int = randi_range(1, num_remaining_debuffs) - 1 - i
+			var random_debuff: Debuff = remaining_debuffs_copy[random_debuff_index]
 			
 			chosen_debuffs.append(random_debuff)
 			remaining_debuffs_copy.erase(random_debuff)
 		
 		#update the buttons to reflect the chosen debuffs
-		var debuff_panel_1 : DebuffButtonPanel = $DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel
-		var debuff_panel_2 : DebuffButtonPanel = $DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel2
+		var debuff_panel_1 := $DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel as DebuffButtonPanel
+		var debuff_panel_2 := $DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel2 as DebuffButtonPanel
 		
 		debuff_panel_1.debuff = chosen_debuffs[0]
 		debuff_panel_2.debuff = chosen_debuffs[1]
@@ -50,8 +50,8 @@ func populate_debuff_menu() -> void:
 	
 	elif num_remaining_debuffs > 0:
 		#there are still debuffs available, but fewer than DEBUFFS_OPTION_POOL_SIZE
-		var debuff_panel_1 : DebuffButtonPanel = $DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel
-		var debuff_panel_2 : DebuffButtonPanel = $DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel2
+		var debuff_panel_1 := $DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel as DebuffButtonPanel
+		var debuff_panel_2 := $DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel2 as DebuffButtonPanel
 		
 		debuff_panel_1.debuff = remaining_debuffs[0]
 		

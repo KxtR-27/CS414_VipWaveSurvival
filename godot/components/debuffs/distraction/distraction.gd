@@ -1,7 +1,7 @@
 extends Debuff
 
-@export var distraction_duration_timer : Timer
-@export var distraction_trigger_timer : Timer
+@export var distraction_duration_timer: Timer
+@export var distraction_trigger_timer: Timer
 
 
 func on_activation() -> void:

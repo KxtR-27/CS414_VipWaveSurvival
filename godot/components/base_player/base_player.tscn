@@ -50,11 +50,9 @@ _data = {
 &"attack": SubResource("Animation_sd7qx")
 }
 
-[node name="BasePlayer" type="CharacterBody2D" unique_id=72684832 node_paths=PackedStringArray("animated_sprite") groups=["enemy_targets", "players"]]
+[node name="BasePlayer" type="CharacterBody2D" unique_id=72684832 groups=["enemy_targets", "players"]]
 collision_mask = 2
 script = ExtResource("1_qp1xa")
-animated_sprite = NodePath("Sprite")
-speed = 10000.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=158065505]
 position = Vector2(0, 6)

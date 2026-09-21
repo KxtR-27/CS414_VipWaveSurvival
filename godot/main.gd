@@ -1,3 +1,3 @@
 extends Node2D
 
-@export var player_array : Array
+@export var player_array: Array

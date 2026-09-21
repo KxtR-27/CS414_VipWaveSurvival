@@ -1,9 +1,6 @@
 class_name BasePlayer
 extends BaseCharacter
 
-@export var player_index : DeviceIdGlobals.device_id
-@export var animated_sprite : AnimatedSprite2D
-@export var sprite_frames : SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
 
 # when you add a new ability action to the InputMap,
 # put a new value in this enum
@@ -13,65 +10,75 @@ enum Ability {
 	ATTACK,
 }
 
-signal ability_used(ability : BaseAbility)
+signal ability_used(ability: BaseAbility)
 
-#preload abilities to use in current_selected_abilities
-var heal_aura_ability : BaseAbility = preload("res://resources/abilities/healing_aura.tres")
-var damage_aura_ability : BaseAbility = preload("res://resources/abilities/damaging_aura.tres")
 
-#this maps ability enums to the desired ability to be run
-var current_selected_abilities : Dictionary[Ability, BaseAbility] = {
-	Ability.ABILITY_1 : damage_aura_ability,
-	Ability.ABILITY_2 : heal_aura_ability,
+@export var sprite_frames: SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
+@export_group("Input")
+@export var device_id: int
+@export var use_kbm: bool
+
+
+## preload abilities to use in current_selected_abilities
+var heal_aura_ability := preload("res://resources/abilities/healing_aura.tres") as BaseAbility
+var damage_aura_ability := preload("res://resources/abilities/damaging_aura.tres") as BaseAbility
+
+## this maps ability enums to the desired ability to be run
+var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
+	Ability.ABILITY_1: damage_aura_ability,
+	Ability.ABILITY_2: heal_aura_ability,
 }
 
-# when you add a new ability action to the InputMap, put it here.
-# key: StringName of the action
-# value: corresponding Ability enum value
-var ABILITY_ACTION_MAP: Dictionary[String, Ability]
-
-# when you add a new ability, put it here
+## when you add a new ability action to the InputMap, put it here.
+## key: StringName of the action
+## value: corresponding Ability enum value
+var ABILITY_ACTION_MAP: Dictionary[String, Ability] = {
+		"ability_1": Ability.ABILITY_1,
+		"ability_2": Ability.ABILITY_2,
+		"attack": Ability.ATTACK,
+}
+## when you add a new ability, put it here
 var ability_on_cooldown: Dictionary[Ability, bool] = {
 	Ability.ABILITY_1: false, 
 	Ability.ABILITY_2: false,
 	Ability.ATTACK: false,
 }
 
-# when you add a new ability, make a timer and link it here
+## when you add a new ability, make a timer and link it here
 @onready var ability_timers: Dictionary[Ability, Timer] = {
 	Ability.ABILITY_1: $Cooldowns/Ability1Cooldown,
 	Ability.ABILITY_2: $Cooldowns/Ability2Cooldown,
 	Ability.ATTACK: $Cooldowns/AttackCooldown,
 }
 
+@onready var animated_sprite := $Sprite as AnimatedSprite2D
+
+
 func _ready() -> void:
 	animated_sprite.sprite_frames = sprite_frames
-	ABILITY_ACTION_MAP = {
-		("ability_1%d" % player_index) : Ability.ABILITY_1,
-		("ability_2%d" % player_index) : Ability.ABILITY_2,
-		("attack%d" % player_index) : Ability.ATTACK,
-	}
 
 
 func _physics_process(delta: float) -> void:
-	var move_dir := Input.get_vector("move_left%d" % player_index, "move_right%d" % player_index, "move_up%d" % player_index, "move_down%d" % player_index)
+	var move_dir := _get_movement_direction()
 	self.velocity = move_dir * speed * delta
 	self.move_and_slide()
 
 
 func _input(event: InputEvent) -> void:
+	if not _event_is_from_my_device(event):
+		return
+	
 	var ability_action: String = _get_pressed_ability(event)
 	if ability_action:
 		_execute_ability(ability_action)
-		return
-		
-	if event.is_action_pressed("start_follow"):
-		_command_vips_to_follow()
-		return
 	
-	if event.is_action_pressed("stop_follow"):
+	elif event.is_action_pressed("start_follow"):
+		print("I, device ", device_id, "/kbm:", use_kbm, " ask the VIPs to follow!")
+		_command_vips_to_follow()
+	
+	elif event.is_action_pressed("stop_follow"):
+		print("I, device ", device_id, "/kbm:", use_kbm, " ask the VIPs to go away!")
 		_command_vips_to_stop_following()
-		return
 
 
 ## loops through all actions in ABILITY_ACTION_MAP.
@@ -84,6 +91,7 @@ func _get_pressed_ability(event: InputEvent) -> String:
 	
 	return ""
 
+
 ## returns true if the input was an ability input; false otherwise
 func _execute_ability(ability_action: String) -> void:
 	# get the Ability enum value
@@ -95,18 +103,18 @@ func _execute_ability(ability_action: String) -> void:
 	
 	match (ability):
 		Ability.ABILITY_1:
-			var current_ability : BaseAbility = current_selected_abilities[Ability.ABILITY_1]
+			var current_ability: BaseAbility = current_selected_abilities[Ability.ABILITY_1]
 			ability_used.emit(current_ability)
 		Ability.ABILITY_2:
-			var current_ability : BaseAbility = current_selected_abilities[Ability.ABILITY_2]
+			var current_ability: BaseAbility = current_selected_abilities[Ability.ABILITY_2]
 			ability_used.emit(current_ability)
 		Ability.ATTACK:
 			#play attack animation
-			var sprite : AnimatedSprite2D = $Sprite
+			var sprite: AnimatedSprite2D = $Sprite
 			sprite.play("attack")
 			
 			#use animationplayer to turn hitbox on and off
-			var sword_animator : AnimationPlayer = $SwordHitboxAnimator
+			var sword_animator: AnimationPlayer = $SwordHitboxAnimator
 			sword_animator.play("attack")
 		
 	return
@@ -155,7 +163,7 @@ func _on_attack_cooldown_timeout() -> void:
 
 func _on_attack_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
-		var enemy : BaseNPC = body
+		var enemy := body as BaseNPC
 		enemy.take_damage(25)
 	pass # Replace with function body.
 
@@ -163,3 +171,22 @@ func _on_attack_hurtbox_body_entered(body: Node2D) -> void:
 func _on_health_component_died() -> void:
 	self.queue_free()
 	pass # Replace with function body.
+
+
+func _event_is_from_my_device(event: InputEvent) -> bool:
+	var event_device := event.device
+	
+	if use_kbm:
+		return DeviceManager.is_kbm(event_device)
+	else:
+		return event_device == self.device_id
+
+
+func _get_movement_direction() -> Vector2:
+	if use_kbm:
+		return Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	else:
+		return Vector2(
+			Input.get_joy_axis(device_id, JOY_AXIS_LEFT_X),
+			Input.get_joy_axis(device_id, JOY_AXIS_LEFT_Y),
+		)

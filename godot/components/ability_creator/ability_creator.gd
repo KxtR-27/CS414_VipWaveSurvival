@@ -1,21 +1,21 @@
 extends Node2D
 
-@export var caster : BasePlayer
+@export var caster: BasePlayer
 
 
-func run_ability(ability : BaseAbility) -> void:
+func run_ability(ability: BaseAbility) -> void:
 	match ability.ability_type:
 		"aura":
 			#create new node for the aura spell and child it under self
-			var aura_spell_node : PackedScene = load("res://components/spells/aura_spell/aura_spell.tscn")
-			var new_aura_spell : BaseSpell = aura_spell_node.instantiate()
+			var aura_spell_node := load("res://components/spells/aura_spell/aura_spell.tscn") as PackedScene
+			var new_aura_spell := aura_spell_node.instantiate() as BaseSpell
 			add_child(new_aura_spell)
 			
 			#run the spell with current ability parameters and caster
 			new_aura_spell.run(ability, caster)
 		"test":
-			var test_spell_node : PackedScene = load("res://components/spells/test_spell/test_spell.tscn")
-			var new_test_spell : BaseSpell = test_spell_node.instantiate()
+			var test_spell_node := load("res://components/spells/test_spell/test_spell.tscn") as PackedScene
+			var new_test_spell := test_spell_node.instantiate() as BaseSpell
 			add_child(new_test_spell)
 			
 			new_test_spell.run(ability, caster)
