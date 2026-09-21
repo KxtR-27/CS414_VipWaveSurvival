@@ -112,6 +112,9 @@ func prepare_new_wave() -> void:
 	var safe_wave_count: int = (wave_tracker.current_wave % wave_dict.size()) + 1
 	print("using safe wave count: ", safe_wave_count)
 	
+	if wave_tracker.current_wave > safe_wave_count:
+		GlobalEvents.game_won.emit()
+	
 	wave_timer.wait_time *= wave_dict[safe_wave_count][WAVE_LENGTH][1]
 	enemy_speed = wave_dict[safe_wave_count][ENEMY_SPEED][1]
 	

@@ -28,11 +28,7 @@ var current_selected_abilities : Dictionary[Ability, BaseAbility] = {
 # when you add a new ability action to the InputMap, put it here.
 # key: StringName of the action
 # value: corresponding Ability enum value
-const ABILITY_ACTION_MAP: Dictionary[String, Ability] = {
-	"ability_1": Ability.ABILITY_1,
-	"ability_2": Ability.ABILITY_2,
-	"attack" : Ability.ATTACK,
-}
+var ABILITY_ACTION_MAP: Dictionary[String, Ability]
 
 # when you add a new ability, put it here
 var ability_on_cooldown: Dictionary[Ability, bool] = {
@@ -48,9 +44,13 @@ var ability_on_cooldown: Dictionary[Ability, bool] = {
 	Ability.ATTACK: $Cooldowns/AttackCooldown,
 }
 
-
 func _ready() -> void:
 	animated_sprite.sprite_frames = sprite_frames
+	ABILITY_ACTION_MAP = {
+		("ability_1%d" % player_index) : Ability.ABILITY_1,
+		("ability_2%d" % player_index) : Ability.ABILITY_2,
+		("attack%d" % player_index) : Ability.ATTACK,
+	}
 
 
 func _physics_process(delta: float) -> void:

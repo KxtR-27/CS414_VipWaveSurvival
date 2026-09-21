@@ -27,8 +27,6 @@ offset_bottom = 648.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=145851133]
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=78333487]
@@ -48,9 +46,8 @@ label_settings = SubResource("LabelSettings_n3d2o")
 layout_mode = 0
 offset_left = 512.0
 offset_top = 280.0
-offset_right = 576.0
-offset_bottom = 309.0
-scale = Vector2(2, 2)
+offset_right = 632.0
+offset_bottom = 330.0
 theme = ExtResource("4_jix8l")
 text = "START"
 
@@ -58,10 +55,10 @@ text = "START"
 layout_mode = 0
 offset_left = 490.0
 offset_top = 384.0
-offset_right = 576.0
-offset_bottom = 413.0
-scale = Vector2(2, 2)
+offset_right = 658.0
+offset_bottom = 434.0
 theme = ExtResource("4_jix8l")
+disabled = true
 text = "OPTIONS"
 
 [connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]

@@ -40,32 +40,25 @@ func _ready() -> void:
 
 func _on_index_changed() -> void:
 	player_character.frame = character_index
-	pass # Replace with function body.
 
 
 func _on_right_arrow_pressed() -> void:
 	character_index += 1
 	index_changed.emit()
-	pass # Replace with function body.
 
 
 func _on_left_arrow_pressed() -> void:
 	character_index -= 1
 	index_changed.emit()
-	pass # Replace with function body.
 	
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_select"):
+	if event.is_action_pressed("select%d" % device_id):
 		background_frame += 1
 		background.frame = background_frame
 		
 		var sprite_frames_path := "res://resources/%s_spriteframes.tres" % characters[character_index]
 		character_selected.emit(sprite_frames_path)
-	#elif event.is_action_pressed("ui_right", false):
-		#right_arrow.press()
-	#elif event.is_action_pressed("ui_left", false):
-		#left_arrow.press()
 		
 
 
