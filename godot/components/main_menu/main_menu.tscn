@@ -58,6 +58,7 @@ offset_top = 384.0
 offset_right = 658.0
 offset_bottom = 434.0
 theme = ExtResource("4_jix8l")
+disabled = true
 text = "OPTIONS"
 
 [connection signal="pressed" from="Control/StartButton" to="." method="_on_start_button_pressed"]
