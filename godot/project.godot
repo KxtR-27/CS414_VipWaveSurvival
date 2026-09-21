@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.8", "Forward Plus")
 [autoload]
 
 DeviceIdGlobals="*uid://dmmsec1lw2lwb"
+GlobalEvents="*uid://tcano4yp1h0f"
 
 [debug]
 

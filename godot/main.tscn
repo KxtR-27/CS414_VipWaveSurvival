@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://x1d1rnuuvue3" path="res://resources/mystic_woods_placeholder_tileset.tres" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://btj6dn8liccai" path="res://components/statue.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://q8gp3srvu57s" path="res://components/base_vip/base_vip.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://ddia2pag6mwwm" path="res://wave_system.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://ddia2pag6mwwm" path="res://components/wave_system/wave_system.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bmb26qdeaf63i" path="res://components/screen_border_collider/screen_border_collider.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://cp0mjy2pkwpr2" path="res://scripts/ability_creator.gd" id="7_kek77"]
 
