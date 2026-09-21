@@ -21,9 +21,10 @@ func _on_health_changed(amount_changed: float, negative: bool) -> void:
 		current_health -= amount_changed
 	else:
 		current_health += amount_changed
+	
 	if current_health <= 0:
 		died.emit()
 	if current_health > max_health:
 		current_health = max_health
-	health_bar.value = current_health
-	pass # Replace with function body.
+	if health_bar:
+		health_bar.value = current_health

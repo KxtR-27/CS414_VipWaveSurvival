@@ -11,8 +11,10 @@ signal health_changed(amount: float, negative: bool)
 @export var max_speed: float = 3000.0
 @export var health: float = 100.0:
 	set(new_health):
+		var amount := absf(health - new_health)
+		var negative := new_health < health
 		health = new_health
-		health_changed.emit()
+		health_changed.emit(amount, negative)
 
 
 func take_damage(amount: float) -> void:

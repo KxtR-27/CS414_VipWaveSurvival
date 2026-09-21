@@ -186,13 +186,6 @@ move_up={
 "location": 0,
 "echo": false,
 "script": null
-), Object(InputEventJoypadMotion,
-"resource_local_to_scene": false,
-"resource_name": "",
-"device": -1,
-"axis": 1,
-"axis_value": -1.0,
-"script": null
 )]
 }
 move_down={
@@ -213,13 +206,6 @@ move_down={
 "unicode": 115,
 "location": 0,
 "echo": false,
-"script": null
-), Object(InputEventJoypadMotion,
-"resource_local_to_scene": false,
-"resource_name": "",
-"device": -1,
-"axis": 1,
-"axis_value": 1.0,
 "script": null
 )]
 }
@@ -242,13 +228,6 @@ move_left={
 "location": 0,
 "echo": false,
 "script": null
-), Object(InputEventJoypadMotion,
-"resource_local_to_scene": false,
-"resource_name": "",
-"device": -1,
-"axis": 0,
-"axis_value": -1.0,
-"script": null
 )]
 }
 move_right={
@@ -269,13 +248,6 @@ move_right={
 "unicode": 100,
 "location": 0,
 "echo": false,
-"script": null
-), Object(InputEventJoypadMotion,
-"resource_local_to_scene": false,
-"resource_name": "",
-"device": -1,
-"axis": 0,
-"axis_value": 1.0,
 "script": null
 )]
 }

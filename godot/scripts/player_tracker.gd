@@ -13,9 +13,9 @@ func _input(event: InputEvent) -> void:
 func add_player(device_id: int) -> void:
 	connected_player_array.append(device_id)
 	
-	if device_id == DeviceIdGlobals.device_id.KEYBOARD_MOUSE:
-		var keyboard_mapper := KeyboardControlMapper.new()
-		keyboard_mapper.add_keyboard_input_map(device_id)
-	else:
-		var joypad_mapper := JoypadControlMapper.new()
-		joypad_mapper.add_joypad_input_map(device_id)
+	#if device_id == DeviceIdGlobals.device_id.KEYBOARD_MOUSE:
+		#var keyboard_mapper := KeyboardControlMapper.new()
+		#keyboard_mapper.add_keyboard_input_map(device_id)
+	#else:
+		#var joypad_mapper := JoypadControlMapper.new()
+		#joypad_mapper.add_joypad_input_map(device_id)
