@@ -4,10 +4,10 @@ static var main_scene :=  preload("res://main.tscn")
 static var player_scene := preload("res://components/base_player/base_player.tscn")
 static var character_select_component := preload("res://components/character_select_component/character_select_component.tscn")
 
-var active_players : Array[int] = []
-var player_array : Array[BasePlayer] = []
+var active_players: Array[int] = []
+var player_array: Array[BasePlayer] = []
 
-var connected_player_array : Array[int] = []
+var connected_player_array: Array[int] = []
 
 @onready var container := $Control/HBoxContainer as HBoxContainer
 @onready var join_label := $Control/ClickToJoinLabel as Label
@@ -39,7 +39,7 @@ func add_select_component(device_id: int) -> void:
 
 
 func _on_character_selected(sprite_frames_path: String, device_id: int) -> void:
-	var new_player : BasePlayer = player_scene.instantiate()
+	var new_player := player_scene.instantiate() as BasePlayer
 	
 	new_player.sprite_frames = load(sprite_frames_path)
 	new_player.device_id = device_id
@@ -48,7 +48,7 @@ func _on_character_selected(sprite_frames_path: String, device_id: int) -> void:
 	player_array.append(new_player)
 
 
-func _on_player_connected(device_id : int) -> void:
+func _on_player_connected(device_id: int) -> void:
 	join_label.hide()
 	add_select_component(device_id)
 

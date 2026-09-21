@@ -1,7 +1,7 @@
 class_name CharacterSelectComponent extends Control
 
 signal index_changed
-signal character_selected(sprite_frames_path : String, device_id : int)
+signal character_selected(sprite_frames_path: String, device_id: int)
 
 @onready var background := $BackgroundBox as AnimatedSprite2D
 @onready var player_character := $PlayerCharacter as AnimatedSprite2D
@@ -11,22 +11,22 @@ signal character_selected(sprite_frames_path : String, device_id : int)
 @export_group("Device Configuration")
 @export var device_id: int = -2
 
-var background_frame : int = 0:
+var background_frame: int = 0:
 	set(new_frame_index):
 		background_frame = clampi(new_frame_index, 0, 2)
 
-var character_index : int = 0:
+var character_index: int = 0:
 	set(new_index):
 		character_index = wrapi(new_index, 0, 3)
 		player_character.frame = character_index
 		
-var characters : Dictionary = {
-	0 : "swordsman",
-	1 : "wizard",
-	2 : "knight"
+var characters: Dictionary = {
+	0: "swordsman",
+	1: "wizard",
+	2: "knight"
 }
 
-var character_has_been_selected : bool = false
+var character_has_been_selected: bool = false
 
 func _on_index_changed() -> void:
 	player_character.frame = character_index

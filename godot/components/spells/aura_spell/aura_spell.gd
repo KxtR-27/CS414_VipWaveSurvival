@@ -1,17 +1,17 @@
 class_name AuraSpell extends BaseSpell
 
-@export var hitbox : Area2D
-@export var remote_transform : RemoteTransform2D
+@export var hitbox: Area2D
+@export var remote_transform: RemoteTransform2D
 
-@export var tick_timer : Timer
-@export var lifetime_timer : Timer
+@export var tick_timer: Timer
+@export var lifetime_timer: Timer
 
-var current_overlapping_targets : Array = []
-var spell_caster : BasePlayer
-var damage : int
-var healing : int
+var current_overlapping_targets: Array = []
+var spell_caster: BasePlayer
+var damage: int
+var healing: int
 
-func run(ability : BaseAbility, caster : BaseCharacter) -> void:
+func run(ability: BaseAbility, caster: BaseCharacter) -> void:
 	#remember who cast this spell
 	spell_caster = caster
 	
@@ -34,7 +34,7 @@ func run(ability : BaseAbility, caster : BaseCharacter) -> void:
 
 
 func on_tick() -> void:
-	for target : BaseCharacter in current_overlapping_targets:
+	for target: BaseCharacter in current_overlapping_targets:
 		if target.is_in_group("enemies"):
 			target.health_changed.emit(damage, true)
 		elif target.is_in_group("players") or target.is_in_group("vip"):

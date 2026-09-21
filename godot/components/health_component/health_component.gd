@@ -2,9 +2,9 @@ class_name HealthComponent extends Control
 
 signal died
 
-@export var max_health : float = 100.0
-@onready var health_bar : ProgressBar = $HealthBar
-var current_health : float
+@export var max_health: float = 100.0
+@onready var health_bar := $HealthBar as ProgressBar
+var current_health: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

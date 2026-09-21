@@ -10,7 +10,7 @@ enum Ability {
 	ATTACK,
 }
 
-signal ability_used(ability : BaseAbility)
+signal ability_used(ability: BaseAbility)
 
 
 @export var sprite_frames: SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
@@ -20,22 +20,22 @@ signal ability_used(ability : BaseAbility)
 
 
 ## preload abilities to use in current_selected_abilities
-var heal_aura_ability : BaseAbility = preload("res://resources/abilities/healing_aura.tres")
-var damage_aura_ability : BaseAbility = preload("res://resources/abilities/damaging_aura.tres")
+var heal_aura_ability := preload("res://resources/abilities/healing_aura.tres") as BaseAbility
+var damage_aura_ability := preload("res://resources/abilities/damaging_aura.tres") as BaseAbility
 
 ## this maps ability enums to the desired ability to be run
-var current_selected_abilities : Dictionary[Ability, BaseAbility] = {
-	Ability.ABILITY_1 : damage_aura_ability,
-	Ability.ABILITY_2 : heal_aura_ability,
+var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
+	Ability.ABILITY_1: damage_aura_ability,
+	Ability.ABILITY_2: heal_aura_ability,
 }
 
 ## when you add a new ability action to the InputMap, put it here.
 ## key: StringName of the action
 ## value: corresponding Ability enum value
 var ABILITY_ACTION_MAP: Dictionary[String, Ability] = {
-		"ability_1" : Ability.ABILITY_1,
-		"ability_2" : Ability.ABILITY_2,
-		"attack" : Ability.ATTACK,
+		"ability_1": Ability.ABILITY_1,
+		"ability_2": Ability.ABILITY_2,
+		"attack": Ability.ATTACK,
 }
 ## when you add a new ability, put it here
 var ability_on_cooldown: Dictionary[Ability, bool] = {
@@ -103,18 +103,18 @@ func _execute_ability(ability_action: String) -> void:
 	
 	match (ability):
 		Ability.ABILITY_1:
-			var current_ability : BaseAbility = current_selected_abilities[Ability.ABILITY_1]
+			var current_ability: BaseAbility = current_selected_abilities[Ability.ABILITY_1]
 			ability_used.emit(current_ability)
 		Ability.ABILITY_2:
-			var current_ability : BaseAbility = current_selected_abilities[Ability.ABILITY_2]
+			var current_ability: BaseAbility = current_selected_abilities[Ability.ABILITY_2]
 			ability_used.emit(current_ability)
 		Ability.ATTACK:
 			#play attack animation
-			var sprite : AnimatedSprite2D = $Sprite
+			var sprite: AnimatedSprite2D = $Sprite
 			sprite.play("attack")
 			
 			#use animationplayer to turn hitbox on and off
-			var sword_animator : AnimationPlayer = $SwordHitboxAnimator
+			var sword_animator: AnimationPlayer = $SwordHitboxAnimator
 			sword_animator.play("attack")
 		
 	return

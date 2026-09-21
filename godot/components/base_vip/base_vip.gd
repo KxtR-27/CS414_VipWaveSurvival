@@ -5,13 +5,13 @@ signal started_following
 signal stopped_following
 
 @export var follow_command_range: float = 400.0
-@export var can_follow : bool = true
-@export_range(0.0,100.0) var follow_chance : float = 100.0
+@export var can_follow: bool = true
+@export_range(0.0,100.0) var follow_chance: float = 100.0
 
 
 func request_to_follow(player: BasePlayer) -> void:
 	if can_follow:
-		var roll_to_follow : float = randf_range(0.0, 100.0)
+		var roll_to_follow: float = randf_range(0.0, 100.0)
 		if roll_to_follow <= follow_chance:
 			target_to_follow = player
 			started_following.emit()
