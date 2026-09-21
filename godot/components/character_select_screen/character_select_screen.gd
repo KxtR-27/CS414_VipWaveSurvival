@@ -8,24 +8,22 @@ class_name CharacterSelectScreen extends Node2D
 
 @export var join_label : Label
 @export var begin_button : Button
-@export var player_index : int = 0
+@export var player_index : DeviceIdGlobals.device_id
 
 var active_players : Array[int] = []
 var player_array : Array[BasePlayer] = []
 
-var input_map : Array = [
-	"move_right{n}".format({"n":player_index}),
-	"move_left{n}".format({"n":player_index}),
-	"move_up{n}".format({"n":player_index}),
-	"move_down{n}".format({"n":player_index}),
-	"select{n}".format({"n":player_index}),
-]
 
 func _ready() -> void:
 	begin_button.disabled = true
 
 
-func add_player(device_id: int) -> void:
+func _process(_delta: float) -> void:
+	if active_players.size() >= 1 and active_players.size() == player_array.size():
+		begin_button.disabled = false
+
+
+func add_select_component(device_id: int) -> void:
 	var new_char_select_component : CharacterSelectComponent = character_select_component.instantiate()
 	new_char_select_component.character_selected.connect(_on_character_selected)
 	new_char_select_component.device_id = device_id as DeviceIdGlobals.device_id
@@ -37,9 +35,8 @@ func add_player(device_id: int) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("join") and event.device not in active_players:
 		join_label.hide()
-		player_index = event.device
-		add_player(event.device)
-	pass
+		player_index = event.device as DeviceIdGlobals.device_id
+		add_select_component(player_index)
 	
 
 func _on_character_selected(sprite_frames_path: String) -> void:
@@ -47,11 +44,8 @@ func _on_character_selected(sprite_frames_path: String) -> void:
 	
 	new_player.sprite_frames = load(sprite_frames_path)
 	new_player.position = container.global_position
-	new_player.player_index = player_index as DeviceIdGlobals.device_id
-	
+	new_player.player_index = player_index
 	player_array.append(new_player)
-	
-	begin_button.disabled = false
 
 
 func _on_button_pressed() -> void:
@@ -60,4 +54,3 @@ func _on_button_pressed() -> void:
 		player_array[player_number].name = "BasePlayer%d" % player_number
 		get_tree().root.get_node("Main").add_child(player_array[player_number])
 	get_tree().root.get_node("CharacterSelectScreen").queue_free()
-	pass # Replace with function body.
