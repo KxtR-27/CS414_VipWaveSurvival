@@ -8,7 +8,6 @@ class_name CharacterSelectScreen extends Node2D
 
 @export var join_label : Label
 @export var begin_button : Button
-@export var player_index : DeviceIdGlobals.device_id
 
 var active_players : Array[int] = []
 var player_array : Array[BasePlayer] = []
@@ -16,6 +15,7 @@ var player_array : Array[BasePlayer] = []
 
 func _ready() -> void:
 	begin_button.disabled = true
+	PlayerTracker.player_connected.connect(_on_player_connected)
 
 
 func _process(_delta: float) -> void:
@@ -32,20 +32,18 @@ func add_select_component(device_id: int) -> void:
 	active_players.append(device_id)
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("join") and event.device not in active_players:
-		join_label.hide()
-		player_index = event.device as DeviceIdGlobals.device_id
-		add_select_component(player_index)
-	
-
-func _on_character_selected(sprite_frames_path: String) -> void:
+func _on_character_selected(sprite_frames_path: String, device_id: DeviceIdGlobals.device_id) -> void:
 	var new_player : BasePlayer = player_scene.instantiate()
 	
 	new_player.sprite_frames = load(sprite_frames_path)
-	new_player.position = container.global_position
-	new_player.player_index = player_index
+	new_player.player_index = device_id
+	new_player.position = container.position + Vector2(device_id + 10, 0)
 	player_array.append(new_player)
+
+
+func _on_player_connected(device_id : DeviceIdGlobals.device_id) -> void:
+	join_label.hide()
+	add_select_component(device_id)
 
 
 func _on_button_pressed() -> void:
