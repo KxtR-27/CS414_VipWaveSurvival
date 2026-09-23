@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bxabe42siwmn3"]
+
+[ext_resource type="Script" uid="uid://h7i2o2ama0ou" path="res://components/aimable_hurtbox/aimable_hurtbox.gd" id="1_16vlx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sd7qx"]
+resource_local_to_scene = true
+size = Vector2(50, 48)
+
+[node name="AimableAttackHurtbox" type="Area2D" unique_id=1257748294]
+script = ExtResource("1_16vlx")
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=648343070]
+position = Vector2(66, 0)
+shape = SubResource("RectangleShape2D_sd7qx")
+debug_color = Color(0.7, 0, 0, 0.10980392)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

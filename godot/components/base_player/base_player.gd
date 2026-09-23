@@ -12,16 +12,16 @@ enum Ability {
 
 signal ability_used(ability: BaseAbility)
 
+## preload abilities to use in current_selected_abilities
+const heal_aura_ability := preload("res://resources/abilities/healing_aura.tres") as BaseAbility
+const damage_aura_ability := preload("res://resources/abilities/damaging_aura.tres") as BaseAbility
+
 
 @export var sprite_frames: SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
 @export_group("Input")
 @export var device_id: int
 @export var use_kbm: bool
 
-
-## preload abilities to use in current_selected_abilities
-var heal_aura_ability := preload("res://resources/abilities/healing_aura.tres") as BaseAbility
-var damage_aura_ability := preload("res://resources/abilities/damaging_aura.tres") as BaseAbility
 
 ## this maps ability enums to the desired ability to be run
 var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
@@ -32,7 +32,7 @@ var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
 ## when you add a new ability action to the InputMap, put it here.
 ## key: StringName of the action
 ## value: corresponding Ability enum value
-var ABILITY_ACTION_MAP: Dictionary[String, Ability] = {
+const ABILITY_ACTION_MAP: Dictionary[String, Ability] = {
 		"ability_1": Ability.ABILITY_1,
 		"ability_2": Ability.ABILITY_2,
 		"attack": Ability.ATTACK,
@@ -52,6 +52,7 @@ var ability_on_cooldown: Dictionary[Ability, bool] = {
 }
 
 @onready var animated_sprite := $Sprite as AnimatedSprite2D
+@onready var hurtbox := $AimableAttackHurtbox as AimableHurtbox
 
 
 func _ready() -> void:
@@ -59,6 +60,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	var aim_dir := _get_aim_direction()
+	hurtbox.aim_in_dir(aim_dir)
+	
 	var move_dir := _get_movement_direction()
 	self.velocity = move_dir * speed * delta
 	self.move_and_slide()
@@ -109,14 +113,12 @@ func _execute_ability(ability_action: String) -> void:
 			var current_ability: BaseAbility = current_selected_abilities[Ability.ABILITY_2]
 			ability_used.emit(current_ability)
 		Ability.ATTACK:
-			#play attack animation
+			# play attack animation
 			var sprite: AnimatedSprite2D = $Sprite
 			sprite.play("attack")
-			
-			#use animationplayer to turn hitbox on and off
-			var sword_animator: AnimationPlayer = $SwordHitboxAnimator
-			sword_animator.play("attack")
-		
+			# attack enemies
+			_attack()
+	
 	return
 
 
@@ -161,11 +163,11 @@ func _on_attack_cooldown_timeout() -> void:
 	ability_on_cooldown[Ability.ATTACK] = false
 
 
-func _on_attack_hurtbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemies"):
-		var enemy := body as BaseNPC
-		enemy.take_damage(25)
-	pass # Replace with function body.
+func _attack() -> void:
+	for target: BaseCharacter in hurtbox.targets_in_hurtbox:
+		if target.is_in_group("enemies"):
+			var enemy := target as BaseNPC
+			enemy.take_damage(25)
 
 
 func _on_health_component_died() -> void:
@@ -190,3 +192,21 @@ func _get_movement_direction() -> Vector2:
 			Input.get_joy_axis(device_id, JOY_AXIS_LEFT_X),
 			Input.get_joy_axis(device_id, JOY_AXIS_LEFT_Y),
 		)
+
+
+func _get_aim_direction() -> Vector2:
+	# keyboard
+	if use_kbm:
+		# aim at mouse
+		if DeviceManager.mouse_detected:
+			return self.global_position.direction_to(get_global_mouse_position())
+		# fall back to aim where moving to
+		else:
+			return _get_movement_direction()
+	# gamepad
+	else:
+		return Vector2(
+			Input.get_joy_axis(device_id, JOY_AXIS_RIGHT_X),
+			Input.get_joy_axis(device_id, JOY_AXIS_RIGHT_Y),
+		)
+		

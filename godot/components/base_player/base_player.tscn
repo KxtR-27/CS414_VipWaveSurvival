@@ -5,50 +5,15 @@
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/movable_sprite.gd" id="3_ax8wi"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_2q2f4"]
 [ext_resource type="PackedScene" uid="uid://ddgy1aop38jb1" path="res://components/ability_creator/ability_creator.tscn" id="5_bhref"]
+[ext_resource type="PackedScene" uid="uid://bxabe42siwmn3" path="res://components/aimable_hurtbox/aimable_hurtbox.tscn" id="6_2q2f4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc5ck"]
 radius = 18.0
 height = 56.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhref"]
-size = Vector2(200, 60)
-
-[sub_resource type="Animation" id="Animation_2q2f4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AttackHurtbox:monitoring")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_sd7qx"]
-resource_name = "attack"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AttackHurtbox:monitoring")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8c4ei"]
-_data = {
-&"RESET": SubResource("Animation_2q2f4"),
-&"attack": SubResource("Animation_sd7qx")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q2f4"]
+resource_local_to_scene = true
+size = Vector2(69, 63)
 
 [node name="BasePlayer" type="CharacterBody2D" unique_id=72684832 groups=["enemy_targets", "players"]]
 collision_mask = 2
@@ -77,22 +42,6 @@ one_shot = true
 [node name="AttackCooldown" type="Timer" parent="Cooldowns" unique_id=1972651493]
 one_shot = true
 
-[node name="AttackHurtbox" type="Area2D" parent="." unique_id=1658078459]
-process_mode = 4
-visible = false
-position = Vector2(0, 10)
-monitoring = false
-metadata/_edit_lock_ = true
-
-[node name="Shape" type="CollisionShape2D" parent="AttackHurtbox" unique_id=567730645]
-visible = false
-shape = SubResource("RectangleShape2D_bhref")
-debug_color = Color(0.9898438, 3.946722e-06, 7.70092e-07, 0.047058824)
-metadata/_edit_lock_ = true
-
-[node name="SwordHitboxAnimator" type="AnimationPlayer" parent="." unique_id=469004323]
-libraries/ = SubResource("AnimationLibrary_8c4ei")
-
 [node name="HealthComponent" parent="." unique_id=1224115467 instance=ExtResource("5_2q2f4")]
 offset_top = -35.0
 offset_bottom = -35.0
@@ -100,11 +49,17 @@ offset_bottom = -35.0
 [node name="AbilityCreator" parent="." unique_id=1742922336 node_paths=PackedStringArray("caster") instance=ExtResource("5_bhref")]
 caster = NodePath("..")
 
+[node name="AimableAttackHurtbox" parent="." unique_id=1257748294 instance=ExtResource("6_2q2f4")]
+
+[node name="Shape" parent="AimableAttackHurtbox" index="0" unique_id=648343070]
+position = Vector2(56.5, -1.5)
+shape = SubResource("RectangleShape2D_2q2f4")
+
 [connection signal="ability_used" from="." to="AbilityCreator" method="_on_base_player_ability_used"]
 [connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
 [connection signal="timeout" from="Cooldowns/Ability1Cooldown" to="." method="_on_ability_1_cooldown_timeout"]
 [connection signal="timeout" from="Cooldowns/Ability2Cooldown" to="." method="_on_ability_2_cooldown_timeout"]
 [connection signal="timeout" from="Cooldowns/AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
-[connection signal="body_entered" from="AttackHurtbox" to="." method="_on_attack_hurtbox_body_entered"]
-[connection signal="body_entered" from="AttackHurtbox" to="AttackHurtbox" method="_on_body_entered"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+
+[editable path="AimableAttackHurtbox"]
