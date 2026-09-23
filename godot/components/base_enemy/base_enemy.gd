@@ -4,7 +4,9 @@ extends BaseNPC
 @onready var target_polling_timer := $TargetPollingTimer as Timer
 @onready var attack_cooldown := $AttackCooldown as Timer
 @onready var attack_hurtbox := $AimableAttackHurtbox as AimableHurtbox
-@onready var attack_on_cooldown := false as bool
+@onready var sprite := $CharacterSprite as CharacterSprite
+
+var attack_on_cooldown := false as bool
 
 func _ready() -> void:
 	# return if target already exists
@@ -73,6 +75,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body is BaseCharacter and body.is_in_group("enemy_targets"):
 		var character := body as BaseCharacter
 		character.take_damage(10.0)
+		sprite.play("attack")
 		attack_cooldown.start()
 		attack_on_cooldown = true
 

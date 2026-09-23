@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kk8m7xmlonb5" path="res://components/base_player/base_player.gd" id="1_qp1xa"]
 [ext_resource type="SpriteFrames" uid="uid://dal0adb4yewow" path="res://resources/swordsman_spriteframes.tres" id="2_0n512"]
-[ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/movable_sprite.gd" id="3_ax8wi"]
+[ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/character_sprite.gd" id="3_ax8wi"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_2q2f4"]
 [ext_resource type="PackedScene" uid="uid://ddgy1aop38jb1" path="res://components/ability_creator/ability_creator.tscn" id="5_bhref"]
 [ext_resource type="PackedScene" uid="uid://bxabe42siwmn3" path="res://components/aimable_hurtbox/aimable_hurtbox.tscn" id="6_2q2f4"]
@@ -19,13 +19,14 @@ size = Vector2(69, 63)
 collision_mask = 2
 script = ExtResource("1_qp1xa")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=158065505]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=158065505 node_paths=PackedStringArray("aimable_hurtbox_to_face")]
 position = Vector2(0, 6)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_0n512")
 animation = &"walk"
 autoplay = "idle"
 script = ExtResource("3_ax8wi")
+aimable_hurtbox_to_face = NodePath("../AimableAttackHurtbox")
 metadata/_edit_lock_ = true
 
 [node name="Shape" type="CollisionShape2D" parent="." unique_id=1462866936]
