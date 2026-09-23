@@ -20,4 +20,4 @@ func aim_in_dir(direction: Vector2) -> void:
 
 
 func aim_at_body(body: Node2D) -> void:
-	self.rotation = self.global_position.angle_to(body.global_position)
+	self.rotation = self.global_position.direction_to(body.global_position).angle()

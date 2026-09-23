@@ -3,7 +3,7 @@ extends BaseNPC
 
 @onready var target_polling_timer := $TargetPollingTimer as Timer
 @onready var attack_cooldown := $AttackCooldown as Timer
-@onready var attack_hurtbox := $AttackHurtbox as Area2D
+@onready var attack_hurtbox := $AimableAttackHurtbox as AimableHurtbox
 @onready var attack_on_cooldown := false as bool
 
 func _ready() -> void:
@@ -19,7 +19,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if attack_on_cooldown:
 		attack_hurtbox.monitoring = false
+
+
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
 	
+	if target_to_follow:
+		attack_hurtbox.aim_at_body(target_to_follow)
 
 
 ## sorts targets by their closeness to this enemy
@@ -53,7 +59,6 @@ func _on_target_polling_timer_timeout() -> void:
 
 func _on_health_component_died() -> void:
 	self.queue_free()
-	pass # Replace with function body.
 
 
 ### change targets when a valid target enters TargetScanner
@@ -64,15 +69,14 @@ func _on_target_scanned(character: BaseCharacter, flee: bool) -> void:
 		target_to_follow = character
 
 
-func _on_attack_hurtbox_body_entered(body: BaseCharacter) -> void:
-	if body.is_in_group("enemy_targets"):
-		body.take_damage(10.0)
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body is BaseCharacter and body.is_in_group("enemy_targets"):
+		var character := body as BaseCharacter
+		character.take_damage(10.0)
 		attack_cooldown.start()
 		attack_on_cooldown = true
-	pass # Replace with function body.
 
 
 func _on_attack_cooldown_timeout() -> void:
 	attack_on_cooldown = false
 	attack_hurtbox.monitoring = true
-	pass # Replace with function body.

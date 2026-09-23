@@ -5,13 +5,11 @@
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/movable_sprite.gd" id="3_hny28"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="4_hny28"]
 [ext_resource type="PackedScene" uid="uid://jcob8jmp4huw" path="res://components/target_scanner/target_scanner.tscn" id="4_vq6v8"]
+[ext_resource type="PackedScene" uid="uid://bxabe42siwmn3" path="res://components/aimable_hurtbox/aimable_hurtbox.tscn" id="5_vq6v8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_svsd3"]
 radius = 17.0
 height = 46.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq6v8"]
-size = Vector2(175, 55)
 
 [node name="BaseEnemy" type="CharacterBody2D" unique_id=1599695685 groups=["enemies"]]
 collision_mask = 2
@@ -39,11 +37,7 @@ metadata/_edit_lock_ = true
 wait_time = 2.0
 autostart = true
 
-[node name="AttackHurtbox" type="Area2D" parent="." unique_id=1039874314]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHurtbox" unique_id=1581945874]
-shape = SubResource("RectangleShape2D_vq6v8")
-debug_color = Color(0.99607843, 0, 0.2, 0.10980392)
+[node name="AimableAttackHurtbox" parent="." unique_id=1257748294 instance=ExtResource("5_vq6v8")]
 
 [node name="HealthComponent" parent="." unique_id=1224115467 instance=ExtResource("4_hny28")]
 offset_top = -35.0
@@ -53,6 +47,6 @@ offset_bottom = -35.0
 [connection signal="timeout" from="TargetPollingTimer" to="." method="_on_target_polling_timer_timeout"]
 [connection signal="target_scanned" from="TargetScanner" to="." method="_on_target_scanned"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
-[connection signal="body_entered" from="AttackHurtbox" to="." method="_on_attack_hurtbox_body_entered"]
-[connection signal="body_entered" from="AttackHurtbox" to="Sprite" method="_on_attack_hurtbox_body_entered"]
+[connection signal="body_entered" from="AimableAttackHurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="AimableAttackHurtbox" to="Sprite" method="_on_attack_hurtbox_body_entered"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
