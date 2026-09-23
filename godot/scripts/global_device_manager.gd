@@ -9,6 +9,8 @@ var banned_devices: Array[int] = [
 	-1, # touch/emulated
 ]
 
+var mouse_detected: bool = false
+
 
 func add_device(device: int) -> bool:
 	if banned_devices.has(device):

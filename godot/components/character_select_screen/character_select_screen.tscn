@@ -74,7 +74,8 @@ offset_bottom = 367.0
 text = "CLICK E TO JOIN"
 label_settings = SubResource("LabelSettings_vghj2")
 
-[node name="DeviceListener" type="Node" parent="." unique_id=1737700883]
+[node name="DeviceListener" type="Node" parent="." unique_id=2036128]
 script = ExtResource("5_ms3bd")
+metadata/_custom_type_script = "uid://drygasm6iy8b6"
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
