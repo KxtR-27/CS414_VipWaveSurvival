@@ -4,6 +4,8 @@ class_name Debuff extends Node2D
 @export var debuff_description := "This is a debuff."
 var vip: BaseVIP
 
+@warning_ignore("unused_signal")
+# kat is ignoring this warning because it already works and kat didn't make it.
 signal debuff_activated
 
 func on_activation() -> void:

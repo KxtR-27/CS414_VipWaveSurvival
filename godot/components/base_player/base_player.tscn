@@ -78,11 +78,14 @@ one_shot = true
 one_shot = true
 
 [node name="AttackHurtbox" type="Area2D" parent="." unique_id=1658078459]
+process_mode = 4
+visible = false
 position = Vector2(0, 10)
 monitoring = false
 metadata/_edit_lock_ = true
 
 [node name="Shape" type="CollisionShape2D" parent="AttackHurtbox" unique_id=567730645]
+visible = false
 shape = SubResource("RectangleShape2D_bhref")
 debug_color = Color(0.9898438, 3.946722e-06, 7.70092e-07, 0.047058824)
 metadata/_edit_lock_ = true
