@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://dlk5g8rxnjqq"]
+
+[ext_resource type="Script" uid="uid://cjddcy4fhligm" path="res://resources/ability_vfxs/heal_spell/heal_spell_vfx.gd" id="1_q1v1n"]
+[ext_resource type="Texture2D" uid="uid://b1c22k8yjkoh4" path="res://assets/vfx/white_circle.png" id="1_txd4y"]
+
+[sub_resource type="Animation" id="Animation_pg0il"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealSpellVFX/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HealSpellVFX/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d6xef"]
+resource_name = "ability_vfx"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealSpellVFX/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 0.1254902)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HealSpellVFX/GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1qyv"]
+_data = {
+&"RESET": SubResource("Animation_pg0il"),
+&"ability_vfx": SubResource("Animation_d6xef")
+}
+
+[sub_resource type="Curve" id="Curve_7dlfn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wkf0r"]
+curve = SubResource("Curve_7dlfn")
+
+[sub_resource type="Curve" id="Curve_1yrly"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4wyg5"]
+curve = SubResource("Curve_1yrly")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_udkgg"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 100.0
+angular_velocity_min = -720.0
+angular_velocity_max = 719.99994
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.0860001
+gravity = Vector3(0, -15, 0)
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_4wyg5")
+alpha_curve = SubResource("CurveTexture_wkf0r")
+
+[node name="HealSpellVFX" type="Node2D" unique_id=834071694]
+script = ExtResource("1_q1v1n")
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="." unique_id=1321788305]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_j1qyv")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1165055359]
+modulate = Color(0, 1, 0, 1)
+emitting = false
+amount = 16
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_udkgg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1062737685]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_txd4y")

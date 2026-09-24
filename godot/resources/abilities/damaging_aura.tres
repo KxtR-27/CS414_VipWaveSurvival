@@ -7,4 +7,5 @@ script = ExtResource("1_4nuw5")
 ability_name = "Damaging Aura"
 ability_type = "aura"
 damage = 10
+path_to_vfx = "res://resources/ability_vfxs/damage_spell/damage_spell_vfx.tscn"
 metadata/_custom_type_script = "uid://c1qvpiklfsumt"

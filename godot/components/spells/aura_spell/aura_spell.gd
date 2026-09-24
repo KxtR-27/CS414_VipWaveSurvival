@@ -1,10 +1,11 @@
 class_name AuraSpell extends BaseSpell
 
 @export var hitbox: Area2D
-@export var remote_transform: RemoteTransform2D
 
 @export var tick_timer: Timer
 @export var lifetime_timer: Timer
+
+@export var vfx: VFX
 
 var current_overlapping_targets: Array = []
 var spell_caster: BasePlayer
@@ -19,11 +20,6 @@ func run(ability: BaseAbility, caster: BaseCharacter) -> void:
 	damage = ability.damage
 	healing = ability.healing
 	
-	#make spell track player's location
-	remote_transform.global_position = caster.global_position
-	remote_transform.reparent(caster, true)
-	remote_transform.remote_path = self.get_path()
-	
 	#add caster to observed targets
 	current_overlapping_targets.append(caster)
 	
@@ -31,6 +27,12 @@ func run(ability: BaseAbility, caster: BaseCharacter) -> void:
 	hitbox.monitoring = true
 	tick_timer.start()
 	lifetime_timer.start()
+	
+	if not ability.path_to_vfx.is_empty():
+		var new_vfx : VFX = create_vfx(ability.path_to_vfx)
+		if new_vfx:
+			add_child(new_vfx)
+			new_vfx.play()
 
 
 func on_tick() -> void:
@@ -51,10 +53,16 @@ func _on_tick_timer_timeout() -> void:
 
 
 func _on_lifetime_timer_timeout() -> void:
-	remote_transform.queue_free()
 	queue_free()
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is BaseNPC:
 		current_overlapping_targets.erase(body)
+
+
+func create_vfx(path_to_vfx: String) -> VFX:
+	var vfx_scene : PackedScene = load(path_to_vfx)
+	var new_vfx : Node2D = vfx_scene.instantiate()
+	
+	return new_vfx

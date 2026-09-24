@@ -5,10 +5,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_llgru"]
 radius = 100.0
 
-[node name="AuraSpell" type="Node2D" unique_id=821474778 node_paths=PackedStringArray("hitbox", "remote_transform", "tick_timer", "lifetime_timer")]
+[node name="AuraSpell" type="Node2D" unique_id=821474778 node_paths=PackedStringArray("hitbox", "tick_timer", "lifetime_timer")]
 script = ExtResource("1_v4gr5")
 hitbox = NodePath("Area2D")
-remote_transform = NodePath("RemoteTransform2D")
 tick_timer = NodePath("Area2D/TickTimer")
 lifetime_timer = NodePath("Area2D/LifetimeTimer")
 
@@ -26,11 +25,6 @@ wait_time = 0.5
 [node name="LifetimeTimer" type="Timer" parent="Area2D" unique_id=1549324633]
 wait_time = 3.0
 one_shot = true
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=311111872]
-remote_path = NodePath("..")
-update_rotation = false
-update_scale = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
