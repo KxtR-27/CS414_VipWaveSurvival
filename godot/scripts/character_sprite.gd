@@ -7,6 +7,9 @@ extends AnimatedSprite2D
 ## has no effect upon the hurtbox itself.
 @export var aimable_hurtbox_to_face: AimableHurtbox
 
+## [code]CharacterSprite[/code] can hook into a parent 
+## [code]BaseCharacter[/code]'s health changes to "insert" the 
+## [code]hurt[/code] animation
 @onready var parent := self.get_parent() as BaseCharacter
 
 
@@ -15,25 +18,21 @@ func _ready() -> void:
 		parent.health_changed.connect(_on_parent_health_changed)
 
 
-# using process because I'm not affecting physics, only visuals
 func _process(_delta: float) -> void:
-	var hurting := self.animation == "hurt" and self.is_playing()
-	var attacking := self.animation == "attack" and self.is_playing()
-	# prevent interruption of hurting or attacking animations
-	if attacking or hurting:
+	# avoid interrupting certain actions
+	var do_not_interrupt := _am_i_doing("hurt") or _am_i_doing("attack")
+	if do_not_interrupt:
 		return
 	
+	# walk if moving, idle if not moving
 	var in_motion := parent.velocity != Vector2.ZERO
-	
-	var walking := self.animation == "walk" and self.is_playing()
-	var idling := self.animation == "idle" and self.is_playing()
-	
-	if not in_motion and not idling:
+	if not in_motion and not _am_i_doing("idle"):
 		play("idle")
-	elif in_motion and not walking:
+	elif in_motion and not _am_i_doing("walk"):
 		play("walk")
 	
-	_check_facing()
+	# face the proper direction
+	_check_aim_dir()
 
 
 func _on_parent_health_changed(_amount: float, negative: bool) -> void:
@@ -41,7 +40,7 @@ func _on_parent_health_changed(_amount: float, negative: bool) -> void:
 		play("hurt")
 
 
-func _check_facing() -> void:
+func _check_aim_dir() -> void:
 	# check by movement velocity if no aimable hurtbox is provided
 	var checking_movement := aimable_hurtbox_to_face == null
 	var aiming_left: bool
@@ -63,3 +62,7 @@ func _check_facing() -> void:
 
 func _animation_exists(anim_name: String) -> bool:
 	return self.sprite_frames.has_animation(anim_name)
+
+
+func _am_i_doing(anim_name: String) -> bool:
+	return self.is_playing() and self.animation == anim_name
