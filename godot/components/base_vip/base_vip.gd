@@ -10,7 +10,9 @@ signal stopped_following
 
 
 func request_to_follow(player: BasePlayer) -> void:
-	if can_follow:
+	if self.target_to_follow == player:
+		print("the vip is already following this player!")
+	elif can_follow:
 		var roll_to_follow: float = randf_range(0.0, 100.0)
 		if roll_to_follow <= follow_chance:
 			target_to_follow = player

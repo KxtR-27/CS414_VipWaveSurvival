@@ -125,7 +125,9 @@ func _execute_ability(ability_action: String) -> void:
 func _command_vips_to_follow() -> void:
 	for vip in _get_vips():
 		var dist_to_player := self.global_position.distance_to(vip.global_position)
-		if dist_to_player < vip.follow_command_range:
+		if vip.target_to_follow == self:
+			print("Oh, you're already following me, huh, ", vip.name, "?")
+		elif dist_to_player < vip.follow_command_range:
 			print(self.name, ": Follow me, ", vip.name, "!")
 			vip.request_to_follow(self)
 
