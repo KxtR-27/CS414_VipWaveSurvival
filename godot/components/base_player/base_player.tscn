@@ -51,10 +51,14 @@ offset_bottom = -35.0
 caster = NodePath("..")
 
 [node name="AimableAttackHurtbox" parent="." unique_id=1257748294 instance=ExtResource("6_2q2f4")]
+show_reticle = true
 
 [node name="Shape" parent="AimableAttackHurtbox" index="0" unique_id=648343070]
 position = Vector2(56.5, -1.5)
 shape = SubResource("RectangleShape2D_2q2f4")
+
+[node name="Reticle" parent="AimableAttackHurtbox" index="1" unique_id=650314018]
+position = Vector2(57, -1)
 
 [connection signal="ability_used" from="." to="AbilityCreator" method="_on_base_player_ability_used"]
 [connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]

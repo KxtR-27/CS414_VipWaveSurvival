@@ -1,9 +1,0 @@
-To prevent redistribution, asset packs placed here are gitignored.
-Instead, link to the package below.
-Keep in mind that any assets *used in the project* should go in `godot/assets` and be tracked there.
-
-1. Tiny RPG Character Asset Pack 01 V2.0 (paid) (Kat)
-   https://zerie.itch.io/tiny-rpg-character-asset-pack
-
-2. Mystic Woods (free) (Kat)
-   https://game-endeavor.itch.io/mystic-woods

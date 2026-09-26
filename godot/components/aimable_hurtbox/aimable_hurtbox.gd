@@ -2,7 +2,19 @@ class_name AimableHurtbox
 extends Area2D
 
 
+@export var show_reticle: bool = false:
+	set(value):
+		show_reticle = value
+		if reticle:
+			reticle.visible = show_reticle
+
 var targets_in_hurtbox: Array[BaseCharacter] = []
+
+@onready var reticle := $Reticle as Sprite2D
+
+
+func _ready() -> void:
+	reticle.visible = show_reticle
 
 
 func _on_body_entered(body: Node2D) -> void:
