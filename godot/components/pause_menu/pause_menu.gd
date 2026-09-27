@@ -1,6 +1,7 @@
 extends Control
 
 @onready var canvas_layer := $CanvasLayer as CanvasLayer
+@onready var button_to_focus_on_first := $CanvasLayer/Panel/VBoxContainer/SaveButton as Button
 
 signal pause_menu_closed
 signal pause_menu_opened
@@ -20,4 +21,9 @@ func _on_return_to_game_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_pause_menu_opened() -> void:
+	button_to_focus_on_first.grab_focus.call_deferred()
 	pass # Replace with function body.
