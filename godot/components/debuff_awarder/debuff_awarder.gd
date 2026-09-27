@@ -6,10 +6,13 @@ class_name DebuffAwarder extends Control
 
 const DEBUFFS_OPTION_POOL_SIZE: int = 2
 
+signal debuff_awarder_active
+signal debuff_awarder_finished
 
 func award_debuff() -> void:
 	if vip:
 		populate_debuff_menu()
+		debuff_awarder_active.emit()
 		debuff_menu_canvas_layer.visible = true
 
 
@@ -69,9 +72,11 @@ func _on_health_component_died() -> void:
 
 func _on_debuff_button_panel_button_pressed(current_debuff: Debuff) -> void:
 	apply_debuff(current_debuff)
+	debuff_awarder_finished.emit()
 	debuff_menu_canvas_layer.visible = false
 
 
 func _on_debuff_button_panel_2_button_pressed(current_debuff: Debuff) -> void:
 	apply_debuff(current_debuff)
+	debuff_awarder_finished.emit()
 	debuff_menu_canvas_layer.visible = false

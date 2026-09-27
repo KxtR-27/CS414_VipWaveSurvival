@@ -35,6 +35,7 @@ vip = NodePath("../BaseVIP")
 debuff_menu_canvas_layer = NodePath("DebuffMenu")
 
 [node name="DebuffMenu" type="CanvasLayer" parent="DebuffAwarder" unique_id=344287137]
+process_mode = 3
 visible = false
 
 [node name="Panel" type="Panel" parent="DebuffAwarder/DebuffMenu" unique_id=36658961]
@@ -106,6 +107,8 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 autowrap_mode = 2
 
+[connection signal="debuff_awarder_active" from="DebuffAwarder" to="." method="_on_debuff_awarder_debuff_awarder_active"]
+[connection signal="debuff_awarder_finished" from="DebuffAwarder" to="." method="_on_debuff_awarder_debuff_awarder_finished"]
 [connection signal="button_pressed" from="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel" to="DebuffAwarder" method="_on_debuff_button_panel_button_pressed"]
 [connection signal="pressed" from="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel/Panel/Button" to="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel" method="_on_button_pressed"]
 [connection signal="button_pressed" from="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel2" to="DebuffAwarder" method="_on_debuff_button_panel_2_button_pressed"]
