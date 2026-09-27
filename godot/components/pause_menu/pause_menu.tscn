@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://c3iaqgpbhq7ko"]
+
+[ext_resource type="Script" uid="uid://0x4p6w00umjm" path="res://components/pause_menu/pause_menu.gd" id="1_ea31p"]
+[ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="2_6ikhs"]
+[ext_resource type="Theme" uid="uid://bekqrbmlv3skf" path="res://resources/button_theme.tres" id="3_2ivyy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
+font = ExtResource("2_6ikhs")
+font_size = 50
+
+[node name="PauseMenu" type="Control" unique_id=193909186]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ea31p")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=16715265]
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1774403816]
+modulate = Color(1, 1, 1, 0.60784316)
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel" unique_id=1801925033]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 95.0
+offset_right = 768.0
+offset_bottom = 499.0
+accessibility_region = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1680937248]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Pause Menu"
+label_settings = SubResource("LabelSettings_n3d2o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Panel/VBoxContainer" unique_id=681397034]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer" unique_id=2052386785]
+layout_mode = 2
+theme = ExtResource("3_2ivyy")
+disabled = true
+text = "Save Game"
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Panel/VBoxContainer" unique_id=901605865]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1856712008]
+layout_mode = 2
+theme = ExtResource("3_2ivyy")
+disabled = true
+text = "Options"
+
+[node name="Panel4" type="Panel" parent="CanvasLayer/Panel/VBoxContainer" unique_id=830360979]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="ReturnToGameButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer" unique_id=189433914]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+offset_transform_position = Vector2(100, 0)
+offset_transform_visual_only = false
+theme = ExtResource("3_2ivyy")
+text = "Return to Game"
+
+[node name="Panel3" type="Panel" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1947966029]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1242254101]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+offset_transform_position = Vector2(100, 0)
+offset_transform_visual_only = false
+theme = ExtResource("3_2ivyy")
+text = "Quit Game"
+
+[connection signal="pause_menu_opened" from="." to="." method="_on_pause_menu_opened"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/ReturnToGameButton" to="." method="_on_return_to_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

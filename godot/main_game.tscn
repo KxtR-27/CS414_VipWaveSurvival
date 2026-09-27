@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bmb26qdeaf63i" path="res://components/screen_border_collider/screen_border_collider.tscn" id="6_krmtw"]
 [ext_resource type="PackedScene" uid="uid://c0odn4iwn58kp" path="res://components/debuff_awarder/debuff_awarder.tscn" id="7_jgkyn"]
 [ext_resource type="Script" uid="uid://dggd0gpycw3jj" path="res://scripts/debuff_button_panel.gd" id="8_qpaub"]
+[ext_resource type="PackedScene" uid="uid://c3iaqgpbhq7ko" path="res://components/pause_menu/pause_menu.tscn" id="9_4srsv"]
 
 [node name="Main" type="Node2D" unique_id=218919239]
 y_sort_enabled = true
@@ -107,11 +108,14 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 autowrap_mode = 2
 
+[node name="PauseMenu" parent="." unique_id=193909186 instance=ExtResource("9_4srsv")]
+process_mode = 3
+
 [connection signal="debuff_awarder_active" from="DebuffAwarder" to="." method="_on_debuff_awarder_debuff_awarder_active"]
 [connection signal="debuff_awarder_finished" from="DebuffAwarder" to="." method="_on_debuff_awarder_debuff_awarder_finished"]
 [connection signal="button_pressed" from="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel" to="DebuffAwarder" method="_on_debuff_button_panel_button_pressed"]
 [connection signal="pressed" from="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel/Panel/Button" to="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel" method="_on_button_pressed"]
 [connection signal="button_pressed" from="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel2" to="DebuffAwarder" method="_on_debuff_button_panel_2_button_pressed"]
 [connection signal="pressed" from="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel2/Panel/Button" to="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel2" method="_on_button_pressed"]
-
-[editable path="WaveSystem"]
+[connection signal="pause_menu_closed" from="PauseMenu" to="." method="_on_pause_menu_closed"]
+[connection signal="pause_menu_opened" from="PauseMenu" to="." method="_on_pause_menu_opened"]
