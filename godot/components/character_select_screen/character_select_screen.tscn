@@ -57,10 +57,10 @@ alignment = 1
 
 [node name="Button" type="Button" parent="Control" unique_id=264906994]
 layout_mode = 0
-offset_left = 548.0
-offset_top = 466.0
-offset_right = 604.0
-offset_bottom = 489.0
+offset_left = 523.0
+offset_top = 464.0
+offset_right = 633.0
+offset_bottom = 507.0
 theme = ExtResource("4_b2fep")
 shortcut = SubResource("Shortcut_mn8d4")
 text = "BEGIN"

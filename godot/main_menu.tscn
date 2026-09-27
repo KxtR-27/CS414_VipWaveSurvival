@@ -44,18 +44,18 @@ label_settings = SubResource("LabelSettings_n3d2o")
 
 [node name="StartButton" type="Button" parent="Control" unique_id=1569565111]
 layout_mode = 0
-offset_left = 512.0
+offset_left = 516.0
 offset_top = 280.0
-offset_right = 632.0
+offset_right = 636.0
 offset_bottom = 330.0
 theme = ExtResource("4_jix8l")
 text = "START"
 
 [node name="OptionsButton" type="Button" parent="Control" unique_id=231672684]
 layout_mode = 0
-offset_left = 490.0
+offset_left = 492.0
 offset_top = 384.0
-offset_right = 658.0
+offset_right = 660.0
 offset_bottom = 434.0
 theme = ExtResource("4_jix8l")
 disabled = true
