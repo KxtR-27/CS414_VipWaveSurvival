@@ -22,7 +22,6 @@ metadata/_edit_lock_ = true
 
 [node name="BaseVIP" parent="." unique_id=1927010828 instance=ExtResource("3_mf81u")]
 position = Vector2(363, 171)
-collision_mask = 6
 
 [node name="Statue" parent="." unique_id=239526835 instance=ExtResource("4_02kkc")]
 position = Vector2(431, 523)

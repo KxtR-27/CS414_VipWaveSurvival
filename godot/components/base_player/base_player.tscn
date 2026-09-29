@@ -16,7 +16,7 @@ resource_local_to_scene = true
 size = Vector2(69, 63)
 
 [node name="BasePlayer" type="CharacterBody2D" unique_id=72684832 groups=["enemy_targets", "players"]]
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_qp1xa")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=158065505 node_paths=PackedStringArray("aimable_hurtbox_to_face")]
