@@ -42,7 +42,6 @@ func _ready() -> void:
 	
 	wave_timer_bar.max_value = wave_timer.wait_time
 	wave_timer_bar.value = wave_timer_bar.max_value
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,7 +54,6 @@ func _process(_delta: float) -> void:
 		wave_timer_bar.max_value = downtime_timer.wait_time
 		wave_timer_bar.value = downtime_timer.wait_time - downtime_timer.time_left 
 		wave_timer_bar.tint_progress = "00ff00" 
-	pass
 
 
 # Creates new enemy after specified interval
@@ -93,7 +91,6 @@ func _on_wave_timer_timeout() -> void:
 	downtime_timer.paused = false
 	downtime_timer.start()
 	in_wave_downtime.emit()
-	pass # Replace with function body.
 
 
 func _on_downtime_timer_timeout() -> void:
@@ -104,7 +101,6 @@ func _on_downtime_timer_timeout() -> void:
 	wave_timer.start()
 	wave_start.emit()
 	enemy_timer.start()
-	pass # Replace with function body.
 
 
 func prepare_new_wave() -> void:
@@ -133,4 +129,3 @@ func _on_wave_start() -> void:
 	await get_tree().create_timer(1.5).timeout
 	
 	wave_notification_layer.visible = false
-	pass # Replace with function body.

@@ -16,14 +16,11 @@ func _input(event: InputEvent) -> void:
 
 func _on_return_to_game_button_pressed() -> void:
 	pause_menu_closed.emit()
-	pass # Replace with function body.
 
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
-	pass # Replace with function body.
 
 
 func _on_pause_menu_opened() -> void:
 	button_to_focus_on_first.grab_focus.call_deferred()
-	pass # Replace with function body.

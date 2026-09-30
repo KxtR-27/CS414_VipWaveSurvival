@@ -10,7 +10,6 @@ var current_health: float
 func _ready() -> void:
 	current_health = max_health
 	health_bar.max_value = max_health
-	pass # Replace with function body.
 
 
 #can be used to heal or damage

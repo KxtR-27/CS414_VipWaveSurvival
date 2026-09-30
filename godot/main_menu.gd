@@ -11,4 +11,3 @@ func _ready() -> void:
 func _on_start_button_pressed() -> void:
 	await start_button_sound.finished
 	get_tree().change_scene_to_packed(character_select_scene)
-	pass # Replace with function body.

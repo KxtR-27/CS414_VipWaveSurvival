@@ -34,4 +34,3 @@ func _on_target_scanned(character: BaseCharacter, flee: bool) -> void:
 func _on_health_component_died() -> void:
 	GlobalEvents.lose_game()
 	self.queue_free()
-	pass # Replace with function body.

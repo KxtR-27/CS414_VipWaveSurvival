@@ -19,4 +19,3 @@ signal health_changed(amount: float, negative: bool)
 
 func take_damage(amount: float) -> void:
 	health_changed.emit(amount, true)
-	pass # Replace with function body.

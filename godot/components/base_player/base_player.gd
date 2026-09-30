@@ -174,7 +174,6 @@ func _attack() -> void:
 
 func _on_health_component_died() -> void:
 	self.queue_free()
-	pass # Replace with function body.
 
 
 func _event_is_from_my_device(event: InputEvent) -> bool:
