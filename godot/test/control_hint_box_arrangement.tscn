@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://0wqkjcm00wxh"]
+
+[ext_resource type="Texture2D" uid="uid://cdt8vc2eo67in" path="res://assets/spritesheets/Character Frames w Arrows 1.png" id="1_u48pp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysw5f"]
+atlas = ExtResource("1_u48pp")
+region = Rect2(0, 0, 32, 32)
+
+[node name="ControlHintBoxArrangement" type="Control" unique_id=289551554]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=976176043]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=925478656]
+layout_mode = 2
+
+[node name="picture" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=765886189]
+layout_mode = 2
+text = "picture"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=25051211]
+layout_mode = 2
+text = "- What it does"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=2138437741]
+layout_mode = 2
+
+[node name="picture" type="TextureRect" parent="VBoxContainer/HBoxContainer2" unique_id=2039757861]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ysw5f")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=957844603]
+layout_mode = 2
+text = "- What it does"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=766674863]
+layout_mode = 2
+
+[node name="picture" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=999779797]
+layout_mode = 2
+text = "picture"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=1884603567]
+layout_mode = 2
+text = "- What it does"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer" unique_id=2076806762]
+layout_mode = 2
+
+[node name="picture" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=622288031]
+layout_mode = 2
+text = "picture"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=934539426]
+layout_mode = 2
+text = "- What it does"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer" unique_id=1486170042]
+layout_mode = 2
+
+[node name="picture" type="Label" parent="VBoxContainer/HBoxContainer5" unique_id=372392710]
+layout_mode = 2
+text = "picture"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5" unique_id=1217737607]
+layout_mode = 2
+text = "- What it does"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer" unique_id=1601944406]
+layout_mode = 2
+
+[node name="picture" type="Label" parent="VBoxContainer/HBoxContainer6" unique_id=1527427167]
+layout_mode = 2
+text = "picture"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer6" unique_id=814321828]
+layout_mode = 2
+text = "- What it does"

@@ -13,7 +13,7 @@ font = ExtResource("3_1w020")
 font_size = 40
 
 [sub_resource type="InputEventAction" id="InputEventAction_7yigr"]
-action = &"ui_accept"
+action = &"ui_text_submit"
 
 [sub_resource type="Shortcut" id="Shortcut_mn8d4"]
 events = [SubResource("InputEventAction_7yigr")]

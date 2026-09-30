@@ -28,10 +28,14 @@ signal target_scanned(character: BaseCharacter, flee: bool)
 
 func _ready() -> void:
 	scan_shape.radius = radius_tool
-	assert(
-			get_parent() is BaseNPC, 
-			"The parent of a TargetScanner must be a BaseNPC.\nParent found is: %s" % get_parent()
-	)
+	
+	# only run this check if the game is actually running
+	# otherwise, this pushes an error in the editor when opening the scene
+	if not Engine.is_editor_hint():
+		assert(
+				get_parent() is BaseNPC, 
+				"The parent of a TargetScanner must be a BaseNPC.\nParent found is: %s" % get_parent()
+		)
 
 
 func _get_parent_current_target() -> Variant: # Variant as in BaseCharacter or null
