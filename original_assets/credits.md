@@ -9,5 +9,12 @@ Any assets created for this project **even outside the scope of the godot game**
 ## Assets Created
 
 1. `Character Frames w Arrows 1.png`
-  - **by:** @alx4n
-  - **used for:** character select screen
+
+- **by:** @alx4n
+- **used for:** character select screen
+
+2. Miscellaneous placeholder sfx
+
+- **by:** @KxtR-27
+- **used for:** various in-game sound effects
+- **made with:** [sfxr.me](https://sfxr.me/)

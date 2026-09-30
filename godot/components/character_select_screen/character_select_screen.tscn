@@ -4,7 +4,9 @@
 [ext_resource type="TileSet" uid="uid://x1d1rnuuvue3" path="res://resources/mystic_woods_placeholder_tileset.tres" id="2_ms3bd"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_1w020"]
 [ext_resource type="Theme" uid="uid://bekqrbmlv3skf" path="res://resources/button_theme.tres" id="4_b2fep"]
+[ext_resource type="AudioStream" uid="uid://dgmoqvi7mgn4i" path="res://assets/sfx/button_click.wav" id="5_b2fep"]
 [ext_resource type="Script" uid="uid://drygasm6iy8b6" path="res://components/device_listener/device_listener.gd" id="5_ms3bd"]
+[ext_resource type="Script" uid="uid://hc07qt5qd2n2" path="res://scripts/button_sound.gd" id="6_j3akc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
 font = ExtResource("3_1w020")
@@ -64,6 +66,10 @@ offset_bottom = 507.0
 theme = ExtResource("4_b2fep")
 shortcut = SubResource("Shortcut_mn8d4")
 text = "BEGIN"
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="Control/Button" unique_id=278295154]
+stream = ExtResource("5_b2fep")
+script = ExtResource("6_j3akc")
 
 [node name="ClickToJoinLabel" type="Label" parent="Control" unique_id=1456421335]
 layout_mode = 0

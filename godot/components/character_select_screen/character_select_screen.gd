@@ -12,6 +12,7 @@ var connected_player_array: Array[int] = []
 @onready var container := $Control/HBoxContainer as HBoxContainer
 @onready var join_label := $Control/ClickToJoinLabel as Label
 @onready var begin_button := $Control/Button as Button
+@onready var begin_button_sound := $Control/Button/ButtonSound as AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -58,6 +59,8 @@ func _on_button_pressed() -> void:
 	for player_number in player_array.size():
 		player_array[player_number].name = "BasePlayer%d" % player_number
 		get_tree().root.get_node("Main").add_child(player_array[player_number])
+	
+	await begin_button_sound.finished
 	get_tree().root.get_node("CharacterSelectScreen").queue_free()
 
 
