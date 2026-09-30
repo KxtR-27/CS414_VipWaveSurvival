@@ -28,13 +28,15 @@ signal target_scanned(character: BaseCharacter, flee: bool)
 
 func _ready() -> void:
 	scan_shape.radius = radius_tool
+	var parent: Node = get_parent()
 	
 	# only run this check if the game is actually running
 	# otherwise, this pushes an error in the editor when opening the scene
-	if not Engine.is_editor_hint():
-		assert(
-				get_parent() is BaseNPC, 
-				"The parent of a TargetScanner must be a BaseNPC.\nParent found is: %s" % get_parent()
+	if not Engine.is_editor_hint() and not parent is BaseNPC:
+		push_warning(
+				self, ": Parent is not a BaseNPC. ", 
+				"Cannot eliminate targets that the parent is already targeting. ",
+				"(Parent: ", parent, ")"
 		)
 
 
@@ -74,19 +76,16 @@ func _on_body_entered(body: Node2D) -> void:
 	if character == _get_parent_current_target(): 
 		if should_log: 
 			print(get_parent().name, ": already targeting the scanned body ", body.name)
-		return
 	
 	# if not switching targets, return early
 	elif not scan_switching: 
 		if should_log: 
 			print(get_parent().name, ": scanned a new target (", body.name ,"), but scan-switching is disabled")
-		return
 	
 	# if the body isn't a valid target, return early
 	elif not _character_in_scan_groups(character):
 		if should_log:
 			print(get_parent().name, ": scanned body ", body.name, " is not in current scanning groups")
-		return
 	
 	# otherwise, we are scanning, the body is new to us, and it's a valid target
 	else:
