@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://q8gp3srvu57s" path="res://components/base_vip/base_vip.tscn" id="3_mf81u"]
 [ext_resource type="PackedScene" uid="uid://btj6dn8liccai" path="res://components/statue.tscn" id="4_02kkc"]
 [ext_resource type="PackedScene" uid="uid://ddia2pag6mwwm" path="res://components/wave_system/wave_system.tscn" id="5_aomqu"]
-[ext_resource type="PackedScene" uid="uid://bmb26qdeaf63i" path="res://components/screen_border_collider/screen_border_collider.tscn" id="6_krmtw"]
+[ext_resource type="PackedScene" uid="uid://bmb26qdeaf63i" path="res://components/region_border/region_border.tscn" id="6_krmtw"]
 [ext_resource type="PackedScene" uid="uid://c0odn4iwn58kp" path="res://components/debuff_awarder/debuff_awarder.tscn" id="7_jgkyn"]
 [ext_resource type="Script" uid="uid://dggd0gpycw3jj" path="res://scripts/debuff_button_panel.gd" id="8_qpaub"]
 [ext_resource type="PackedScene" uid="uid://c3iaqgpbhq7ko" path="res://components/pause_menu/pause_menu.tscn" id="9_4srsv"]
@@ -27,8 +27,6 @@ position = Vector2(363, 171)
 position = Vector2(431, 523)
 
 [node name="WaveSystem" parent="." unique_id=1386286635 instance=ExtResource("5_aomqu")]
-
-[node name="ScreenBorderCollider" parent="." unique_id=1741476439 instance=ExtResource("6_krmtw")]
 
 [node name="DebuffAwarder" parent="." unique_id=735813098 node_paths=PackedStringArray("vip", "debuff_menu_canvas_layer") instance=ExtResource("7_jgkyn")]
 vip = NodePath("../BaseVIP")
@@ -109,6 +107,8 @@ autowrap_mode = 2
 
 [node name="PauseMenu" parent="." unique_id=193909186 instance=ExtResource("9_4srsv")]
 process_mode = 3
+
+[node name="RegionBorder" parent="." unique_id=1741476439 instance=ExtResource("6_krmtw")]
 
 [connection signal="debuff_awarder_active" from="DebuffAwarder" to="." method="_on_debuff_awarder_debuff_awarder_active"]
 [connection signal="debuff_awarder_finished" from="DebuffAwarder" to="." method="_on_debuff_awarder_debuff_awarder_finished"]
