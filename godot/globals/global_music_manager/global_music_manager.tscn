@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b3ptdr5fktyd6"]
+
+[ext_resource type="Script" uid="uid://c0nxtwo212388" path="res://globals/global_music_manager/global_music_manager.gd" id="1_ki70l"]
+[ext_resource type="Script" uid="uid://y6pe84ef6ovx" path="res://scripts/looping_music_player.gd" id="2_k0e0a"]
+
+[node name="GlobalMusicManager" type="Node" unique_id=2049297879]
+process_mode = 3
+script = ExtResource("1_ki70l")
+
+[node name="LoopingMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=2042526026]
+volume_db = -9.0
+script = ExtResource("2_k0e0a")
+metadata/_custom_type_script = "uid://y6pe84ef6ovx"
+
+[connection signal="finished" from="LoopingMusicPlayer" to="LoopingMusicPlayer" method="_on_finished"]

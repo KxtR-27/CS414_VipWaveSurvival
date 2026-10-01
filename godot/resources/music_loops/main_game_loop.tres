@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LoopingMusic" format=3 uid="uid://rtvi6ps64fiq"]
+
+[ext_resource type="AudioStream" uid="uid://dqimf66rdxyy5" path="res://assets/music/main_menu_loop.ogg" id="1_48p5h"]
+[ext_resource type="Script" uid="uid://cv5hctrjoufnv" path="res://scripts/looping_music.gd" id="1_w0j1j"]
+
+[resource]
+script = ExtResource("1_w0j1j")
+loop = ExtResource("1_48p5h")
+push_missing_segment_warnings = false
+metadata/_custom_type_script = "uid://cv5hctrjoufnv"

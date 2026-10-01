@@ -4,6 +4,12 @@ extends Node2D
 @onready var pause_menu := $PauseMenu/CanvasLayer as CanvasLayer
 
 
+func _ready() -> void:
+	# FIXME: music resource changes but it just plays the old music
+	#GlobalMusicManager.play(GlobalMusicManager.TrackOption.GAME, true)
+	pass
+
+
 func _on_debuff_awarder_debuff_awarder_active() -> void:
 	get_tree().paused = true
 

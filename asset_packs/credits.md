@@ -1,8 +1,9 @@
 # Asset Pack Credits
 
-To prevent redistribution under applicable licenses, asset packs placed here are gitignored.
-Instead, link to the package below.
-If an asset pack's license allows redistribution, append to `_ALLOWS_REDIST` to the end of the zip archive name to track it.
+To prevent redistribution under applicable licenses, asset packs placed here are gitignored. 
+Instead, link to the package below. 
+If an asset pack's license allows redistribution, 
+append to `_ALLOWS_REDIST` to the end of the zip archive name to track it.
 
 Keep in mind that any assets _used in the project_ should go in `godot/assets` and be tracked there.
 **_Entire_** asset packs, zipped or otherwise, should **NOT** go in `godot/assets`.
@@ -22,3 +23,10 @@ Keep in mind that any assets _used in the project_ should go in `godot/assets` a
 4. **Simple Pixel Cursors** by Gabl • _free_ • _added by Kat_  
    https://gabl18.itch.io/simple-pixel-cursors  
    <sup><i>CC 1.0 License allows redistribution</i></sup>
+
+5. **16 bit Fantasy & Adventure Music** by xDeviruchi • _free_ • _added by Kat_  
+   https://xdeviruchi.itch.io/16-bit-fantasy-adventure-music-pack
+
+   Attribution as per the license:
+   - "Original music by Marllon Silva (xDeviruchi)"
+   - https://www.youtube.com/xdeviruchi
