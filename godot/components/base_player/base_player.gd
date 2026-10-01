@@ -77,11 +77,9 @@ func _input(event: InputEvent) -> void:
 		_execute_ability(ability_action)
 	
 	elif event.is_action_pressed("start_follow"):
-		print("I, device ", device_id, "/kbm:", use_kbm, " ask the VIPs to follow!")
 		_command_vips_to_follow()
 	
 	elif event.is_action_pressed("stop_follow"):
-		print("I, device ", device_id, "/kbm:", use_kbm, " ask the VIPs to go away!")
 		_command_vips_to_stop_following()
 
 
@@ -118,6 +116,8 @@ func _execute_ability(ability_action: String) -> void:
 			sprite.play("attack")
 			# attack enemies
 			_attack()
+			if attack_sound:
+				attack_sound.play()
 	
 	return
 

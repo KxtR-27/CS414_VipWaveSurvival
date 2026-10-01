@@ -6,14 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="4_hny28"]
 [ext_resource type="PackedScene" uid="uid://jcob8jmp4huw" path="res://components/target_scanner/target_scanner.tscn" id="4_vq6v8"]
 [ext_resource type="PackedScene" uid="uid://bxabe42siwmn3" path="res://components/aimable_hurtbox/aimable_hurtbox.tscn" id="5_vq6v8"]
+[ext_resource type="AudioStream" uid="uid://dlvsgr1mdsslf" path="res://assets/sfx/hit.wav" id="7_125t1"]
+[ext_resource type="AudioStream" uid="uid://bxmicso6tytl5" path="res://assets/sfx/attack.wav" id="8_5kemw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_svsd3"]
 radius = 17.0
 height = 46.0
 
-[node name="BaseEnemy" type="CharacterBody2D" unique_id=1599695685 groups=["enemies"]]
+[node name="BaseEnemy" type="CharacterBody2D" unique_id=1599695685 node_paths=PackedStringArray("hurt_sound", "attack_sound") groups=["enemies"]]
 collision_mask = 2
 script = ExtResource("1_72wxb")
+hurt_sound = NodePath("HurtSound")
+attack_sound = NodePath("AttackSound")
 
 [node name="CharacterSprite" type="AnimatedSprite2D" parent="." unique_id=308880726 node_paths=PackedStringArray("aimable_hurtbox_to_face")]
 position = Vector2(-2, 1)
@@ -43,6 +47,14 @@ autostart = true
 [node name="HealthComponent" parent="." unique_id=1224115467 instance=ExtResource("4_hny28")]
 offset_top = -35.0
 offset_bottom = -35.0
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=564718628]
+stream = ExtResource("7_125t1")
+volume_db = -12.0
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="." unique_id=86420065]
+stream = ExtResource("8_5kemw")
+volume_db = -12.0
 
 [connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
 [connection signal="timeout" from="TargetPollingTimer" to="." method="_on_target_polling_timer_timeout"]

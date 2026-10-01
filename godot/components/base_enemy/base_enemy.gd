@@ -78,6 +78,8 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		sprite.play("attack")
 		attack_cooldown.start()
 		attack_on_cooldown = true
+		if attack_sound:
+			attack_sound.play()
 
 
 func _on_attack_cooldown_timeout() -> void:

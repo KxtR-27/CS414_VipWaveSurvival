@@ -6,18 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_2q2f4"]
 [ext_resource type="PackedScene" uid="uid://ddgy1aop38jb1" path="res://components/ability_creator/ability_creator.tscn" id="5_bhref"]
 [ext_resource type="PackedScene" uid="uid://bxabe42siwmn3" path="res://components/aimable_hurtbox/aimable_hurtbox.tscn" id="6_2q2f4"]
+[ext_resource type="AudioStream" uid="uid://dlvsgr1mdsslf" path="res://assets/sfx/hit.wav" id="7_8c4ei"]
+[ext_resource type="AudioStream" uid="uid://bxmicso6tytl5" path="res://assets/sfx/attack.wav" id="8_mmppa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc5ck"]
 radius = 18.0
 height = 56.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q2f4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_criwi"]
 resource_local_to_scene = true
 size = Vector2(69, 63)
 
-[node name="BasePlayer" type="CharacterBody2D" unique_id=72684832 groups=["enemy_targets", "players"]]
+[node name="BasePlayer" type="CharacterBody2D" unique_id=72684832 node_paths=PackedStringArray("hurt_sound", "attack_sound") groups=["enemy_targets", "players"]]
 collision_mask = 6
 script = ExtResource("1_qp1xa")
+hurt_sound = NodePath("HurtSound")
+attack_sound = NodePath("AttackSound")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=158065505 node_paths=PackedStringArray("aimable_hurtbox_to_face")]
 position = Vector2(0, 6)
@@ -55,10 +59,18 @@ show_reticle = true
 
 [node name="Shape" parent="AimableAttackHurtbox" index="0" unique_id=648343070]
 position = Vector2(56.5, -1.5)
-shape = SubResource("RectangleShape2D_2q2f4")
+shape = SubResource("RectangleShape2D_criwi")
 
 [node name="Reticle" parent="AimableAttackHurtbox" index="1" unique_id=650314018]
 position = Vector2(57, -1)
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=462772529]
+stream = ExtResource("7_8c4ei")
+volume_db = -12.0
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="." unique_id=1965303106]
+stream = ExtResource("8_mmppa")
+volume_db = -12.0
 
 [connection signal="ability_used" from="." to="AbilityCreator" method="_on_base_player_ability_used"]
 [connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
