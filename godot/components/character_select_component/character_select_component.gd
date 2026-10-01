@@ -48,9 +48,9 @@ func _input(event: InputEvent) -> void:
 	if not should_continue:
 		return
 	
-	print("sending event through: ", event)
-	print("is kbm and I use kbm: ", is_kbm_and_I_use_kbm)
-	print("is my device: ", is_my_device)
+	# print("sending event through: ", event)
+	# print("is kbm and I use kbm: ", is_kbm_and_I_use_kbm)
+	# print("is my device: ", is_my_device)
 	
 	if event.is_action_pressed("ui_right"):
 		_on_right_arrow_pressed()
