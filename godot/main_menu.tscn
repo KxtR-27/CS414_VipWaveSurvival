@@ -55,6 +55,7 @@ text = "START"
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="Control/StartButton" unique_id=1910113378]
 stream = ExtResource("5_nlkkf")
+volume_db = -12.0
 script = ExtResource("6_qe12f")
 
 [node name="OptionsButton" type="Button" parent="Control" unique_id=231672684]

@@ -92,6 +92,7 @@ autowrap_mode = 2
 
 [node name="ButtonAudioPlayer" type="AudioStreamPlayer" parent="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel/Panel/Button" unique_id=1548467468]
 stream = ExtResource("9_02kkc")
+volume_db = -12.0
 script = ExtResource("10_aomqu")
 metadata/_custom_type_script = "uid://hc07qt5qd2n2"
 
@@ -117,6 +118,7 @@ autowrap_mode = 2
 
 [node name="ButtonAudioPlayer" type="AudioStreamPlayer" parent="DebuffAwarder/DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel2/Panel/Button" unique_id=383164361]
 stream = ExtResource("9_02kkc")
+volume_db = -12.0
 script = ExtResource("10_aomqu")
 metadata/_custom_type_script = "uid://hc07qt5qd2n2"
 
