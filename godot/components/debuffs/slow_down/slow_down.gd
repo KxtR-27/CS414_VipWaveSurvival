@@ -1,4 +1,4 @@
-extends Debuff
+extends ActivationOnlyDebuff
 
 func on_activation() -> void:
 	vip.started_following.connect(func() -> void: 
