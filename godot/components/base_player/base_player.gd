@@ -53,6 +53,8 @@ var ability_on_cooldown: Dictionary[Ability, bool] = {
 
 @onready var animated_sprite := $Sprite as AnimatedSprite2D
 @onready var hurtbox := $AimableAttackHurtbox as AimableHurtbox
+@onready var start_following_sound := $StartFollowingSound as AudioStreamPlayer
+@onready var stop_following_sound := $StopFollowingSound as AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -78,9 +80,11 @@ func _input(event: InputEvent) -> void:
 	
 	elif event.is_action_pressed("start_follow"):
 		_command_vips_to_follow()
+		start_following_sound.play()
 	
 	elif event.is_action_pressed("stop_follow"):
 		_command_vips_to_stop_following()
+		stop_following_sound.play()
 
 
 ## loops through all actions in ABILITY_ACTION_MAP.
@@ -126,7 +130,7 @@ func _command_vips_to_follow() -> void:
 	for vip in _get_vips():
 		var dist_to_player := self.global_position.distance_to(vip.global_position)
 		if vip.target_to_follow == self:
-			print("Oh, you're already following me, huh, ", vip.name, "?")
+			print(self.name, ": Oh, you're already following me, huh, ", vip.name, "?")
 		elif dist_to_player < vip.follow_command_range:
 			print(self.name, ": Follow me, ", vip.name, "!")
 			vip.request_to_follow(self)

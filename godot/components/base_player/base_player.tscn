@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bxabe42siwmn3" path="res://components/aimable_hurtbox/aimable_hurtbox.tscn" id="6_2q2f4"]
 [ext_resource type="AudioStream" uid="uid://dlvsgr1mdsslf" path="res://assets/sfx/hit.wav" id="7_8c4ei"]
 [ext_resource type="AudioStream" uid="uid://bxmicso6tytl5" path="res://assets/sfx/attack.wav" id="8_mmppa"]
+[ext_resource type="AudioStream" uid="uid://db8veknmfw2vw" path="res://assets/sfx/start_follow.wav" id="9_mmppa"]
+[ext_resource type="AudioStream" uid="uid://csmbs7wpc3ehw" path="res://assets/sfx/stop_follow.wav" id="10_criwi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc5ck"]
 radius = 18.0
@@ -70,6 +72,14 @@ volume_db = -12.0
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="." unique_id=1965303106]
 stream = ExtResource("8_mmppa")
+volume_db = -12.0
+
+[node name="StartFollowingSound" type="AudioStreamPlayer" parent="." unique_id=1914455150]
+stream = ExtResource("9_mmppa")
+volume_db = -12.0
+
+[node name="StopFollowingSound" type="AudioStreamPlayer" parent="." unique_id=1721212772]
+stream = ExtResource("10_criwi")
 volume_db = -12.0
 
 [connection signal="ability_used" from="." to="AbilityCreator" method="_on_base_player_ability_used"]
