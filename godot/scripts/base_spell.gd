@@ -1,4 +1,7 @@
-class_name BaseSpell extends Node2D
+@abstract
+class_name BaseSpell 
+extends Node2D
 
-func run(_ability: BaseAbility, _caster: BaseCharacter) -> void:
-	pass #implement functionality here
+
+@abstract
+func run(ability: BaseAbility, caster: BaseCharacter) -> void
