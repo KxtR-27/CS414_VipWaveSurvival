@@ -6,6 +6,8 @@
 radius = 100.0
 
 [node name="AuraSpell" type="Node2D" unique_id=821474778 node_paths=PackedStringArray("hitbox", "tick_timer", "lifetime_timer")]
+z_index = -1
+z_as_relative = false
 script = ExtResource("1_v4gr5")
 hitbox = NodePath("Area2D")
 tick_timer = NodePath("Area2D/TickTimer")

@@ -31,7 +31,7 @@ func _ready() -> void:
 	var parent: Node = get_parent()
 	
 	# only run this check if the game is actually running
-	# otherwise, this pushes an error in the editor when opening the scene
+	# if we don't, this pushes a warning in the editor when opening the scene
 	if not Engine.is_editor_hint() and not parent is BaseNPC:
 		push_warning(
 				self, ": Parent is not a BaseNPC. ", 
