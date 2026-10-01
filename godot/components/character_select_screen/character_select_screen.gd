@@ -13,6 +13,8 @@ var connected_player_array: Array[int] = []
 @onready var join_label := $Control/ClickToJoinLabel as Label
 @onready var begin_button := $Control/Button as Button
 @onready var begin_button_sound := $Control/Button/ButtonSound as AudioStreamPlayer
+@onready var join_sound := $JoinSound as AudioStreamPlayer
+@onready var ready_sound := $ReadySound as AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -28,6 +30,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("join") and event.device not in connected_player_array:
 		connected_player_array.append(event.device)
 		_on_player_connected(event.device)
+		join_sound.play()
 
 
 func add_select_component(device_id: int) -> void:
@@ -40,6 +43,7 @@ func add_select_component(device_id: int) -> void:
 
 
 func _on_character_selected(sprite_frames_path: String, device_id: int) -> void:
+	ready_sound.play()
 	var new_player := player_scene.instantiate() as BasePlayer
 	
 	new_player.sprite_frames = load(sprite_frames_path)
