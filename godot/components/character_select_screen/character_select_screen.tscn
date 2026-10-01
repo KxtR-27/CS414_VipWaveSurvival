@@ -71,6 +71,7 @@ text = "BEGIN"
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="Control/Button" unique_id=278295154]
 stream = ExtResource("5_b2fep")
+volume_db = -12.0
 script = ExtResource("6_j3akc")
 
 [node name="ClickToJoinLabel" type="Label" parent="Control" unique_id=1456421335]

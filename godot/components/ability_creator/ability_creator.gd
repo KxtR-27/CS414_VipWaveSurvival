@@ -1,6 +1,9 @@
 extends Node2D
 
+
 @export var caster: BasePlayer
+
+@onready var ability_sound := $AbilitySound as AudioStreamPlayer
 
 
 func run_ability(ability: BaseAbility) -> void:
@@ -19,6 +22,8 @@ func run_ability(ability: BaseAbility) -> void:
 			add_child(new_test_spell)
 			
 			new_test_spell.run(ability, caster)
+	
+	ability_sound.play()
 
 
 func _on_base_player_ability_used(ability: BaseAbility) -> void:

@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://ddgy1aop38jb1"]
 
 [ext_resource type="Script" uid="uid://cp0mjy2pkwpr2" path="res://components/ability_creator/ability_creator.gd" id="1_5ao7x"]
+[ext_resource type="AudioStream" uid="uid://iwc0avpqodef" path="res://assets/sfx/ability.wav" id="2_fo2l4"]
 
 [node name="AbilityCreator" type="Node2D" unique_id=1742922336]
 script = ExtResource("1_5ao7x")
+
+[node name="AbilitySound" type="AudioStreamPlayer" parent="." unique_id=1328412914]
+stream = ExtResource("2_fo2l4")
+volume_db = -12.0
