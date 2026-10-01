@@ -26,13 +26,13 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("join") and event.device not in connected_player_array:
-		add_player(event.device)
+		connected_player_array.append(event.device)
 		_on_player_connected(event.device)
 
 
 func add_select_component(device_id: int) -> void:
 	var new_char_select_component: CharacterSelectComponent = character_select_component.instantiate()
-	new_char_select_component.character_selected.connect(_on_character_selected)
+	new_char_select_component.character_selected.connect(_on_character_selected, CONNECT_ONE_SHOT)
 	new_char_select_component.device_id = 16 if DeviceManager.is_kbm(device_id) else device_id
 
 	container.add_child(new_char_select_component)
@@ -62,7 +62,3 @@ func _on_button_pressed() -> void:
 	
 	await begin_button_sound.finished
 	get_tree().root.get_node("CharacterSelectScreen").queue_free()
-
-
-func add_player(device_id: int) -> void:
-	connected_player_array.append(device_id)
