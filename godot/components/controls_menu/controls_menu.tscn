@@ -412,6 +412,10 @@ expand_mode = 2
 layout_mode = 2
 text = "- Pause Game"
 
+[node name="BackButton" type="Button" parent="Control/VBoxContainer" unique_id=1928706722]
+layout_mode = 2
+text = "Go back!"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1101169303]
 layout_mode = 0
 offset_left = 417.0
@@ -449,3 +453,4 @@ texture_pressed = SubResource("AtlasTexture_vghj2")
 stretch_mode = 0
 
 [connection signal="controller_schematic_changed" from="." to="." method="_on_controller_schematic_changed"]
+[connection signal="pressed" from="Control/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -54,3 +54,7 @@ func _on_controller_schematic_changed() -> void:
 			joypad_controls.visible = true
 			
 	pass # Replace with function body.
+
+
+func _on_back_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://main_menu.tscn")
