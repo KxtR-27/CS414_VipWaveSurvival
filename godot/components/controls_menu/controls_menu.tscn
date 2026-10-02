@@ -454,3 +454,5 @@ stretch_mode = 0
 
 [connection signal="controller_schematic_changed" from="." to="." method="_on_controller_schematic_changed"]
 [connection signal="pressed" from="Control/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/LeftButton" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/RightButton" to="." method="_on_right_arrow_pressed"]

@@ -8,13 +8,9 @@ signal controller_schematic_changed
 @onready var keyboard_controls := $Control/VBoxContainer/KeyboardControls as VBoxContainer
 @onready var joypad_controls := $Control/VBoxContainer/JoypadControls as VBoxContainer
 
-var background_frame: int = 0:
-	set(new_frame_index):
-		background_frame = clampi(new_frame_index, 0, 2)
-
 var controller_index: int = 0:
 	set(new_index):
-		controller_index = wrapi(new_index, 0, 3)
+		controller_index = wrapi(new_index, 0, 2)
 
 var supported_controllers: Dictionary = {
 	0 : "keyboard",
