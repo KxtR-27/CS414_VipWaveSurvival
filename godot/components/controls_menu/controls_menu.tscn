@@ -26,6 +26,34 @@ region = Rect2(200, 264, 48, 48)
 atlas = ExtResource("4_pan06")
 region = Rect2(136, 648, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g8dy"]
+atlas = ExtResource("4_pan06")
+region = Rect2(648, 328, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnv73"]
+atlas = ExtResource("4_pan06")
+region = Rect2(392, 648, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j87vi"]
+atlas = ExtResource("4_pan06")
+region = Rect2(974, 138, 36, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m63g"]
+atlas = ExtResource("4_pan06")
+region = Rect2(72, 200, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c8dd"]
+atlas = ExtResource("4_pan06")
+region = Rect2(456, 136, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuyxe"]
+atlas = ExtResource("4_pan06")
+region = Rect2(392, 648, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7efn"]
+atlas = ExtResource("4_pan06")
+region = Rect2(904, 648, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3d2o"]
 atlas = ExtResource("4_8g8dy")
 region = Rect2(43, 42, 12, 11)
@@ -71,60 +99,151 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer" unique_id=787079115]
+[node name="KeyboardControls" type="VBoxContainer" parent="Control/VBoxContainer" unique_id=787079115]
 layout_mode = 2
 
-[node name="MoveUp" type="HBoxContainer" parent="Control/VBoxContainer/VBoxContainer" unique_id=2130760167]
+[node name="MoveUp" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=2130760167]
 layout_mode = 2
 alignment = 1
 
-[node name="picture" type="TextureRect" parent="Control/VBoxContainer/VBoxContainer/MoveUp" unique_id=1195412593]
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/MoveUp" unique_id=1195412593]
 layout_mode = 2
 texture = SubResource("AtlasTexture_i4o4r")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/VBoxContainer/MoveUp" unique_id=566666348]
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/MoveUp" unique_id=566666348]
 layout_mode = 2
 text = "- Move up"
 
-[node name="MoveLeft" type="HBoxContainer" parent="Control/VBoxContainer/VBoxContainer" unique_id=1403167104]
+[node name="MoveLeft" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=1403167104]
 layout_mode = 2
 alignment = 1
 
-[node name="picture" type="TextureRect" parent="Control/VBoxContainer/VBoxContainer/MoveLeft" unique_id=1175165617]
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/MoveLeft" unique_id=1175165617]
 layout_mode = 2
 texture = SubResource("AtlasTexture_3f8vb")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/VBoxContainer/MoveLeft" unique_id=2092770341]
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/MoveLeft" unique_id=2092770341]
 layout_mode = 2
 text = "- Move left"
 
-[node name="MoveDown" type="HBoxContainer" parent="Control/VBoxContainer/VBoxContainer" unique_id=2108869457]
+[node name="MoveDown" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=2108869457]
 layout_mode = 2
 alignment = 1
 
-[node name="picture" type="TextureRect" parent="Control/VBoxContainer/VBoxContainer/MoveDown" unique_id=2097675166]
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/MoveDown" unique_id=2097675166]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pan06")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/VBoxContainer/MoveDown" unique_id=1697467114]
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/MoveDown" unique_id=1697467114]
 layout_mode = 2
 text = "- move down"
 
-[node name="MoveRight" type="HBoxContainer" parent="Control/VBoxContainer/VBoxContainer" unique_id=28600713]
+[node name="MoveRight" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=28600713]
 layout_mode = 2
 alignment = 1
 
-[node name="picture" type="TextureRect" parent="Control/VBoxContainer/VBoxContainer/MoveRight" unique_id=1968625101]
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/MoveRight" unique_id=1968625101]
 layout_mode = 2
 texture = SubResource("AtlasTexture_w1260")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/VBoxContainer/MoveRight" unique_id=1196315690]
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/MoveRight" unique_id=1196315690]
 layout_mode = 2
 text = "- move down"
+
+[node name="Ability1" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=1265630367]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/Ability1" unique_id=1925332165]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8g8dy")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/Ability1" unique_id=824825272]
+layout_mode = 2
+text = "- Ability 1"
+
+[node name="Ability2" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=228484855]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/Ability2" unique_id=386704927]
+layout_mode = 2
+texture = SubResource("AtlasTexture_rnv73")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/Ability2" unique_id=1890482498]
+layout_mode = 2
+text = "- Ability 2"
+
+[node name="Attack" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=1249588886]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/Attack" unique_id=2060268761]
+layout_mode = 2
+texture = SubResource("AtlasTexture_j87vi")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/Attack" unique_id=1565830349]
+layout_mode = 2
+text = "- Attack"
+
+[node name="StartFollow" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=1862593585]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/StartFollow" unique_id=1521953823]
+layout_mode = 2
+texture = SubResource("AtlasTexture_1m63g")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/StartFollow" unique_id=1623458874]
+layout_mode = 2
+text = "- NPC Start Follow"
+
+[node name="StopFollow" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=958253536]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/StopFollow" unique_id=2063201113]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3c8dd")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/StopFollow" unique_id=253367079]
+layout_mode = 2
+text = "- NPC Stop Follow"
+
+[node name="Join" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=1134794029]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/Join" unique_id=1678249147]
+layout_mode = 2
+texture = SubResource("AtlasTexture_fuyxe")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/Join" unique_id=1588979782]
+layout_mode = 2
+text = "- Join Game"
+
+[node name="Pause" type="HBoxContainer" parent="Control/VBoxContainer/KeyboardControls" unique_id=459389756]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/KeyboardControls/Pause" unique_id=1805452078]
+layout_mode = 2
+texture = SubResource("AtlasTexture_j7efn")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/Pause" unique_id=131757632]
+layout_mode = 2
+text = "- Pause Game"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1101169303]
 layout_mode = 0
