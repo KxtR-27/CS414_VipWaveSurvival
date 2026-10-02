@@ -8,5 +8,6 @@
 script = ExtResource("1_cxjpb")
 start = ExtResource("3_tfxae")
 loop = ExtResource("1_ji52b")
+volume_db = -10.0
 push_missing_segment_warnings = false
 metadata/_custom_type_script = "uid://cv5hctrjoufnv"

@@ -4,6 +4,7 @@ extends Resource
 @export var start: AudioStream
 @export var loop: AudioStream
 @export var end: AudioStream
+@export_range(-80, 24, 0.001, "or_greater", "suffix:dB") var volume_db: float = 0.0
 
 @export_group("Debug")
 

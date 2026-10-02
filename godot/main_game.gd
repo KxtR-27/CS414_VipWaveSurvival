@@ -5,9 +5,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	# FIXME: music resource changes but it just plays the old music
-	#GlobalMusicManager.play(GlobalMusicManager.TrackOption.GAME, true)
-	pass
+	GlobalMusicManager.play(GlobalMusicManager.TrackOption.GAME, true)
 
 
 func _on_debuff_awarder_debuff_awarder_active() -> void:

@@ -11,7 +11,6 @@ const Tracks: Dictionary[TrackOption, String] = {
 	TrackOption.GAME: "main_game_loop"
 }
 
-
 @onready var player := $LoopingMusicPlayer as LoopingMusicPlayer
 
 

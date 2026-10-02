@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dgny2poapqyyj"]
+
+[ext_resource type="Script" uid="uid://y6pe84ef6ovx" path="res://components/looping_music_player/looping_music_player.gd" id="1_l0fns"]
+
+[node name="LoopingMusicPlayer" type="Node" unique_id=2134449104]
+script = ExtResource("1_l0fns")
+
+[node name="StartPlayer" type="AudioStreamPlayer" parent="." unique_id=1580159972]
+
+[node name="LoopPlayer" type="AudioStreamPlayer" parent="." unique_id=1647603627]
+
+[node name="EndPlayer" type="AudioStreamPlayer" parent="." unique_id=1154362717]
+
+[connection signal="music_changed" from="." to="." method="_on_music_changed"]
+[connection signal="finished" from="StartPlayer" to="." method="_on_start_player_finished"]
+[connection signal="finished" from="LoopPlayer" to="." method="_on_loop_player_finished"]
