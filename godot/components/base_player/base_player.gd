@@ -116,7 +116,7 @@ func _execute_ability(ability_action: String) -> void:
 			ability_used.emit(current_ability)
 		Ability.ATTACK:
 			# play attack animation
-			var sprite: AnimatedSprite2D = $Sprite
+			var sprite := $Sprite as CharacterSprite
 			sprite.play("attack")
 			# attack enemies
 			_attack()

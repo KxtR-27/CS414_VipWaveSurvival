@@ -61,7 +61,7 @@ func _on_enemy_timer_timeout() -> void:
 	var enemy: BaseEnemy = enemy_scene.instantiate()
 
 	# Choose a random location on Path2D.
-	var enemy_spawn_location: PathFollow2D = $EnemySpawnPath/EnemySpawnLocation
+	var enemy_spawn_location := $EnemySpawnPath/EnemySpawnLocation as PathFollow2D
 	enemy_spawn_location.progress_ratio = randf()
 
 	# Set the mob's position to the random location.
