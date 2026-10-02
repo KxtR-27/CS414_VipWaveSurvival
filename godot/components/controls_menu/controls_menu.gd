@@ -5,6 +5,8 @@ signal controller_schematic_changed
 @onready var controller_type_label := $Control/HBoxContainer/ColorRect/Label as Label
 @onready var right_button := $Control/HBoxContainer/RightButton as TextureButton
 @onready var left_button := $Control/HBoxContainer/LeftButton as TextureButton
+@onready var keyboard_controls := $Control/VBoxContainer/KeyboardControls as VBoxContainer
+@onready var joypad_controls := $Control/VBoxContainer/JoypadControls as VBoxContainer
 
 var background_frame: int = 0:
 	set(new_frame_index):
@@ -16,12 +18,11 @@ var controller_index: int = 0:
 
 var supported_controllers: Dictionary = {
 	0 : "keyboard",
-	1 : "xbox",
-	2 : "logitech"
+	1 : "joypad"
 }
 
 func _ready() -> void:
-	right_button.grab_focus()
+	controller_schematic_changed.emit()
 
 
 func _on_right_arrow_pressed() -> void:
@@ -44,9 +45,12 @@ func _input(event: InputEvent) -> void:
 func _on_controller_schematic_changed() -> void:
 	match controller_index:
 		0:
-			pass
+			controller_type_label.text = "keyboard"
+			keyboard_controls.visible = true
+			joypad_controls.visible = false
 		1:
-			pass
-		2:
-			pass
+			controller_type_label.text = "joypad"
+			keyboard_controls.visible = false
+			joypad_controls.visible = true
+			
 	pass # Replace with function body.
