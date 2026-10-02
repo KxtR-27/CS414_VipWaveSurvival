@@ -47,6 +47,7 @@ one_shot = true
 one_shot = true
 
 [node name="AttackCooldown" type="Timer" parent="Cooldowns" unique_id=1972651493]
+wait_time = 0.5
 one_shot = true
 
 [node name="HealthComponent" parent="." unique_id=1224115467 instance=ExtResource("5_2q2f4")]

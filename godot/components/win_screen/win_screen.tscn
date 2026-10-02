@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bremxpayc5acy"]
+
+[ext_resource type="Script" uid="uid://pwn6hy6vcqab" path="res://components/win_screen/win_screen.gd" id="1_pb52k"]
+[ext_resource type="Texture2D" uid="uid://mqml1hyoamsa" path="res://assets/WinScreen.png" id="2_pb52k"]
+
+[node name="WinScreen" type="Node2D" unique_id=678542973]
+script = ExtResource("1_pb52k")
+
+[node name="Control" type="Control" parent="." unique_id=1849278182]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=828231634]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pb52k")
+
+[node name="PlayAgainButton" type="Button" parent="Control" unique_id=1519781849]
+z_index = 2
+layout_mode = 0
+offset_left = 436.0
+offset_top = 525.0
+offset_right = 696.0
+offset_bottom = 580.0
+theme_override_font_sizes/font_size = 36
+text = "Play Again"
+
+[connection signal="pressed" from="Control/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
