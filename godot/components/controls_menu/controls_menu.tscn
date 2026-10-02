@@ -280,3 +280,5 @@ layout_mode = 2
 texture_normal = SubResource("AtlasTexture_n3d2o")
 texture_pressed = SubResource("AtlasTexture_vghj2")
 stretch_mode = 0
+
+[connection signal="controller_schematic_changed" from="." to="." method="_on_controller_schematic_changed"]
