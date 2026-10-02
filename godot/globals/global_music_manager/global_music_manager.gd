@@ -11,16 +11,20 @@ const Tracks: Dictionary[TrackOption, String] = {
 	TrackOption.GAME: "main_game_loop"
 }
 
-@onready var player := $LoopingMusicPlayer as LoopingMusicPlayer
+@onready var music_player := $LoopingMusicPlayer as LoopingMusicPlayer
 
 
 func play(track: TrackOption, loop: bool) -> void:
 	var new_track := load(_to_path(Tracks[track])) as LoopingMusic
-	player.change_music(new_track, loop)
+	music_player.change_music(new_track, loop)
 
 
 func set_looping(loop: bool) -> void:
-	player.looping = loop
+	music_player.looping = loop
+
+
+func is_playing() -> bool:
+	return music_player.is_playing()
 
 
 func _to_path(track: String) -> String:

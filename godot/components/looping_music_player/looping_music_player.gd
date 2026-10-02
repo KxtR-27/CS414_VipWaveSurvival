@@ -45,6 +45,14 @@ func change_music(to: LoopingMusic, should_loop: bool) -> void:
 	self.play_start()
 
 
+func is_playing() -> bool:
+	for player: AudioStreamPlayer in [start, loop, end]:
+		if player.playing:
+			return true
+	
+	return false
+
+
 func _on_start_player_finished() -> void:
 	loop.play()
 
