@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_w1260"]
 [ext_resource type="Texture2D" uid="uid://cdt8vc2eo67in" path="res://assets/spritesheets/Character Frames w Arrows 1.png" id="4_8g8dy"]
 [ext_resource type="Texture2D" uid="uid://cgafe56kutvgn" path="res://assets/control hint icons/assets/keyboard-&-mouse_sheet_default.png" id="4_pan06"]
+[ext_resource type="Texture2D" uid="uid://ddusvv7uitiq0" path="res://assets/control hint icons/assets/xbox-series_sheet_default.png" id="5_w1260"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
 font = ExtResource("3_w1260")
@@ -53,6 +54,46 @@ region = Rect2(392, 648, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7efn"]
 atlas = ExtResource("4_pan06")
 region = Rect2(904, 648, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6od8b"]
+atlas = ExtResource("5_w1260")
+region = Rect2(583.99994, 135.99985, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnun5"]
+atlas = ExtResource("5_w1260")
+region = Rect2(519.9998, 520.0002, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpqj3"]
+atlas = ExtResource("5_w1260")
+region = Rect2(392, 519.99994, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w6iq"]
+atlas = ExtResource("5_w1260")
+region = Rect2(456, 138, 48, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48jyq"]
+atlas = ExtResource("5_w1260")
+region = Rect2(136, 520, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di1i8"]
+atlas = ExtResource("5_w1260")
+region = Rect2(264, 520, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bccfm"]
+atlas = ExtResource("5_w1260")
+region = Rect2(200, 144, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw0s2"]
+atlas = ExtResource("5_w1260")
+region = Rect2(200, 144, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtjmy"]
+atlas = ExtResource("5_w1260")
+region = Rect2(520, 520, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6sxo"]
+atlas = ExtResource("5_w1260")
+region = Rect2(264, 464, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3d2o"]
 atlas = ExtResource("4_8g8dy")
@@ -242,6 +283,132 @@ texture = SubResource("AtlasTexture_j7efn")
 expand_mode = 2
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/KeyboardControls/Pause" unique_id=131757632]
+layout_mode = 2
+text = "- Pause Game"
+
+[node name="JoypadControls" type="VBoxContainer" parent="Control/VBoxContainer" unique_id=2040612281]
+layout_mode = 2
+
+[node name="MoveUp" type="HBoxContainer" parent="Control/VBoxContainer/JoypadControls" unique_id=1920483162]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/JoypadControls/MoveUp" unique_id=694787449]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6od8b")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/JoypadControls/MoveUp" unique_id=1713626562]
+layout_mode = 2
+text = "- Move"
+
+[node name="Ability1" type="HBoxContainer" parent="Control/VBoxContainer/JoypadControls" unique_id=1476731468]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/JoypadControls/Ability1" unique_id=943237572]
+layout_mode = 2
+texture = SubResource("AtlasTexture_jnun5")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/JoypadControls/Ability1" unique_id=1664181521]
+layout_mode = 2
+text = "- Ability 1"
+
+[node name="Ability2" type="HBoxContainer" parent="Control/VBoxContainer/JoypadControls" unique_id=807758450]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/JoypadControls/Ability2" unique_id=828371440]
+layout_mode = 2
+texture = SubResource("AtlasTexture_tpqj3")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/JoypadControls/Ability2" unique_id=1394967139]
+layout_mode = 2
+text = "- Ability 2"
+
+[node name="Attack" type="HBoxContainer" parent="Control/VBoxContainer/JoypadControls" unique_id=1022638844]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/JoypadControls/Attack" unique_id=1927701083]
+layout_mode = 2
+texture = SubResource("AtlasTexture_4w6iq")
+expand_mode = 2
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer/JoypadControls/Attack" unique_id=1262923037]
+layout_mode = 2
+text = "/"
+
+[node name="picture2" type="TextureRect" parent="Control/VBoxContainer/JoypadControls/Attack" unique_id=1420859097]
+layout_mode = 2
+texture = SubResource("AtlasTexture_48jyq")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/JoypadControls/Attack" unique_id=1071969783]
+layout_mode = 2
+text = "- Attack"
+
+[node name="StartFollow" type="HBoxContainer" parent="Control/VBoxContainer/JoypadControls" unique_id=629370936]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/JoypadControls/StartFollow" unique_id=1413225733]
+layout_mode = 2
+texture = SubResource("AtlasTexture_di1i8")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/JoypadControls/StartFollow" unique_id=1306008307]
+layout_mode = 2
+text = "- NPC Start Follow"
+
+[node name="StopFollow" type="HBoxContainer" parent="Control/VBoxContainer/JoypadControls" unique_id=739456043]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/JoypadControls/StopFollow" unique_id=2133548177]
+layout_mode = 2
+texture = SubResource("AtlasTexture_bccfm")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/JoypadControls/StopFollow" unique_id=2085044660]
+layout_mode = 2
+text = "- NPC Stop Follow"
+
+[node name="Join" type="HBoxContainer" parent="Control/VBoxContainer/JoypadControls" unique_id=469048104]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/JoypadControls/Join" unique_id=2071032373]
+layout_mode = 2
+texture = SubResource("AtlasTexture_vw0s2")
+expand_mode = 2
+
+[node name="slash" type="Label" parent="Control/VBoxContainer/JoypadControls/Join" unique_id=2005980431]
+layout_mode = 2
+text = "/"
+
+[node name="picture2" type="TextureRect" parent="Control/VBoxContainer/JoypadControls/Join" unique_id=1409966747]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gtjmy")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/JoypadControls/Join" unique_id=720319459]
+layout_mode = 2
+text = "- Join Game"
+
+[node name="Pause" type="HBoxContainer" parent="Control/VBoxContainer/JoypadControls" unique_id=1819452110]
+layout_mode = 2
+alignment = 1
+
+[node name="picture" type="TextureRect" parent="Control/VBoxContainer/JoypadControls/Pause" unique_id=1393467200]
+custom_minimum_size = Vector2(35, 15)
+layout_mode = 2
+texture = SubResource("AtlasTexture_y6sxo")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/JoypadControls/Pause" unique_id=1390581567]
 layout_mode = 2
 text = "- Pause Game"
 
