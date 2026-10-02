@@ -28,6 +28,7 @@ wait_time = 0.5
 wait_time = 3.0
 one_shot = true
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Area2D/TickTimer" to="." method="_on_tick_timer_timeout"]
