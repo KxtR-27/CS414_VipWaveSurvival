@@ -20,7 +20,7 @@ var lifetime: float
 var tick_interval: float
 var remote_transform2d: RemoteTransform2D
 
-func run(ability: BaseAbility, caster: BaseCharacter) -> void:
+func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	#remember who cast this spell
 	spell_caster = caster
 	
@@ -42,7 +42,7 @@ func run(ability: BaseAbility, caster: BaseCharacter) -> void:
 	
 	#does the ability follow the reticle?
 	if ability.follows_reticle:
-		var reticle: CollisionShape2D = caster.hurtbox.get_node("Shape")
+		var reticle := caster.hurtbox.get_node("Shape") as CollisionShape2D
 		print(reticle)
 		global_position = reticle.global_position
 		
@@ -83,7 +83,7 @@ func on_tick() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is BaseCharacter and (current_overlapping_targets.find(body) == -1):
 		current_overlapping_targets.append(body)
-		on_entered(body)
+		on_entered(body as BaseCharacter)
 
 
 func _on_tick_timer_timeout() -> void:

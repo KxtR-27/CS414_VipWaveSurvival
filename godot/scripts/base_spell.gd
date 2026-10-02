@@ -4,4 +4,4 @@ extends Node2D
 
 
 @abstract
-func run(ability: BaseAbility, caster: BaseCharacter) -> void
+func run(ability: BaseAbility, caster: BasePlayer) -> void

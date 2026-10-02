@@ -29,7 +29,7 @@ metadata/_edit_lock_ = true
 position = Vector2(363, 171)
 
 [node name="Statue" parent="." unique_id=239526835 instance=ExtResource("4_02kkc")]
-position = Vector2(431, 523)
+position = Vector2(492, 546)
 
 [node name="WaveSystem" parent="." unique_id=1386286635 instance=ExtResource("5_aomqu")]
 
