@@ -41,9 +41,11 @@ shape = SubResource("CapsuleShape2D_sc5ck")
 [node name="Cooldowns" type="Node" parent="." unique_id=573484517]
 
 [node name="Ability1Cooldown" type="Timer" parent="Cooldowns" unique_id=367998007]
+wait_time = 5.0
 one_shot = true
 
 [node name="Ability2Cooldown" type="Timer" parent="Cooldowns" unique_id=367669852]
+wait_time = 5.0
 one_shot = true
 
 [node name="AttackCooldown" type="Timer" parent="Cooldowns" unique_id=1972651493]
