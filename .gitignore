@@ -1,2 +1,3 @@
+.vscode/
 asset_packs/*.zip
 !asset_packs/*_ALLOWS_REDIST.zip
