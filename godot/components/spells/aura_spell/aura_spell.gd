@@ -43,7 +43,6 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	#does the ability follow the reticle?
 	if ability.follows_reticle:
 		var reticle := caster.hurtbox.get_node("Shape") as CollisionShape2D
-		print(reticle)
 		global_position = reticle.global_position
 		
 		var new_remote_transform2d: RemoteTransform2D = RemoteTransform2D.new()

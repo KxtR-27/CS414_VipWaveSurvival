@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://ccrokd642aitx"]
+
+[ext_resource type="Script" uid="uid://b22ahd4gf1803" path="res://resources/ability_vfxs/dash_spell/dash_spell_vfx.gd" id="1_50aev"]
+[ext_resource type="Texture2D" uid="uid://b1c22k8yjkoh4" path="res://assets/vfx/white_circle.png" id="2_8vcti"]
+
+[sub_resource type="Animation" id="Animation_50aev"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DashParticleEmitter:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LandingSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DashParticleEmitter2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LandingSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8vcti"]
+resource_name = "ability_vfx"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DashParticleEmitter:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LandingSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DashParticleEmitter2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LandingSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ny2c4"]
+_data = {
+&"RESET": SubResource("Animation_50aev"),
+&"ability_vfx": SubResource("Animation_8vcti")
+}
+
+[sub_resource type="Curve" id="Curve_50aev"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.266404, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8nq33"]
+curve = SubResource("Curve_50aev")
+
+[sub_resource type="Gradient" id="Gradient_8vcti"]
+colors = PackedColorArray(1, 1, 1, 0.68235296, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ykge7"]
+gradient = SubResource("Gradient_8vcti")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mnly4"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(0, 0, 0)
+radial_velocity_min = -360.0
+radial_velocity_max = -360.0
+gravity = Vector3(0, 0, 0)
+color_initial_ramp = SubResource("GradientTexture1D_ykge7")
+alpha_curve = SubResource("CurveTexture_8nq33")
+
+[sub_resource type="Curve" id="Curve_ya8b5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.06216216, 0.28125006), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d7yyq"]
+curve = SubResource("Curve_ya8b5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ny2c4"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 50.0
+radial_velocity_min = 335.32996
+radial_velocity_max = 335.67996
+radial_velocity_curve = SubResource("CurveTexture_d7yyq")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.39999998
+scale_max = 0.45
+alpha_curve = SubResource("CurveTexture_8nq33")
+
+[node name="DashSpellVfx" type="Node2D" unique_id=1583185023]
+script = ExtResource("1_50aev")
+metadata/_custom_type_script = "uid://cluabyaxe24u5"
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="." unique_id=1335531358]
+libraries/ = SubResource("AnimationLibrary_ny2c4")
+
+[node name="DashParticleEmitter" type="GPUParticles2D" parent="." unique_id=1336605842]
+emitting = false
+amount = 32
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.09999999999999999
+trail_sections = 2
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_mnly4")
+
+[node name="DashParticleEmitter2" type="GPUParticles2D" parent="." unique_id=873603117]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.09999999999999999
+trail_sections = 2
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_ny2c4")
+
+[node name="LandingSprite" type="Sprite2D" parent="." unique_id=1874593355]
+visible = false
+texture = ExtResource("2_8vcti")

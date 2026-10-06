@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BaseAbility" format=3 uid="uid://cdjs0uh27617y"]
+
+[ext_resource type="Script" uid="uid://c1qvpiklfsumt" path="res://scripts/base_ability.gd" id="1_s76fe"]
+
+[resource]
+script = ExtResource("1_s76fe")
+ability_name = "damaging_dash"
+ability_type = "dash"
+lifetime = 0.2
+dash_time = 0.2
+dash_damage = 25
+landing_damage = 25
+distance = 150
+path_to_vfx = "res://resources/ability_vfxs/dash_spell/dash_spell_vfx.tscn"
+metadata/_custom_type_script = "uid://c1qvpiklfsumt"

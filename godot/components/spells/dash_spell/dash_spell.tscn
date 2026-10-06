@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://di4pfri2xut3v"]
+
+[ext_resource type="Script" uid="uid://cswidbcf4ax4r" path="res://components/spells/dash_spell/dash_spell.gd" id="1_dejcx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_llgru"]
+radius = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dejcx"]
+radius = 100.0
+
+[node name="DashSpell" type="Node2D" unique_id=821474778 node_paths=PackedStringArray("dash_hitbox", "landing_hitbox")]
+z_index = -1
+z_as_relative = false
+script = ExtResource("1_dejcx")
+dash_hitbox = NodePath("DashHitbox")
+landing_hitbox = NodePath("LandingHitbox")
+
+[node name="DashHitbox" type="Area2D" parent="." unique_id=1468640870]
+collision_mask = 3
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashHitbox" unique_id=21235292]
+shape = SubResource("CircleShape2D_llgru")
+debug_color = Color(0.8, 0.043137256, 1, 0.11764706)
+
+[node name="LandingHitbox" type="Area2D" parent="." unique_id=418522525]
+collision_mask = 3
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LandingHitbox" unique_id=457680327]
+shape = SubResource("CircleShape2D_dejcx")
+debug_color = Color(0.8, 0.043137256, 1, 0.11764706)
+
+[node name="LandingLifetimeTimer" type="Timer" parent="." unique_id=1808777931]
+
+[connection signal="body_entered" from="DashHitbox" to="." method="_on_dash_hitbox_body_entered"]
+[connection signal="body_entered" from="LandingHitbox" to="." method="_on_landing_hitbox_body_entered"]
+[connection signal="timeout" from="LandingLifetimeTimer" to="." method="_on_landing_lifetime_timer_timeout"]

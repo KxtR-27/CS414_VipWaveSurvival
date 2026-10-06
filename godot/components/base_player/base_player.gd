@@ -15,17 +15,18 @@ signal ability_used(ability: BaseAbility)
 ## preload abilities to use in current_selected_abilities
 const heal_aura_ability := preload("res://resources/abilities/healing_aura.tres") as BaseAbility
 const damage_aura_ability := preload("res://resources/abilities/damaging_aura.tres") as BaseAbility
-
+const dash_ability := preload ("res://resources/abilities/damaging_dash.tres")
 
 @export var sprite_frames: SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
 @export_group("Input")
 @export var device_id: int
 @export var use_kbm: bool
 
+var can_move : bool = true
 
 ## this maps ability enums to the desired ability to be run
 var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
-	Ability.ABILITY_1: damage_aura_ability,
+	Ability.ABILITY_1: dash_ability,
 	Ability.ABILITY_2: heal_aura_ability,
 }
 
@@ -65,9 +66,10 @@ func _physics_process(delta: float) -> void:
 	var aim_dir := _get_aim_direction()
 	hurtbox.aim_in_dir(aim_dir)
 	
-	var move_dir := _get_movement_direction()
-	self.velocity = move_dir * speed * delta
-	self.move_and_slide()
+	if can_move:
+		var move_dir := _get_movement_direction()
+		self.velocity = move_dir * speed * delta
+		self.move_and_slide()
 
 
 func _input(event: InputEvent) -> void:
