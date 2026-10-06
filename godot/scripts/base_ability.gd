@@ -11,7 +11,7 @@ class_name BaseAbility extends Resource
 @export var landing_damage: int = 0
 @export var landing_healing: int = 0
 @export var distance: int = 0
-@export var projectile_speed: int = 0
+@export var projectile_speed: float = 0
 @export var healing: int = 0
 @export var tick_damage: int = 0
 @export var tick_healing: int = 0

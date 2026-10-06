@@ -15,7 +15,8 @@ signal ability_used(ability: BaseAbility)
 ## preload abilities to use in current_selected_abilities
 const heal_aura_ability := preload("res://resources/abilities/healing_aura.tres") as BaseAbility
 const damage_aura_ability := preload("res://resources/abilities/damaging_aura.tres") as BaseAbility
-const dash_ability := preload ("res://resources/abilities/damaging_dash.tres")
+const dash_ability := preload ("res://resources/abilities/damaging_dash.tres") as BaseAbility
+const projectile_ability := preload("res://resources/abilities/damaging_projectile.tres") as BaseAbility
 
 @export var sprite_frames: SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
 @export_group("Input")
@@ -27,7 +28,7 @@ var can_move : bool = true
 ## this maps ability enums to the desired ability to be run
 var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
 	Ability.ABILITY_1: dash_ability,
-	Ability.ABILITY_2: heal_aura_ability,
+	Ability.ABILITY_2: projectile_ability,
 }
 
 ## when you add a new ability action to the InputMap, put it here.

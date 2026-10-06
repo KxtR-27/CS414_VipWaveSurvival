@@ -23,6 +23,13 @@ func run_ability(ability: BaseAbility) -> void:
 			
 			#run the spell with current ability parameters and caster
 			new_dash_spell.run(ability, caster)
+		"projectile":
+			var projectile_spell_node := load("res://components/spells/projectile_spell/projectile_spell.tscn") as PackedScene
+			var new_projectile_spell := projectile_spell_node.instantiate() as BaseSpell
+			add_child(new_projectile_spell)
+			
+			#run the spell with current ability parameters and caster
+			new_projectile_spell.run(ability, caster)
 		"test":
 			var test_spell_node := load("res://components/spells/test_spell/test_spell.tscn") as PackedScene
 			var new_test_spell := test_spell_node.instantiate() as BaseSpell

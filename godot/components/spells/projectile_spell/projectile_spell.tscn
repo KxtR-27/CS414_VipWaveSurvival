@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://1r1lsgrvmcqx"]
+
+[ext_resource type="Script" uid="uid://d4cnuby4umlsq" path="res://components/spells/projectile_spell/projectile_spell.gd" id="1_wjqcb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_udkgg"]
+radius = 20.0
+
+[node name="ProjectileSpell" type="Node2D" unique_id=2112002852 node_paths=PackedStringArray("projectile")]
+script = ExtResource("1_wjqcb")
+projectile = NodePath("Projectile")
+
+[node name="Projectile" type="Area2D" parent="." unique_id=1445660016]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile" unique_id=1714326813]
+shape = SubResource("CircleShape2D_udkgg")
+
+[connection signal="body_entered" from="Projectile" to="." method="_on_projectile_body_entered"]

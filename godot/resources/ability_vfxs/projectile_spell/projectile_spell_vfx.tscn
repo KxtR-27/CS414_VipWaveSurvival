@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://fk04kokwkcwc"]
+
+[ext_resource type="Script" uid="uid://pccj2h6lkvgq" path="res://resources/ability_vfxs/projectile_spell/projectile_spell_vfx.gd" id="1_k6fjn"]
+[ext_resource type="Texture2D" uid="uid://b1c22k8yjkoh4" path="res://assets/vfx/white_circle.png" id="2_dg65p"]
+
+[sub_resource type="Animation" id="Animation_50aev"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_8vcti"]
+resource_name = "ability_vfx"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ny2c4"]
+_data = {
+&"RESET": SubResource("Animation_50aev"),
+&"ability_vfx": SubResource("Animation_8vcti")
+}
+
+[sub_resource type="Curve" id="Curve_k6fjn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.8530853, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_215m8"]
+curve = SubResource("Curve_k6fjn")
+
+[sub_resource type="Gradient" id="Gradient_l5pc4"]
+colors = PackedColorArray(1, 0.59607846, 0, 1, 0.7427613, 0.3454006, 1.92523e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_udkgg"]
+gradient = SubResource("Gradient_l5pc4")
+
+[sub_resource type="Curve" id="Curve_l5pc4"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 5.732668, 0, 0, Vector2(0.49999994, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.346341, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wjqcb"]
+curve = SubResource("Curve_l5pc4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_llgru"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 51.71998
+gravity = Vector3(0, -98, 0)
+scale_curve = SubResource("CurveTexture_wjqcb")
+color_ramp = SubResource("GradientTexture1D_udkgg")
+alpha_curve = SubResource("CurveTexture_215m8")
+
+[node name="ProjectileSpellVfx" type="Node2D" unique_id=1583185023]
+script = ExtResource("1_k6fjn")
+metadata/_custom_type_script = "uid://cluabyaxe24u5"
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="." unique_id=1335531358]
+libraries/ = SubResource("AnimationLibrary_ny2c4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2064600501]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_llgru")
+
+[node name="ProjectileSprite" type="Sprite2D" parent="." unique_id=1639732935]
+modulate = Color(1, 0.5921569, 0, 0.5686275)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_dg65p")

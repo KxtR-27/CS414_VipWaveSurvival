@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseAbility" format=3 uid="uid://pmy8cnoh3bve"]
+
+[ext_resource type="Script" uid="uid://c1qvpiklfsumt" path="res://scripts/base_ability.gd" id="1_ppe6u"]
+
+[resource]
+script = ExtResource("1_ppe6u")
+ability_name = "damaging_projectile"
+ability_type = "projectile"
+damage = 25
+distance = 500
+projectile_speed = 1.0
+path_to_vfx = "res://resources/ability_vfxs/projectile_spell/projectile_spell_vfx.tscn"
+metadata/_custom_type_script = "uid://c1qvpiklfsumt"
