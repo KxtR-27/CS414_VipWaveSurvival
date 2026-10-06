@@ -27,7 +27,7 @@ var can_move : bool = true
 
 ## this maps ability enums to the desired ability to be run
 var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
-	Ability.ABILITY_1: projectile_ability,
+	Ability.ABILITY_1: damage_aura_ability,
 	Ability.ABILITY_2: heal_aura_ability,
 }
 
