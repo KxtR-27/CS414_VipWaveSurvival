@@ -48,8 +48,6 @@ func _on_controller_schematic_changed() -> void:
 			controller_type_label.text = "joypad"
 			keyboard_controls.visible = false
 			joypad_controls.visible = true
-			
-	pass # Replace with function body.
 
 
 func _on_back_button_pressed() -> void:

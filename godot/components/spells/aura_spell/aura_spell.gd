@@ -65,9 +65,9 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 
 
 func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) -> void:
-	if target.is_in_group("enemies"):
+	if target.is_in_group("enemies") and enemy_damage > 0.0:
 		target.health_changed.emit(enemy_damage, true)
-	elif target.is_in_group("players") or target.is_in_group("vip"):
+	elif (target.is_in_group("players") or target.is_in_group("vip")) and ally_healing > 0.0:
 		target.health_changed.emit(ally_healing, false)
 
 
