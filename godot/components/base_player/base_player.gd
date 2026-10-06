@@ -27,8 +27,8 @@ var can_move : bool = true
 
 ## this maps ability enums to the desired ability to be run
 var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
-	Ability.ABILITY_1: dash_ability,
-	Ability.ABILITY_2: projectile_ability,
+	Ability.ABILITY_1: projectile_ability,
+	Ability.ABILITY_2: heal_aura_ability,
 }
 
 ## when you add a new ability action to the InputMap, put it here.

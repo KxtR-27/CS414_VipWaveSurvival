@@ -12,7 +12,6 @@ var projectile_travel_time: float
 var distance: float
 
 func run(ability: BaseAbility, caster: BasePlayer) -> void:
-	print(ability)
 	#remember who cast this spell
 	spell_caster = caster
 	
@@ -28,8 +27,6 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	
 	var direction: Vector2 = (reticle.global_position - caster.global_position).normalized()
 	var landing_target: Vector2 = caster.global_position + (direction * distance)
-	print(caster.global_position, reticle.global_position, direction)
-	print(landing_target)
 	
 	#tween player's position to landing_target
 	var tween: Tween = projectile.create_tween()
