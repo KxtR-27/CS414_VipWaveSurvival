@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://2orn61sgafos" path="res://main_game.gd" id="1_l5ukw"]
 [ext_resource type="TileSet" uid="uid://x1d1rnuuvue3" path="res://resources/mystic_woods_placeholder_tileset.tres" id="2_4srsv"]
 [ext_resource type="PackedScene" uid="uid://q8gp3srvu57s" path="res://components/base_vip/base_vip.tscn" id="3_mf81u"]
-[ext_resource type="PackedScene" uid="uid://btj6dn8liccai" path="res://components/statue.tscn" id="4_02kkc"]
 [ext_resource type="PackedScene" uid="uid://ddia2pag6mwwm" path="res://components/wave_system/wave_system.tscn" id="5_aomqu"]
 [ext_resource type="PackedScene" uid="uid://bmb26qdeaf63i" path="res://components/region_border/region_border.tscn" id="6_krmtw"]
 [ext_resource type="PackedScene" uid="uid://c0odn4iwn58kp" path="res://components/debuff_awarder/debuff_awarder.tscn" id="7_jgkyn"]
@@ -27,9 +26,6 @@ metadata/_edit_lock_ = true
 
 [node name="BaseVIP" parent="." unique_id=1927010828 instance=ExtResource("3_mf81u")]
 position = Vector2(363, 171)
-
-[node name="Statue" parent="." unique_id=239526835 instance=ExtResource("4_02kkc")]
-position = Vector2(492, 546)
 
 [node name="WaveSystem" parent="." unique_id=1386286635 instance=ExtResource("5_aomqu")]
 
