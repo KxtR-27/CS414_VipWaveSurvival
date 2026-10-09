@@ -1,8 +1,12 @@
 class_name WaveSystem extends Node2D
 
 signal wave_start
-signal in_wave_downtime
 
+@onready var wave_timer: Timer = $WaveTimer
+@onready var enemy_timer: Timer = $EnemySpawnTimer
+@onready var wave_timer_bar: TextureProgressBar = $WaveTimerBar/TimerBar
+@onready var wave_notification_layer: CanvasLayer = $WaveNotifications
+@onready var wave_notification_label: Label = $WaveNotifications/Control/HBoxContainer/VBoxContainer/Label
 @onready var initial_spawner_wait_time: float = enemy_timer.wait_time
 
 @onready var wave_dict: Dictionary = {
@@ -18,17 +22,9 @@ enum {
 	SPAWN_MULT = 2
 }
 
-@export_group("Wave Components")
-@export var wave_timer: Timer
-@export var enemy_timer: Timer
-@export var downtime_timer: Timer
-@export var wave_timer_bar: TextureProgressBar
-@export var wave_notification_layer: CanvasLayer
-@export var wave_notification_label: Label
-@export var wave_tracker: WaveTracker
+@export var wave_tracker: WaveTracker = preload("res://resources/wave_tracker.tres")
 
-@export_group("Enemy Variables")
-@export var enemy_scene: PackedScene
+@export var enemy_scene: PackedScene = preload("res://components/base_enemy/base_enemy.tscn")
 @export var enemy_speed: float = 0.5
 
 var num_spawned: int = 0
@@ -37,7 +33,6 @@ var num_spawned: int = 0
 func _ready() -> void:
 	wave_tracker.current_wave = 1
 	
-	wave_timer.start()
 	wave_start.emit()
 	
 	wave_timer_bar.max_value = wave_timer.wait_time
@@ -50,11 +45,6 @@ func _process(_delta: float) -> void:
 		wave_timer_bar.max_value = wave_timer.wait_time
 		wave_timer_bar.value = wave_timer.time_left
 		wave_timer_bar.tint_progress = "#ff0000"
-	else:
-		wave_timer_bar.max_value = downtime_timer.wait_time
-		wave_timer_bar.value = downtime_timer.wait_time - downtime_timer.time_left 
-		wave_timer_bar.tint_progress = "00ff00" 
-
 
 # Creates new enemy after specified interval
 func _on_enemy_timer_timeout() -> void:
@@ -87,20 +77,8 @@ func _on_wave_timer_timeout() -> void:
 	if wave_tracker.current_wave > 1:
 		var debuff_awarder := self.get_parent().get_node("DebuffAwarder") as DebuffAwarder
 		debuff_awarder.award_debuff()
-	
-	downtime_timer.paused = false
-	downtime_timer.start()
-	in_wave_downtime.emit()
-
-
-func _on_downtime_timer_timeout() -> void:
-	downtime_timer.paused = true
-	wave_timer.paused = false
-	enemy_timer.paused = false
-	
-	wave_timer.start()
+		
 	wave_start.emit()
-	enemy_timer.start()
 
 
 func prepare_new_wave() -> void:
@@ -123,6 +101,11 @@ func reset_spawner_timer() -> void:
 
 
 func _on_wave_start() -> void:
+	wave_timer.paused = false
+	enemy_timer.paused = false
+	enemy_timer.start()
+	wave_timer.start()
+	
 	wave_notification_layer.visible = true
 	wave_notification_label.text = "Wave %d Start" % wave_tracker.current_wave
 	
