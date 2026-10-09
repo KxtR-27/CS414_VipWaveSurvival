@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://x1d1rnuuvue3" path="res://resources/mystic_woods_placeholder_tileset.tres" id="2_pan06"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_w1260"]
 [ext_resource type="Texture2D" uid="uid://cdt8vc2eo67in" path="res://assets/spritesheets/Character Frames w Arrows 1.png" id="4_8g8dy"]
-[ext_resource type="Texture2D" uid="uid://cgafe56kutvgn" path="res://assets/control hint icons/assets/keyboard-&-mouse_sheet_default.png" id="4_pan06"]
-[ext_resource type="Texture2D" uid="uid://ddusvv7uitiq0" path="res://assets/control hint icons/assets/xbox-series_sheet_default.png" id="5_w1260"]
+[ext_resource type="Texture2D" uid="uid://cgafe56kutvgn" path="res://assets/control hint icons/keyboard-&-mouse_sheet_default.png" id="4_pan06"]
+[ext_resource type="Texture2D" uid="uid://ddusvv7uitiq0" path="res://assets/control hint icons/xbox-series_sheet_default.png" id="5_w1260"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
 font = ExtResource("3_w1260")

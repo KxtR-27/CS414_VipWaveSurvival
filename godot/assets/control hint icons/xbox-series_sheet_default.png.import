@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgafe56kutvgn"
-path="res://.godot/imported/keyboard-&-mouse_sheet_default.png-09cf4d9e5db467f1e083103a27940200.ctex"
+uid="uid://ddusvv7uitiq0"
+path="res://.godot/imported/xbox-series_sheet_default.png-9c585a295d3736672084ed54b4959ecb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/control hint icons/assets/keyboard-&-mouse_sheet_default.png"
-dest_files=["res://.godot/imported/keyboard-&-mouse_sheet_default.png-09cf4d9e5db467f1e083103a27940200.ctex"]
+source_file="res://assets/control hint icons/xbox-series_sheet_default.png"
+dest_files=["res://.godot/imported/xbox-series_sheet_default.png-9c585a295d3736672084ed54b4959ecb.ctex"]
 
 [params]
 
