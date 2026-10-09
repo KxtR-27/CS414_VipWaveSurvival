@@ -8,7 +8,11 @@ extends Node2D
 
 func _ready() -> void:
 	start_button.grab_focus.call_deferred()
-	if not GlobalMusicManager.is_playing():
+	# play menu music if menu music isn't already playing
+	if (
+			not GlobalMusicManager.is_playing() 
+			or GlobalMusicManager.current_track != GlobalMusicManager.TrackOption.MENU
+	):
 		GlobalMusicManager.play(GlobalMusicManager.TrackOption.MENU, true)
 
 
