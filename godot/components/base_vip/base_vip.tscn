@@ -24,6 +24,7 @@ sprite_frames = ExtResource("2_rrppm")
 animation = &"walk"
 frame_progress = 0.6537163
 script = ExtResource("3_24cib")
+idle_delay_seconds = 0.25
 metadata/_edit_lock_ = true
 
 [node name="Shape" type="CollisionShape2D" parent="." unique_id=107678842]
