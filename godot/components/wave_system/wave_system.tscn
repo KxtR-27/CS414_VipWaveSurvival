@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://52qplddan8vs" path="res://components/wave_system/wave_system.gd" id="1_lvjw3"]
 
-[sub_resource type="Curve" id="Curve_22l4v"]
-_data = [Vector2(0.0073529407, 0.027777791), 0.0, 0.0, 0, 0, Vector2(0.625, 0.30693072), 1.0, 1.0, 0, 0, Vector2(0.99632347, 1), 2.6089125, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_xgi3f"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.52573526, 0.5148515), 0.4712875, 0.4712875, 0, 0, Vector2(1, 1), 3.0603075, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
@@ -22,7 +22,7 @@ point_count = 5
 [node name="WaveSystem" type="Node2D" unique_id=1386286635]
 y_sort_enabled = true
 script = ExtResource("1_lvjw3")
-curve = SubResource("Curve_22l4v")
+wave_curve = SubResource("Curve_xgi3f")
 
 [node name="WaveNotifications" type="CanvasLayer" parent="." unique_id=2120179839]
 visible = false

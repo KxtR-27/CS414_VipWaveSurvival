@@ -27,10 +27,17 @@ enum {
 @export var enemy_scene: PackedScene = preload("res://components/base_enemy/base_enemy.tscn")
 @export var enemy_speed: float = 0.5
 
+@export var wave_curve : Curve
+
 var num_spawned: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	wave_curve.point_count = 100
+
+	wave_curve.bake()
+	wave_curve.point_count = wave_curve.bake_resolution
+	
 	wave_tracker.current_wave = 1
 	
 	wave_start.emit()
@@ -89,8 +96,10 @@ func prepare_new_wave() -> void:
 	if wave_tracker.current_wave > safe_wave_count:
 		GlobalEvents.win_game()
 	
-	wave_timer.wait_time *= wave_dict[safe_wave_count][WAVE_LENGTH][1]
-	enemy_speed = wave_dict[safe_wave_count][ENEMY_SPEED][1]
+	# wave_timer.wait_time *= wave_dict[safe_wave_count][WAVE_LENGTH][1]
+	wave_timer.wait_time += (wave_curve.sample((wave_tracker.current_wave / 100.0)) * 100.0)
+	#enemy_speed = wave_dict[safe_wave_count][ENEMY_SPEED][1]
+	
 	
 	reset_spawner_timer()
 	enemy_timer.wait_time /= wave_dict[safe_wave_count][SPAWN_MULT][1]
