@@ -1,4 +1,4 @@
-class_name AuraSpell extends BaseSpell
+class_name AreaSpell extends BaseSpell
 
 @export var hitbox: Area2D
 

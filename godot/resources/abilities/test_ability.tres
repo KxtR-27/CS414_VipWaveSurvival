@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="BaseAbility" format=3 uid="uid://cfpg1jyrhh5fi"]
-
-[ext_resource type="Script" uid="uid://c1qvpiklfsumt" path="res://scripts/base_ability.gd" id="1_868hi"]
-
-[resource]
-script = ExtResource("1_868hi")
-ability_name = "test_ability"
-ability_type = "test"
-metadata/_custom_type_script = "uid://c1qvpiklfsumt"

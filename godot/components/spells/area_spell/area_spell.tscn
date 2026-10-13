@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cl5o61sotabt5"]
 
-[ext_resource type="Script" uid="uid://dxg83om25whh6" path="res://components/spells/aura_spell/aura_spell.gd" id="1_v4gr5"]
+[ext_resource type="Script" uid="uid://dxg83om25whh6" path="res://components/spells/area_spell/area_spell.gd" id="1_v4gr5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_llgru"]
 radius = 100.0
