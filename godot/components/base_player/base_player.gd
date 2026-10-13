@@ -13,10 +13,10 @@ enum Ability {
 signal ability_used(ability: BaseAbility)
 
 ## preload abilities to use in current_selected_abilities
-const heal_aura_ability := preload("res://resources/abilities/healing_aura.tres") as BaseAbility
-const damage_aura_ability := preload("res://resources/abilities/damaging_aura.tres") as BaseAbility
-const dash_ability := preload ("res://resources/abilities/damaging_dash.tres") as BaseAbility
-const projectile_ability := preload("res://resources/abilities/damaging_projectile.tres") as BaseAbility
+const HEAL_AURA_ABILITY := preload("res://resources/abilities/healing_aura.tres") as AreaAbility
+const DAMAGE_AURA_ABILITY := preload("res://resources/abilities/damaging_aura.tres") as AreaAbility
+const DASH_ABILITY := preload ("res://resources/abilities/damaging_dash.tres") as DashAbility
+const PROJECTILE_ABILITY := preload("res://resources/abilities/damaging_projectile.tres") as ProjectileAbility
 
 @export var sprite_frames: SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
 @export_group("Input")
@@ -27,8 +27,8 @@ var can_move : bool = true
 
 ## this maps ability enums to the desired ability to be run
 var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
-	Ability.ABILITY_1: damage_aura_ability,
-	Ability.ABILITY_2: heal_aura_ability,
+	Ability.ABILITY_1: DAMAGE_AURA_ABILITY,
+	Ability.ABILITY_2: HEAL_AURA_ABILITY,
 }
 
 ## when you add a new ability action to the InputMap, put it here.
@@ -217,4 +217,3 @@ func _get_aim_direction() -> Vector2:
 			Input.get_joy_axis(device_id, JOY_AXIS_RIGHT_X),
 			Input.get_joy_axis(device_id, JOY_AXIS_RIGHT_Y),
 		)
-		
