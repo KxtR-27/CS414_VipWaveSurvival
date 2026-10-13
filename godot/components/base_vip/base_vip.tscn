@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/character_sprite.gd" id="3_24cib"]
 [ext_resource type="PackedScene" uid="uid://jcob8jmp4huw" path="res://components/target_scanner/target_scanner.tscn" id="4_pb8p3"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_rrppm"]
+[ext_resource type="Texture2D" uid="uid://jahf3ohefs75" path="res://assets/Indicator2.png" id="6_24cib"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kek77"]
 radius = 18.0
@@ -41,6 +42,44 @@ offset_top = -40.0
 offset_bottom = -40.0
 
 [node name="Debuffs" type="Node2D" parent="." unique_id=2016027774]
+
+[node name="VIPIndicator" type="Control" parent="." unique_id=1786939709]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -90.0
+offset_right = 20.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VIPIndicator" unique_id=1146985963]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="VIPIndicator/VBoxContainer" unique_id=423016549]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 20
+text = "VIP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VIPIndicator/VBoxContainer" unique_id=2008460024]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VIPIndicator/VBoxContainer/CenterContainer" unique_id=973127542]
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("6_24cib")
 
 [connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
 [connection signal="target_scanned" from="TargetScanner" to="." method="_on_target_scanned"]

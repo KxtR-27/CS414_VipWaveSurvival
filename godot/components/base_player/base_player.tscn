@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bxmicso6tytl5" path="res://assets/sfx/attack.wav" id="8_mmppa"]
 [ext_resource type="AudioStream" uid="uid://db8veknmfw2vw" path="res://assets/sfx/start_follow.wav" id="9_mmppa"]
 [ext_resource type="AudioStream" uid="uid://csmbs7wpc3ehw" path="res://assets/sfx/stop_follow.wav" id="10_criwi"]
+[ext_resource type="Texture2D" uid="uid://jahf3ohefs75" path="res://assets/Indicator2.png" id="11_kap8x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc5ck"]
 radius = 18.0
@@ -84,6 +85,44 @@ volume_db = -12.0
 [node name="StopFollowingSound" type="AudioStreamPlayer" parent="." unique_id=1721212772]
 stream = ExtResource("10_criwi")
 volume_db = -12.0
+
+[node name="PlayerIndicator" type="Control" parent="." unique_id=670062306]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -90.0
+offset_right = 20.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerIndicator" unique_id=664626308]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PlayerIndicator/VBoxContainer" unique_id=2082336113]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "P0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerIndicator/VBoxContainer" unique_id=1446297661]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerIndicator/VBoxContainer/CenterContainer" unique_id=1891088047]
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("11_kap8x")
 
 [connection signal="ability_used" from="." to="AbilityCreator" method="_on_base_player_ability_used"]
 [connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]

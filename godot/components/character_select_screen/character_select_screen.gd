@@ -9,6 +9,17 @@ var player_array: Array[BasePlayer] = []
 
 var connected_player_array: Array[int] = []
 
+const INDICATOR_COLOR_MAP: Dictionary[int, Color] = {
+	0: Color.RED,
+	1: Color.BLUE,
+	2: Color.GREEN,
+	3: Color.YELLOW,
+	4: Color.AQUA,
+	5: Color.HOT_PINK,
+	6: Color.PURPLE,
+	7: Color.ORANGE,
+}
+
 @onready var container := $Control/HBoxContainer as HBoxContainer
 @onready var join_label := $Control/ClickToJoinLabel as Label
 @onready var begin_button := $Control/Button as Button
@@ -50,6 +61,7 @@ func _on_character_selected(sprite_frames_path: String, device_id: int) -> void:
 	new_player.device_id = device_id
 	new_player.use_kbm = DeviceManager.is_kbm(device_id)
 	new_player.position = container.position + Vector2(device_id + 10, 0)
+	
 	player_array.append(new_player)
 
 
@@ -61,8 +73,25 @@ func _on_player_connected(device_id: int) -> void:
 func _on_button_pressed() -> void:
 	get_tree().root.add_child(main_scene.instantiate())
 	for player_number in player_array.size():
-		player_array[player_number].name = "BasePlayer%d" % player_number
-		get_tree().root.get_node("Main").add_child(player_array[player_number])
+		var player_hero: BasePlayer = player_array[player_number]
+		
+		player_hero.name = "BasePlayer%d" % player_number
+		get_tree().root.get_node("Main").add_child(player_hero)
+		
+		#set player indicator up
+		set_up_indicator(player_hero, player_number)
 	
 	await begin_button_sound.finished
 	get_tree().root.get_node("CharacterSelectScreen").queue_free()
+
+
+func set_up_indicator(base_player: BasePlayer, player_index: int) -> void:
+	var indicator: Control = base_player.get_node("PlayerIndicator")
+	var indicator_vbox: VBoxContainer = indicator.get_node("VBoxContainer")
+	var indicator_label: Label = indicator_vbox.get_node("Label")
+	var indicator_texture: TextureRect = indicator_vbox.get_node("CenterContainer").get_node("TextureRect")
+	
+	indicator_label.modulate = INDICATOR_COLOR_MAP[player_index]
+	indicator_texture.modulate = INDICATOR_COLOR_MAP[player_index]
+	
+	indicator_label.text = "P" + str(player_index + 1)
