@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://q8gp3srvu57s"]
 
 [ext_resource type="Script" uid="uid://dp5tlxremg3aj" path="res://components/base_vip/base_vip.gd" id="1_kb0sa"]
+[ext_resource type="PackedScene" uid="uid://cfkri528s4tdr" path="res://components/status_effect_creator/status_effect_creator.tscn" id="2_pb8p3"]
 [ext_resource type="SpriteFrames" uid="uid://yvri5o1l0rs6" path="res://resources/priest_spriteframes.tres" id="2_rrppm"]
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/character_sprite.gd" id="3_24cib"]
 [ext_resource type="PackedScene" uid="uid://jcob8jmp4huw" path="res://components/target_scanner/target_scanner.tscn" id="4_pb8p3"]
@@ -17,6 +18,8 @@ script = ExtResource("1_kb0sa")
 farthest_flee_distance = 500.0
 speed = 5000.0
 metadata/_custom_type_script = "uid://lt2oeslpqb6n"
+
+[node name="StatusEffectCreator" parent="." unique_id=1460067353 instance=ExtResource("2_pb8p3")]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1611327213]
 position = Vector2(0, 6)

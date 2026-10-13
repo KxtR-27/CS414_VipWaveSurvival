@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d1ks7xuvlpa75"]
 
 [ext_resource type="Script" uid="uid://bw1quqx726ye3" path="res://components/base_enemy/base_enemy.gd" id="1_72wxb"]
+[ext_resource type="PackedScene" uid="uid://cfkri528s4tdr" path="res://components/status_effect_creator/status_effect_creator.tscn" id="2_lutwf"]
 [ext_resource type="SpriteFrames" uid="uid://dgiwgs50l3elg" path="res://resources/orc_spriteframes.tres" id="2_mvtnl"]
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/character_sprite.gd" id="3_hny28"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="4_hny28"]
@@ -18,6 +19,8 @@ collision_mask = 2
 script = ExtResource("1_72wxb")
 hurt_sound = NodePath("HurtSound")
 attack_sound = NodePath("AttackSound")
+
+[node name="StatusEffectCreator" parent="." unique_id=1460067353 instance=ExtResource("2_lutwf")]
 
 [node name="CharacterSprite" type="AnimatedSprite2D" parent="." unique_id=308880726 node_paths=PackedStringArray("aimable_hurtbox_to_face")]
 position = Vector2(-2, 1)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kk8m7xmlonb5" path="res://components/base_player/base_player.gd" id="1_qp1xa"]
 [ext_resource type="SpriteFrames" uid="uid://dal0adb4yewow" path="res://resources/swordsman_spriteframes.tres" id="2_0n512"]
+[ext_resource type="PackedScene" uid="uid://cfkri528s4tdr" path="res://components/status_effect_creator/status_effect_creator.tscn" id="2_4ejky"]
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/character_sprite.gd" id="3_ax8wi"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_2q2f4"]
 [ext_resource type="PackedScene" uid="uid://ddgy1aop38jb1" path="res://components/ability_creator/ability_creator.tscn" id="5_bhref"]
@@ -16,7 +17,7 @@
 radius = 18.0
 height = 56.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_criwi"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwx5p"]
 resource_local_to_scene = true
 size = Vector2(69, 63)
 
@@ -25,6 +26,8 @@ collision_mask = 6
 script = ExtResource("1_qp1xa")
 hurt_sound = NodePath("HurtSound")
 attack_sound = NodePath("AttackSound")
+
+[node name="StatusEffectCreator" parent="." unique_id=1460067353 instance=ExtResource("2_4ejky")]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=158065505 node_paths=PackedStringArray("aimable_hurtbox_to_face")]
 position = Vector2(0, 6)
@@ -65,7 +68,7 @@ show_reticle = true
 
 [node name="Shape" parent="AimableAttackHurtbox" index="0" unique_id=648343070]
 position = Vector2(56.5, -1.5)
-shape = SubResource("RectangleShape2D_criwi")
+shape = SubResource("RectangleShape2D_bwx5p")
 
 [node name="Reticle" parent="AimableAttackHurtbox" index="1" unique_id=650314018]
 position = Vector2(57, -1)

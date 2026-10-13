@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c53o42eyibqf1"]
+
+[ext_resource type="Script" uid="uid://uqkhayl6lxd5" path="res://components/status_effects/status_effect/status_effect.gd" id="1_tnygw"]
+
+[node name="StatusEffect" type="Node2D" unique_id=972357761]
+script = ExtResource("1_tnygw")
+
+[node name="TickTimer" type="Timer" parent="." unique_id=1812561946]
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=379094959]
+
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
