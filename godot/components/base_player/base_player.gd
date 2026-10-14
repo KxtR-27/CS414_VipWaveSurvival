@@ -17,6 +17,8 @@ const HEAL_AURA_ABILITY := preload("res://resources/abilities/healing_aura.tres"
 const DAMAGE_AURA_ABILITY := preload("res://resources/abilities/damaging_aura.tres") as AreaAbility
 const DASH_ABILITY := preload ("res://resources/abilities/damaging_dash.tres") as DashAbility
 const PROJECTILE_ABILITY := preload("res://resources/abilities/damaging_projectile.tres") as ProjectileAbility
+const FIREBALL_ABILITY := preload("res://resources/abilities/damaging_fireball.tres") as FireballAbility
+const REGEN_BUFF_ABILITY := preload("res://resources/abilities/healing_regen_buff.tres") as TargetedAbility
 
 @export var sprite_frames: SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
 @export_group("Input")

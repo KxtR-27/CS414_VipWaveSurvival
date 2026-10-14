@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FireballAbility" format=3 uid="uid://c3bij5otq4c3r"]
+
+[ext_resource type="Script" uid="uid://bsklgdiyay1ox" path="res://scripts/ability_templates/fireball_ability.gd" id="1_q45ly"]
+
+[resource]
+script = ExtResource("1_q45ly")
+explosion_damage = 5
+projectile_speed = 1.0
+distance = 250
+ability_name = "Damaging Fireball"
+lifetime = 5.0
+tick_interval = 0.35
+damage = 5
+is_top_level = true
+path_to_vfx = "res://resources/ability_vfxs/fireball_spell/fireball_spell_vfx.tscn"
+metadata/_custom_type_script = "uid://bsklgdiyay1ox"

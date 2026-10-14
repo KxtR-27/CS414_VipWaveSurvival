@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dplkv4fktsfo3"]
+
+[ext_resource type="Script" uid="uid://cuaawpvpk72el" path="res://components/spells/targeted_spell/targeted_spell.gd" id="1_k1f1q"]
+
+[node name="TargetedSpell" type="Node2D" unique_id=821474778]
+z_index = -1
+z_as_relative = false
+script = ExtResource("1_k1f1q")
+
+[node name="TickTimer" type="Timer" parent="." unique_id=137060940]
+wait_time = 0.5
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=1549324633]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

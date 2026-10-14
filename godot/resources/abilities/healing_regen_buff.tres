@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TargetedAbility" format=3 uid="uid://n355ykgamyp7"]
+
+[ext_resource type="Script" uid="uid://5oklse2gd24" path="res://scripts/ability_templates/targeted_ability.gd" id="1_7yoku"]
+
+[resource]
+script = ExtResource("1_7yoku")
+targets_self = true
+ability_name = "Healing Regen"
+lifetime = 4.0
+tick_interval = 15.0
+healing = 5
+path_to_vfx = "res://resources/ability_vfxs/targeted_spell/targeted_spell_vfx.tscn"
+metadata/_custom_type_script = "uid://5oklse2gd24"

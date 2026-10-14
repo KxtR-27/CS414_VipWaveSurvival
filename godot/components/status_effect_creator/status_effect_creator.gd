@@ -1,7 +1,8 @@
 class_name StatusEffectCreator extends Node
 
 const STATUS_EFFECT_LOOKUP: Dictionary[StatusEffect.STATUS_EFFECT_TYPE, PackedScene] = {
-	StatusEffect.STATUS_EFFECT_TYPE.BURN : preload("res://components/status_effects/burn_effect/burn_effect.tscn")
+	StatusEffect.STATUS_EFFECT_TYPE.BURN : preload("res://components/status_effects/burn_effect/burn_effect.tscn"),
+	StatusEffect.STATUS_EFFECT_TYPE.REGEN : preload("res://components/status_effects/regen_effect/regen_effect.tscn")
 }
 
 var current_status_effects: Array[StatusEffect] = []

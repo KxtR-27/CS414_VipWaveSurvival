@@ -1,7 +1,8 @@
 class_name StatusEffect extends Node2D
 
 enum STATUS_EFFECT_TYPE {
-	BURN
+	BURN,
+	REGEN
 }
 
 @export var status_name: String

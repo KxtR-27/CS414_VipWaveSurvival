@@ -22,13 +22,13 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	
 	projectile_travel_time = ability.projectile_speed
 	
-	#get reticle direction and where to dash toward
+	#get reticle direction and where to shoot toward
 	var reticle: CollisionShape2D = caster.hurtbox.get_node("Shape") as CollisionShape2D
 	
 	var direction: Vector2 = (reticle.global_position - caster.global_position).normalized()
 	var landing_target: Vector2 = caster.global_position + (direction * distance)
 	
-	#tween player's position to landing_target
+	#tween projectile's position to landing_target
 	var tween: Tween = projectile.create_tween()
 	tween.tween_property(projectile, "global_position", landing_target, projectile_travel_time)
 	tween.finished.connect(func() -> void:
@@ -43,8 +43,9 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	if not ability.path_to_vfx.is_empty():
 		var new_vfx: VFX = create_vfx(ability.path_to_vfx)
 		if new_vfx:
-			projectile.add_child(new_vfx)
-			new_vfx.play()
+			vfx = new_vfx
+			projectile.add_child(vfx)
+			vfx.play()
 
 
 func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) -> void:

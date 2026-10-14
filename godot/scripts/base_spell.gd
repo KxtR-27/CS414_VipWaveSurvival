@@ -5,7 +5,9 @@ extends Node2D
 enum SPELL_TYPE {
 	DASH,
 	PROJECTILE,
-	AREA
+	AREA,
+	FIREBALL,
+	TARGETED
 }
 
 @abstract
