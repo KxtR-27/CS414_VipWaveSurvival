@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DashAbility" format=3 uid="uid://bau3r1sd8n4lv"]
+
+[ext_resource type="Script" uid="uid://cwakhfkt6df7c" path="res://scripts/ability_templates/dash_ability.gd" id="1_0kwm1"]
+
+[resource]
+script = ExtResource("1_0kwm1")
+dash_time = 0.2
+dash_damage = 15
+dash_healing = 15
+distance = 300
+ability_name = "Swordsman One"
+path_to_vfx = "res://resources/ability_vfxs/dash_spell/dash_spell_vfx.tscn"
+metadata/_custom_type_script = "uid://cwakhfkt6df7c"

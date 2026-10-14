@@ -219,3 +219,10 @@ func _get_aim_direction() -> Vector2:
 			Input.get_joy_axis(device_id, JOY_AXIS_RIGHT_X),
 			Input.get_joy_axis(device_id, JOY_AXIS_RIGHT_Y),
 		)
+
+
+func override_abilities(abilities: Dictionary) -> void:
+	current_selected_abilities = {
+		Ability.ABILITY_1: abilities["ABILITY_1"],
+		Ability.ABILITY_2: abilities["ABILITY_2"],
+	}

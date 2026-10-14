@@ -1,7 +1,7 @@
 class_name CharacterSelectComponent extends Control
 
 signal index_changed
-signal character_selected(sprite_frames_path: String, device_id: int)
+signal character_selected(selected_character: String, sprite_frames_path: String, device_id: int)
 
 @onready var background := $BackgroundBox as AnimatedSprite2D
 @onready var player_character := $PlayerCharacter as AnimatedSprite2D
@@ -60,11 +60,12 @@ func _input(event: InputEvent) -> void:
 		background_frame += 1
 		background.frame = background_frame
 		
-		var sprite_frames_path := "res://resources/%s_spriteframes.tres" % characters[character_index]
-		character_selected.emit(sprite_frames_path, device_id)
+		var selected_character: String = characters[character_index]
+		var sprite_frames_path := "res://resources/%s_spriteframes.tres" % selected_character
+		character_selected.emit(selected_character, sprite_frames_path, device_id)
 
 
-func _on_character_selected(_sprite_frames_path: String, _device_id: int) -> void:
+func _on_character_selected(_selected_character: String, _sprite_frames_path: String, _device_id: int) -> void:
 	character_has_been_selected = true
 	right_arrow.disabled = true
 	left_arrow.disabled = true

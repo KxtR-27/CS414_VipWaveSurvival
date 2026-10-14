@@ -19,6 +19,26 @@ const INDICATOR_COLOR_MAP: Dictionary[int, Color] = {
 	6: Color.PURPLE,
 	7: Color.ORANGE,
 }
+var characters: Dictionary = {
+	0: "swordsman",
+	1: "wizard",
+	2: "knight"
+}
+
+const HERO_ABILITIES: Dictionary[String, Dictionary]  = {
+	"swordsman" : {
+		"ABILITY_1" : preload("res://resources/abilities/swordsman_ability_one.tres"),
+		"ABILITY_2" : preload("res://resources/abilities/swordsman_ability_two.tres"),
+	},
+	"wizard" : {
+		"ABILITY_1" : preload("res://resources/abilities/wizard_ability_one.tres"),
+		"ABILITY_2" : preload("res://resources/abilities/wizard_ability_two.tres"),
+	},
+	"knight" : {
+		"ABILITY_1" : preload("res://resources/abilities/knight_ability_one.tres"),
+		"ABILITY_2" : preload("res://resources/abilities/knight_ability_two.tres"),
+	},
+}
 
 @onready var container := $Control/HBoxContainer as HBoxContainer
 @onready var join_label := $Control/ClickToJoinLabel as Label
@@ -53,7 +73,7 @@ func add_select_component(device_id: int) -> void:
 	active_players.append(device_id)
 
 
-func _on_character_selected(sprite_frames_path: String, device_id: int) -> void:
+func _on_character_selected(selected_character: String, sprite_frames_path: String, device_id: int) -> void:
 	ready_sound.play()
 	var new_player := player_scene.instantiate() as BasePlayer
 	
@@ -62,6 +82,7 @@ func _on_character_selected(sprite_frames_path: String, device_id: int) -> void:
 	new_player.use_kbm = DeviceManager.is_kbm(device_id)
 	new_player.position = container.position + Vector2(device_id + 10, 0)
 	
+	new_player.override_abilities(HERO_ABILITIES[selected_character])
 	player_array.append(new_player)
 
 

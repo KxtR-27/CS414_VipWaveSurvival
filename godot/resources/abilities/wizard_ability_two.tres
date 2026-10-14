@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ProjectileAbility" format=3 uid="uid://dhqtbk6oo7gmi"]
+
+[ext_resource type="Script" uid="uid://b6284iksgfbu3" path="res://scripts/ability_templates/projectile_ability.gd" id="1_rpl04"]
+
+[resource]
+script = ExtResource("1_rpl04")
+projectile_speed = 0.5
+distance = 300
+ability_name = "Wizard Two"
+damage = 35
+path_to_vfx = "res://resources/ability_vfxs/projectile_spell/projectile_spell_vfx.tscn"
+metadata/_custom_type_script = "uid://b6284iksgfbu3"
