@@ -25,6 +25,10 @@ var characters: Dictionary = {
 	2: "knight"
 }
 
+const RANGED_HERO_ABILITIES: Dictionary[String, BaseAbility] = {
+	"wizard" : preload("res://resources/abilities/wizard_ranged_attack.tres")
+}
+
 const HERO_ABILITIES: Dictionary[String, Dictionary]  = {
 	"swordsman" : {
 		"ABILITY_1" : preload("res://resources/abilities/swordsman_ability_one.tres"),
@@ -83,6 +87,10 @@ func _on_character_selected(selected_character: String, sprite_frames_path: Stri
 	new_player.position = container.position + Vector2(device_id + 10, 0)
 	
 	new_player.override_abilities(HERO_ABILITIES[selected_character])
+	if RANGED_HERO_ABILITIES.keys().find(selected_character) != -1:
+		new_player.uses_ranged_attacks = true
+		new_player.ranged_attack_ability = RANGED_HERO_ABILITIES[selected_character]
+	
 	player_array.append(new_player)
 
 

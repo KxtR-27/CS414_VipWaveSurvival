@@ -25,7 +25,9 @@ const REGEN_BUFF_ABILITY := preload("res://resources/abilities/healing_regen_buf
 @export var device_id: int
 @export var use_kbm: bool
 
-var can_move : bool = true
+var can_move: bool = true
+var uses_ranged_attacks: bool = false
+var ranged_attack_ability: BaseAbility
 
 ## this maps ability enums to the desired ability to be run
 var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
@@ -175,10 +177,13 @@ func _on_attack_cooldown_timeout() -> void:
 
 
 func _attack() -> void:
-	for target: BaseCharacter in hurtbox.targets_in_hurtbox:
-		if target.is_in_group("enemies"):
-			var enemy := target as BaseNPC
-			enemy.take_damage(25)
+	if uses_ranged_attacks:
+		ability_used.emit(ranged_attack_ability)
+	else:
+		for target: BaseCharacter in hurtbox.targets_in_hurtbox:
+			if target.is_in_group("enemies"):
+				var enemy := target as BaseNPC
+				enemy.take_damage(25)
 
 
 func _on_health_component_died() -> void:

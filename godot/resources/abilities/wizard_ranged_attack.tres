@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ProjectileAbility" format=3 uid="uid://bxmqjehucn5us"]
+
+[ext_resource type="Script" uid="uid://b6284iksgfbu3" path="res://scripts/ability_templates/projectile_ability.gd" id="1_ys3il"]
+
+[resource]
+script = ExtResource("1_ys3il")
+projectile_speed = 0.5
+distance = 150
+ability_name = "Wizard Attack"
+damage = 15
+path_to_vfx = "res://resources/ability_vfxs/wizard_attack/wizard_attack.tscn"
+metadata/_custom_type_script = "uid://b6284iksgfbu3"
