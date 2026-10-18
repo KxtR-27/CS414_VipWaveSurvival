@@ -52,9 +52,9 @@ func _input(event: InputEvent) -> void:
 	# print("is kbm and I use kbm: ", is_kbm_and_I_use_kbm)
 	# print("is my device: ", is_my_device)
 	
-	if event.is_action_pressed("ui_right"):
+	if event.is_action_pressed("ui_right") && !right_arrow.disabled:
 		_on_right_arrow_pressed()
-	if event.is_action_pressed("ui_left"):
+	if event.is_action_pressed("ui_left") && !left_arrow.disabled:
 		_on_left_arrow_pressed()
 	if event.is_action_pressed("ui_select"):
 		background_frame += 1
