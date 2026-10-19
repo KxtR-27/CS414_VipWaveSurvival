@@ -11,6 +11,7 @@ enum Ability {
 }
 
 signal ability_used(ability: BaseAbility)
+signal cooldown_started(ability: BaseAbility)
 
 ## preload abilities to use in current_selected_abilities
 const HEAL_AURA_ABILITY := preload("res://resources/abilities/healing_aura.tres") as AreaAbility
@@ -28,6 +29,7 @@ const REGEN_BUFF_ABILITY := preload("res://resources/abilities/healing_regen_buf
 var can_move: bool = true
 var uses_ranged_attacks: bool = false
 var ranged_attack_ability: BaseAbility
+var hero_name: String
 
 ## this maps ability enums to the desired ability to be run
 var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
@@ -162,6 +164,10 @@ func _get_vips() -> Array[BaseVIP]:
 func _trigger_cooldown(ability: Ability) -> void:
 	ability_on_cooldown[ability] = true
 	ability_timers[ability].start()
+	
+	if ability != Ability.ATTACK:
+		var ability_being_used: BaseAbility = current_selected_abilities[ability]
+		cooldown_started.emit(ability_being_used)
 
 
 func _on_ability_1_cooldown_timeout() -> void:

@@ -84,6 +84,7 @@ func _on_character_selected(selected_character: String, sprite_frames_path: Stri
 	new_player.device_id = device_id
 	new_player.use_kbm = DeviceManager.is_kbm(device_id)
 	new_player.position = container.position + Vector2(device_id + 10, 0)
+	new_player.hero_name = selected_character
 	
 	new_player.override_abilities(HERO_ABILITIES[selected_character])
 	if RANGED_HERO_ABILITIES.keys().find(selected_character) != -1:
@@ -99,15 +100,23 @@ func _on_player_connected(device_id: int) -> void:
 
 
 func _on_button_pressed() -> void:
-	get_tree().root.add_child(main_scene.instantiate())
+	var main_scene_node: Node = main_scene.instantiate()
+	get_tree().root.add_child(main_scene_node)
 	for player_number in player_array.size():
 		var player_hero: BasePlayer = player_array[player_number]
 		
 		player_hero.name = "BasePlayer%d" % player_number
 		get_tree().root.get_node("Main").add_child(player_hero)
 		
-		#set player indicator up
+		#set player indicator and hud up
 		set_up_indicator(player_hero, player_number)
+		var player_panel: HudPlayerPanel = main_scene_node.get_node("HUD").get_node("HudPlayerPanel")
+		player_panel.connect_to_player(
+			player_hero, 
+			player_hero.hero_name, 
+			player_number, 
+			INDICATOR_COLOR_MAP[player_number]
+		)
 	
 	await begin_button_sound.finished
 	get_tree().root.get_node("CharacterSelectScreen").queue_free()
@@ -122,4 +131,4 @@ func set_up_indicator(base_player: BasePlayer, player_index: int) -> void:
 	indicator_label.modulate = INDICATOR_COLOR_MAP[player_index]
 	indicator_texture.modulate = INDICATOR_COLOR_MAP[player_index]
 	
-	indicator_label.text = "P" + str(player_index + 1)
+	indicator_label.text = "P" + str(player_index)
