@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://clp20i7hmc1rx" path="res://components/character_select_screen/character_select_screen.gd" id="1_qboi0"]
 [ext_resource type="TileSet" uid="uid://x1d1rnuuvue3" path="res://resources/mystic_woods_placeholder_tileset.tres" id="2_ms3bd"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_1w020"]
+[ext_resource type="PackedScene" uid="uid://ca2iv4p0fwma8" path="res://components/character_select_component/character_select_component.tscn" id="4_7oehd"]
 [ext_resource type="Theme" uid="uid://bekqrbmlv3skf" path="res://resources/button_theme.tres" id="4_b2fep"]
 [ext_resource type="AudioStream" uid="uid://dgmoqvi7mgn4i" path="res://assets/sfx/button_click.wav" id="5_b2fep"]
 [ext_resource type="Script" uid="uid://drygasm6iy8b6" path="res://components/device_listener/device_listener.gd" id="5_ms3bd"]
@@ -43,9 +44,9 @@ offset_bottom = 40.0
 
 [node name="TitleLabel" type="Label" parent="Control" unique_id=1867049573]
 layout_mode = 0
-offset_left = 357.0
+offset_left = 356.0
 offset_top = 161.0
-offset_right = 797.0
+offset_right = 796.0
 offset_bottom = 216.0
 text = "CHARACTER SELECT"
 label_settings = SubResource("LabelSettings_n3d2o")
@@ -54,18 +55,34 @@ horizontal_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=304614211]
 custom_minimum_size = Vector2(256, 32)
 layout_mode = 0
-offset_left = 192.0
+offset_left = 175.0
 offset_top = 316.0
-offset_right = 448.0
+offset_right = 443.0
 offset_bottom = 348.0
 scale = Vector2(3, 3)
 alignment = 1
 
+[node name="CharacterSelectComponent1" parent="Control/HBoxContainer" unique_id=389505716 instance=ExtResource("4_7oehd")]
+layout_mode = 2
+player_number = 1
+
+[node name="CharacterSelectComponent2" parent="Control/HBoxContainer" unique_id=1838055775 instance=ExtResource("4_7oehd")]
+layout_mode = 2
+player_number = 2
+
+[node name="CharacterSelectComponent3" parent="Control/HBoxContainer" unique_id=1325797004 instance=ExtResource("4_7oehd")]
+layout_mode = 2
+player_number = 3
+
+[node name="CharacterSelectComponent4" parent="Control/HBoxContainer" unique_id=264376528 instance=ExtResource("4_7oehd")]
+layout_mode = 2
+player_number = 4
+
 [node name="Button" type="Button" parent="Control" unique_id=264906994]
 layout_mode = 0
-offset_left = 523.0
+offset_left = 522.0
 offset_top = 464.0
-offset_right = 633.0
+offset_right = 632.0
 offset_bottom = 507.0
 theme = ExtResource("4_b2fep")
 shortcut = SubResource("Shortcut_mn8d4")
@@ -77,6 +94,7 @@ volume_db = -12.0
 script = ExtResource("6_j3akc")
 
 [node name="ClickToJoinLabel" type="Label" parent="Control" unique_id=1456421335]
+visible = false
 layout_mode = 0
 offset_left = 443.0
 offset_top = 331.0
@@ -97,4 +115,12 @@ volume_db = -12.0
 stream = ExtResource("9_7oehd")
 volume_db = -12.0
 
+[connection signal="player_joined" from="." to="Control/HBoxContainer/CharacterSelectComponent1" method="_on_player_joined"]
+[connection signal="player_joined" from="." to="Control/HBoxContainer/CharacterSelectComponent2" method="_on_player_joined"]
+[connection signal="player_joined" from="." to="Control/HBoxContainer/CharacterSelectComponent3" method="_on_player_joined"]
+[connection signal="player_joined" from="." to="Control/HBoxContainer/CharacterSelectComponent4" method="_on_player_joined"]
+[connection signal="character_selected" from="Control/HBoxContainer/CharacterSelectComponent1" to="." method="_on_character_selected"]
+[connection signal="character_selected" from="Control/HBoxContainer/CharacterSelectComponent2" to="." method="_on_character_selected"]
+[connection signal="character_selected" from="Control/HBoxContainer/CharacterSelectComponent3" to="." method="_on_character_selected"]
+[connection signal="character_selected" from="Control/HBoxContainer/CharacterSelectComponent4" to="." method="_on_character_selected"]
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

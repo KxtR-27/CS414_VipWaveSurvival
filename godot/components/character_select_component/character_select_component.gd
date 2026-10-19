@@ -7,7 +7,12 @@ signal character_selected(selected_character: String, sprite_frames_path: String
 @onready var player_character := $PlayerCharacter as AnimatedSprite2D
 @onready var right_arrow := $RightArrow as TextureButton
 @onready var left_arrow := $LeftArrow as TextureButton
+@onready var kbm_icon := $KBMIcon as TextureRect
+@onready var controller_icon := $ControllerIcon as TextureRect
+@onready var player_num_label := $PlayerNumberLabel as Label
+@onready var shade := $Shade as TextureRect
 
+@export var player_number: int
 @export_group("Device Configuration")
 @export var device_id: int = -2
 
@@ -28,12 +33,24 @@ var characters: Dictionary = {
 
 var character_has_been_selected: bool = false
 
+func _ready() -> void:
+	player_num_label.text = "P" + str(player_number)
+	
+	right_arrow.visible = false
+	left_arrow.visible = false
+	kbm_icon.visible = false
+	controller_icon.visible = false
+	shade.visible = true
+
+
 func _on_index_changed() -> void:
 	player_character.frame = character_index
+
 
 func _on_right_arrow_pressed() -> void:
 	character_index += 1
 	index_changed.emit()
+
 
 func _on_left_arrow_pressed() -> void:
 	character_index -= 1
@@ -52,9 +69,16 @@ func _input(event: InputEvent) -> void:
 	# print("is kbm and I use kbm: ", is_kbm_and_I_use_kbm)
 	# print("is my device: ", is_my_device)
 	
-	if event.is_action_pressed("ui_right") && !right_arrow.disabled:
+	if is_kbm_and_I_use_kbm:
+		kbm_icon.visible = true
+		controller_icon.visible = false
+	else:
+		kbm_icon.visible = false
+		controller_icon.visible = true
+	
+	if event.is_action_pressed("ui_right") and !right_arrow.disabled:
 		_on_right_arrow_pressed()
-	if event.is_action_pressed("ui_left") && !left_arrow.disabled:
+	if event.is_action_pressed("ui_left") and !left_arrow.disabled:
 		_on_left_arrow_pressed()
 	if event.is_action_pressed("ui_select"):
 		background_frame += 1
@@ -69,3 +93,12 @@ func _on_character_selected(_selected_character: String, _sprite_frames_path: St
 	character_has_been_selected = true
 	right_arrow.disabled = true
 	left_arrow.disabled = true
+
+
+func _on_player_joined(player_num: int) -> void:
+	player_number = player_num
+	
+	if self.name == ("CharacterSelectComponent%d" % player_number):
+		shade.visible = false
+		right_arrow.visible = true
+		left_arrow.visible = true

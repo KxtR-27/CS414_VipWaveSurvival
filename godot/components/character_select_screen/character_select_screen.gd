@@ -1,5 +1,7 @@
 class_name CharacterSelectScreen extends Node2D
 
+signal player_joined(player_num: int)
+
 static var main_scene :=  preload("res://main_game.tscn")
 static var player_scene := preload("res://components/base_player/base_player.tscn")
 static var character_select_component := preload("res://components/character_select_component/character_select_component.tscn")
@@ -63,18 +65,15 @@ func _process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("join") and event.device not in connected_player_array:
+	if event.is_action_pressed("join") and event.device not in connected_player_array and connected_player_array.size() <= 4:
 		connected_player_array.append(event.device)
 		_on_player_connected(event.device)
 		join_sound.play()
 
 
-func add_select_component(device_id: int) -> void:
-	var new_char_select_component: CharacterSelectComponent = character_select_component.instantiate()
-	new_char_select_component.character_selected.connect(_on_character_selected, CONNECT_ONE_SHOT)
+func enable_select_component(device_id: int) -> void:
+	var new_char_select_component := container.get_child(connected_player_array.size() - 1) as CharacterSelectComponent
 	new_char_select_component.device_id = 16 if DeviceManager.is_kbm(device_id) else device_id
-
-	container.add_child(new_char_select_component)
 
 
 func _on_character_selected(selected_character: String, sprite_frames_path: String, device_id: int) -> void:
@@ -95,8 +94,8 @@ func _on_character_selected(selected_character: String, sprite_frames_path: Stri
 
 
 func _on_player_connected(device_id: int) -> void:
-	join_label.hide()
-	add_select_component(device_id)
+	enable_select_component(device_id)
+	player_joined.emit(connected_player_array.size())
 
 
 func _on_button_pressed() -> void:
