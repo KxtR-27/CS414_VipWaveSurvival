@@ -4,7 +4,6 @@ static var main_scene :=  preload("res://main_game.tscn")
 static var player_scene := preload("res://components/base_player/base_player.tscn")
 static var character_select_component := preload("res://components/character_select_component/character_select_component.tscn")
 
-var active_players: Array[int] = []
 var player_array: Array[BasePlayer] = []
 
 var connected_player_array: Array[int] = []
@@ -57,8 +56,10 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if active_players.size() >= 1 and active_players.size() == player_array.size():
+	if connected_player_array.size() >= 1 and connected_player_array.size() == player_array.size():
 		begin_button.disabled = false
+	elif connected_player_array.size() > player_array.size():
+		begin_button.disabled = true
 
 
 func _input(event: InputEvent) -> void:
@@ -74,7 +75,6 @@ func add_select_component(device_id: int) -> void:
 	new_char_select_component.device_id = 16 if DeviceManager.is_kbm(device_id) else device_id
 
 	container.add_child(new_char_select_component)
-	active_players.append(device_id)
 
 
 func _on_character_selected(selected_character: String, sprite_frames_path: String, device_id: int) -> void:
