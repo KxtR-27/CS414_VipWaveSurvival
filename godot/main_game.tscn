@@ -133,20 +133,38 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HudPlayerPanel" parent="HUD" unique_id=495433092 instance=ExtResource("11_aomqu")]
+[node name="PlayerPanels" type="Control" parent="HUD" unique_id=635182075]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" parent="HUD/PlayerPanels" unique_id=495433092 instance=ExtResource("11_aomqu")]
+visible = false
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 100.0
 
-[node name="GridContainer" type="GridContainer" parent="HUD" unique_id=2112688661]
+[node name="2" parent="HUD/PlayerPanels" unique_id=1123841511 instance=ExtResource("11_aomqu")]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 2
+layout_mode = 0
+offset_left = 952.0
+offset_right = 1152.0
+offset_bottom = 100.0
+
+[node name="3" parent="HUD/PlayerPanels" unique_id=1127125498 instance=ExtResource("11_aomqu")]
+visible = false
+layout_mode = 0
+offset_top = 516.0
+offset_right = 200.0
+offset_bottom = 616.0
+
+[node name="4" parent="HUD/PlayerPanels" unique_id=1993695634 instance=ExtResource("11_aomqu")]
+visible = false
+layout_mode = 0
+offset_left = 952.0
+offset_top = 516.0
+offset_right = 1152.0
+offset_bottom = 616.0
 
 [connection signal="debuff_awarder_active" from="DebuffAwarder" to="." method="_on_debuff_awarder_debuff_awarder_active"]
 [connection signal="debuff_awarder_finished" from="DebuffAwarder" to="." method="_on_debuff_awarder_debuff_awarder_finished"]

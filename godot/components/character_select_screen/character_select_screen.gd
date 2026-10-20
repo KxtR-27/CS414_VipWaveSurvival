@@ -102,7 +102,7 @@ func _on_player_connected(device_id: int) -> void:
 func _on_button_pressed() -> void:
 	var main_scene_node: Node = main_scene.instantiate()
 	get_tree().root.add_child(main_scene_node)
-	for player_number in player_array.size():
+	for player_number: int in range(player_array.size()):
 		var player_hero: BasePlayer = player_array[player_number]
 		
 		player_hero.name = "BasePlayer%d" % player_number
@@ -110,13 +110,18 @@ func _on_button_pressed() -> void:
 		
 		#set player indicator and hud up
 		set_up_indicator(player_hero, player_number)
-		var player_panel: HudPlayerPanel = main_scene_node.get_node("HUD").get_node("HudPlayerPanel")
-		player_panel.connect_to_player(
-			player_hero, 
-			player_hero.hero_name, 
-			player_number, 
-			INDICATOR_COLOR_MAP[player_number]
-		)
+		
+		var hud: Control = main_scene_node.get_node("HUD")
+		var panels: Control = hud.get_node("PlayerPanels")
+		for panel: HudPlayerPanel in panels.get_children():
+			if panel.name == str(player_number + 1):
+				panel.connect_to_player(
+					player_hero, 
+					player_hero.hero_name, 
+					player_number, 
+					INDICATOR_COLOR_MAP[player_number]
+				)
+				break
 	
 	await begin_button_sound.finished
 	get_tree().root.get_node("CharacterSelectScreen").queue_free()
@@ -131,4 +136,4 @@ func set_up_indicator(base_player: BasePlayer, player_index: int) -> void:
 	indicator_label.modulate = INDICATOR_COLOR_MAP[player_index]
 	indicator_texture.modulate = INDICATOR_COLOR_MAP[player_index]
 	
-	indicator_label.text = "P" + str(player_index)
+	indicator_label.text = "P" + str(player_index + 1)

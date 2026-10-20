@@ -47,6 +47,7 @@ func _physics_process(_delta: float) -> void:
 
 func connect_to_player(player: BasePlayer, hero_name: String, player_number: int, color: Color) -> void:
 	currently_tracking = true
+	visible = true
 	
 	#set ability names
 	var first_ability : BaseAbility = player.current_selected_abilities[BasePlayer.Ability.ABILITY_1]
@@ -77,8 +78,9 @@ func connect_to_player(player: BasePlayer, hero_name: String, player_number: int
 			player_icon.get_node("wizard").visible = true
 	
 	#set color and text for indicator label
+	$BackgroundPanel.modulate = color
 	player_indicator.modulate = color
-	player_indicator.text = "P" + str(player_number)
+	player_indicator.text = "P" + str(player_number + 1)
 
 
 func trigger_cooldown(index: int, cooldown: float) -> void:
