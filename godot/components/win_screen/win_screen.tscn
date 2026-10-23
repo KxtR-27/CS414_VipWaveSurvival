@@ -27,6 +27,7 @@ grow_vertical = 2
 texture = ExtResource("2_pb52k")
 
 [node name="PlayAgainButton" type="Button" parent="Control" unique_id=1519781849]
+process_mode = 3
 z_index = 2
 layout_mode = 0
 offset_left = 436.0

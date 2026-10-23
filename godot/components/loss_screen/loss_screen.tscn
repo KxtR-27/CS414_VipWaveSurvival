@@ -27,6 +27,7 @@ grow_vertical = 2
 texture = ExtResource("2_cryw4")
 
 [node name="PlayAgainButton" type="Button" parent="Control" unique_id=1098937550]
+process_mode = 3
 layout_mode = 0
 offset_left = 436.0
 offset_top = 525.0
