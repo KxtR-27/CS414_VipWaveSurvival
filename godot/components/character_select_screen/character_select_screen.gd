@@ -45,6 +45,24 @@ const HERO_ABILITIES: Dictionary[String, Dictionary]  = {
 	},
 }
 
+const HERO_STATS: Dictionary[String, Dictionary] = {
+	"swordsman" : {
+		"damage" : 25.0,
+		"max_health" : 100.0,
+		"speed" : 5000.0,
+	}, 
+	"wizard" : {
+		"damage" : 20.0,
+		"max_health" : 75.0,
+		"speed" : 4000.0,
+	},
+	"knight" : {
+		"damage" : 15.0,
+		"max_health" : 125.0,
+		"speed" : 3000.0,
+	}
+}
+
 @onready var container := $CanvasLayer/Control/HBoxContainer as HBoxContainer
 @onready var join_label := $CanvasLayer/Control/ClickToJoinLabel as Label
 @onready var begin_button := $CanvasLayer/Control/Button as Button
