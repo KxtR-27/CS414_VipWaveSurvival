@@ -65,36 +65,36 @@ func connect_to_player(player: BasePlayer, hero_name: String, player_number: int
 	)
 	
 	player.health_changed.connect(func(_amount: float, _negative: bool) -> void: 
-		health_bar.value = player.get_node("HealthComponent").current_health
+		health_bar.value = (player.get_node("HealthComponent") as HealthComponent).current_health
 	)
 	
 	#set player icon
 	match hero_name:
 		"swordsman": 
-			player_icon.get_node("swordsman").visible = true
+			(player_icon.get_node("swordsman") as TextureRect).visible = true
 		"knight": 
-			player_icon.get_node("knight").visible = true
+			(player_icon.get_node("knight") as TextureRect).visible = true
 		"wizard": 
-			player_icon.get_node("wizard").visible = true
+			(player_icon.get_node("wizard") as TextureRect).visible = true
 	
 	#set color and text for indicator label
-	$BackgroundPanel.modulate = color
+	($BackgroundPanel as Panel).modulate = color
 	player_indicator.modulate = color
 	player_indicator.text = "P" + str(player_number + 1)
 
 
 func trigger_cooldown(index: int, cooldown: float) -> void:
 	ability_cooldown_timers[index].start(cooldown)
-	ability_icons[index].get_node("CooldownProgress").visible = true
+	(ability_icons[index].get_node("CooldownProgress") as ProgressBar).visible = true
 	ability_on_cooldown[index] = true
 
 
 
 func _on_ability_1_cooldown_timeout() -> void:
-	ability_icons[Ability.ABILITY_1].get_node("CooldownProgress").visible = false
+	(ability_icons[Ability.ABILITY_1].get_node("CooldownProgress") as ProgressBar).visible = false
 	ability_on_cooldown[Ability.ABILITY_1] = false
 
 
 func _on_ability_2_cooldown_timeout() -> void:
-	ability_icons[Ability.ABILITY_2].get_node("CooldownProgress").visible = false
+	(ability_icons[Ability.ABILITY_2].get_node("CooldownProgress") as ProgressBar).visible = false
 	ability_on_cooldown[Ability.ABILITY_2] = false

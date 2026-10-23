@@ -12,15 +12,17 @@ var projectile_travel_time: float
 var distance: float
 
 func run(ability: BaseAbility, caster: BasePlayer) -> void:
+	var projectile_ability := ability as ProjectileAbility
+	
 	#remember who cast this spell
 	spell_caster = caster
 	
 	#set ability values
-	distance = ability.distance
-	projectile_damage = ability.damage
-	projectile_healing = ability.healing
+	distance = projectile_ability.distance
+	projectile_damage = projectile_ability.damage
+	projectile_healing = projectile_ability.healing
 	
-	projectile_travel_time = ability.projectile_speed
+	projectile_travel_time = projectile_ability.projectile_speed
 	
 	#get reticle direction and where to shoot toward
 	var reticle: CollisionShape2D = caster.hurtbox.get_node("Shape") as CollisionShape2D

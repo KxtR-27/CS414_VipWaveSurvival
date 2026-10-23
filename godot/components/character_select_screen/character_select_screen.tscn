@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dgmoqvi7mgn4i" path="res://assets/sfx/button_click.wav" id="5_b2fep"]
 [ext_resource type="Script" uid="uid://drygasm6iy8b6" path="res://components/device_listener/device_listener.gd" id="5_ms3bd"]
 [ext_resource type="Script" uid="uid://hc07qt5qd2n2" path="res://scripts/button_sound.gd" id="6_j3akc"]
+[ext_resource type="PackedScene" uid="uid://c007jw67bbb4s" path="res://components/control_hint_lists/control_hint_list_charsel.tscn" id="8_jyknn"]
 [ext_resource type="AudioStream" uid="uid://bqi30sh6xqfsg" path="res://assets/sfx/player_join.wav" id="8_wbnps"]
 [ext_resource type="AudioStream" uid="uid://cxq7wat0csjoe" path="res://assets/sfx/ready_up.wav" id="9_7oehd"]
 
@@ -36,13 +37,20 @@ tile_map_data = PackedByteArray("AADw//X/AAAAAAAAAADr//D/AAAAAAAAAADr//H/AAAAAAA
 tile_set = ExtResource("2_ms3bd")
 metadata/_edit_lock_ = true
 
-[node name="Control" type="Control" parent="." unique_id=2117571629]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1428244246]
 
-[node name="TitleLabel" type="Label" parent="Control" unique_id=1867049573]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=2117571629]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlHintList" parent="CanvasLayer/Control" unique_id=1754549092 instance=ExtResource("8_jyknn")]
+layout_mode = 1
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/Control" unique_id=1867049573]
 layout_mode = 0
 offset_left = 356.0
 offset_top = 161.0
@@ -52,7 +60,7 @@ text = "CHARACTER SELECT"
 label_settings = SubResource("LabelSettings_n3d2o")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=304614211]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=304614211]
 custom_minimum_size = Vector2(256, 32)
 layout_mode = 0
 offset_left = 175.0
@@ -62,23 +70,23 @@ offset_bottom = 348.0
 scale = Vector2(3, 3)
 alignment = 1
 
-[node name="CharacterSelectComponent1" parent="Control/HBoxContainer" unique_id=389505716 instance=ExtResource("4_7oehd")]
+[node name="CharacterSelectComponent1" parent="CanvasLayer/Control/HBoxContainer" unique_id=389505716 instance=ExtResource("4_7oehd")]
 layout_mode = 2
 player_number = 1
 
-[node name="CharacterSelectComponent2" parent="Control/HBoxContainer" unique_id=1838055775 instance=ExtResource("4_7oehd")]
+[node name="CharacterSelectComponent2" parent="CanvasLayer/Control/HBoxContainer" unique_id=1838055775 instance=ExtResource("4_7oehd")]
 layout_mode = 2
 player_number = 2
 
-[node name="CharacterSelectComponent3" parent="Control/HBoxContainer" unique_id=1325797004 instance=ExtResource("4_7oehd")]
+[node name="CharacterSelectComponent3" parent="CanvasLayer/Control/HBoxContainer" unique_id=1325797004 instance=ExtResource("4_7oehd")]
 layout_mode = 2
 player_number = 3
 
-[node name="CharacterSelectComponent4" parent="Control/HBoxContainer" unique_id=264376528 instance=ExtResource("4_7oehd")]
+[node name="CharacterSelectComponent4" parent="CanvasLayer/Control/HBoxContainer" unique_id=264376528 instance=ExtResource("4_7oehd")]
 layout_mode = 2
 player_number = 4
 
-[node name="Button" type="Button" parent="Control" unique_id=264906994]
+[node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=264906994]
 layout_mode = 0
 offset_left = 522.0
 offset_top = 464.0
@@ -88,12 +96,12 @@ theme = ExtResource("4_b2fep")
 shortcut = SubResource("Shortcut_mn8d4")
 text = "BEGIN"
 
-[node name="ButtonSound" type="AudioStreamPlayer" parent="Control/Button" unique_id=278295154]
+[node name="ButtonSound" type="AudioStreamPlayer" parent="CanvasLayer/Control/Button" unique_id=278295154]
 stream = ExtResource("5_b2fep")
 volume_db = -12.0
 script = ExtResource("6_j3akc")
 
-[node name="ClickToJoinLabel" type="Label" parent="Control" unique_id=1456421335]
+[node name="ClickToJoinLabel" type="Label" parent="CanvasLayer/Control" unique_id=1456421335]
 visible = false
 layout_mode = 0
 offset_left = 443.0
@@ -115,12 +123,12 @@ volume_db = -12.0
 stream = ExtResource("9_7oehd")
 volume_db = -12.0
 
-[connection signal="player_joined" from="." to="Control/HBoxContainer/CharacterSelectComponent1" method="_on_player_joined"]
-[connection signal="player_joined" from="." to="Control/HBoxContainer/CharacterSelectComponent2" method="_on_player_joined"]
-[connection signal="player_joined" from="." to="Control/HBoxContainer/CharacterSelectComponent3" method="_on_player_joined"]
-[connection signal="player_joined" from="." to="Control/HBoxContainer/CharacterSelectComponent4" method="_on_player_joined"]
-[connection signal="character_selected" from="Control/HBoxContainer/CharacterSelectComponent1" to="." method="_on_character_selected" flags=6]
-[connection signal="character_selected" from="Control/HBoxContainer/CharacterSelectComponent2" to="." method="_on_character_selected" flags=6]
-[connection signal="character_selected" from="Control/HBoxContainer/CharacterSelectComponent3" to="." method="_on_character_selected" flags=6]
-[connection signal="character_selected" from="Control/HBoxContainer/CharacterSelectComponent4" to="." method="_on_character_selected" flags=6]
-[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="player_joined" from="." to="CanvasLayer/Control/HBoxContainer/CharacterSelectComponent1" method="_on_player_joined"]
+[connection signal="player_joined" from="." to="CanvasLayer/Control/HBoxContainer/CharacterSelectComponent2" method="_on_player_joined"]
+[connection signal="player_joined" from="." to="CanvasLayer/Control/HBoxContainer/CharacterSelectComponent3" method="_on_player_joined"]
+[connection signal="player_joined" from="." to="CanvasLayer/Control/HBoxContainer/CharacterSelectComponent4" method="_on_player_joined"]
+[connection signal="character_selected" from="CanvasLayer/Control/HBoxContainer/CharacterSelectComponent1" to="." method="_on_character_selected" flags=6]
+[connection signal="character_selected" from="CanvasLayer/Control/HBoxContainer/CharacterSelectComponent2" to="." method="_on_character_selected" flags=6]
+[connection signal="character_selected" from="CanvasLayer/Control/HBoxContainer/CharacterSelectComponent3" to="." method="_on_character_selected" flags=6]
+[connection signal="character_selected" from="CanvasLayer/Control/HBoxContainer/CharacterSelectComponent4" to="." method="_on_character_selected" flags=6]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]

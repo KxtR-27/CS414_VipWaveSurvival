@@ -18,17 +18,19 @@ var duration: float
 var distance: float
 
 func run(ability: BaseAbility, caster: BasePlayer) -> void:
+	var dash_ability := ability as DashAbility
+	
 	#remember who cast this spell
 	spell_caster = caster
 	
 	#set ability values
-	distance = ability.distance
+	distance = dash_ability.distance
 	
-	dash_damage = ability.dash_damage
-	dash_healing = ability.dash_healing
-	landing_damage = ability.landing_damage
-	landing_healing = ability.landing_healing
-	duration = ability.dash_time
+	dash_damage = dash_ability.dash_damage
+	dash_healing = dash_ability.dash_healing
+	landing_damage = dash_ability.landing_damage
+	landing_healing = dash_ability.landing_healing
+	duration = dash_ability.dash_time
 	
 	dash_hits.append(caster)
 	landing_hits.append(caster)

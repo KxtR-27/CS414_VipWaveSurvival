@@ -21,16 +21,18 @@ var tick_interval: float
 var remote_transform2d: RemoteTransform2D
 
 func run(ability: BaseAbility, caster: BasePlayer) -> void:
+	var area_ability := ability as AreaAbility
+	
 	#remember who cast this spell
 	spell_caster = caster
 	
 	#set damage and healing numbers, lifetime, and tick interval
-	damage = ability.damage
-	healing = ability.healing
-	tick_damage = ability.tick_damage
-	tick_healing = ability.tick_healing
-	lifetime_timer.wait_time = ability.lifetime
-	tick_timer.wait_time = ability.tick_interval
+	damage = area_ability.damage
+	healing = area_ability.healing
+	tick_damage = area_ability.tick_damage
+	tick_healing = area_ability.tick_healing
+	lifetime_timer.wait_time = area_ability.lifetime
+	tick_timer.wait_time = area_ability.tick_interval
 	
 	#if top-level is enabled, place spell on caster's reticle
 	if ability.is_top_level and caster is BasePlayer:

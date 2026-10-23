@@ -19,19 +19,21 @@ var targets_enemies: bool
 var current_targets: Array[BaseCharacter] = []
 
 func run(ability: BaseAbility, caster: BasePlayer) -> void:
+	var targeted_ability := ability as TargetedAbility
+	
 	#remember who cast this spell
 	spell_caster = caster
 	
 	#set damage and healing numbers, lifetime, and tick interval
-	damage = ability.damage
-	healing = ability.healing
-	tick_damage = ability.tick_damage
-	tick_healing = ability.tick_healing
+	damage = targeted_ability.damage
+	healing = targeted_ability.healing
+	tick_damage = targeted_ability.tick_damage
+	tick_healing = targeted_ability.tick_healing
 	
-	targets_self = ability.targets_self
-	targets_allies = ability.targets_allies
-	targets_vip = ability.targets_vip
-	targets_enemies = ability.targets_enemies
+	targets_self = targeted_ability.targets_self
+	targets_allies = targeted_ability.targets_allies
+	targets_vip = targeted_ability.targets_vip
+	targets_enemies = targeted_ability.targets_enemies
 	
 	
 	if not ability.path_to_vfx.is_empty():
@@ -69,7 +71,8 @@ func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) ->
 		target.health_changed.emit(enemy_damage, true)
 	elif (target.is_in_group("players") or target.is_in_group("vip")) and ally_healing > 0.0:
 		target.health_changed.emit(ally_healing, false)
-		target.get_node("StatusEffectCreator").apply_effect(StatusEffect.STATUS_EFFECT_TYPE.REGEN, 8)
+		(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+			.apply_effect(StatusEffect.STATUS_EFFECT_TYPE.REGEN, 8)
 
 
 func create_vfx(path_to_vfx: String) -> VFX:
