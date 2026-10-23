@@ -45,10 +45,10 @@ const HERO_ABILITIES: Dictionary[String, Dictionary]  = {
 	},
 }
 
-@onready var container := $Control/HBoxContainer as HBoxContainer
-@onready var join_label := $Control/ClickToJoinLabel as Label
-@onready var begin_button := $Control/Button as Button
-@onready var begin_button_sound := $Control/Button/ButtonSound as AudioStreamPlayer
+@onready var container := $CanvasLayer/Control/HBoxContainer as HBoxContainer
+@onready var join_label := $CanvasLayer/Control/ClickToJoinLabel as Label
+@onready var begin_button := $CanvasLayer/Control/Button as Button
+@onready var begin_button_sound := $CanvasLayer/Control/Button/ButtonSound as AudioStreamPlayer
 @onready var join_sound := $JoinSound as AudioStreamPlayer
 @onready var ready_sound := $ReadySound as AudioStreamPlayer
 
