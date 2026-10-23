@@ -3,14 +3,14 @@ class_name CharacterSelectComponent extends Control
 signal index_changed
 signal character_selected(selected_character: String, sprite_frames_path: String, device_id: int)
 
-@onready var background := $BackgroundBox as AnimatedSprite2D
-@onready var player_character := $PlayerCharacter as AnimatedSprite2D
-@onready var right_arrow := $RightArrow as TextureButton
-@onready var left_arrow := $LeftArrow as TextureButton
-@onready var kbm_icon := $KBMIcon as TextureRect
-@onready var controller_icon := $ControllerIcon as TextureRect
 @onready var player_num_label := $PlayerNumberLabel as Label
-@onready var shade := $Shade as TextureRect
+@onready var right_arrow := $Controls/RightArrow as TextureButton
+@onready var left_arrow := $Controls/LeftArrow as TextureButton
+@onready var background := $Controls/Character/BackgroundBox as AnimatedSprite2D
+@onready var player_character := $Controls/Character/PlayerCharacter as AnimatedSprite2D
+@onready var shade := $Controls/Character/Shade as TextureRect
+@onready var controller_icon := $InputIcons/ControllerIcon as TextureRect
+@onready var kbm_icon := $InputIcons/KBMIcon as TextureRect
 
 @export var player_number: int
 @export_group("Device Configuration")
