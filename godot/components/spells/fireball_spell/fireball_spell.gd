@@ -33,22 +33,24 @@ func spawn_explosion() -> void:
 
 
 func run(ability: BaseAbility, caster: BasePlayer) -> void:
+	var fireball_ability := ability as FireballAbility
+	
 	#remember who cast this spell
 	spell_caster = caster
 	
 	#set ability values
-	distance = ability.distance
-	explosion_damage = ability.explosion_damage
-	explosion_healing = ability.explosion_healing
-	projectile_damage = ability.damage
-	projectile_healing = ability.healing
-	tick_damage = ability.tick_damage
-	tick_healing = ability.tick_healing
-	lifetime_timer.wait_time = ability.lifetime
-	tick_timer.wait_time = ability.tick_interval
+	distance = fireball_ability.distance
+	explosion_damage = fireball_ability.explosion_damage
+	explosion_healing = fireball_ability.explosion_healing
+	projectile_damage = fireball_ability.damage
+	projectile_healing = fireball_ability.healing
+	tick_damage = fireball_ability.tick_damage
+	tick_healing = fireball_ability.tick_healing
+	lifetime_timer.wait_time = fireball_ability.lifetime
+	tick_timer.wait_time = fireball_ability.tick_interval
 	
 	
-	projectile_travel_time = ability.projectile_speed
+	projectile_travel_time = fireball_ability.projectile_speed
 	
 	#get reticle direction and where to shoot projectile toward
 	var reticle: CollisionShape2D = caster.hurtbox.get_node("Shape") as CollisionShape2D
@@ -102,7 +104,8 @@ func on_tick() -> void:
 	for target: BaseCharacter in units_in_area:
 		resolve_hit(target, tick_damage, tick_healing)
 		if target.is_in_group("enemies"):
-			target.get_node("StatusEffectCreator").apply_effect(StatusEffect.STATUS_EFFECT_TYPE.BURN, 1)
+			(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+				.apply_effect(StatusEffect.STATUS_EFFECT_TYPE.BURN, 1)
 
 
 func create_vfx(path_to_vfx: String) -> VFX:
