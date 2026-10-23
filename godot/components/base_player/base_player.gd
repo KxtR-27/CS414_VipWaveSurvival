@@ -63,7 +63,7 @@ var ability_on_cooldown: Dictionary[Ability, bool] = {
 @onready var hurtbox := $AimableAttackHurtbox as AimableHurtbox
 @onready var start_following_sound := $StartFollowingSound as AudioStreamPlayer
 @onready var stop_following_sound := $StopFollowingSound as AudioStreamPlayer
-
+@onready var character_stats := $CharacterStats as CharacterStats
 
 func _ready() -> void:
 	animated_sprite.sprite_frames = sprite_frames
@@ -189,7 +189,7 @@ func _attack() -> void:
 		for target: BaseCharacter in hurtbox.targets_in_hurtbox:
 			if target.is_in_group("enemies"):
 				var enemy := target as BaseNPC
-				enemy.take_damage(25)
+				enemy.take_damage(character_stats.damage)
 
 
 func _on_health_component_died() -> void:

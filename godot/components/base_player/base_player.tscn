@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://db8veknmfw2vw" path="res://assets/sfx/start_follow.wav" id="9_mmppa"]
 [ext_resource type="AudioStream" uid="uid://csmbs7wpc3ehw" path="res://assets/sfx/stop_follow.wav" id="10_criwi"]
 [ext_resource type="Texture2D" uid="uid://jahf3ohefs75" path="res://assets/Indicator2.png" id="11_kap8x"]
+[ext_resource type="PackedScene" uid="uid://do7vrmtia5k8x" path="res://components/character_stats/character_stats.tscn" id="13_5o5nh"]
+[ext_resource type="Script" uid="uid://4u57d6adijky" path="res://components/character_stats/character_stats.gd" id="14_7d35r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc5ck"]
 radius = 18.0
@@ -126,6 +128,9 @@ texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 texture = ExtResource("11_kap8x")
+
+[node name="CharacterStats" parent="." unique_id=911877378 instance=ExtResource("13_5o5nh")]
+script = ExtResource("14_7d35r")
 
 [connection signal="ability_used" from="." to="AbilityCreator" method="_on_base_player_ability_used"]
 [connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]

@@ -45,6 +45,24 @@ const HERO_ABILITIES: Dictionary[String, Dictionary]  = {
 	},
 }
 
+const HERO_STATS: Dictionary[String, Dictionary] = {
+	"swordsman" : {
+		"damage" : 25.0,
+		"max_health" : 100.0,
+		"speed" : 5000.0,
+	}, 
+	"wizard" : {
+		"damage" : 20.0,
+		"max_health" : 75.0,
+		"speed" : 4000.0,
+	},
+	"knight" : {
+		"damage" : 15.0,
+		"max_health" : 125.0,
+		"speed" : 3000.0,
+	}
+}
+
 @onready var container := $Control/HBoxContainer as HBoxContainer
 @onready var join_label := $Control/ClickToJoinLabel as Label
 @onready var begin_button := $Control/Button as Button
@@ -122,6 +140,13 @@ func _on_button_pressed() -> void:
 					INDICATOR_COLOR_MAP[player_number]
 				)
 				break
+		
+		#assign stats for selected hero
+		var selected_stats: Dictionary = HERO_STATS[player_hero.hero_name]
+		player_hero.character_stats.damage = selected_stats["damage"]
+		player_hero.character_stats.max_health = selected_stats["max_health"]
+		player_hero.character_stats.speed = selected_stats["speed"]
+		player_hero.character_stats.apply_stats()
 	
 	await begin_button_sound.finished
 	get_tree().root.get_node("CharacterSelectScreen").queue_free()
