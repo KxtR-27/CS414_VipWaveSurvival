@@ -1,4 +1,3 @@
-extends Control
 class_name SkillComponent extends Control
 
 signal skill_activated(skill: SkillComponent)
@@ -9,7 +8,7 @@ var unlocked_color := Color("#00e2e6") as Color
 var locked_color_panel := Color("007678ff") as Color
 var locked_color_icon := Color("#696969") as Color
 
-@export var locked_by: SkillComponent = null
+@export var locked_by: Array[SkillComponent] = []
 
 @onready var ability_panel := $VBoxContainer/CenterContainer/UpgradePanel as TextureRect
 @onready var upgrade_icon_rect := $VBoxContainer/CenterContainer/UpgradeIcon as TextureRect
@@ -30,7 +29,7 @@ func _ready() -> void:
 	upgrade_icon_rect.texture = upgrade_icon
 	label.text = upgrade_name
 	
-	if locked_by == null:
+	if len(locked_by) == 0:
 		current_state = SkillState.unlocked
 	
 	match current_state:
@@ -64,10 +63,10 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func _on_skill_activated(skill: SkillComponent) -> void:
-	#for locked_by_child in locked_by:
-	if skill == locked_by:
-		current_state = SkillState.unlocked
-		skill_state_changed.emit()
+	for locked_by_child in locked_by:
+		if skill == locked_by_child:
+			current_state = SkillState.unlocked
+			skill_state_changed.emit()
 
 
 func _on_skill_state_changed() -> void:
