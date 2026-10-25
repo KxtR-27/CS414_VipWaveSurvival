@@ -36,14 +36,18 @@ func _ready() -> void:
 
 
 func _gui_input(event: InputEvent) -> void:
+	# Check if mouse button is pressed over the component
 	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed == true:
+		# If currently locked, ability stays locked when clicked
 		if current_state == SkillState.locked:
 			print("ability is locked, activate previous ability to unlock")
 			return
+		# If unlocked, ability is activated when clicked
 		elif current_state == SkillState.unlocked:
 			current_state = SkillState.active
 			ability_panel.modulate = active_color
 			return
+		# If already activated, notify player that ability is already active
 		elif current_state == SkillState.active:
 			print("Ability is already active")
 			return
