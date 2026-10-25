@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CharacterSkillTree" format=3 uid="uid://70coblxuuwuf"]
+
+[ext_resource type="Script" uid="uid://ct2rxn3pdctpg" path="res://components/skill_tree/character_skill_trees/character_skill_tree.gd" id="1_oa7u5"]
+[ext_resource type="Script" uid="uid://c1qvpiklfsumt" path="res://scripts/ability_templates/base_ability.gd" id="1_xh1ba"]
+[ext_resource type="Resource" uid="uid://bhgvsy3mhtcrj" path="res://resources/abilities/wizard_ability_one.tres" id="2_nuk7h"]
+[ext_resource type="Resource" uid="uid://dhqtbk6oo7gmi" path="res://resources/abilities/wizard_ability_two.tres" id="3_vs6ji"]
+[ext_resource type="Resource" uid="uid://cdjs0uh27617y" path="res://resources/abilities/damaging_dash.tres" id="4_kw2ew"]
+[ext_resource type="Resource" uid="uid://bput4hsok40e7" path="res://resources/abilities/damaging_aura.tres" id="5_q7ig3"]
+[ext_resource type="Resource" uid="uid://cw05tt3dqmhfx" path="res://resources/abilities/healing_aura.tres" id="6_8e8x8"]
+
+[resource]
+script = ExtResource("1_oa7u5")
+character_abilities = Dictionary[String, ExtResource("1_xh1ba")]({
+"DamagingAura": ExtResource("5_q7ig3"),
+"Dash": ExtResource("4_kw2ew"),
+"Fireball": ExtResource("2_nuk7h"),
+"HealingAura": ExtResource("6_8e8x8"),
+"Projectile": ExtResource("3_vs6ji")
+})
