@@ -34,12 +34,52 @@ current_state = 1
 upgrade_icon = SubResource("AtlasTexture_3qgx3")
 upgrade_name = "Dash"
 
-[node name="SkillComponent2" parent="CanvasLayer/Control" index="1" unique_id=1217730107 instance=ExtResource("2_cufe0")]
+[node name="SkillComponent2" parent="CanvasLayer/Control" index="1" unique_id=1217730107 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 0
 offset_left = 425.0
 offset_top = 298.0
 offset_right = 470.0
 offset_bottom = 343.0
+locked_by = [NodePath("../SkillComponent")]
 upgrade_icon = SubResource("AtlasTexture_csoju")
 upgrade_name = "Fireball"
+
+[node name="SkillComponent3" parent="CanvasLayer/Control" index="2" unique_id=1175910474 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 0
+offset_left = 553.0
+offset_top = 187.0
+offset_right = 598.0
+offset_bottom = 232.0
+locked_by = [NodePath("../SkillComponent"), NodePath("../SkillComponent2")]
+upgrade_icon = SubResource("AtlasTexture_csoju")
+upgrade_name = "Damaging Aura"
+
+[node name="SkillComponent4" parent="CanvasLayer/Control" index="3" unique_id=1130015519 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 0
+offset_left = 676.0
+offset_top = 300.0
+offset_right = 721.0
+offset_bottom = 345.0
+locked_by = [NodePath("../SkillComponent3")]
+upgrade_icon = SubResource("AtlasTexture_csoju")
+upgrade_name = "Healing Aura"
+
+[node name="SkillComponent5" parent="CanvasLayer/Control" index="4" unique_id=2080325426 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 0
+offset_left = 553.0
+offset_top = 411.0
+offset_right = 598.0
+offset_bottom = 456.0
+locked_by = [NodePath("../SkillComponent4")]
+upgrade_icon = SubResource("AtlasTexture_csoju")
+upgrade_name = "Projectile"
+
+[connection signal="skill_activated" from="CanvasLayer/Control/SkillComponent" to="CanvasLayer/Control/SkillComponent2" method="_on_skill_activated" flags=6]
+[connection signal="skill_activated" from="CanvasLayer/Control/SkillComponent" to="CanvasLayer/Control/SkillComponent3" method="_on_skill_activated"]
+[connection signal="skill_activated" from="CanvasLayer/Control/SkillComponent2" to="CanvasLayer/Control/SkillComponent3" method="_on_skill_activated"]
+[connection signal="skill_activated" from="CanvasLayer/Control/SkillComponent3" to="CanvasLayer/Control/SkillComponent4" method="_on_skill_activated"]
+[connection signal="skill_activated" from="CanvasLayer/Control/SkillComponent4" to="CanvasLayer/Control/SkillComponent5" method="_on_skill_activated"]
