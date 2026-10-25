@@ -57,6 +57,7 @@ atlas = ExtResource("4_towoq")
 region = Rect2(43, 39, 17, 21)
 
 [node name="HudPlayerPanel" type="Panel" unique_id=495433092]
+z_index = 10
 custom_minimum_size = Vector2(200, 100)
 offset_transform_enabled = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_llgru")
