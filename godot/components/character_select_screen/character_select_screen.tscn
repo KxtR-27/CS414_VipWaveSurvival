@@ -64,9 +64,9 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(256, 32)
 layout_mode = 0
 offset_left = 144.0
-offset_top = 217.0
+offset_top = 247.0
 offset_right = 996.0
-offset_bottom = 410.0
+offset_bottom = 440.0
 theme_override_constants/separation = 24
 alignment = 1
 
