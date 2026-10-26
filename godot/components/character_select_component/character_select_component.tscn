@@ -7,6 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://cfg5d7arpfugj" path="res://assets/spritesheets/Knight.png" id="5_v1b0c"]
 [ext_resource type="Texture2D" uid="uid://ddusvv7uitiq0" path="res://assets/control hint icons/xbox-series_sheet_default.png" id="6_x1rb8"]
 [ext_resource type="Texture2D" uid="uid://cgafe56kutvgn" path="res://assets/control hint icons/keyboard-&-mouse_sheet_default.png" id="7_lkumq"]
+[ext_resource type="Script" uid="uid://ccwfuphkc4ejo" path="res://scripts/navigable_atlas_texture.gd" id="7_v1b0c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lkumq"]
+font_size = 36
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d7sh"]
+atlas = ExtResource("3_q6r6c")
+region = Rect2(43, 42, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f8vb"]
+atlas = ExtResource("3_q6r6c")
+region = Rect2(107, 42, 12, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7h2xm"]
 atlas = ExtResource("3_q6r6c")
@@ -59,6 +73,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7nrs"]
+atlas = ExtResource("3_q6r6c")
+region = Rect2(1, 1, 30, 30)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0ic2"]
 atlas = ExtResource("3_q6r6c")
 region = Rect2(43, 42, 12, 11)
@@ -67,113 +85,101 @@ region = Rect2(43, 42, 12, 11)
 atlas = ExtResource("3_q6r6c")
 region = Rect2(107, 42, 12, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4d7sh"]
-atlas = ExtResource("3_q6r6c")
-region = Rect2(43, 42, 12, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3f8vb"]
-atlas = ExtResource("3_q6r6c")
-region = Rect2(107, 42, 12, 11)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n3d2o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysw5f"]
 atlas = ExtResource("6_x1rb8")
-region = Rect2(136, 591, 48, 34)
+region = Rect2(64, 576, 64, 64)
+script = ExtResource("7_v1b0c")
+current_position = Vector2i(1, 9)
+metadata/_custom_type_script = "uid://ccwfuphkc4ejo"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1b0c"]
 atlas = ExtResource("7_lkumq")
-region = Rect2(8, 968, 48, 48)
+region = Rect2(0, 960, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7nrs"]
-atlas = ExtResource("3_q6r6c")
-region = Rect2(1, 1, 30, 30)
-
-[node name="CharacterSelectComponent" type="Control" unique_id=389505716]
+[node name="CharacterSelectComponent" type="VBoxContainer" unique_id=42064339]
 custom_minimum_size = Vector2(64, 32)
-layout_mode = 3
+anchors_preset = -1
 anchor_right = 0.056
 anchor_bottom = 0.049000002
 offset_right = -0.51200104
-offset_bottom = 0.24799919
+offset_bottom = 24.248
 size_flags_vertical = 3
 script = ExtResource("1_4evgm")
 
-[node name="BackgroundBox" type="AnimatedSprite2D" parent="." unique_id=1119989607]
-position = Vector2(16, 0)
-sprite_frames = SubResource("SpriteFrames_n3d2o")
-centered = false
+[node name="PlayerNumberLabel" type="Label" parent="." unique_id=1514922722]
+texture_filter = 1
+layout_mode = 2
+text = "P0"
+label_settings = SubResource("LabelSettings_lkumq")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlayerCharacter" type="AnimatedSprite2D" parent="." unique_id=598413590]
-position = Vector2(29, 16)
-scale = Vector2(0.8, 0.8)
-sprite_frames = SubResource("SpriteFrames_7h2xm")
+[node name="Controls" type="HBoxContainer" parent="." unique_id=1924556007]
+custom_minimum_size = Vector2(186, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
 
-[node name="RightArrow" type="TextureButton" parent="." unique_id=1095767133]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 10.0
-offset_right = 64.0
-offset_bottom = 21.0
-texture_normal = SubResource("AtlasTexture_b0ic2")
-texture_pressed = SubResource("AtlasTexture_i4o4r")
-stretch_mode = 0
-
-[node name="LeftArrow" type="TextureButton" parent="." unique_id=1783777971]
-layout_mode = 0
-offset_top = 10.0
-offset_right = 12.0
-offset_bottom = 21.0
+[node name="LeftArrow" type="TextureButton" parent="Controls" unique_id=1783777971]
+custom_minimum_size = Vector2(36, 33)
+layout_mode = 2
+size_flags_vertical = 4
 texture_normal = SubResource("AtlasTexture_4d7sh")
 texture_pressed = SubResource("AtlasTexture_3f8vb")
 stretch_mode = 0
 flip_h = true
 
-[node name="ControllerIcon" type="TextureRect" parent="." unique_id=1786820301]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 33.0
-offset_right = 39.52941
-offset_bottom = 44.0
-texture = SubResource("AtlasTexture_n3d2o")
-expand_mode = 3
-stretch_mode = 5
+[node name="Character" type="CenterContainer" parent="Controls" unique_id=1865493831]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
 
-[node name="KBMIcon" type="TextureRect" parent="." unique_id=761835739]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 33.0
-offset_right = 39.52941
-offset_bottom = 44.0
-texture = SubResource("AtlasTexture_v1b0c")
-expand_mode = 3
-stretch_mode = 5
+[node name="BackgroundBox" type="AnimatedSprite2D" parent="Controls/Character" unique_id=1119989607]
+position = Vector2(-2.9999995, -3.000002)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_n3d2o")
+centered = false
 
-[node name="PlayerNumberLabel" type="Label" parent="." unique_id=1514922722]
-texture_filter = 1
-layout_mode = 0
-offset_left = 20.0
-offset_top = -18.0
-offset_right = 60.0
-offset_bottom = 13.0
-scale = Vector2(0.5911778, 0.5911778)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 14
-text = "P0"
-horizontal_alignment = 1
-vertical_alignment = 1
-resize_font_to_fit = true
+[node name="PlayerCharacter" type="AnimatedSprite2D" parent="Controls/Character" unique_id=598413590]
+position = Vector2(37, 48)
+scale = Vector2(2.4, 2.4)
+sprite_frames = SubResource("SpriteFrames_7h2xm")
+metadata/_edit_lock_ = true
 
-[node name="Shade" type="TextureRect" parent="." unique_id=2146334414]
+[node name="Shade" type="TextureRect" parent="Controls/Character" unique_id=2146334414]
 modulate = Color(0, 0, 0, 0.52156866)
-layout_mode = 0
-offset_left = 5.0
-offset_top = 1.0
-offset_right = 59.0
-offset_bottom = 31.0
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
 texture = SubResource("AtlasTexture_n7nrs")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="RightArrow" type="TextureButton" parent="Controls" unique_id=1095767133]
+custom_minimum_size = Vector2(36, 33)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_b0ic2")
+texture_pressed = SubResource("AtlasTexture_i4o4r")
+stretch_mode = 0
+
+[node name="InputIcons" type="CenterContainer" parent="." unique_id=1094944154]
+custom_minimum_size = Vector2(0, 32)
+custom_maximum_size = Vector2(-1, 32)
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="ControllerIcon" type="TextureRect" parent="InputIcons" unique_id=1786820301]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ysw5f")
+expand_mode = 2
+
+[node name="KBMIcon" type="TextureRect" parent="InputIcons" unique_id=761835739]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_v1b0c")
+expand_mode = 2
+
 [connection signal="character_selected" from="." to="." method="_on_character_selected"]
 [connection signal="index_changed" from="." to="." method="_on_index_changed"]
-[connection signal="pressed" from="RightArrow" to="." method="_on_right_arrow_pressed"]
-[connection signal="pressed" from="LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="Controls/LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="Controls/RightArrow" to="." method="_on_right_arrow_pressed"]
