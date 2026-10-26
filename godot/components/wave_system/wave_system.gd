@@ -84,7 +84,14 @@ func _on_wave_timer_timeout() -> void:
 	if wave_tracker.current_wave > 1:
 		var debuff_awarder := self.get_parent().get_node("DebuffAwarder") as DebuffAwarder
 		debuff_awarder.award_debuff()
-		
+	
+	#give players stat upgrades
+	var players: Array = get_tree().get_nodes_in_group("players")
+	for player: BasePlayer in players:
+		player.character_stats.modify_stat("damage", 5.0)
+		player.character_stats.modify_stat("speed", 250.0)
+		player.character_stats.modify_stat("max_health", 15.0)
+	
 	wave_start.emit()
 
 
