@@ -12,6 +12,24 @@ func _ready() -> void:
 	health_bar.max_value = max_health
 
 
+func refresh() -> void:
+	current_health = max_health
+	health_bar.max_value = max_health
+	health_bar.value = max_health
+
+
+func modify_max_health(amount: float) -> void:
+	var current_health_percentage: float = current_health / max_health
+	
+	max_health += amount
+	current_health = max_health * current_health_percentage
+	
+	health_bar.max_value = max_health
+	health_bar.value = current_health
+	
+	
+
+
 #can be used to heal or damage
 func _on_health_changed(amount_changed: float, negative: bool) -> void:
 	#negative numbers for damage dealt

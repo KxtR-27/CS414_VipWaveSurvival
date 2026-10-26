@@ -147,6 +147,7 @@ func _on_button_pressed() -> void:
 		player_hero.character_stats.max_health = selected_stats["max_health"]
 		player_hero.character_stats.speed = selected_stats["speed"]
 		player_hero.character_stats.apply_stats()
+		player_hero.get_node("HealthComponent").refresh()
 	
 	await begin_button_sound.finished
 	get_tree().root.get_node("CharacterSelectScreen").queue_free()

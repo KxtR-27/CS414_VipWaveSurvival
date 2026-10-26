@@ -72,10 +72,16 @@ func connect_to_player(player: BasePlayer, hero_name: String, player_number: int
 	match hero_name:
 		"swordsman": 
 			(player_icon.get_node("swordsman") as TextureRect).visible = true
+			health_bar.max_value = 100.0
+			health_bar.value = 100.0
 		"knight": 
 			(player_icon.get_node("knight") as TextureRect).visible = true
+			health_bar.max_value = 125.0
+			health_bar.value = 125.0
 		"wizard": 
 			(player_icon.get_node("wizard") as TextureRect).visible = true
+			health_bar.max_value = 75.0
+			health_bar.value = 75.0
 	
 	#set color and text for indicator label
 	($BackgroundPanel as Panel).modulate = color

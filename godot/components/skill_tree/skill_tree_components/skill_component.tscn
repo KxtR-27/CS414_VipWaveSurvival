@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://d4dsxueimx0ha"]
+
+[ext_resource type="Script" uid="uid://c4s7x16olpiw0" path="res://components/skill_tree/skill_tree_components/skill_component.gd" id="1_sngfc"]
+[ext_resource type="Texture2D" uid="uid://bvs8e8v1xaurf" path="res://assets/spritesheets/Blank Frames.png" id="2_4kvuq"]
+[ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_35neu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_35neu"]
+load_path = "res://.godot/imported/Wizard.png-51de864d1e84e4c70777f5ede17d93ce.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0ic2"]
+atlas = SubResource("CompressedTexture2D_35neu")
+region = Rect2(0, 700, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3d2o"]
+atlas = ExtResource("2_4kvuq")
+region = Rect2(1, 1, 30, 30)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
+font = ExtResource("3_35neu")
+
+[node name="SkillComponent" type="Control" unique_id=1319363514]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sngfc")
+upgrade_icon = SubResource("AtlasTexture_b0ic2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2008875425]
+layout_mode = 1
+offset_right = 60.0
+offset_bottom = 85.0
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=823900086]
+layout_mode = 2
+
+[node name="UpgradePanel" type="TextureRect" parent="VBoxContainer/CenterContainer" unique_id=984589919]
+modulate = Color(0, 0.8850002, 0.9, 1)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = SubResource("AtlasTexture_n3d2o")
+
+[node name="UpgradeIcon" type="TextureRect" parent="VBoxContainer/CenterContainer" unique_id=1822928222]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=3181214]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+text = "Dash"
+label_settings = SubResource("LabelSettings_n3d2o")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="skill_state_changed" from="." to="." method="_on_skill_state_changed"]
