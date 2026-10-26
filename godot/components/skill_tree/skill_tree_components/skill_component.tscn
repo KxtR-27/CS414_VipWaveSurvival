@@ -19,8 +19,13 @@ region = Rect2(1, 1, 30, 30)
 font = ExtResource("3_35neu")
 
 [node name="SkillComponent" type="Control" unique_id=1319363514]
+custom_minimum_size = Vector2(60, 120)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 60.0
+offset_bottom = 120.0
+size_flags_horizontal = 19
+size_flags_vertical = 19
 script = ExtResource("1_sngfc")
 upgrade_icon = SubResource("AtlasTexture_b0ic2")
 

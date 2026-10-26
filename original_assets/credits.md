@@ -9,12 +9,21 @@ Any assets created for this project **even outside the scope of the godot game**
 ## Assets Created
 
 1. `Character Frames w Arrows 1.png`
+
+- **by:** @alx4n
+- **used for:** character select screen
+
 2. `Blank Frames.png`
 
 - **by:** @alx4n
-- **used for:** character select screen, skill tree
+- **used for:** skill tree upgrade components
 
-2. Miscellaneous placeholder sfx
+3. `Dash.png`
+
+- **by:** @alx4n
+- **used for:** upgrade icon
+
+4. Miscellaneous placeholder sfx
 
 - **by:** @KxtR-27
 - **used for:** various in-game sound effects

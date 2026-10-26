@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://du6jyf0fmrwit"]
 
 [ext_resource type="PackedScene" uid="uid://d2wngb4erhw4e" path="res://components/skill_tree/skill_tree.tscn" id="1_hc21v"]
+[ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="2_csoju"]
 [ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://components/skill_tree/skill_tree_components/skill_component.tscn" id="2_cufe0"]
-[ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash4.png" id="4_3qgx3"]
+[ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash.png" id="4_3qgx3"]
 [ext_resource type="Texture2D" uid="uid://dh4q2xth8dhet" path="res://assets/spritesheets/Wizard.png" id="4_csoju"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3qgx3"]
+font = ExtResource("2_csoju")
+font_size = 18
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3qgx3"]
 atlas = ExtResource("4_3qgx3")
@@ -14,72 +19,84 @@ atlas = ExtResource("4_csoju")
 region = Rect2(36, 735, 32, 32)
 
 [node name="WizardSkillTree" unique_id=317024339 instance=ExtResource("1_hc21v")]
+custom_maximum_size = Vector2(200, -1)
+size_flags_horizontal = 19
 
-[node name="Control" type="Control" parent="CanvasLayer" parent_id_path=PackedInt32Array(1064086616) index="1" unique_id=1306983233]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UpgradeNodes" type="CenterContainer" parent="." index="0" unique_id=720486989]
+layout_mode = 1
+offset_right = 195.0
+offset_bottom = 396.0
 
-[node name="SkillComponent" parent="CanvasLayer/Control" index="0" unique_id=1319363514 instance=ExtResource("2_cufe0")]
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 0
-offset_left = 553.0
-offset_top = 298.0
-offset_right = 598.0
-offset_bottom = 343.0
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeNodes" index="0" unique_id=1067992981]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UpgradeNodes/VBoxContainer" index="0" unique_id=1671553051]
+custom_minimum_size = Vector2(196, 50)
+layout_mode = 2
+text = "Wizard Skill Tree"
+label_settings = SubResource("LabelSettings_3qgx3")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UpgradeNodes/VBoxContainer" index="1" unique_id=1954533242]
+layout_mode = 2
+
+[node name="DashUpgrade" parent="UpgradeNodes/VBoxContainer/CenterContainer" index="0" unique_id=1319363514 instance=ExtResource("2_cufe0")]
+layout_mode = 2
 current_state = 1
 upgrade_icon = SubResource("AtlasTexture_3qgx3")
 upgrade_name = "Dash"
 
-[node name="SkillComponent2" parent="CanvasLayer/Control" index="1" unique_id=1217730107 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 0
-offset_left = 425.0
-offset_top = 298.0
-offset_right = 470.0
-offset_bottom = 343.0
-locked_by = [NodePath("../SkillComponent")]
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeNodes/VBoxContainer" index="2" unique_id=321328085]
+layout_mode = 2
+alignment = 1
+
+[node name="FireballUpgrade" parent="UpgradeNodes/VBoxContainer/HBoxContainer" index="0" unique_id=1217730107 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+locked_by = [NodePath("../../CenterContainer/DashUpgrade")]
 upgrade_icon = SubResource("AtlasTexture_csoju")
 upgrade_name = "Fireball"
 
-[node name="SkillComponent3" parent="CanvasLayer/Control" index="2" unique_id=1175910474 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 0
-offset_left = 553.0
-offset_top = 187.0
-offset_right = 598.0
-offset_bottom = 232.0
-locked_by = [NodePath("../SkillComponent"), NodePath("../SkillComponent2")]
+[node name="Spacer" type="Panel" parent="UpgradeNodes/VBoxContainer/HBoxContainer" index="1" unique_id=1731240803]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 19
+
+[node name="DamageAura" parent="UpgradeNodes/VBoxContainer/HBoxContainer" index="2" unique_id=1175910474 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+locked_by = [NodePath("../../CenterContainer/DashUpgrade"), NodePath("../FireballUpgrade")]
 upgrade_icon = SubResource("AtlasTexture_csoju")
 upgrade_name = "Damaging Aura"
 
-[node name="SkillComponent4" parent="CanvasLayer/Control" index="3" unique_id=1130015519 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 0
-offset_left = 676.0
-offset_top = 300.0
-offset_right = 721.0
-offset_bottom = 345.0
-locked_by = [NodePath("../SkillComponent3")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UpgradeNodes/VBoxContainer" index="3" unique_id=1098962098]
+layout_mode = 2
+alignment = 1
+
+[node name="HealAura" parent="UpgradeNodes/VBoxContainer/HBoxContainer2" index="0" unique_id=1130015519 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+locked_by = [NodePath("../../HBoxContainer/DamageAura")]
 upgrade_icon = SubResource("AtlasTexture_csoju")
 upgrade_name = "Healing Aura"
 
-[node name="SkillComponent5" parent="CanvasLayer/Control" index="4" unique_id=2080325426 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
-custom_minimum_size = Vector2(45, 45)
-layout_mode = 0
-offset_left = 553.0
-offset_top = 411.0
-offset_right = 598.0
-offset_bottom = 456.0
-locked_by = [NodePath("../SkillComponent4")]
+[node name="Spacer" type="Panel" parent="UpgradeNodes/VBoxContainer/HBoxContainer2" index="1" unique_id=1505324869]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 19
+
+[node name="ProjectileUpgrade" parent="UpgradeNodes/VBoxContainer/HBoxContainer2" index="2" unique_id=2080325426 node_paths=PackedStringArray("locked_by") instance=ExtResource("2_cufe0")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+locked_by = [NodePath("../HealAura")]
 upgrade_icon = SubResource("AtlasTexture_csoju")
 upgrade_name = "Projectile"
 
-[connection signal="skill_activated" from="CanvasLayer/Control/SkillComponent" to="CanvasLayer/Control/SkillComponent2" method="_on_skill_activated" flags=6]
-[connection signal="skill_activated" from="CanvasLayer/Control/SkillComponent" to="CanvasLayer/Control/SkillComponent3" method="_on_skill_activated"]
-[connection signal="skill_activated" from="CanvasLayer/Control/SkillComponent2" to="CanvasLayer/Control/SkillComponent3" method="_on_skill_activated"]
-[connection signal="skill_activated" from="CanvasLayer/Control/SkillComponent3" to="CanvasLayer/Control/SkillComponent4" method="_on_skill_activated"]
-[connection signal="skill_activated" from="CanvasLayer/Control/SkillComponent4" to="CanvasLayer/Control/SkillComponent5" method="_on_skill_activated"]
+[connection signal="skill_activated" from="UpgradeNodes/VBoxContainer/CenterContainer/DashUpgrade" to="UpgradeNodes/VBoxContainer/HBoxContainer/FireballUpgrade" method="_on_skill_activated" flags=6]
+[connection signal="skill_activated" from="UpgradeNodes/VBoxContainer/CenterContainer/DashUpgrade" to="UpgradeNodes/VBoxContainer/HBoxContainer/DamageAura" method="_on_skill_activated"]
+[connection signal="skill_activated" from="UpgradeNodes/VBoxContainer/HBoxContainer/FireballUpgrade" to="UpgradeNodes/VBoxContainer/HBoxContainer/DamageAura" method="_on_skill_activated"]
+[connection signal="skill_activated" from="UpgradeNodes/VBoxContainer/HBoxContainer/DamageAura" to="UpgradeNodes/VBoxContainer/HBoxContainer2/HealAura" method="_on_skill_activated"]
+[connection signal="skill_activated" from="UpgradeNodes/VBoxContainer/HBoxContainer2/HealAura" to="UpgradeNodes/VBoxContainer/HBoxContainer2/ProjectileUpgrade" method="_on_skill_activated"]

@@ -1,17 +1,8 @@
 [gd_scene format=3 uid="uid://d2wngb4erhw4e"]
 
 [ext_resource type="Script" uid="uid://5d5euqphv17f" path="res://components/skill_tree/skill_tree.gd" id="1_64quu"]
-[ext_resource type="Texture2D" uid="uid://cluednx2dsduv" path="res://assets/tilesets/mystic_woods_placeholder/grass.png" id="2_64quu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n3d2o"]
-atlas = ExtResource("2_64quu")
-
-[node name="SkillTree" type="Node2D" unique_id=317024339]
+[node name="SkillTree" type="Control" unique_id=139727037]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_64quu")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1064086616]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=203241875]
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = SubResource("AtlasTexture_n3d2o")

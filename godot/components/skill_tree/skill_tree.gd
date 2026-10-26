@@ -1,4 +1,4 @@
-class_name SkillTree extends Node2D
+class_name SkillTree extends Control
 
 signal upgrade_unlocked
 

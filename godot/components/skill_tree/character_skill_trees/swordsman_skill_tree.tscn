@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://bhry68m13n236"]
+
+[ext_resource type="PackedScene" uid="uid://d2wngb4erhw4e" path="res://components/skill_tree/skill_tree.tscn" id="1_ae3j5"]
+[ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="2_n1ptk"]
+[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://components/skill_tree/skill_tree_components/skill_component.tscn" id="3_u3j80"]
+[ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash.png" id="4_3f85m"]
+[ext_resource type="Texture2D" uid="uid://dh4q2xth8dhet" path="res://assets/spritesheets/Wizard.png" id="5_u1oqo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_60axa"]
+font = ExtResource("2_n1ptk")
+font_size = 18
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o10w5"]
+atlas = ExtResource("4_3f85m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyoyj"]
+atlas = ExtResource("5_u1oqo")
+region = Rect2(36, 735, 32, 32)
+
+[node name="SwordsmanSkillTree" unique_id=139727037 instance=ExtResource("1_ae3j5")]
+
+[node name="UpgradeNodes" type="CenterContainer" parent="." index="0" unique_id=1863411585]
+layout_mode = 0
+offset_right = 196.0
+offset_bottom = 424.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeNodes" index="0" unique_id=2011769780]
+custom_minimum_size = Vector2(196, 424)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UpgradeNodes/VBoxContainer" index="0" unique_id=18812666]
+custom_minimum_size = Vector2(196, 50)
+layout_mode = 2
+text = "Swordsman Skill Tree"
+label_settings = SubResource("LabelSettings_60axa")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UpgradeNodes/VBoxContainer" index="1" unique_id=2094679497]
+layout_mode = 2
+
+[node name="DashUpgrade" parent="UpgradeNodes/VBoxContainer/CenterContainer" index="0" unique_id=1319363514 instance=ExtResource("3_u3j80")]
+layout_mode = 2
+current_state = 1
+upgrade_icon = SubResource("AtlasTexture_o10w5")
+upgrade_name = "Dash"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeNodes/VBoxContainer" index="2" unique_id=586073046]
+layout_mode = 2
+alignment = 1
+
+[node name="FireballUpgrade" parent="UpgradeNodes/VBoxContainer/HBoxContainer" index="0" unique_id=493377890 node_paths=PackedStringArray("locked_by") instance=ExtResource("3_u3j80")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+locked_by = [NodePath("../../CenterContainer/DashUpgrade")]
+upgrade_icon = SubResource("AtlasTexture_oyoyj")
+upgrade_name = "Fireball"
+
+[node name="Spacer" type="Panel" parent="UpgradeNodes/VBoxContainer/HBoxContainer" index="1" unique_id=1543286639]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 19
+
+[node name="DamageAura" parent="UpgradeNodes/VBoxContainer/HBoxContainer" index="2" unique_id=1026241480 node_paths=PackedStringArray("locked_by") instance=ExtResource("3_u3j80")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+locked_by = [NodePath("../../CenterContainer/DashUpgrade"), NodePath("../FireballUpgrade")]
+upgrade_icon = SubResource("AtlasTexture_oyoyj")
+upgrade_name = "Damaging Aura"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UpgradeNodes/VBoxContainer" index="3" unique_id=290744223]
+layout_mode = 2
+alignment = 1
+
+[node name="HealAura" parent="UpgradeNodes/VBoxContainer/HBoxContainer2" index="0" unique_id=263815865 node_paths=PackedStringArray("locked_by") instance=ExtResource("3_u3j80")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+locked_by = [NodePath("../../HBoxContainer/DamageAura")]
+upgrade_icon = SubResource("AtlasTexture_oyoyj")
+upgrade_name = "Healing Aura"
+
+[node name="Spacer" type="Panel" parent="UpgradeNodes/VBoxContainer/HBoxContainer2" index="1" unique_id=989673417]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 19
+
+[node name="ProjectileUpgrade" parent="UpgradeNodes/VBoxContainer/HBoxContainer2" index="2" unique_id=1047656990 node_paths=PackedStringArray("locked_by") instance=ExtResource("3_u3j80")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+locked_by = [NodePath("../HealAura")]
+upgrade_icon = SubResource("AtlasTexture_oyoyj")
+upgrade_name = "Projectile"
+
+[connection signal="skill_activated" from="UpgradeNodes/VBoxContainer/CenterContainer/DashUpgrade" to="UpgradeNodes/VBoxContainer/HBoxContainer/FireballUpgrade" method="_on_skill_activated" flags=6]
+[connection signal="skill_activated" from="UpgradeNodes/VBoxContainer/CenterContainer/DashUpgrade" to="UpgradeNodes/VBoxContainer/HBoxContainer/DamageAura" method="_on_skill_activated"]
+[connection signal="skill_activated" from="UpgradeNodes/VBoxContainer/HBoxContainer/FireballUpgrade" to="UpgradeNodes/VBoxContainer/HBoxContainer/DamageAura" method="_on_skill_activated"]
+[connection signal="skill_activated" from="UpgradeNodes/VBoxContainer/HBoxContainer/DamageAura" to="UpgradeNodes/VBoxContainer/HBoxContainer2/HealAura" method="_on_skill_activated"]
+[connection signal="skill_activated" from="UpgradeNodes/VBoxContainer/HBoxContainer2/HealAura" to="UpgradeNodes/VBoxContainer/HBoxContainer2/ProjectileUpgrade" method="_on_skill_activated"]
