@@ -162,21 +162,22 @@ texture_pressed = SubResource("AtlasTexture_i4o4r")
 stretch_mode = 0
 
 [node name="InputIcons" type="CenterContainer" parent="." unique_id=1094944154]
-custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0, 32)
+custom_maximum_size = Vector2(-1, 32)
 layout_mode = 2
 metadata/_edit_group_ = true
 
 [node name="ControllerIcon" type="TextureRect" parent="InputIcons" unique_id=1786820301]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_ysw5f")
-expand_mode = 5
-stretch_mode = 3
+expand_mode = 2
 
 [node name="KBMIcon" type="TextureRect" parent="InputIcons" unique_id=761835739]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = SubResource("AtlasTexture_v1b0c")
-expand_mode = 4
-stretch_mode = 3
+expand_mode = 2
 
 [connection signal="character_selected" from="." to="." method="_on_character_selected"]
 [connection signal="index_changed" from="." to="." method="_on_index_changed"]
