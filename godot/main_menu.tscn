@@ -49,9 +49,20 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_jix8l")
-text = "START"
+text = "START NEW GAME"
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="CanvasLayer/Control/VBoxContainer/StartButton" unique_id=1910113378]
+stream = ExtResource("5_nlkkf")
+volume_db = -12.0
+script = ExtResource("6_qe12f")
+
+[node name="LoadButton" type="Button" parent="CanvasLayer/Control/VBoxContainer" unique_id=1636249947]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_jix8l")
+text = "LOAD GAME"
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="CanvasLayer/Control/VBoxContainer/LoadButton" unique_id=1088775971]
 stream = ExtResource("5_nlkkf")
 volume_db = -12.0
 script = ExtResource("6_qe12f")
@@ -67,7 +78,8 @@ text = "OPTIONS"
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_jix8l")
-text = "Controls"
+text = "CONTROLS"
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
