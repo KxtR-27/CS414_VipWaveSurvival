@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://l16vr1ekj81f"]
 
-[ext_resource type="Script" uid="uid://dkkhxlu03hi3h" path="res://components/upgrade_area/upgrade_area.gd" id="1_xfcf4"]
+[ext_resource type="Script" uid="uid://dkkhxlu03hi3h" path="res://ui_components/upgrade_area/upgrade_area.gd" id="1_xfcf4"]
 [ext_resource type="Theme" uid="uid://bekqrbmlv3skf" path="res://resources/ui_themes_settings/button_theme.tres" id="2_dev22"]
 
 [node name="UpgradeArea" type="Node2D" unique_id=1244573064]
