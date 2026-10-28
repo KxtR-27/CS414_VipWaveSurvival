@@ -2,8 +2,8 @@ extends Node2D
 
 
 @onready var character_select_scene := preload("res://ui_components/character_select_screen/character_select_screen.tscn") as PackedScene
-@onready var start_button := $Control/StartButton as Button
-@onready var start_button_sound := $Control/StartButton/ButtonSound as AudioStreamPlayer
+@onready var start_button := $CanvasLayer/Control/VBoxContainer/StartButton as Button
+@onready var start_button_sound := $CanvasLayer/Control/VBoxContainer/StartButton/ButtonSound as AudioStreamPlayer
 
 
 func _ready() -> void:
