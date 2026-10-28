@@ -20,30 +20,41 @@ func _physics_process(delta: float) -> void:
 		self.velocity = Vector2.ZERO
 		return
 	
-	# conditions:
-	# 1. there must be a target to follow, and
-	# 2. either...
-	#    a. there's no target to flee from to consider, or
-	#    b. (there is a target to flee from but) following is preferred
-	var should_follow := target_to_follow and (not target_to_flee_from or target_preference == "Follow")
+	# starts out falsy, either condition will make truthy
+	var next_move := ""
+	if is_following():
+		next_move = "follow"
+	elif is_fleeing():
+		next_move = "flee"
 	
-	var direction: Vector2
-	var distance: float
-	var not_stopping: bool
+	if next_move:
+		var direction: Vector2
+		
+		if (next_move == "follow"):
+			direction = self.global_position.direction_to(target_to_follow.global_position)
+		else: # (next_move == "flee"):
+			direction = target_to_flee_from.global_position.direction_to(self.global_position)
 	
-	if (should_follow):
-		# notice that self is on the lefthand and target is on the righthand
-		direction = self.global_position.direction_to(target_to_follow.global_position)
-		distance = self.global_position.distance_to(target_to_follow.global_position)
-		not_stopping = distance > closest_follow_distance
-	else: # should flee
-		# notice that target is on the lefthand and self is on the righthand
-		direction = target_to_flee_from.global_position.direction_to(self.global_position)
-		distance = target_to_flee_from.global_position.distance_to(self.global_position)
-		not_stopping = distance < farthest_flee_distance
-	
-	if not_stopping:
 		self.velocity = direction * speed * delta
 		move_and_slide()
 	else:
 		self.velocity = Vector2.ZERO
+
+
+func is_following() -> bool:
+	# if can't follow or if prefers to flee
+	var should_follow := target_to_follow and (not target_to_flee_from or target_preference == "Follow")
+	if not should_follow: 
+		return false
+	
+	var distance := self.global_position.distance_to(target_to_follow.global_position)
+	return distance > closest_follow_distance
+
+
+func is_fleeing() -> bool:
+	var should_flee := target_to_flee_from and (not target_to_follow or target_preference == "Flee")
+	if not should_flee: 
+		return false
+	
+	var distance := self.global_position.distance_to(target_to_flee_from.global_position)
+	return distance < farthest_flee_distance

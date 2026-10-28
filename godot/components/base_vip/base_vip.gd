@@ -8,6 +8,34 @@ signal stopped_following
 @export var can_follow: bool = true
 @export_range(0.0,100.0) var follow_chance: float = 100.0
 
+var panicking: bool = false
+@export var panic_speed: float = 15000
+
+
+func _physics_process(delta: float) -> void:
+	if not panicking:
+		super._physics_process(delta)
+	if panicking:
+		var direction := self.global_position.direction_to(target_to_follow.global_position)
+		if is_following():
+			velocity = panic_speed * direction * delta
+			move_and_slide()
+		else:
+			stop_panicking()
+
+
+func panic() -> void:
+	panicking = true
+	(get_node("TargetScanner") as TargetScanner).monitoring = false
+	var players: Array[Node] = get_tree().get_nodes_in_group("players").slice(0)
+	target_to_follow = players.pick_random()
+
+
+func stop_panicking() -> void:
+	panicking = false
+	(get_node("TargetScanner") as TargetScanner).monitoring = true
+	target_to_follow = null
+
 
 func request_to_follow(player: BasePlayer) -> void:
 	if self.target_to_follow == player:

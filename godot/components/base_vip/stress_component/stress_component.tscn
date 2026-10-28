@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://qrc7gynyoih7"]
+
+[ext_resource type="Script" uid="uid://csywh4hy1upjt" path="res://components/base_vip/stress_component/stress_component.gd" id="1_0rxtv"]
+[ext_resource type="AudioStream" uid="uid://bqi30sh6xqfsg" path="res://assets/sfx/player_join.wav" id="2_58aja"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vghj2"]
+bg_color = Color(0, 0, 0, 0.5568628)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rxtv"]
+bg_color = Color(1, 0.68333334, 0, 1)
+
+[sub_resource type="Theme" id="Theme_58aja"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_vghj2")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_0rxtv")
+
+[node name="StressComponent" type="ProgressBar" unique_id=1947047042]
+custom_minimum_size = Vector2(80, 4)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -2.0
+offset_right = 40.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_58aja")
+step = 1.0
+show_percentage = false
+script = ExtResource("1_0rxtv")
+
+[node name="StressTimer" type="Timer" parent="." unique_id=1109214859]
+autostart = true
+
+[node name="PanicSound" type="AudioStreamPlayer" parent="." unique_id=1082571236]
+stream = ExtResource("2_58aja")
+volume_db = -12.0
+
+[connection signal="timeout" from="StressTimer" to="." method="_on_stress_timer_timeout"]
