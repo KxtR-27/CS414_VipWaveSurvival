@@ -18,7 +18,7 @@ extends StaticBody2D
 ## minus the window titlebar minus your taskbar height,
 ## or your complete screen resolution if in fullscreen.
 @export_tool_button("Fit to window (Entire screen)", "FixedSize") \
-	var window_fit_buttom: Callable = fit_to_window
+	var window_fit_button: Callable = fit_to_window
 
 ## less reliable than [code]Fit to project settings[/code].
 ## for an unknown reason, this tends to be slightly larger.
@@ -40,7 +40,7 @@ extends StaticBody2D
 @export var camera: Camera2D
 @export var follow_camera: bool = false
 @export_tool_button("Fit to camera", "Camera2D") \
-	var camera_fit_buttom := func() -> void: pass
+	var camera_fit_button := func() -> void: pass
 
 
 @onready var top_edge := $TopEdge as CollisionShape2D
