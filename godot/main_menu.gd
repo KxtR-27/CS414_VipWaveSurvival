@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@onready var character_select_scene := preload("res://components/character_select_screen/character_select_screen.tscn") as PackedScene
+@onready var character_select_scene := preload("res://ui_components/character_select_screen/character_select_screen.tscn") as PackedScene
 @onready var start_button := $Control/StartButton as Button
 @onready var start_button_sound := $Control/StartButton/ButtonSound as AudioStreamPlayer
 
@@ -22,4 +22,4 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_controls_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://components/controls_menu/controls_menu.tscn")
+	get_tree().change_scene_to_file("res://ui_components/controls_menu/controls_menu.tscn")

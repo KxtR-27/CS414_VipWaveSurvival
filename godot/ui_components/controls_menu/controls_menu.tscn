@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://4tk53u8m8la2"]
 
-[ext_resource type="Script" uid="uid://dxiv5dlkt3b8h" path="res://components/controls_menu/controls_menu.gd" id="1_2ha2n"]
+[ext_resource type="Script" uid="uid://dxiv5dlkt3b8h" path="res://ui_components/controls_menu/controls_menu.gd" id="1_2ha2n"]
 [ext_resource type="TileSet" uid="uid://x1d1rnuuvue3" path="res://resources/mystic_woods_placeholder_tileset.tres" id="2_pan06"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_w1260"]
 [ext_resource type="Texture2D" uid="uid://cdt8vc2eo67in" path="res://assets/spritesheets/Character Frames w Arrows 1.png" id="4_8g8dy"]

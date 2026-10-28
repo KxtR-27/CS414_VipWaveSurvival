@@ -1,14 +1,14 @@
 [gd_scene format=4 uid="uid://be6cx22j0773l"]
 
-[ext_resource type="Script" uid="uid://clp20i7hmc1rx" path="res://components/character_select_screen/character_select_screen.gd" id="1_qboi0"]
+[ext_resource type="Script" uid="uid://clp20i7hmc1rx" path="res://ui_components/character_select_screen/character_select_screen.gd" id="1_qboi0"]
 [ext_resource type="TileSet" uid="uid://x1d1rnuuvue3" path="res://resources/mystic_woods_placeholder_tileset.tres" id="2_ms3bd"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_1w020"]
-[ext_resource type="PackedScene" uid="uid://ca2iv4p0fwma8" path="res://components/character_select_component/character_select_component.tscn" id="4_7oehd"]
+[ext_resource type="PackedScene" uid="uid://ca2iv4p0fwma8" path="res://ui_components/character_select_component/character_select_component.tscn" id="4_7oehd"]
 [ext_resource type="Theme" uid="uid://bekqrbmlv3skf" path="res://resources/button_theme.tres" id="4_b2fep"]
 [ext_resource type="AudioStream" uid="uid://dgmoqvi7mgn4i" path="res://assets/sfx/button_click.wav" id="5_b2fep"]
-[ext_resource type="Script" uid="uid://drygasm6iy8b6" path="res://components/device_listener/device_listener.gd" id="5_ms3bd"]
+[ext_resource type="Script" uid="uid://drygasm6iy8b6" path="res://scripts/device_listener.gd" id="5_ms3bd"]
 [ext_resource type="Script" uid="uid://hc07qt5qd2n2" path="res://scripts/button_sound.gd" id="6_j3akc"]
-[ext_resource type="PackedScene" uid="uid://c007jw67bbb4s" path="res://components/control_hint_lists/control_hint_list_charsel.tscn" id="8_jyknn"]
+[ext_resource type="PackedScene" uid="uid://c007jw67bbb4s" path="res://ui_components/control_hint_lists/control_hint_list_charsel.tscn" id="8_jyknn"]
 [ext_resource type="AudioStream" uid="uid://bqi30sh6xqfsg" path="res://assets/sfx/player_join.wav" id="8_wbnps"]
 [ext_resource type="AudioStream" uid="uid://cxq7wat0csjoe" path="res://assets/sfx/ready_up.wav" id="9_7oehd"]
 

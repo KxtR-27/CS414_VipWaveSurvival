@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ca2iv4p0fwma8"]
 
-[ext_resource type="Script" uid="uid://2g50hl21f3bl" path="res://components/character_select_component/character_select_component.gd" id="1_4evgm"]
+[ext_resource type="Script" uid="uid://2g50hl21f3bl" path="res://ui_components/character_select_component/character_select_component.gd" id="1_4evgm"]
 [ext_resource type="Texture2D" uid="uid://dnr5kiifprrj8" path="res://assets/spritesheets/Swordsman.png" id="2_lcwbv"]
 [ext_resource type="Texture2D" uid="uid://cdt8vc2eo67in" path="res://assets/spritesheets/Character Frames w Arrows 1.png" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://dh4q2xth8dhet" path="res://assets/spritesheets/Wizard.png" id="4_lkumq"]

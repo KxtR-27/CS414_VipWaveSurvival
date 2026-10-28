@@ -29,10 +29,10 @@ func _on_pause_menu_closed() -> void:
 
 
 func _on_game_won() -> void:
-	get_tree().change_scene_to_file("res://components/win_screen/win_screen.tscn")
+	get_tree().change_scene_to_file("res://ui_components/win_screen/win_screen.tscn")
 	queue_free()
 
 
 func _on_game_lost() -> void:
-	get_tree().change_scene_to_file("res://components/upgrade_area/upgrade_area.tscn")
+	get_tree().change_scene_to_file("res://ui_components/upgrade_area/upgrade_area.tscn")
 	queue_free()

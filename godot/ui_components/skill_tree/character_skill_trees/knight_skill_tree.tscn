@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://q0xq8jcps328"]
 
-[ext_resource type="PackedScene" uid="uid://d2wngb4erhw4e" path="res://components/skill_tree/skill_tree.tscn" id="1_q4hna"]
+[ext_resource type="PackedScene" uid="uid://d2wngb4erhw4e" path="res://ui_components/skill_tree/skill_tree.tscn" id="1_q4hna"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="2_ct8e2"]
-[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://components/skill_tree/skill_tree_components/skill_component.tscn" id="3_xm153"]
+[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_components/skill_component.tscn" id="3_xm153"]
 [ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash.png" id="4_i7efh"]
 [ext_resource type="Texture2D" uid="uid://dh4q2xth8dhet" path="res://assets/spritesheets/Wizard.png" id="5_lc1i6"]
 

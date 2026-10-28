@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterSkillTree" format=3 uid="uid://70coblxuuwuf"]
 
-[ext_resource type="Script" uid="uid://ct2rxn3pdctpg" path="res://components/skill_tree/character_skill_trees/character_skill_tree.gd" id="1_oa7u5"]
+[ext_resource type="Script" uid="uid://ct2rxn3pdctpg" path="res://ui_components/skill_tree/character_skill_trees/character_skill_tree.gd" id="1_oa7u5"]
 [ext_resource type="Script" uid="uid://c1qvpiklfsumt" path="res://scripts/ability_templates/base_ability.gd" id="1_xh1ba"]
 [ext_resource type="Resource" uid="uid://bhgvsy3mhtcrj" path="res://resources/abilities/wizard_ability_one.tres" id="2_nuk7h"]
 [ext_resource type="Resource" uid="uid://dhqtbk6oo7gmi" path="res://resources/abilities/wizard_ability_two.tres" id="3_vs6ji"]

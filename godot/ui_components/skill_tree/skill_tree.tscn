@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d2wngb4erhw4e"]
 
-[ext_resource type="Script" uid="uid://5d5euqphv17f" path="res://components/skill_tree/skill_tree.gd" id="1_64quu"]
+[ext_resource type="Script" uid="uid://5d5euqphv17f" path="res://ui_components/skill_tree/skill_tree.gd" id="1_64quu"]
 
 [node name="SkillTree" type="Control" unique_id=139727037]
 layout_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://co7bq0krwqh8g"]
 
-[ext_resource type="Script" uid="uid://bveav6jx0rehs" path="res://components/loss_screen/loss_screen.gd" id="1_4wh2c"]
+[ext_resource type="Script" uid="uid://bveav6jx0rehs" path="res://ui_components/loss_screen/loss_screen.gd" id="1_4wh2c"]
 [ext_resource type="Texture2D" uid="uid://dgiiynrnn21f1" path="res://assets/LossScreen.png" id="2_cryw4"]
 
 [node name="LossScreen" type="Node2D" unique_id=678542973]

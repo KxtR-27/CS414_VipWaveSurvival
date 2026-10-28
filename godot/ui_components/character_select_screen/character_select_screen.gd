@@ -4,7 +4,7 @@ signal player_joined(player_num: int)
 
 static var main_scene :=  preload("res://main_game.tscn")
 static var player_scene := preload("res://components/base_player/base_player.tscn")
-static var character_select_component := preload("res://components/character_select_component/character_select_component.tscn")
+static var character_select_component := preload("res://ui_components/character_select_component/character_select_component.tscn")
 
 var player_array: Array[BasePlayer] = []
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d4dsxueimx0ha"]
 
-[ext_resource type="Script" uid="uid://c4s7x16olpiw0" path="res://components/skill_tree/skill_tree_components/skill_component.gd" id="1_sngfc"]
+[ext_resource type="Script" uid="uid://c4s7x16olpiw0" path="res://ui_components/skill_tree/skill_tree_components/skill_component.gd" id="1_sngfc"]
 [ext_resource type="Texture2D" uid="uid://bvs8e8v1xaurf" path="res://assets/spritesheets/Blank Frames.png" id="2_4kvuq"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_35neu"]
 

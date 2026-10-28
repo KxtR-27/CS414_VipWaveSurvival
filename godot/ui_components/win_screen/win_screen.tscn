@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bremxpayc5acy"]
 
-[ext_resource type="Script" uid="uid://pwn6hy6vcqab" path="res://components/win_screen/win_screen.gd" id="1_pb52k"]
+[ext_resource type="Script" uid="uid://pwn6hy6vcqab" path="res://ui_components/win_screen/win_screen.gd" id="1_pb52k"]
 [ext_resource type="Texture2D" uid="uid://mqml1hyoamsa" path="res://assets/WinScreen.png" id="2_pb52k"]
 
 [node name="WinScreen" type="Node2D" unique_id=678542973]
