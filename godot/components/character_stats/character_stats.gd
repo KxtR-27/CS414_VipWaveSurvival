@@ -10,7 +10,7 @@ var speed: float
 
 func apply_stats() -> void:
 	health_component.max_health = max_health
-	health_component.health_bar.max_value = max_health
+	health_component.max_value = max_health
 	hero.max_speed = speed
 	hero.speed = speed
 

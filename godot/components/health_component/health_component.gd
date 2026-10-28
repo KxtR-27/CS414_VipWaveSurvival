@@ -1,21 +1,20 @@
-class_name HealthComponent extends Control
+class_name HealthComponent extends ProgressBar
 
 signal died
 
 @export var max_health: float = 100.0
-@onready var health_bar := $HealthBar as ProgressBar
 var current_health: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_health = max_health
-	health_bar.max_value = max_health
+	max_value = max_health
 
 
 func refresh() -> void:
 	current_health = max_health
-	health_bar.max_value = max_health
-	health_bar.value = max_health
+	max_value = max_health
+	value = max_health
 
 
 func modify_max_health(amount: float) -> void:
@@ -24,8 +23,8 @@ func modify_max_health(amount: float) -> void:
 	max_health += amount
 	current_health = max_health * current_health_percentage
 	
-	health_bar.max_value = max_health
-	health_bar.value = current_health
+	max_value = max_health
+	value = current_health
 	
 	
 
@@ -43,5 +42,4 @@ func _on_health_changed(amount_changed: float, negative: bool) -> void:
 		died.emit()
 	if current_health > max_health:
 		current_health = max_health
-	if health_bar:
-		health_bar.value = current_health
+	self.value = current_health
