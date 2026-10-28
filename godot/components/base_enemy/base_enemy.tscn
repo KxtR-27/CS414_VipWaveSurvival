@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bw1quqx726ye3" path="res://components/base_enemy/base_enemy.gd" id="1_72wxb"]
 [ext_resource type="PackedScene" uid="uid://cfkri528s4tdr" path="res://components/status_effect_creator/status_effect_creator.tscn" id="2_lutwf"]
-[ext_resource type="SpriteFrames" uid="uid://dgiwgs50l3elg" path="res://resources/orc_spriteframes.tres" id="2_mvtnl"]
+[ext_resource type="SpriteFrames" uid="uid://dgiwgs50l3elg" path="res://resources/spriteframes/orc_spriteframes.tres" id="2_mvtnl"]
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/character_sprite.gd" id="3_hny28"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="4_hny28"]
 [ext_resource type="PackedScene" uid="uid://jcob8jmp4huw" path="res://components/target_scanner/target_scanner.tscn" id="4_vq6v8"]

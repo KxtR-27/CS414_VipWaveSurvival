@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ddusvv7uitiq0" path="res://assets/control hint icons/xbox-series_sheet_default.png" id="1_62meh"]
 [ext_resource type="Script" uid="uid://ccwfuphkc4ejo" path="res://scripts/navigable_atlas_texture.gd" id="2_ti2mf"]
-[ext_resource type="LabelSettings" uid="uid://bt3cljoi20iw0" path="res://resources/control_hint_list_font_settings.tres" id="3_d2jao"]
+[ext_resource type="LabelSettings" uid="uid://bt3cljoi20iw0" path="res://resources/ui_themes_settings/control_hint_list_font_settings.tres" id="3_d2jao"]
 [ext_resource type="Texture2D" uid="uid://cgafe56kutvgn" path="res://assets/control hint icons/keyboard-&-mouse_sheet_default.png" id="4_v3mj2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ik2b"]

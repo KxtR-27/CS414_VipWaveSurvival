@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0x4p6w00umjm" path="res://ui_components/pause_menu/pause_menu.gd" id="1_ea31p"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="2_6ikhs"]
-[ext_resource type="Theme" uid="uid://bekqrbmlv3skf" path="res://resources/button_theme.tres" id="3_2ivyy"]
+[ext_resource type="Theme" uid="uid://bekqrbmlv3skf" path="res://resources/ui_themes_settings/button_theme.tres" id="3_2ivyy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
 font = ExtResource("2_6ikhs")

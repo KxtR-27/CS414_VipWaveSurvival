@@ -85,7 +85,7 @@ func _input(event: InputEvent) -> void:
 		background.frame = background_frame
 		
 		var selected_character: String = characters[character_index]
-		var sprite_frames_path := "res://resources/%s_spriteframes.tres" % selected_character
+		var sprite_frames_path := "res://resources/spriteframes/%s_spriteframes.tres" % selected_character
 		character_selected.emit(selected_character, sprite_frames_path, device_id)
 
 

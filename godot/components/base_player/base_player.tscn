@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://8ojtytwbd10o"]
 
 [ext_resource type="Script" uid="uid://kk8m7xmlonb5" path="res://components/base_player/base_player.gd" id="1_qp1xa"]
-[ext_resource type="SpriteFrames" uid="uid://dal0adb4yewow" path="res://resources/swordsman_spriteframes.tres" id="2_0n512"]
+[ext_resource type="SpriteFrames" uid="uid://dal0adb4yewow" path="res://resources/spriteframes/swordsman_spriteframes.tres" id="2_0n512"]
 [ext_resource type="PackedScene" uid="uid://cfkri528s4tdr" path="res://components/status_effect_creator/status_effect_creator.tscn" id="2_4ejky"]
 [ext_resource type="Script" uid="uid://cg3h6gbsrxp6g" path="res://scripts/character_sprite.gd" id="3_ax8wi"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_2q2f4"]

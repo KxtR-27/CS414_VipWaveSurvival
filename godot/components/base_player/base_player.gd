@@ -21,7 +21,7 @@ const PROJECTILE_ABILITY := preload("res://resources/abilities/damaging_projecti
 const FIREBALL_ABILITY := preload("res://resources/abilities/damaging_fireball.tres") as FireballAbility
 const REGEN_BUFF_ABILITY := preload("res://resources/abilities/healing_regen_buff.tres") as TargetedAbility
 
-@export var sprite_frames: SpriteFrames = preload("res://resources/swordsman_spriteframes.tres")
+@export var sprite_frames: SpriteFrames = preload("res://resources/spriteframes/swordsman_spriteframes.tres")
 @export_group("Input")
 @export var device_id: int
 @export var use_kbm: bool
