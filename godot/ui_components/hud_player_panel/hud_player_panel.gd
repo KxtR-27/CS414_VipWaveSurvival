@@ -9,28 +9,28 @@ var currently_tracking: bool = false
 @onready var player_indicator: Label = $PlayerIndicator
 
 @onready var ability_icons: Dictionary[Ability, Control] = {
-	Ability.ABILITY_1 : $Ability1Icon,
-	Ability.ABILITY_2 : $Ability2Icon,
+	Ability.ABILITY_1: $Ability1Icon,
+	Ability.ABILITY_2: $Ability2Icon,
 }
 
 @onready var ability_cooldown_timers: Dictionary[Ability, Timer] = {
-	Ability.ABILITY_1 : $Ability1Cooldown,
-	Ability.ABILITY_2 : $Ability2Cooldown,
+	Ability.ABILITY_1: $Ability1Cooldown,
+	Ability.ABILITY_2: $Ability2Cooldown,
 }
 
 var ability_names: Dictionary[Ability, String] = {
-	Ability.ABILITY_1 : "",
-	Ability.ABILITY_2 : "",
+	Ability.ABILITY_1: "",
+	Ability.ABILITY_2: "",
 }
 
 var last_ability_cooldowns: Dictionary[Ability, float] = {
-	Ability.ABILITY_1 : 0.0,
-	Ability.ABILITY_2 : 0.0,
+	Ability.ABILITY_1: 0.0,
+	Ability.ABILITY_2: 0.0,
 }
 
 var ability_on_cooldown: Dictionary[Ability, bool] = {
-	Ability.ABILITY_1 : false,
-	Ability.ABILITY_2 : false,
+	Ability.ABILITY_1: false,
+	Ability.ABILITY_2: false,
 }
 
 
@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 		for ability: Ability in ability_on_cooldown.keys():
 			if ability_on_cooldown[ability]:
 				var ability_icon: TextureRect = ability_icons[ability]
-				var progress_bar : ProgressBar = ability_icon.get_node("CooldownProgress")
+				var progress_bar: ProgressBar = ability_icon.get_node("CooldownProgress")
 				var timer: Timer = ability_cooldown_timers[ability]
 				
 				progress_bar.value = (timer.time_left / last_ability_cooldowns[ability]) * 100
@@ -50,8 +50,8 @@ func connect_to_player(player: BasePlayer, hero_name: String, player_number: int
 	visible = true
 	
 	#set ability names
-	var first_ability : BaseAbility = player.current_selected_abilities[BasePlayer.Ability.ABILITY_1]
-	var second_ability : BaseAbility = player.current_selected_abilities[BasePlayer.Ability.ABILITY_2]
+	var first_ability: BaseAbility = player.current_selected_abilities[BasePlayer.Ability.ABILITY_1]
+	var second_ability: BaseAbility = player.current_selected_abilities[BasePlayer.Ability.ABILITY_2]
 	ability_names[Ability.ABILITY_1] = first_ability.ability_name
 	ability_names[Ability.ABILITY_2] = second_ability.ability_name
 	

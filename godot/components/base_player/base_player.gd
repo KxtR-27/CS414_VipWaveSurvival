@@ -112,7 +112,8 @@ func _execute_ability(ability_action: String) -> void:
 	# get the Ability enum value
 	var ability: Ability = ABILITY_ACTION_MAP[ability_action]
 	# return early if it's on cooldown
-	if ability_on_cooldown[ability]: return
+	if ability_on_cooldown[ability]: 
+        return
 	# otherwise, start the cooldown
 	_trigger_cooldown(ability)
 	

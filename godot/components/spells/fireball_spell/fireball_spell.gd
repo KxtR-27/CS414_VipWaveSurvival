@@ -62,8 +62,9 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	var tween: Tween = projectile.create_tween()
 	projectile_tween = tween
 	projectile_tween.tween_property(projectile, "global_position", landing_target, projectile_travel_time)
-	projectile_tween.finished.connect(func() -> void:
-		spawn_explosion()
+	projectile_tween.finished.connect(
+        func() -> void:
+		    spawn_explosion()
 	)
 	
 	#turn hitbox on and start spell

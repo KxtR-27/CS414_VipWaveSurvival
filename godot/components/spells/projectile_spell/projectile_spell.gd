@@ -33,8 +33,9 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	#tween projectile's position to landing_target
 	var tween: Tween = projectile.create_tween()
 	tween.tween_property(projectile, "global_position", landing_target, projectile_travel_time)
-	tween.finished.connect(func() -> void:
-		queue_free()
+	tween.finished.connect(
+        func() -> void:
+		    queue_free()
 	)
 	
 	#turn hitbox on and start spell
@@ -57,13 +58,13 @@ func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) ->
 		target.health_changed.emit(ally_healing, false)
 
 
-func on_projectile_hit(unit : BaseCharacter) -> void:
+func on_projectile_hit(unit: BaseCharacter) -> void:
 	resolve_hit(unit, projectile_damage, projectile_healing)
 
 
 func create_vfx(path_to_vfx: String) -> VFX:
-	var vfx_scene : PackedScene = load(path_to_vfx)
-	var new_vfx : Node2D = vfx_scene.instantiate()
+	var vfx_scene: PackedScene = load(path_to_vfx)
+	var new_vfx: Node2D = vfx_scene.instantiate()
 	
 	return new_vfx
 

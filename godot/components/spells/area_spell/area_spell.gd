@@ -72,7 +72,7 @@ func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) ->
 		target.health_changed.emit(ally_healing, false)
 
 
-func on_entered(unit : BaseCharacter) -> void:
+func on_entered(unit: BaseCharacter) -> void:
 	resolve_hit(unit, damage, healing)
 
 
@@ -101,8 +101,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func create_vfx(path_to_vfx: String) -> VFX:
-	var vfx_scene : PackedScene = load(path_to_vfx)
-	var new_vfx : Node2D = vfx_scene.instantiate()
+	var vfx_scene: PackedScene = load(path_to_vfx)
+	var new_vfx: Node2D = vfx_scene.instantiate()
 	
 	return new_vfx
 

@@ -76,8 +76,8 @@ func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) ->
 
 
 func create_vfx(path_to_vfx: String) -> VFX:
-	var vfx_scene : PackedScene = load(path_to_vfx)
-	var new_vfx : Node2D = vfx_scene.instantiate()
+	var vfx_scene: PackedScene = load(path_to_vfx)
+	var new_vfx: Node2D = vfx_scene.instantiate()
 	
 	return new_vfx
 

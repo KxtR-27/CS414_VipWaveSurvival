@@ -27,7 +27,7 @@ enum {
 @export var enemy_scene: PackedScene = preload("res://components/base_enemy/base_enemy.tscn")
 @export var enemy_speed: float = 0.5
 
-@export var wave_curve : Curve
+@export var wave_curve: Curve
 
 var num_spawned: int = 0
 

@@ -27,39 +27,39 @@ var characters: Dictionary = {
 }
 
 const RANGED_HERO_ABILITIES: Dictionary[String, BaseAbility] = {
-	"wizard" : preload("res://resources/abilities/wizard_ranged_attack.tres")
+	"wizard": preload("res://resources/abilities/wizard_ranged_attack.tres")
 }
 
 const HERO_ABILITIES: Dictionary[String, Dictionary]  = {
-	"swordsman" : {
-		"ABILITY_1" : preload("res://resources/abilities/swordsman_ability_one.tres"),
-		"ABILITY_2" : preload("res://resources/abilities/swordsman_ability_two.tres"),
+	"swordsman": {
+		"ABILITY_1": preload("res://resources/abilities/swordsman_ability_one.tres"),
+		"ABILITY_2": preload("res://resources/abilities/swordsman_ability_two.tres"),
 	},
-	"wizard" : {
-		"ABILITY_1" : preload("res://resources/abilities/wizard_ability_one.tres"),
-		"ABILITY_2" : preload("res://resources/abilities/wizard_ability_two.tres"),
+	"wizard": {
+		"ABILITY_1": preload("res://resources/abilities/wizard_ability_one.tres"),
+		"ABILITY_2": preload("res://resources/abilities/wizard_ability_two.tres"),
 	},
-	"knight" : {
-		"ABILITY_1" : preload("res://resources/abilities/knight_ability_one.tres"),
-		"ABILITY_2" : preload("res://resources/abilities/knight_ability_two.tres"),
+	"knight": {
+		"ABILITY_1": preload("res://resources/abilities/knight_ability_one.tres"),
+		"ABILITY_2": preload("res://resources/abilities/knight_ability_two.tres"),
 	},
 }
 
 const HERO_STATS: Dictionary[String, Dictionary] = {
-	"swordsman" : {
-		"damage" : 25.0,
-		"max_health" : 100.0,
-		"speed" : 5000.0,
+	"swordsman": {
+		"damage": 25.0,
+		"max_health": 100.0,
+		"speed": 5000.0,
 	}, 
-	"wizard" : {
-		"damage" : 20.0,
-		"max_health" : 75.0,
-		"speed" : 4000.0,
+	"wizard": {
+		"damage": 20.0,
+		"max_health": 75.0,
+		"speed": 4000.0,
 	},
-	"knight" : {
-		"damage" : 15.0,
-		"max_health" : 125.0,
-		"speed" : 3000.0,
+	"knight": {
+		"damage": 15.0,
+		"max_health": 125.0,
+		"speed": 3000.0,
 	}
 }
 

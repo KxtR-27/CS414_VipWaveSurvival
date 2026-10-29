@@ -39,6 +39,7 @@ window/stretch/aspect="expand"
 
 folder_colors={
 "res://components/": "blue",
+"res://resources/ui_themes_settings/": "green",
 "res://ui_components/": "green"
 }
 

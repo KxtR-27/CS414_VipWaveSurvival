@@ -1,11 +1,11 @@
 extends Node2D
 
 const SPELL_LOOKUP: Dictionary[BaseSpell.SPELL_TYPE, PackedScene] = {
-	BaseSpell.SPELL_TYPE.AREA : preload("res://components/spells/area_spell/area_spell.tscn"),
-	BaseSpell.SPELL_TYPE.DASH : preload("res://components/spells/dash_spell/dash_spell.tscn"),
-	BaseSpell.SPELL_TYPE.PROJECTILE : preload("res://components/spells/projectile_spell/projectile_spell.tscn"),
-	BaseSpell.SPELL_TYPE.FIREBALL : preload("res://components/spells/fireball_spell/fireball_spell.tscn"),
-	BaseSpell.SPELL_TYPE.TARGETED : preload("res://components/spells/targeted_spell/targeted_spell.tscn")
+	BaseSpell.SPELL_TYPE.AREA: preload("res://components/spells/area_spell/area_spell.tscn"),
+	BaseSpell.SPELL_TYPE.DASH: preload("res://components/spells/dash_spell/dash_spell.tscn"),
+	BaseSpell.SPELL_TYPE.PROJECTILE: preload("res://components/spells/projectile_spell/projectile_spell.tscn"),
+	BaseSpell.SPELL_TYPE.FIREBALL: preload("res://components/spells/fireball_spell/fireball_spell.tscn"),
+	BaseSpell.SPELL_TYPE.TARGETED: preload("res://components/spells/targeted_spell/targeted_spell.tscn")
 }
 
 @export var caster: BasePlayer

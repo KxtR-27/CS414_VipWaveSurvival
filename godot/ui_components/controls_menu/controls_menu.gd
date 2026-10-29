@@ -13,8 +13,8 @@ var controller_index: int = 0:
 		controller_index = wrapi(new_index, 0, 2)
 
 var supported_controllers: Dictionary = {
-	0 : "keyboard",
-	1 : "joypad"
+	0: "keyboard",
+	1: "joypad"
 }
 
 func _ready() -> void:

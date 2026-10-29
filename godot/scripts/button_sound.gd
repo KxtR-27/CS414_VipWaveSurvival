@@ -7,7 +7,10 @@ func _ready() -> void:
 	if parent is Button:
 		var button := parent as Button
 		button.pressed.connect(self.play)
-		self.finished.connect(func() -> void: button.disabled = false)
+		self.finished.connect(
+            func() -> void: 
+                button.disabled = false
+        )
 	else:
 		push_warning(self, " - parent ", parent, " is not a button.")
 
