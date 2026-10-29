@@ -1,6 +1,6 @@
 class_name SkillTree extends Control
 
-signal upgrade_unlocked
+#signal upgrade_unlocked
 
 @export var character_skill_tree: CharacterSkillTree
 
