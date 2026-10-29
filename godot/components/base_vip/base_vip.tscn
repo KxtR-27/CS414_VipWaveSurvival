@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://jcob8jmp4huw" path="res://components/target_scanner/target_scanner.tscn" id="4_pb8p3"]
 [ext_resource type="PackedScene" uid="uid://dgxdmoiktki2o" path="res://components/health_component/health_component.tscn" id="5_rrppm"]
 [ext_resource type="Texture2D" uid="uid://jahf3ohefs75" path="res://assets/Indicator2.png" id="6_24cib"]
+[ext_resource type="PackedScene" uid="uid://qrc7gynyoih7" path="res://components/base_vip/stress_component/stress_component.tscn" id="7_u5f8b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kek77"]
 radius = 18.0
@@ -40,9 +41,22 @@ scan_groups = 1
 scan_purpose = "Flee"
 metadata/_edit_lock_ = true
 
-[node name="HealthComponent" parent="." unique_id=1224115467 instance=ExtResource("5_rrppm")]
+[node name="BarsContainer" type="VBoxContainer" parent="." unique_id=1104692804]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
 offset_top = -40.0
-offset_bottom = -40.0
+offset_right = 40.0
+offset_bottom = -28.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="HealthComponent" parent="BarsContainer" unique_id=1224115467 instance=ExtResource("5_rrppm")]
+layout_mode = 2
+
+[node name="StressComponent" parent="BarsContainer" unique_id=1947047042 instance=ExtResource("7_u5f8b")]
+layout_mode = 2
 
 [node name="Debuffs" type="Node2D" parent="." unique_id=2016027774]
 
@@ -84,6 +98,6 @@ custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 texture = ExtResource("6_24cib")
 
-[connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
+[connection signal="health_changed" from="." to="BarsContainer/HealthComponent" method="_on_health_changed"]
 [connection signal="target_scanned" from="TargetScanner" to="." method="_on_target_scanned"]
-[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="died" from="BarsContainer/HealthComponent" to="." method="_on_health_component_died"]

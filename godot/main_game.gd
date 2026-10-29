@@ -34,5 +34,5 @@ func _on_game_won() -> void:
 
 
 func _on_game_lost() -> void:
-	get_tree().change_scene_to_file("res://ui_components/upgrade_area/upgrade_area.tscn")
+	get_tree().change_scene_to_file("res://ui_components/loss_screen/loss_screen.tscn")
 	queue_free()

@@ -3,9 +3,9 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vghj2"]
 bg_color = Color(0, 0, 0, 0.5568628)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0ic2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asf2p"]
 bg_color = Color(1, 0, 0, 1)
 
 [resource]
 ProgressBar/styles/background = SubResource("StyleBoxFlat_vghj2")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_b0ic2")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_asf2p")
