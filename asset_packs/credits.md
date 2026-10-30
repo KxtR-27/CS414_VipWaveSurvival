@@ -1,8 +1,8 @@
-# Asset Pack Credits
+a# Asset Pack Credits
 
-To prevent redistribution under applicable licenses, asset packs placed here are gitignored. 
-Instead, link to the package below. 
-If an asset pack's license allows redistribution, 
+To prevent redistribution under applicable licenses, asset packs placed here are gitignored.
+Instead, link to the package below.
+If an asset pack's license allows redistribution,
 append to `_ALLOWS_REDIST` to the end of the zip archive name to track it.
 
 Keep in mind that any assets _used in the project_ should go in `godot/assets` and be tracked there.
@@ -27,6 +27,9 @@ Keep in mind that any assets _used in the project_ should go in `godot/assets` a
 5. **16 bit Fantasy & Adventure Music** by xDeviruchi • _free_ • _added by Kat_  
    https://xdeviruchi.itch.io/16-bit-fantasy-adventure-music-pack
 
-   Attribution as per the license:
-   - "Original music by Marllon Silva (xDeviruchi)"
-   - https://www.youtube.com/xdeviruchi
+    Attribution as per the license:
+    - "Original music by Marllon Silva (xDeviruchi)"
+    - https://www.youtube.com/xdeviruchi
+
+6. **Free Haunted Forest Asset Pack** by CaffeinatedCreature • _free_ • _added by Kat_
+   https://caffeinatedcreature.itch.io/free-haunted-forest-asset-pack
