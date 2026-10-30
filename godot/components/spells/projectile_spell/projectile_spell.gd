@@ -34,8 +34,8 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	var tween: Tween = projectile.create_tween()
 	tween.tween_property(projectile, "global_position", landing_target, projectile_travel_time)
 	tween.finished.connect(
-        func() -> void:
-		    queue_free()
+		func() -> void:
+			queue_free()
 	)
 	
 	#turn hitbox on and start spell

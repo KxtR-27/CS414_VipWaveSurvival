@@ -11,7 +11,7 @@ var attack_on_cooldown := false as bool
 func _ready() -> void:
 	# return if target already exists
 	if target_to_follow:
-        return
+		return
 	# otherwise, check for closest
 	_poll_for_closest_target()
 	# if we still didn't find one, poll automatically until we do
@@ -44,7 +44,7 @@ func _poll_for_closest_target() -> void:
 	# run check for closest target
 	var targets := get_tree().get_nodes_in_group("enemy_targets").slice(0) as Array[Node]
 	if targets.is_empty():
-        return
+		return
 	
 	# sort by closeness
 	targets.sort_custom(_sort_by_closeness)

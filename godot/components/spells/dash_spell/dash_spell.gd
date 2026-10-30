@@ -45,10 +45,10 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	var tween: Tween = caster.create_tween()
 	tween.tween_property(caster, "global_position", landing_target, duration)
 	tween.finished.connect(
-        func() -> void:
-            landing_hitbox.monitoring = true
-            landing_lifetime_timer.start()
-            caster.can_move = true
+		func() -> void:
+			landing_hitbox.monitoring = true
+			landing_lifetime_timer.start()
+			caster.can_move = true
 	)
 	
 	#turn hitbox on and start spell

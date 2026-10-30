@@ -113,7 +113,7 @@ func _execute_ability(ability_action: String) -> void:
 	var ability: Ability = ABILITY_ACTION_MAP[ability_action]
 	# return early if it's on cooldown
 	if ability_on_cooldown[ability]: 
-        return
+		return
 	# otherwise, start the cooldown
 	_trigger_cooldown(ability)
 	

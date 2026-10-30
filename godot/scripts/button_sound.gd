@@ -8,9 +8,9 @@ func _ready() -> void:
 		var button := parent as Button
 		button.pressed.connect(self.play)
 		self.finished.connect(
-            func() -> void: 
-                button.disabled = false
-        )
+			func() -> void: 
+				button.disabled = false
+		)
 	else:
 		push_warning(self, " - parent ", parent, " is not a button.")
 

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bitu6kfpq11uo"]
+
+[ext_resource type="StyleBox" uid="uid://bwve7jp7e43jf" path="res://resources/ui_themes_settings/dialogue_box/dialogue_box_style.tres" id="1_l11qa"]
+[ext_resource type="Script" uid="uid://dj4gh8j6iifbg" path="res://ui_components/dialogue_box/dialogue_box.gd" id="1_td0wh"]
+[ext_resource type="LabelSettings" uid="uid://n20qnitep3qq" path="res://resources/ui_themes_settings/dialogue_box/dialogue_box_label_settings.tres" id="3_ti53f"]
+
+[node name="DialogueBox" type="PanelContainer" unique_id=846966837]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("1_l11qa")
+script = ExtResource("1_td0wh")
+
+[node name="Label" type="Label" parent="." unique_id=1661636771]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Yikes!"
+label_settings = ExtResource("3_ti53f")
+autowrap_mode = 2
+
+[node name="Lifetime" type="Timer" parent="." unique_id=220966708]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="FadeLifetime" type="Timer" parent="." unique_id=1547976806]
+one_shot = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="timeout" from="FadeLifetime" to="." method="_on_fade_lifetime_timeout"]

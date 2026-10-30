@@ -57,7 +57,7 @@ func request_to_stop_following(player: BasePlayer) -> void:
 
 func _on_target_scanned(character: BaseCharacter, flee: bool) -> void:
 	if flee: 
-        target_to_flee_from = character
+		target_to_flee_from = character
 
 
 func _on_health_component_died() -> void:

@@ -43,7 +43,7 @@ func _ready() -> void:
 func _get_parent_current_target() -> Variant: # Variant as in BaseCharacter or null
 	var parent: BaseNPC = get_parent()
 	if not parent: 
-        return null
+		return null
 	
 	if scan_purpose == "Follow":
 		return parent.target_to_follow

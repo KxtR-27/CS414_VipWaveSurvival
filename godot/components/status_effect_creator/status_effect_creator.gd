@@ -25,9 +25,9 @@ func apply_effect(status_effect_type: StatusEffect.STATUS_EFFECT_TYPE, stacks: i
 		status_effect.apply(stacks)
 		
 		status_effect.finished.connect(
-            func() -> void: 
-                current_status_effects.erase(status_effect)
-                status_effect.queue_free()
+			func() -> void: 
+				current_status_effects.erase(status_effect)
+				status_effect.queue_free()
 		)
 
 
