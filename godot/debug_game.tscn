@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c2b1qhlak57w6" path="res://components/tilemaps/grass_tilemap.tscn" id="2_iifjr"]
 [ext_resource type="PackedScene" uid="uid://q8gp3srvu57s" path="res://components/base_vip/base_vip.tscn" id="3_8ak8g"]
 [ext_resource type="PackedScene" uid="uid://dijnp34jkurwa" path="res://ui_components/control_hint_lists/control_hint_list_game.tscn" id="4_m2blt"]
+[ext_resource type="PackedScene" uid="uid://c6or72ek6u3gy" path="res://components/tilemaps/spooky_tilemap.tscn" id="4_pv27a"]
 [ext_resource type="PackedScene" uid="uid://c3iaqgpbhq7ko" path="res://ui_components/pause_menu/pause_menu.tscn" id="5_h1qtc"]
 [ext_resource type="PackedScene" uid="uid://d1ks7xuvlpa75" path="res://components/base_enemy/base_enemy.tscn" id="6_3tl74"]
 [ext_resource type="PackedScene" uid="uid://8ojtytwbd10o" path="res://components/base_player/base_player.tscn" id="7_1uom7"]
@@ -26,7 +27,9 @@ make_invincible = [NodePath("BaseVIP"), NodePath("BasePlayer")]
 [node name="PauseMenu" parent="." unique_id=193909186 instance=ExtResource("5_h1qtc")]
 process_mode = 3
 
-[node name="BackgroundTiles" parent="." unique_id=350951253 instance=ExtResource("2_iifjr")]
+[node name="SpookyTiles" parent="." unique_id=498013754 instance=ExtResource("4_pv27a")]
+
+[node name="ForestTiles" parent="." unique_id=350951253 instance=ExtResource("2_iifjr")]
 
 [node name="RegionBorder" parent="." unique_id=1741476439 instance=ExtResource("8_0jeig")]
 
