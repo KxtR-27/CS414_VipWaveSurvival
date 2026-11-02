@@ -30,6 +30,7 @@ var can_move: bool = true
 var uses_ranged_attacks: bool = false
 var ranged_attack_ability: BaseAbility
 var hero_name: String
+var upgrade_path: UpgradePath
 
 ## this maps ability enums to the desired ability to be run
 var current_selected_abilities: Dictionary[Ability, BaseAbility] = {

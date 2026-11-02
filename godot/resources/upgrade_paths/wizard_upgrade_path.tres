@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="UpgradePath" format=3 uid="uid://chls0k6k7ar64"]
+
+[ext_resource type="Script" uid="uid://gjep0atg0o8q" path="res://scripts/ability_upgrades/wizard_upgrade_path.gd" id="1_b6uhp"]
+
+[resource]
+script = ExtResource("1_b6uhp")
+metadata/_custom_type_script = "uid://gjep0atg0o8q"
