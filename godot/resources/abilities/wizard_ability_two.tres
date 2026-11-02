@@ -6,6 +6,7 @@
 script = ExtResource("1_rpl04")
 projectile_speed = 0.5
 distance = 300
+projectile_count = 3
 ability_name = "Wizard Two"
 damage = 35
 path_to_vfx = "res://resources/ability_vfxs/projectile_spell/projectile_spell_vfx.tscn"

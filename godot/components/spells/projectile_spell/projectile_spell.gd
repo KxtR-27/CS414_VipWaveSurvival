@@ -28,27 +28,63 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	var reticle: CollisionShape2D = caster.hurtbox.get_node("Shape") as CollisionShape2D
 	
 	var direction: Vector2 = (reticle.global_position - caster.global_position).normalized()
-	var landing_target: Vector2 = caster.global_position + (direction * distance)
+	
+	#more than one projectile? (i.e. multishot)
+	var projectile_count: int = projectile_ability.projectile_count
+	if projectile_count > 1:
+		var total_spread: float = deg_to_rad(60) #creates 60 degree cone
+		var initial_spread: float = deg_to_rad(-30) #first projectile will start 30 degrees away from center
+		var turn_radius: float = total_spread / (projectile_count - 1)
+		
+		#start 30 degrees to the left, then start sweeping right
+		for projectile_index in range(projectile_count):
+			var distance_to_turn: float = turn_radius * projectile_index
+			var current_projectile_spread: float = initial_spread + distance_to_turn
+			
+			var projectile_direction: Vector2 = direction.rotated(current_projectile_spread)
+			var new_projectile: Area2D = spawn_projectile(projectile_direction)
+			
+			#apply vfx
+			if not ability.path_to_vfx.is_empty():
+				var new_vfx: VFX = create_vfx(ability.path_to_vfx)
+				if new_vfx:
+					vfx = new_vfx
+					new_projectile.add_child(vfx)
+					vfx.play()
+	else:
+		var new_projectile: Area2D = spawn_projectile(direction)
+		
+		if not ability.path_to_vfx.is_empty():
+			var new_vfx: VFX = create_vfx(ability.path_to_vfx)
+			if new_vfx:
+				vfx = new_vfx
+				new_projectile.add_child(vfx)
+				vfx.play()
+	
+	
+
+
+func spawn_projectile(direction: Vector2) -> Area2D:
+	var new_projectile: Area2D = projectile.duplicate()
+	
+	projectile.get_parent().add_child(new_projectile)
+	new_projectile.global_position = spell_caster.global_position
+	
+	var landing_target: Vector2 = spell_caster.global_position + (direction * distance)
 	
 	#tween projectile's position to landing_target
-	var tween: Tween = projectile.create_tween()
-	tween.tween_property(projectile, "global_position", landing_target, projectile_travel_time)
+	var tween: Tween = new_projectile.create_tween()
+	tween.tween_property(new_projectile, "global_position", landing_target, projectile_travel_time)
 	tween.finished.connect(
 		func() -> void:
-			queue_free()
+			new_projectile.queue_free()
 	)
 	
-	#turn hitbox on and start spell
-	projectile.monitoring = true
+	#start monitoring
+	new_projectile.monitoring = true
 	tween.play()
 	
-	
-	if not ability.path_to_vfx.is_empty():
-		var new_vfx: VFX = create_vfx(ability.path_to_vfx)
-		if new_vfx:
-			vfx = new_vfx
-			projectile.add_child(vfx)
-			vfx.play()
+	return new_projectile
 
 
 func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) -> void:

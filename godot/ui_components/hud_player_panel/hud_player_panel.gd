@@ -65,7 +65,9 @@ func connect_to_player(player: BasePlayer, hero_name: String, player_number: int
 	)
 	
 	player.health_changed.connect(func(_amount: float, _negative: bool) -> void: 
-		health_bar.value = (player.get_node("HealthComponent") as HealthComponent).current_health
+		var health_component: HealthComponent = player.get_node("HealthComponent") as HealthComponent
+		health_bar.value = health_component.current_health
+		health_bar.max_value = health_component.max_health
 	)
 	
 	#set player icon

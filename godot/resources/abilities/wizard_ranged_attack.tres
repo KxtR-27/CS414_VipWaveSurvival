@@ -6,6 +6,7 @@
 script = ExtResource("1_ys3il")
 projectile_speed = 0.5
 distance = 150
+projectile_count = 1
 ability_name = "Wizard Attack"
 damage = 15
 path_to_vfx = "res://resources/ability_vfxs/wizard_attack/wizard_attack.tscn"
