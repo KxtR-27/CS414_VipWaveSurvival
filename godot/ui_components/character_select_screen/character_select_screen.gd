@@ -105,8 +105,8 @@ func _on_character_selected(selected_character: String, sprite_frames_path: Stri
 	new_player.hero_name = selected_character
 	
 	new_player.override_abilities(HERO_ABILITIES[selected_character])
-	if selected_character == "wizard": #set upgrade path
-		new_player.upgrade_path = preload("res://resources/upgrade_paths/wizard_upgrade_path.tres")
+	#if selected_character == "wizard": #set upgrade path
+		#new_player.upgrade_path = preload("res://resources/upgrade_paths/wizard_upgrade_path.tres")
 	
 	if RANGED_HERO_ABILITIES.keys().find(selected_character) != -1:
 		new_player.uses_ranged_attacks = true

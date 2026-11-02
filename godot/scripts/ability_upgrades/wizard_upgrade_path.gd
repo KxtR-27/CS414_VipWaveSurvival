@@ -1,4 +1,4 @@
-class_name UpgradePath extends Resource
+class_name WizardUpgradePath extends Resource
 
 var ability_upgrades: Dictionary[String, Dictionary] = {
 	"Wizard One" : {
