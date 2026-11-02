@@ -58,6 +58,9 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="RespawnTimer" type="Timer" parent="." unique_id=361152488]
+wait_time = 3.0
+
 [node name="HealthComponent" parent="." unique_id=1224115467 instance=ExtResource("5_2q2f4")]
 offset_top = -35.0
 offset_bottom = -35.0
@@ -134,6 +137,8 @@ script = ExtResource("14_7d35r")
 
 [connection signal="ability_used" from="." to="AbilityCreator" method="_on_base_player_ability_used"]
 [connection signal="health_changed" from="." to="HealthComponent" method="_on_health_changed"]
+[connection signal="respawned" from="." to="." method="_on_respawned"]
+[connection signal="respawned" from="." to="HealthComponent" method="_on_player_respawned"]
 [connection signal="timeout" from="Cooldowns/Ability1Cooldown" to="." method="_on_ability_1_cooldown_timeout"]
 [connection signal="timeout" from="Cooldowns/Ability2Cooldown" to="." method="_on_ability_2_cooldown_timeout"]
 [connection signal="timeout" from="Cooldowns/AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

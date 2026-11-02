@@ -1,6 +1,7 @@
 class_name BasePlayer
 extends BaseCharacter
 
+signal respawned
 
 # when you add a new ability action to the InputMap,
 # put a new value in this enum
@@ -60,13 +61,15 @@ var ability_on_cooldown: Dictionary[Ability, bool] = {
 	Ability.ATTACK: $Cooldowns/AttackCooldown,
 }
 
-@onready var animated_sprite := $Sprite as AnimatedSprite2D
+@onready var animated_sprite := $Sprite as CharacterSprite
 @onready var hurtbox := $AimableAttackHurtbox as AimableHurtbox
 @onready var start_following_sound := $StartFollowingSound as AudioStreamPlayer
 @onready var stop_following_sound := $StopFollowingSound as AudioStreamPlayer
 @onready var character_stats := $CharacterStats as CharacterStats
+@onready var respawn_timer := $RespawnTimer as Timer
 
 func _ready() -> void:
+	health_component = $HealthComponent as HealthComponent
 	animated_sprite.sprite_frames = sprite_frames
 
 
@@ -82,6 +85,9 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if not _event_is_from_my_device(event):
+		return
+		
+	if is_dead:
 		return
 	
 	var ability_action: String = _get_pressed_ability(event)
@@ -127,8 +133,7 @@ func _execute_ability(ability_action: String) -> void:
 			ability_used.emit(current_ability)
 		Ability.ATTACK:
 			# play attack animation
-			var sprite := $Sprite as CharacterSprite
-			sprite.play("attack")
+			animated_sprite.play("attack")
 			# attack enemies
 			_attack()
 			if attack_sound:
@@ -195,7 +200,18 @@ func _attack() -> void:
 
 
 func _on_health_component_died() -> void:
-	self.queue_free()
+	is_dead = true
+	can_move = false
+	
+	animated_sprite.play("death")
+	await animated_sprite.animation_finished
+	
+	respawn_timer.start()
+	await respawn_timer.timeout
+	
+	animated_sprite.play_backwards("death")
+	await animated_sprite.animation_finished
+	respawned.emit()
 
 
 func _event_is_from_my_device(event: InputEvent) -> bool:
@@ -239,3 +255,8 @@ func override_abilities(abilities: Dictionary) -> void:
 		Ability.ABILITY_1: abilities["ABILITY_1"],
 		Ability.ABILITY_2: abilities["ABILITY_2"],
 	}
+
+
+func _on_respawned() -> void:
+	can_move = true
+	is_dead = false

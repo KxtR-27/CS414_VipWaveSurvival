@@ -2,6 +2,22 @@
 
 [ext_resource type="Texture2D" uid="uid://b5byvqyttil6d" path="res://assets/spritesheets/Priest.png" id="1_gv40m"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv40m"]
+atlas = ExtResource("1_gv40m")
+region = Rect2(0, 900, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w4m"]
+atlas = ExtResource("1_gv40m")
+region = Rect2(100, 900, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wr4j"]
+atlas = ExtResource("1_gv40m")
+region = Rect2(200, 900, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyx7l"]
+atlas = ExtResource("1_gv40m")
+region = Rect2(300, 900, 100, 100)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cqpau"]
 atlas = ExtResource("1_gv40m")
 region = Rect2(0, 0, 100, 100)
@@ -60,6 +76,23 @@ region = Rect2(700, 100, 100, 100)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv40m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wr4j")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_qyx7l")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 4.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cqpau")

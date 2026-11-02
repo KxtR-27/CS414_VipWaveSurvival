@@ -63,27 +63,36 @@ func connect_to_player(player: BasePlayer, hero_name: String, player_number: int
 				last_ability_cooldowns[index] = 5.0
 				break
 	)
+
+	health_bar.max_value = player.character_stats.max_health
 	
-	player.health_changed.connect(func(_amount: float, _negative: bool) -> void: 
-		var health_component: HealthComponent = player.get_node("HealthComponent") as HealthComponent
-		health_bar.value = health_component.current_health
-		health_bar.max_value = health_component.max_health
+	player.health_changed.connect(func(_amount: float, _negative: bool) -> void:
+		health_bar.value = player.health_component.current_health
+		health_bar.max_value = player.health_component.max_health
+	)
+	
+	player.health_component.max_health_changed.connect(func(max_health: float, current_health: float) -> void:
+		health_bar.max_value = max_health
+		health_bar.value = current_health
+	)
+	
+	player.health_component.health_refreshed.connect(func(new_max: float, current_value: float) -> void:
+		health_bar.max_value = new_max
+		health_bar.value = current_value
+	)
+	
+	player.character_stats.stats_changed.connect(func(_damage: float, max_health: float, _speed: float) -> void:
+		health_bar.max_value = max_health
 	)
 	
 	#set player icon
 	match hero_name:
 		"swordsman": 
 			(player_icon.get_node("swordsman") as TextureRect).visible = true
-			health_bar.max_value = 100.0
-			health_bar.value = 100.0
 		"knight": 
 			(player_icon.get_node("knight") as TextureRect).visible = true
-			health_bar.max_value = 125.0
-			health_bar.value = 125.0
 		"wizard": 
 			(player_icon.get_node("wizard") as TextureRect).visible = true
-			health_bar.max_value = 75.0
-			health_bar.value = 75.0
 	
 	#set color and text for indicator label
 	($BackgroundPanel as Panel).modulate = color

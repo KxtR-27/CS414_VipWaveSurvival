@@ -34,6 +34,8 @@ func _process(delta: float) -> void:
 	# even though this is visual, 
 	# its tie to movement means it should be in physics process
 	var in_motion := parent.velocity != Vector2.ZERO
+	if parent.is_dead:
+		return
 	if not in_motion and not _am_i_doing("idle"):
 		_accum_idle_delay += delta
 		if _accum_idle_delay >= idle_delay_seconds:
@@ -48,7 +50,7 @@ func _process(delta: float) -> void:
 
 
 func _on_parent_health_changed(_amount: float, negative: bool) -> void:
-	if negative and self.sprite_frames.has_animation("hurt"):
+	if negative and self.sprite_frames.has_animation("hurt") and not _am_i_doing("death"):
 		play("hurt")
 
 
@@ -82,4 +84,4 @@ func _am_i_doing(anim_name: String) -> bool:
 
 func _do_not_interrupt() -> bool:
 	# avoid interrupting certain actions
-	return _am_i_doing("hurt") or _am_i_doing("attack")
+	return _am_i_doing("death") or _am_i_doing("hurt") or _am_i_doing("attack")

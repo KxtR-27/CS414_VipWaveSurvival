@@ -20,6 +20,10 @@ func _physics_process(delta: float) -> void:
 		self.velocity = Vector2.ZERO
 		return
 	
+	if is_dead:
+		self.velocity = Vector2.ZERO
+		return
+	
 	# starts out falsy, either condition will make truthy
 	var next_move := ""
 	if is_following():

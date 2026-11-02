@@ -30,6 +30,22 @@ region = Rect2(500, 200, 100, 100)
 atlas = ExtResource("1_ik0a0")
 region = Rect2(600, 200, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik0a0"]
+atlas = ExtResource("1_ik0a0")
+region = Rect2(0, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up1g8"]
+atlas = ExtResource("1_ik0a0")
+region = Rect2(100, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsqao"]
+atlas = ExtResource("1_ik0a0")
+region = Rect2(200, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_essh7"]
+atlas = ExtResource("1_ik0a0")
+region = Rect2(300, 600, 100, 100)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tn44q"]
 atlas = ExtResource("1_ik0a0")
 region = Rect2(0, 500, 100, 100)
@@ -133,6 +149,23 @@ animations = [{
 "loop": 0,
 "name": &"attack",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik0a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up1g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsqao")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_essh7")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,

@@ -11,6 +11,13 @@ signal stopped_following
 var panicking: bool = false
 @export var panic_speed: float = 15000
 
+@onready var sprite := $Sprite as CharacterSprite
+
+func _ready() -> void:
+	health_component = $BarsContainer/HealthComponent as HealthComponent
+	health_component.max_health = health
+	health_component.refresh()
+
 
 func _physics_process(delta: float) -> void:
 	if not panicking:
@@ -61,5 +68,7 @@ func _on_target_scanned(character: BaseCharacter, flee: bool) -> void:
 
 
 func _on_health_component_died() -> void:
+	sprite.play("death")
+	await sprite.animation_finished
 	GlobalEvents.lose_game()
 	self.queue_free()

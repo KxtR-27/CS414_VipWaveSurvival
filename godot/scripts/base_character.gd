@@ -15,6 +15,7 @@ signal health_changed(amount: float, negative: bool)
 		var negative := new_health < health
 		health = new_health
 		health_changed.emit(amount, negative)
+@onready var health_component: HealthComponent
 
 
 # since this is an abstract class, using @onready nodes is not an option.
@@ -22,6 +23,8 @@ signal health_changed(amount: float, negative: bool)
 @export_group("Optional Sounds")
 @export var hurt_sound: AudioStreamPlayer
 @export var attack_sound: AudioStreamPlayer
+
+var is_dead := false as bool
 
 
 func take_damage(amount: float) -> void:

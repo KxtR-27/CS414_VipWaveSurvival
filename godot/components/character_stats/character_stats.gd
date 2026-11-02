@@ -1,5 +1,7 @@
 class_name CharacterStats extends Node
 
+signal stats_changed(damage: float, max_health: float, speed: float)
+
 @onready var hero: BasePlayer = get_parent()
 @onready var health_component: HealthComponent = hero.get_node("HealthComponent")
 
@@ -10,7 +12,6 @@ var speed: float
 
 func apply_stats() -> void:
 	health_component.max_health = max_health
-	health_component.max_value = max_health
 	hero.max_speed = speed
 	hero.speed = speed
 
@@ -26,3 +27,5 @@ func modify_stat(stat_name: String, amount: float) -> void:
 			health_component.modify_max_health(amount)
 	
 	apply_stats()
+	
+	stats_changed.emit(damage, max_health, speed)

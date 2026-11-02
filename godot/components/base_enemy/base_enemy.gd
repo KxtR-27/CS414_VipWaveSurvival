@@ -62,6 +62,9 @@ func _on_target_polling_timer_timeout() -> void:
 
 
 func _on_health_component_died() -> void:
+	is_dead = true
+	sprite.play("death")
+	await sprite.animation_finished
 	self.queue_free()
 
 
@@ -74,7 +77,7 @@ func _on_target_scanned(character: BaseCharacter, flee: bool) -> void:
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body is BaseCharacter and body.is_in_group("enemy_targets"):
+	if body is BaseCharacter and body.is_in_group("enemy_targets") and not (body as BaseCharacter).is_dead:
 		var character := body as BaseCharacter
 		character.take_damage(10.0)
 		sprite.play("attack")
