@@ -2,3 +2,5 @@
 asset_packs/*.zip
 asset_packs/*/
 !asset_packs/*_ALLOWS_REDIST.zip
+build/*
+!build/.gitkeep
