@@ -1,3 +1,4 @@
+@tool
 class_name SkillComponent 
 extends Control
 
@@ -23,30 +24,19 @@ const LOCKED_ICON_COLOR := Color("#696969")
 @export var upgrade_icon: Texture
 @export var upgrade_name: String
 
-@onready var _ability_panel := $VBoxContainer/CenterContainer/UpgradePanel as TextureRect
-@onready var _upgrade_icon_rect := $VBoxContainer/CenterContainer/UpgradeIcon as TextureRect
-@onready var _label := $VBoxContainer/Label as Label
+@onready var _ability_panel := $CenterContainer/UpgradePanel as TextureRect
+@onready var _upgrade_icon_rect := $CenterContainer/UpgradeIcon as TextureRect
+@onready var _label := $Label as Label
 
 
 func _ready() -> void:
-	_upgrade_icon_rect.texture = upgrade_icon
-	_label.text = upgrade_name
-	
-	if len(locked_by) == 0:
-		current_state = SkillState.unlocked
-	
-	match current_state:
-		SkillState.locked:
-			_ability_panel.modulate = LOCKED_PANEL_COLOR
-			_upgrade_icon_rect.modulate = LOCKED_ICON_COLOR
-		SkillState.unlocked:
-			_ability_panel.modulate = UNLOCKED_COLOR
-			_upgrade_icon_rect.modulate = Color("#ffffff")
-		SkillState.active:
-			_ability_panel.modulate = ACTIVE_COLOR
+	update_visuals()
 
 
 func _gui_input(event: InputEvent) -> void:
+	if Engine.is_editor_hint():
+		return
+	
 	# Check if mouse button is pressed over the component
 	if event is InputEventMouseButton and (event as InputEventMouseButton).pressed == true:
 		# If currently locked, ability stays locked when clicked
@@ -73,6 +63,16 @@ func _on_skill_activated(skill: SkillComponent) -> void:
 
 
 func _on_skill_state_changed() -> void:
+	update_visuals()
+
+
+func update_visuals() -> void:
+	_upgrade_icon_rect.texture = upgrade_icon
+	_label.text = upgrade_name
+	
+	if len(locked_by) == 0:
+		current_state = SkillState.unlocked
+	
 	match current_state:
 		SkillState.locked:
 			_ability_panel.modulate = LOCKED_PANEL_COLOR

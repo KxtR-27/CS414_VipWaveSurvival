@@ -18,38 +18,39 @@ region = Rect2(1, 1, 30, 30)
 [sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
 font = ExtResource("3_35neu")
 
-[node name="SkillComponent" type="Control" unique_id=1319363514]
-custom_minimum_size = Vector2(60, 120)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 60.0
-offset_bottom = 120.0
+[node name="SkillComponent" type="VBoxContainer" unique_id=159805121]
+custom_minimum_size = Vector2(60, -1)
+offset_left = 21.0
+offset_right = 103.0
+offset_bottom = 85.0
+grow_horizontal = 2
 size_flags_horizontal = 19
 size_flags_vertical = 19
 script = ExtResource("1_sngfc")
+current_state = 1
 upgrade_icon = SubResource("AtlasTexture_b0ic2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2008875425]
-layout_mode = 1
-offset_right = 60.0
-offset_bottom = 85.0
-
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=823900086]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=823900086]
+custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="UpgradePanel" type="TextureRect" parent="VBoxContainer/CenterContainer" unique_id=984589919]
-modulate = Color(0, 0.8850002, 0.9, 1)
+[node name="UpgradePanel" type="TextureRect" parent="CenterContainer" unique_id=984589919]
+modulate = Color(0, 0.8862745, 0.9019608, 1)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture = SubResource("AtlasTexture_n3d2o")
 
-[node name="UpgradeIcon" type="TextureRect" parent="VBoxContainer/CenterContainer" unique_id=1822928222]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=3181214]
+[node name="UpgradeIcon" type="TextureRect" parent="CenterContainer" unique_id=1822928222]
 custom_maximum_size = Vector2(60, -1)
 layout_mode = 2
-text = "Dash"
+texture = SubResource("AtlasTexture_b0ic2")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="." unique_id=3181214]
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+text = "Fireball"
 label_settings = SubResource("LabelSettings_n3d2o")
 horizontal_alignment = 1
 vertical_alignment = 1
