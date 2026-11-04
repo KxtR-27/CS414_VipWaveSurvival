@@ -23,8 +23,8 @@ const ROOT_SKILL_CONTAINER_NAME: String = "RootSkillContainer"
 
 
 @onready var title_label := $Title as Label
-@onready var template_skill_container := $Template_SkillComponentContainer
-@onready var template_unlockables_row := $Template_SkillComponentContainer/Template_UnlockableSkillsRow
+@onready var template_skill_container := $TemplateSkillContainer as VBoxContainer
+@onready var template_unlockables_row := $TemplateSkillContainer/TemplateUnlockablesRow as HBoxContainer
 
 
 func generate_tree() -> void:
@@ -33,17 +33,29 @@ func generate_tree() -> void:
 		return
 	
 	clear_generated_tree()
-	
-	var root_skill_container := _dupe_skill_container(root_skill, self, true)
-	var root_skill_component := _instantiate_skill_component(root_skill, root_skill_container)
-	
+	_recursively_generate_skill_tree(root_skill, self, true)
+	template_skill_container.visible = false
 
 
 func clear_generated_tree() -> void:
+	template_skill_container.visible = true
 	if self.has_node(ROOT_SKILL_CONTAINER_NAME):
 		self.remove_child(self.get_node(ROOT_SKILL_CONTAINER_NAME))
 		# shrink manually
+		self.size.x = -1
+		self.size.x += 100
 		self.size.y = -1
+
+
+func _recursively_generate_skill_tree(skill: SkillResource, add_to: Node, is_root: bool) -> void:
+	var skill_container := _dupe_skill_container(skill, add_to, is_root)
+	_add_new_skill_component(skill, skill_container)
+	var unlockables_row := _dupe_unlockables_row(skill, skill_container)
+	
+	for unlockable_skill in skill.unlockable_skills:
+		if unlockable_skill:
+			_recursively_generate_skill_tree(unlockable_skill, unlockables_row, false)
+
 
 
 func _dupe_skill_container(skill: SkillResource, add_to: Node, is_root: bool = false) -> VBoxContainer:
@@ -80,7 +92,7 @@ func _dupe_unlockables_row(skill: SkillResource, add_to: Node) -> HBoxContainer:
 	return row
 
 
-func _instantiate_skill_component(skill: SkillResource, add_to: Node) -> SkillComponent:
+func _add_new_skill_component(skill: SkillResource, add_to: Node) -> SkillComponent:
 	var skill_component := SKILL_COMPONENT_SCENE.instantiate() as SkillComponent
 	skill_component.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	
@@ -96,9 +108,13 @@ func _instantiate_skill_component(skill: SkillResource, add_to: Node) -> SkillCo
 	skill_component.update_visuals()
 	
 	# unlock the skill when the skill component unlock event triggers
-	skill_component.skill_state_changed.connect.call_deferred(
+	var update_skill_resource_from_component_state := \
 			func() -> void:
 				skill.unlocked = skill_component.current_state == SkillComponent.SkillState.unlocked
-	)
+	
+	if not skill_component.skill_state_changed.is_connected(update_skill_resource_from_component_state):
+		skill_component.skill_state_changed.connect.call_deferred(
+				update_skill_resource_from_component_state
+		)
 	
 	return skill_component
