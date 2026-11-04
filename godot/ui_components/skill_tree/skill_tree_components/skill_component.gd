@@ -1,18 +1,9 @@
-class_name SkillComponent extends Control
+class_name SkillComponent 
+extends Control
+
 
 signal skill_activated(skill: SkillComponent)
 signal skill_state_changed
-
-var active_color := Color("#00e667") as Color
-var unlocked_color := Color("#00e2e6") as Color
-var locked_color_panel := Color("007678ff") as Color
-var locked_color_icon := Color("#696969") as Color
-
-@export var locked_by: Array[SkillComponent] = []
-
-@onready var ability_panel := $VBoxContainer/CenterContainer/UpgradePanel as TextureRect
-@onready var upgrade_icon_rect := $VBoxContainer/CenterContainer/UpgradeIcon as TextureRect
-@onready var label := $VBoxContainer/Label as Label
 
 enum SkillState {
 	locked,
@@ -20,27 +11,39 @@ enum SkillState {
 	active
 }
 
+const ACTIVE_COLOR := Color("#00e667")
+const UNLOCKED_COLOR := Color("#00e2e6")
+const LOCKED_PANEL_COLOR := Color("007678ff")
+const LOCKED_ICON_COLOR := Color("#696969")
+
+
+@export var locked_by: Array[SkillComponent] = []
+
 @export var current_state := SkillState.locked as SkillState
 @export var upgrade_icon: Texture
 @export var upgrade_name: String
 
-# Called when the node enters the scene tree for the first time.
+@onready var _ability_panel := $VBoxContainer/CenterContainer/UpgradePanel as TextureRect
+@onready var _upgrade_icon_rect := $VBoxContainer/CenterContainer/UpgradeIcon as TextureRect
+@onready var _label := $VBoxContainer/Label as Label
+
+
 func _ready() -> void:
-	upgrade_icon_rect.texture = upgrade_icon
-	label.text = upgrade_name
+	_upgrade_icon_rect.texture = upgrade_icon
+	_label.text = upgrade_name
 	
 	if len(locked_by) == 0:
 		current_state = SkillState.unlocked
 	
 	match current_state:
 		SkillState.locked:
-			ability_panel.modulate = locked_color_panel
-			upgrade_icon_rect.modulate = locked_color_icon
+			_ability_panel.modulate = LOCKED_PANEL_COLOR
+			_upgrade_icon_rect.modulate = LOCKED_ICON_COLOR
 		SkillState.unlocked:
-			ability_panel.modulate = unlocked_color
-			upgrade_icon_rect.modulate = Color("#ffffff")
+			_ability_panel.modulate = UNLOCKED_COLOR
+			_upgrade_icon_rect.modulate = Color("#ffffff")
 		SkillState.active:
-			ability_panel.modulate = active_color
+			_ability_panel.modulate = ACTIVE_COLOR
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -72,10 +75,10 @@ func _on_skill_activated(skill: SkillComponent) -> void:
 func _on_skill_state_changed() -> void:
 	match current_state:
 		SkillState.locked:
-			ability_panel.modulate = locked_color_panel
-			upgrade_icon_rect.modulate = locked_color_icon
+			_ability_panel.modulate = LOCKED_PANEL_COLOR
+			_upgrade_icon_rect.modulate = LOCKED_ICON_COLOR
 		SkillState.unlocked:
-			ability_panel.modulate = unlocked_color
-			upgrade_icon_rect.modulate = Color("#ffffff")
+			_ability_panel.modulate = UNLOCKED_COLOR
+			_upgrade_icon_rect.modulate = Color("#ffffff")
 		SkillState.active:
-			ability_panel.modulate = active_color
+			_ability_panel.modulate = ACTIVE_COLOR
