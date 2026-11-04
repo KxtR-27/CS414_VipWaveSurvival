@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://cswxtt5af3vjf"]
+
+[ext_resource type="Script" uid="uid://dlqusj6pm8fg3" path="res://ui_components/skill_tree/skill_trees_v2/skill_tree_v2.gd" id="1_0582v"]
+[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_components/skill_component.tscn" id="2_uib0g"]
+[ext_resource type="Resource" uid="uid://cdjs0uh27617y" path="res://resources/abilities/damaging_dash.tres" id="2_vp316"]
+[ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash.png" id="3_8xiu1"]
+[ext_resource type="Script" uid="uid://dhpf6c4fnej3t" path="res://ui_components/skill_tree/skill_trees_v2/skill_resource.gd" id="4_dcgmp"]
+
+[sub_resource type="Resource" id="Resource_uib0g"]
+script = ExtResource("4_dcgmp")
+ability = ExtResource("2_vp316")
+icon = ExtResource("3_8xiu1")
+unlocked = true
+metadata/_custom_type_script = "uid://dhpf6c4fnej3t"
+
+[sub_resource type="LabelSettings" id="LabelSettings_ysw5f"]
+font_size = 12
+font_color = Color(0.72, 0.72, 0.72, 1)
+
+[node name="SkillTreeV2" type="VBoxContainer" unique_id=2100260644]
+offset_right = 340.0
+offset_bottom = 397.0
+size_flags_horizontal = 19
+size_flags_vertical = 0
+script = ExtResource("1_0582v")
+title = "Skill Tree"
+root_skill = SubResource("Resource_uib0g")
+
+[node name="Title" type="Label" parent="." unique_id=592863206]
+layout_mode = 2
+text = "Skill Tree"
+horizontal_alignment = 1
+
+[node name="Template_SkillComponentContainer" type="VBoxContainer" parent="." unique_id=1017063169]
+layout_mode = 2
+size_flags_horizontal = 17
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Template_SkillComponentContainer" unique_id=1802524570]
+layout_mode = 2
+text = "(Template Skill Tree)"
+label_settings = SubResource("LabelSettings_ysw5f")
+horizontal_alignment = 1
+
+[node name="SkillComponent" parent="Template_SkillComponentContainer" unique_id=1319363514 instance=ExtResource("2_uib0g")]
+modulate = Color(0.5411765, 0.5411765, 0.5411765, 1)
+layout_mode = 2
+
+[node name="Template_UnlockableSkillsRow" type="HBoxContainer" parent="Template_SkillComponentContainer" unique_id=1383314950]
+layout_mode = 2
+size_flags_horizontal = 17
+alignment = 1
+
+[node name="Generated_SkillComponentContainer2" type="VBoxContainer" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow" unique_id=161196829]
+modulate = Color(0.5411765, 0.5411765, 0.5411765, 1)
+layout_mode = 2
+
+[node name="SkillComponent" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer2" unique_id=1245880306 instance=ExtResource("2_uib0g")]
+layout_mode = 2
+
+[node name="Generated_UnlockableSkillsRow2" type="HBoxContainer" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer2" unique_id=970608447]
+layout_mode = 2
+
+[node name="Generated_SkillComponentContainer2" type="VBoxContainer" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer2/Generated_UnlockableSkillsRow2" unique_id=1475264018]
+layout_mode = 2
+
+[node name="SkillComponent" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer2/Generated_UnlockableSkillsRow2/Generated_SkillComponentContainer2" unique_id=615269981 instance=ExtResource("2_uib0g")]
+layout_mode = 2
+
+[node name="Generated_SkillComponentContainer3" type="VBoxContainer" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer2/Generated_UnlockableSkillsRow2" unique_id=1224451321]
+layout_mode = 2
+
+[node name="SkillComponent" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer2/Generated_UnlockableSkillsRow2/Generated_SkillComponentContainer3" unique_id=373048535 instance=ExtResource("2_uib0g")]
+layout_mode = 2
+
+[node name="Generated_SkillComponentContainer3" type="VBoxContainer" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow" unique_id=1893785212]
+modulate = Color(0.5411765, 0.5411765, 0.5411765, 1)
+layout_mode = 2
+
+[node name="SkillComponent" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer3" unique_id=684106941 instance=ExtResource("2_uib0g")]
+layout_mode = 2
+
+[node name="Generated_UnlockableSkillsRow" type="HBoxContainer" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer3" unique_id=1249315901]
+layout_mode = 2
+
+[node name="Generated_SkillComponentContainer2" type="VBoxContainer" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer3/Generated_UnlockableSkillsRow" unique_id=670175803]
+layout_mode = 2
+
+[node name="SkillComponent" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer3/Generated_UnlockableSkillsRow/Generated_SkillComponentContainer2" unique_id=91452243 instance=ExtResource("2_uib0g")]
+layout_mode = 2
+size_flags_horizontal = 17
+
+[node name="Generated_SkillComponentContainer3" type="VBoxContainer" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer3/Generated_UnlockableSkillsRow" unique_id=2086026816]
+layout_mode = 2
+
+[node name="SkillComponent" parent="Template_SkillComponentContainer/Template_UnlockableSkillsRow/Generated_SkillComponentContainer3/Generated_UnlockableSkillsRow/Generated_SkillComponentContainer3" unique_id=1519850524 instance=ExtResource("2_uib0g")]
+layout_mode = 2
+
+[node name="RootSkillContainer" type="VBoxContainer" parent="." unique_id=1511449344]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Damaging DashSkill" parent="RootSkillContainer" unique_id=159805121 instance=ExtResource("2_uib0g")]
+layout_mode = 2
+upgrade_icon = ExtResource("3_8xiu1")
+upgrade_name = "Damaging Dash"

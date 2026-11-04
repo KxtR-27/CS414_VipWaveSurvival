@@ -20,10 +20,10 @@ font = ExtResource("3_35neu")
 
 [node name="SkillComponent" type="VBoxContainer" unique_id=159805121]
 custom_minimum_size = Vector2(60, -1)
-offset_right = 82.0
+offset_left = 26.0
+offset_right = 115.0
 offset_bottom = 85.0
-grow_horizontal = 2
-size_flags_horizontal = 18
+size_flags_horizontal = 22
 size_flags_vertical = 2
 script = ExtResource("1_sngfc")
 current_state = 1
