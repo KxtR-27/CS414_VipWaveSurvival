@@ -8,14 +8,6 @@ script = ExtResource("1_xfcf4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2078559523]
 
-[node name="StartButton" type="Button" parent="CanvasLayer" unique_id=1089474716]
-offset_left = 475.0
-offset_top = 552.0
-offset_right = 681.0
-offset_bottom = 595.0
-theme = ExtResource("2_dev22")
-text = "Start run"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1521838172]
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,5 +15,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer" unique_id=1089474716]
+offset_left = 475.0
+offset_top = 552.0
+offset_right = 681.0
+offset_bottom = 595.0
+theme = ExtResource("2_dev22")
+text = "Start run"
 
 [connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
