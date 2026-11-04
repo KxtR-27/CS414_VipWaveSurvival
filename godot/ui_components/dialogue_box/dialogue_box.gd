@@ -7,7 +7,9 @@ extends PanelContainer
 ## see the static method for more information.
 
 
-const THIS_SCENE := preload("res://ui_components/dialogue_box/dialogue_box.tscn")
+# making this a const inconsistently causes a parse error,
+# as that way referencing itself creates a cyclical reference problem
+static var THIS_SCENE := preload("res://ui_components/dialogue_box/dialogue_box.tscn")
 
 var do_fade: bool = false
 
