@@ -24,6 +24,9 @@ const LOCKED_ICON_COLOR := Color("#696969")
 @export var upgrade_icon: Texture
 @export var upgrade_name: String
 
+@export_tool_button("Update", "Reload") var update_visuals_btn := \
+	func() -> void: update_visuals()
+
 @onready var _ability_panel := $CenterContainer/UpgradePanel as TextureRect
 @onready var _upgrade_icon_rect := $CenterContainer/UpgradeIcon as TextureRect
 @onready var _label := $Label as Label

@@ -20,15 +20,15 @@ font = ExtResource("3_35neu")
 
 [node name="SkillComponent" type="VBoxContainer" unique_id=159805121]
 custom_minimum_size = Vector2(60, -1)
-offset_left = 21.0
-offset_right = 103.0
+offset_right = 82.0
 offset_bottom = 85.0
 grow_horizontal = 2
-size_flags_horizontal = 19
-size_flags_vertical = 19
+size_flags_horizontal = 18
+size_flags_vertical = 2
 script = ExtResource("1_sngfc")
 current_state = 1
 upgrade_icon = SubResource("AtlasTexture_b0ic2")
+upgrade_name = "Fireball"
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=823900086]
 custom_maximum_size = Vector2(60, 60)
@@ -50,6 +50,7 @@ stretch_mode = 3
 [node name="Label" type="Label" parent="." unique_id=3181214]
 custom_maximum_size = Vector2(200, -1)
 layout_mode = 2
+size_flags_vertical = 2
 text = "Fireball"
 label_settings = SubResource("LabelSettings_n3d2o")
 horizontal_alignment = 1
