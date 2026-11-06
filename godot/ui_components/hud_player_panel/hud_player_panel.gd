@@ -65,8 +65,8 @@ func connect_to_player(player: BasePlayer, hero_name: String, player_number: int
 				break
 	)
 	
-	health_bar.value = player.character_stats.max_health
 	health_bar.max_value = player.character_stats.max_health
+	health_bar.value = player.character_stats.max_health
 	update_health_text(player.character_stats.max_health, player.character_stats.max_health)
 	
 	player.health_changed.connect(func(_amount: float, _negative: bool) -> void:
