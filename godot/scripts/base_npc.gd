@@ -62,3 +62,8 @@ func is_fleeing() -> bool:
 	
 	var distance := self.global_position.distance_to(target_to_flee_from.global_position)
 	return distance < farthest_flee_distance
+
+
+func say(dialogue: String) -> void:
+	var box := DialogueBox.create_dialogue_box(dialogue, self)
+	box.position.y -= 50

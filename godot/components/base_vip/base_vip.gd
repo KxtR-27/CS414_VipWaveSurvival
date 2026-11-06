@@ -36,12 +36,14 @@ func panic() -> void:
 	(get_node("TargetScanner") as TargetScanner).monitoring = false
 	var players: Array[Node] = get_tree().get_nodes_in_group("players").slice(0)
 	target_to_follow = players.pick_random()
+	say("Ahh! Help me!")
 
 
 func stop_panicking() -> void:
 	panicking = false
 	(get_node("TargetScanner") as TargetScanner).monitoring = true
 	target_to_follow = null
+	say("Ah.. okay... I'm okay...")
 
 
 func request_to_follow(player: BasePlayer) -> void:
@@ -52,14 +54,17 @@ func request_to_follow(player: BasePlayer) -> void:
 		if roll_to_follow <= follow_chance:
 			target_to_follow = player
 			started_following.emit()
+			say("Okay, I'll follow!")
 		else:
 			print("the vip has ignored your command (roll: ", roll_to_follow, ")")
+			say("Ehhhh, don't feel like it...")
 
 
 func request_to_stop_following(player: BasePlayer) -> void:
 	if target_to_follow == player:
 		target_to_follow = null
 		stopped_following.emit()
+		say("Are you sure about this?")
 
 
 func _on_target_scanned(character: BaseCharacter, flee: bool) -> void:

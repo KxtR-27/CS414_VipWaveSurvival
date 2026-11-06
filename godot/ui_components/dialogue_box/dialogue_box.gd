@@ -20,31 +20,32 @@ var do_fade: bool = false
 
 static func create_dialogue_box(
 	dialogue: String, # required
+	parent: Node2D, # must add dialogue box to tree to configure it
 	max_width: float = 100.0, # px, used to wrap text
-	lifetime_duration: float = 5.0, # seconds, non-negative
-	fade_duration: float = 0.0, # seconds, falsy, non-negative
+	lifetime_duration: float = 5.0, # seconds, non-negative please
+	fade_duration: float = 0.0, # seconds, falsy, non-negative please
 ) -> DialogueBox:
 	# instantiate
 	var dialogue_box := THIS_SCENE.instantiate() as DialogueBox
+	parent.add_child(dialogue_box)
 	
 	# clamp times
 	var clamped_lifetime_duration := maxf(0.001, lifetime_duration)
-	var clamped_fade_duration := maxf(0.0, fade_duration) # preserve falsy
+	var clamped_fade_duration := maxf(0.001, fade_duration) # preserve falsy
 	
 	# configure
 	dialogue_box.label.text = dialogue
 	dialogue_box.label.custom_maximum_size.x = max_width
 	dialogue_box.lifetime.wait_time = clamped_lifetime_duration
 	dialogue_box.fade_lifetime.wait_time = clamped_fade_duration
-	dialogue_box.do_fade = bool(clamped_fade_duration)
+	dialogue_box.do_fade = fade_duration <= 0
 	
-	# return
 	return dialogue_box
 
 
-func _process(_delta: float) -> void:
-	if not fade_lifetime.paused:
-		self.modulate.a = fade_lifetime.time_left / fade_lifetime.wait_time
+#func _process(_delta: float) -> void:
+	#if do_fade and not fade_lifetime.paused:
+		#self.modulate.a = fade_lifetime.time_left / fade_lifetime.wait_time
 
 
 func _on_lifetime_timeout() -> void:
