@@ -107,14 +107,4 @@ func _add_new_skill_component(skill: SkillResource, add_to: Node) -> SkillCompon
 	skill_component.name = "%sSkill" % skill.ability.ability_name
 	skill_component.update_visuals()
 	
-	# unlock the skill when the skill component unlock event triggers
-	var update_skill_resource_from_component_state := \
-			func() -> void:
-				skill.unlocked = skill_component.current_state == SkillComponent.SkillState.unlocked
-	
-	if not skill_component.skill_state_changed.is_connected(update_skill_resource_from_component_state):
-		skill_component.skill_state_changed.connect.call_deferred(
-				update_skill_resource_from_component_state
-		)
-	
 	return skill_component
