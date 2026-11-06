@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://t8tohwl5v0tl"]
+
+[ext_resource type="Script" uid="uid://dlqusj6pm8fg3" path="res://ui_components/skill_tree/skill_trees_v2/skill_tree_v2.gd" id="1_thlfm"]
+[ext_resource type="Resource" uid="uid://brqgipht06gor" path="res://resources/skill_trees_v2/knight/knight_root_skill.tres" id="2_thlfm"]
+[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_components/skill_component.tscn" id="3_nwpog"]
+[ext_resource type="Resource" uid="uid://dn8i72snfys1i" path="res://resources/skill_trees_v2/placeholder_skill.tres" id="4_xdewe"]
+[ext_resource type="Script" uid="uid://c4s7x16olpiw0" path="res://ui_components/skill_tree/skill_tree_components/skill_component.gd" id="5_240nc"]
+[ext_resource type="Resource" uid="uid://dn7ffmwttf3ns" path="res://resources/skill_trees_v2/knight/knight_skill_one.tres" id="6_8uugl"]
+[ext_resource type="Resource" uid="uid://f2rdpoljkqe4" path="res://resources/skill_trees_v2/knight/knight_skill_one_one.tres" id="7_nwpog"]
+[ext_resource type="Resource" uid="uid://bl6q7d7m8s0ab" path="res://resources/skill_trees_v2/knight/knight_skill_two.tres" id="8_xdewe"]
+[ext_resource type="Resource" uid="uid://dwb3y61ywu8dv" path="res://resources/skill_trees_v2/knight/knight_skill_two_one.tres" id="9_240nc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ysw5f"]
+font_size = 12
+font_color = Color(0.72, 0.72, 0.72, 1)
+
+[node name="KnightSkillTreeV2" type="VBoxContainer" unique_id=2100260644]
+propagate_maximum_size = false
+offset_right = 284.0
+offset_bottom = 292.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+script = ExtResource("1_thlfm")
+title = "Skill Tree"
+root_skill = ExtResource("2_thlfm")
+
+[node name="Title" type="Label" parent="." unique_id=592863206]
+layout_mode = 2
+text = "Skill Tree"
+horizontal_alignment = 1
+
+[node name="TemplateSkillContainer" type="VBoxContainer" parent="." unique_id=1017063169]
+visible = false
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="TemplateDisclaimerLabel" type="Label" parent="TemplateSkillContainer" unique_id=1802524570]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "(Template Skill Tree)"
+label_settings = SubResource("LabelSettings_ysw5f")
+horizontal_alignment = 1
+
+[node name="SkillComponent" parent="TemplateSkillContainer" unique_id=1319363514 instance=ExtResource("3_nwpog")]
+modulate = Color(0.5411765, 0.5411765, 0.5411765, 1)
+layout_mode = 2
+skill = ExtResource("4_xdewe")
+
+[node name="TemplateUnlockablesRow" type="HBoxContainer" parent="TemplateSkillContainer" unique_id=1383314950]
+layout_mode = 2
+size_flags_horizontal = 17
+alignment = 1
+
+[node name="Arbitrary_SkillContainer2" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow" unique_id=161196829]
+modulate = Color(0.5411765, 0.5411765, 0.5411765, 1)
+layout_mode = 2
+
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2" unique_id=1245880306 instance=ExtResource("3_nwpog")]
+layout_mode = 2
+skill = ExtResource("4_xdewe")
+
+[node name="Arbitrary_UnlockableSkillsRow2" type="HBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2" unique_id=970608447]
+layout_mode = 2
+
+[node name="Arbitrary_SkillContainer2" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2/Arbitrary_UnlockableSkillsRow2" unique_id=1475264018]
+layout_mode = 2
+
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2/Arbitrary_UnlockableSkillsRow2/Arbitrary_SkillContainer2" unique_id=615269981 instance=ExtResource("3_nwpog")]
+layout_mode = 2
+skill = ExtResource("4_xdewe")
+
+[node name="Arbitrary_SkillContainer3" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2/Arbitrary_UnlockableSkillsRow2" unique_id=1224451321]
+layout_mode = 2
+
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2/Arbitrary_UnlockableSkillsRow2/Arbitrary_SkillContainer3" unique_id=373048535 instance=ExtResource("3_nwpog")]
+layout_mode = 2
+skill = ExtResource("4_xdewe")
+
+[node name="Arbitrary_SkillContainer3" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow" unique_id=1893785212]
+modulate = Color(0.5411765, 0.5411765, 0.5411765, 1)
+layout_mode = 2
+
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3" unique_id=684106941 instance=ExtResource("3_nwpog")]
+layout_mode = 2
+skill = ExtResource("4_xdewe")
+
+[node name="Arbitrary_UnlockableSkillsRow" type="HBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3" unique_id=1249315901]
+layout_mode = 2
+
+[node name="Arbitrary_SkillContainer2" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3/Arbitrary_UnlockableSkillsRow" unique_id=670175803]
+layout_mode = 2
+
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3/Arbitrary_UnlockableSkillsRow/Arbitrary_SkillContainer2" unique_id=91452243 instance=ExtResource("3_nwpog")]
+layout_mode = 2
+size_flags_horizontal = 17
+skill = ExtResource("4_xdewe")
+
+[node name="Arbitrary_SkillContainer3" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3/Arbitrary_UnlockableSkillsRow" unique_id=2086026816]
+layout_mode = 2
+
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3/Arbitrary_UnlockableSkillsRow/Arbitrary_SkillContainer3" unique_id=1519850524 instance=ExtResource("3_nwpog")]
+layout_mode = 2
+skill = ExtResource("4_xdewe")
+
+[node name="RootSkillContainer" type="VBoxContainer" parent="." unique_id=1510062596]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="DamagingDashSkill" type="VBoxContainer" parent="RootSkillContainer" unique_id=159805121 instance=ExtResource("3_nwpog")]
+custom_minimum_size = Vector2(60, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+script = ExtResource("5_240nc")
+skill = ExtResource("2_thlfm")
+
+[node name="DamagingDashUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer" unique_id=1040532500]
+layout_mode = 2
+size_flags_horizontal = 17
+alignment = 1
+
+[node name="x2DamageSkillContainer" type="VBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow" unique_id=250438791]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="x2DamageSkill" type="VBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow/x2DamageSkillContainer" unique_id=1416898603 instance=ExtResource("3_nwpog")]
+custom_minimum_size = Vector2(60, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+script = ExtResource("5_240nc")
+skill = ExtResource("6_8uugl")
+
+[node name="x2DamageUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow/x2DamageSkillContainer" unique_id=1078166687]
+layout_mode = 2
+size_flags_horizontal = 17
+alignment = 1
+
+[node name="+25_DistanceSkillContainer" type="VBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow/x2DamageSkillContainer/x2DamageUnlockablesRow" unique_id=1715732936]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="+25_DistanceSkill" type="VBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow/x2DamageSkillContainer/x2DamageUnlockablesRow/+25_DistanceSkillContainer" unique_id=910699161 instance=ExtResource("3_nwpog")]
+custom_minimum_size = Vector2(60, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+script = ExtResource("5_240nc")
+skill = ExtResource("7_nwpog")
+
+[node name="+25_DistanceUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow/x2DamageSkillContainer/x2DamageUnlockablesRow/+25_DistanceSkillContainer" unique_id=1952047740]
+layout_mode = 2
+size_flags_horizontal = 17
+alignment = 1
+
+[node name="HealingDashSkillContainer" type="VBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow" unique_id=777441729]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="HealingDashSkill" type="VBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow/HealingDashSkillContainer" unique_id=675685170 instance=ExtResource("3_nwpog")]
+custom_minimum_size = Vector2(60, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+script = ExtResource("5_240nc")
+skill = ExtResource("8_xdewe")
+
+[node name="HealingDashUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow/HealingDashSkillContainer" unique_id=1486421231]
+layout_mode = 2
+size_flags_horizontal = 17
+alignment = 1
+
+[node name="+5HealingSkillContainer" type="VBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow/HealingDashSkillContainer/HealingDashUnlockablesRow" unique_id=757464314]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="+5HealingSkill" type="VBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow/HealingDashSkillContainer/HealingDashUnlockablesRow/+5HealingSkillContainer" unique_id=820619897 instance=ExtResource("3_nwpog")]
+custom_minimum_size = Vector2(60, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+script = ExtResource("5_240nc")
+skill = ExtResource("9_240nc")
+
+[node name="+5HealingUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/DamagingDashUnlockablesRow/HealingDashSkillContainer/HealingDashUnlockablesRow/+5HealingSkillContainer" unique_id=731389574]
+layout_mode = 2
+size_flags_horizontal = 17
+alignment = 1

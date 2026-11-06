@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_s76fe")
 dash_time = 0.2
-dash_damage = 10
-landing_damage = 10
+dash_damage = 15
+landing_damage = 15
 distance = 200
 ability_name = "Damaging Dash"
 path_to_vfx = "res://resources/ability_vfxs/dash_spell/dash_spell_vfx.tscn"

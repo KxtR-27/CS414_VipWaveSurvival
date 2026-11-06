@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://brqgipht06gor"]
+
+[ext_resource type="Resource" uid="uid://cdjs0uh27617y" path="res://resources/abilities/damaging_dash.tres" id="1_gnn6w"]
+[ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash.png" id="2_q6xwp"]
+[ext_resource type="Script" uid="uid://dhpf6c4fnej3t" path="res://ui_components/skill_tree/skill_trees_v2/skill_resource.gd" id="3_frq81"]
+[ext_resource type="Resource" uid="uid://dn7ffmwttf3ns" path="res://resources/skill_trees_v2/knight/knight_skill_one.tres" id="4_40tkd"]
+[ext_resource type="Resource" uid="uid://bl6q7d7m8s0ab" path="res://resources/skill_trees_v2/knight/knight_skill_two.tres" id="5_iqidm"]
+
+[resource]
+script = ExtResource("3_frq81")
+ability = ExtResource("1_gnn6w")
+icon = ExtResource("2_q6xwp")
+state = 1
+unlockable_skill_one = ExtResource("4_40tkd")
+unlockable_skill_two = ExtResource("5_iqidm")
+metadata/_custom_type_script = "uid://dhpf6c4fnej3t"

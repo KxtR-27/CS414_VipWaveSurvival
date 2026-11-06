@@ -1,10 +1,9 @@
 class_name SkillTree extends Control
 
-#signal upgrade_unlocked
+@onready var root_ability: SkillComponent = $UpgradeNodes/VBoxContainer/CenterContainer/Dash1
 
-@export var character_skill_tree: CharacterSkillTree
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#for abilty in character_skill_tree.character_abilities:
+	root_ability.grab_focus.call_deferred()
 	pass

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://dn7ffmwttf3ns"]
+
+[ext_resource type="Script" uid="uid://cwakhfkt6df7c" path="res://scripts/ability_templates/dash_ability.gd" id="1_o8c41"]
+[ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash.png" id="2_nm8a7"]
+[ext_resource type="Script" uid="uid://dhpf6c4fnej3t" path="res://ui_components/skill_tree/skill_trees_v2/skill_resource.gd" id="3_nvnm5"]
+[ext_resource type="Resource" uid="uid://f2rdpoljkqe4" path="res://resources/skill_trees_v2/knight/knight_skill_one_one.tres" id="4_nm8a7"]
+
+[sub_resource type="Resource" id="Resource_3eq8d"]
+script = ExtResource("1_o8c41")
+dash_time = 0.2
+dash_damage = 30
+landing_damage = 30
+distance = 200
+ability_name = "x2 Damage"
+path_to_vfx = "res://resources/ability_vfxs/dash_spell/dash_spell_vfx.tscn"
+metadata/_custom_type_script = "uid://cwakhfkt6df7c"
+
+[resource]
+script = ExtResource("3_nvnm5")
+ability = SubResource("Resource_3eq8d")
+icon = ExtResource("2_nm8a7")
+unlockable_skill_one = ExtResource("4_nm8a7")
+metadata/_custom_type_script = "uid://dhpf6c4fnej3t"

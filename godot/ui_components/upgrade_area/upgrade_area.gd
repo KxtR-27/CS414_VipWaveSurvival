@@ -4,9 +4,9 @@ extends Node2D
 @onready var container := $CanvasLayer/HBoxContainer as HBoxContainer
 
 var skill_trees: Dictionary[String, PackedScene] = {
-	"wizard": preload("res://ui_components/skill_tree/character_skill_trees/wizard_skill_tree.tscn"),
-	"swordsman": preload("res://ui_components/skill_tree/character_skill_trees/swordsman_skill_tree.tscn"),
-	"knight": preload("res://ui_components/skill_tree/character_skill_trees/knight_skill_tree.tscn")
+	"wizard": preload("res://ui_components/skill_tree/skill_trees_v2/wizard_skill_tree_v2.tscn"),
+	"swordsman": preload("res://ui_components/skill_tree/skill_trees_v2/swordsman_skill_tree_v2.tscn"),
+	"knight": preload("res://ui_components/skill_tree/skill_trees_v2/knight_skill_tree_v2.tscn")
 }
 
 # Called when the node enters the scene tree for the first time.

@@ -1,13 +1,26 @@
 [gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://c6fluqe3nlr0b"]
 
-[ext_resource type="Resource" uid="uid://c3bij5otq4c3r" path="res://resources/abilities/damaging_fireball.tres" id="1_1nu7t"]
+[ext_resource type="Script" uid="uid://bsklgdiyay1ox" path="res://scripts/ability_templates/fireball_ability.gd" id="1_8nuh3"]
 [ext_resource type="Script" uid="uid://dhpf6c4fnej3t" path="res://ui_components/skill_tree/skill_trees_v2/skill_resource.gd" id="1_ilp21"]
 [ext_resource type="Texture2D" uid="uid://dolbxy427b34t" path="res://resources/fireball_atlas_texture.tres" id="2_8nuh3"]
 [ext_resource type="Resource" uid="uid://bc3y4fb4c1fhv" path="res://resources/skill_trees_v2/wizard/wizard_skill_one_one.tres" id="4_8nuh3"]
 
+[sub_resource type="Resource" id="Resource_8nuh3"]
+script = ExtResource("1_8nuh3")
+explosion_damage = 5
+projectile_speed = 1.0
+distance = 250
+ability_name = "Fireball"
+lifetime = 5.0
+tick_interval = 0.35
+damage = 5
+is_top_level = true
+path_to_vfx = "res://resources/ability_vfxs/fireball_spell/fireball_spell_vfx.tscn"
+metadata/_custom_type_script = "uid://bsklgdiyay1ox"
+
 [resource]
 script = ExtResource("1_ilp21")
-ability = ExtResource("1_1nu7t")
+ability = SubResource("Resource_8nuh3")
 icon = ExtResource("2_8nuh3")
 unlockable_skill_one = ExtResource("4_8nuh3")
 metadata/_custom_type_script = "uid://dhpf6c4fnej3t"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://dwb3y61ywu8dv"]
+
+[ext_resource type="Script" uid="uid://cwakhfkt6df7c" path="res://scripts/ability_templates/dash_ability.gd" id="1_tmjkt"]
+[ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash.png" id="2_atn7k"]
+[ext_resource type="Script" uid="uid://dhpf6c4fnej3t" path="res://ui_components/skill_tree/skill_trees_v2/skill_resource.gd" id="2_l3id1"]
+
+[sub_resource type="Resource" id="Resource_atn7k"]
+script = ExtResource("1_tmjkt")
+dash_time = 0.2
+dash_damage = 15
+dash_healing = 20
+landing_damage = 15
+landing_healing = 20
+distance = 200
+ability_name = "+5 Healing"
+path_to_vfx = "res://resources/ability_vfxs/dash_spell/dash_spell_vfx.tscn"
+metadata/_custom_type_script = "uid://cwakhfkt6df7c"
+
+[resource]
+script = ExtResource("2_l3id1")
+ability = SubResource("Resource_atn7k")
+icon = ExtResource("2_atn7k")
+metadata/_custom_type_script = "uid://dhpf6c4fnej3t"
