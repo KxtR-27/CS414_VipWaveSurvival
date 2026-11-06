@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://dn8i72snfys1i"]
+
+[ext_resource type="Script" uid="uid://dhpf6c4fnej3t" path="res://ui_components/skill_tree/skill_trees_v2/skill_resource.gd" id="1_ipxk8"]
+[ext_resource type="Resource" uid="uid://c3bij5otq4c3r" path="res://resources/abilities/damaging_fireball.tres" id="1_t5n1y"]
+[ext_resource type="Texture2D" uid="uid://dolbxy427b34t" path="res://resources/fireball_atlas_texture.tres" id="2_xsufq"]
+
+[resource]
+script = ExtResource("1_ipxk8")
+ability = ExtResource("1_t5n1y")
+icon = ExtResource("2_xsufq")
+metadata/_custom_type_script = "uid://dhpf6c4fnej3t"

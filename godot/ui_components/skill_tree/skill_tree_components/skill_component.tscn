@@ -4,16 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://bvs8e8v1xaurf" path="res://assets/spritesheets/Blank Frames.png" id="2_4kvuq"]
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="3_35neu"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3d2o"]
+atlas = ExtResource("2_4kvuq")
+region = Rect2(1, 1, 30, 30)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_35neu"]
 load_path = "res://.godot/imported/Wizard.png-51de864d1e84e4c70777f5ede17d93ce.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0ic2"]
 atlas = SubResource("CompressedTexture2D_35neu")
 region = Rect2(0, 700, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n3d2o"]
-atlas = ExtResource("2_4kvuq")
-region = Rect2(1, 1, 30, 30)
 
 [sub_resource type="LabelSettings" id="LabelSettings_n3d2o"]
 font = ExtResource("3_35neu")
@@ -26,9 +26,6 @@ offset_bottom = 85.0
 size_flags_horizontal = 22
 size_flags_vertical = 2
 script = ExtResource("1_sngfc")
-current_state = 1
-upgrade_icon = SubResource("AtlasTexture_b0ic2")
-upgrade_name = "Fireball"
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=823900086]
 custom_maximum_size = Vector2(60, 60)

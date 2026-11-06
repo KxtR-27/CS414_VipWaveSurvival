@@ -52,9 +52,10 @@ func _recursively_generate_skill_tree(skill: SkillResource, add_to: Node, is_roo
 	_add_new_skill_component(skill, skill_container)
 	var unlockables_row := _dupe_unlockables_row(skill, skill_container)
 	
-	for unlockable_skill in skill.unlockable_skills:
-		if unlockable_skill:
-			_recursively_generate_skill_tree(unlockable_skill, unlockables_row, false)
+	if skill.unlockable_skill_one:
+		_recursively_generate_skill_tree(skill.unlockable_skill_one, unlockables_row, false)
+	if skill.unlockable_skill_two:
+		_recursively_generate_skill_tree(skill.unlockable_skill_two, unlockables_row, false)
 
 
 
@@ -95,16 +96,11 @@ func _dupe_unlockables_row(skill: SkillResource, add_to: Node) -> HBoxContainer:
 func _add_new_skill_component(skill: SkillResource, add_to: Node) -> SkillComponent:
 	var skill_component := SKILL_COMPONENT_SCENE.instantiate() as SkillComponent
 	skill_component.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-	
-	skill_component.upgrade_name = skill.ability.ability_name
-	skill_component.upgrade_icon = skill.icon
-	skill_component.current_state = \
-			SkillComponent.SkillState.locked if not skill.unlocked \
-			else SkillComponent.SkillState.unlocked
+	skill_component.skill = skill
 	
 	add_to.add_child(skill_component)
 	skill_component.owner = get_tree().edited_scene_root
 	skill_component.name = "%sSkill" % skill.ability.ability_name
-	skill_component.update_visuals()
+	skill_component.update_visuals.call_deferred()
 	
 	return skill_component
