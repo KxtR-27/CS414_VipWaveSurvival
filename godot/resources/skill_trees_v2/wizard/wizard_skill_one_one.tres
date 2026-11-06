@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://bc3y4fb4c1fhv"]
+
+[ext_resource type="Resource" uid="uid://cw05tt3dqmhfx" path="res://resources/abilities/healing_aura.tres" id="1_bxfdo"]
+[ext_resource type="Script" uid="uid://dhpf6c4fnej3t" path="res://ui_components/skill_tree/skill_trees_v2/skill_resource.gd" id="1_et21f"]
+[ext_resource type="Texture2D" uid="uid://dolbxy427b34t" path="res://resources/fireball_atlas_texture.tres" id="2_xphlb"]
+
+[resource]
+script = ExtResource("1_et21f")
+ability = ExtResource("1_bxfdo")
+icon = ExtResource("2_xphlb")
+metadata/_custom_type_script = "uid://dhpf6c4fnej3t"
