@@ -74,7 +74,7 @@ func _dupe_skill_container(skill: SkillResource, add_to: Node, is_root: bool = f
 	# important that the root container has this specific name
 	var container_name := \
 			ROOT_SKILL_CONTAINER_NAME if is_root \
-			else ("%sSkillContainer" % skill.ability.ability_name.replace(" ", ""))
+			else ("%sSkillContainer" % _name_for_skill(skill))
 			
 	container.name = container_name
 	
@@ -85,7 +85,7 @@ func _dupe_unlockables_row(skill: SkillResource, add_to: Node) -> HBoxContainer:
 	var row := template_unlockables_row.duplicate() as HBoxContainer
 	add_to.add_child(row)
 	row.owner = get_tree().edited_scene_root
-	row.name = "%sUnlockablesRow" % skill.ability.ability_name
+	row.name = "%sUnlockablesRow" % _name_for_skill(skill)
 	
 	for child in row.get_children():
 		child.queue_free()
@@ -100,7 +100,11 @@ func _add_new_skill_component(skill: SkillResource, add_to: Node) -> SkillCompon
 	
 	add_to.add_child(skill_component)
 	skill_component.owner = get_tree().edited_scene_root
-	skill_component.name = "%sSkill" % skill.ability.ability_name
+	skill_component.name = "%sSkill" % _name_for_skill(skill)
 	skill_component.update_visuals.call_deferred()
 	
 	return skill_component
+
+
+func _name_for_skill(skill: SkillResource) -> String:
+	return skill.ability.ability_name.replace(" ", "")
