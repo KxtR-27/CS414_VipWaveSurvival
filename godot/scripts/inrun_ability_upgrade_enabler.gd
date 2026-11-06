@@ -1,3 +1,3 @@
 extends Node
 
-var is_enabled: bool = false
+var is_enabled: bool = true
