@@ -1,5 +1,7 @@
 # VIP Wave Survival Playtesting
 
+## Pizza for Playtests - 10/2/2026
+
 <sub><i>This document is transcribed from Kat's notebook.
 The sectioning/organization of the lists is a bit inconsistent.</i></sub>
 
