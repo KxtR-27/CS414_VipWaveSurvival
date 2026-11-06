@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://b3tnbqyt3l3nt"]
+
+[ext_resource type="Script" uid="uid://cdtsxul0qdu2i" path="res://scripts/ability_upgrade.gd" id="1_ov63b"]
+
+[resource]
+script = ExtResource("1_ov63b")
+modifications = {
+"dash_healing": 30
+}
+metadata/_custom_type_script = "uid://cdtsxul0qdu2i"

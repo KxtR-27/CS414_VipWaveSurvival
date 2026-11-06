@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TargetedAbility" format=3 uid="uid://d2r6d1m0mjau8"]
+
+[ext_resource type="Script" uid="uid://5oklse2gd24" path="res://scripts/ability_templates/targeted_ability.gd" id="1_0cbfx"]
+
+[resource]
+script = ExtResource("1_0cbfx")
+targets_self = true
+ability_name = "Archer One"
+tick_interval = 15.0
+allied_status_effects = Dictionary[int, int]({
+3: 5
+})
+metadata/_custom_type_script = "uid://5oklse2gd24"

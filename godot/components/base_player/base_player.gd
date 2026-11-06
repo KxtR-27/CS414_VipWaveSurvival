@@ -2,6 +2,7 @@ class_name BasePlayer
 extends BaseCharacter
 
 signal respawned
+signal upgrade_paths_updated(paths: Dictionary)
 
 # when you add a new ability action to the InputMap,
 # put a new value in this enum
@@ -31,7 +32,6 @@ var can_move: bool = true
 var uses_ranged_attacks: bool = false
 var ranged_attack_ability: BaseAbility
 var hero_name: String
-var upgrade_path: UpgradePath
 
 ## this maps ability enums to the desired ability to be run
 var current_selected_abilities: Dictionary[Ability, BaseAbility] = {
@@ -67,6 +67,7 @@ var ability_on_cooldown: Dictionary[Ability, bool] = {
 @onready var stop_following_sound := $StopFollowingSound as AudioStreamPlayer
 @onready var character_stats := $CharacterStats as CharacterStats
 @onready var respawn_timer := $RespawnTimer as Timer
+@onready var ability_upgrader: AbilityUpgrader = $AbilityUpgrader
 
 func _ready() -> void:
 	health_component = $HealthComponent as HealthComponent
@@ -260,3 +261,15 @@ func override_abilities(abilities: Dictionary) -> void:
 func _on_respawned() -> void:
 	can_move = true
 	is_dead = false
+
+
+func _on_upgrade_paths_updated(upgrade_paths: Dictionary) -> void:
+	if not is_node_ready():
+		await ready
+	
+	var ability_paths: Dictionary[BaseAbility, AbilityUpgradePath] = {
+		current_selected_abilities[Ability.ABILITY_1] : upgrade_paths[1],
+		current_selected_abilities[Ability.ABILITY_2] : upgrade_paths[2]
+	}
+	
+	ability_upgrader.assign_paths(ability_paths)

@@ -19,6 +19,8 @@ var tick_healing: int
 var lifetime: float
 var tick_interval: float
 var remote_transform2d: RemoteTransform2D
+var allied_status_effects: Dictionary[StatusEffect.STATUS_EFFECT_TYPE, int]
+var enemy_status_effects: Dictionary[StatusEffect.STATUS_EFFECT_TYPE, int]
 
 func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	var area_ability := ability as AreaAbility
@@ -26,13 +28,15 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	#remember who cast this spell
 	spell_caster = caster
 	
-	#set damage and healing numbers, lifetime, and tick interval
+	#set ability values
 	damage = area_ability.damage
 	healing = area_ability.healing
 	tick_damage = area_ability.tick_damage
 	tick_healing = area_ability.tick_healing
 	lifetime_timer.wait_time = area_ability.lifetime
 	tick_timer.wait_time = area_ability.tick_interval
+	allied_status_effects = area_ability.allied_status_effects
+	enemy_status_effects = area_ability.enemy_status_effects
 	
 	#if top-level is enabled, place spell on caster's reticle
 	if ability.is_top_level and caster is BasePlayer:
@@ -66,10 +70,20 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 
 
 func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) -> void:
-	if target.is_in_group("enemies") and enemy_damage > 0.0:
-		target.health_changed.emit(enemy_damage, true)
-	elif (target.is_in_group("players") or target.is_in_group("vip")) and ally_healing > 0.0:
-		target.health_changed.emit(ally_healing, false)
+	if target.is_in_group("enemies"):
+		if enemy_damage > 0.0:
+			target.health_changed.emit(enemy_damage, true)
+		if not enemy_status_effects.is_empty():
+			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in enemy_status_effects.keys():
+				(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+						.apply_effect(status_effect, enemy_status_effects[status_effect])
+	elif (target.is_in_group("players") or target.is_in_group("vip")):
+		if ally_healing > 0.0:
+			target.health_changed.emit(ally_healing, false)
+		if not allied_status_effects.is_empty():
+			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in allied_status_effects.keys():
+				(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+						.apply_effect(status_effect, allied_status_effects[status_effect])
 
 
 func on_entered(unit: BaseCharacter) -> void:

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://3kflfnjvrsf8"]
+
+[ext_resource type="Script" uid="uid://cdtsxul0qdu2i" path="res://scripts/ability_upgrade.gd" id="1_7nspv"]
+
+[resource]
+script = ExtResource("1_7nspv")
+modifications = {
+"targets_allies": true,
+"targets_vip": true
+}
+metadata/_custom_type_script = "uid://cdtsxul0qdu2i"

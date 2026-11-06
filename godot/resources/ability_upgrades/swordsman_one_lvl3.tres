@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://4m38gpi3ceem"]
+
+[ext_resource type="Script" uid="uid://cdtsxul0qdu2i" path="res://scripts/ability_upgrade.gd" id="1_fm8wr"]
+
+[resource]
+script = ExtResource("1_fm8wr")
+modifications = {
+"landing_damage": 35
+}
+metadata/_custom_type_script = "uid://cdtsxul0qdu2i"

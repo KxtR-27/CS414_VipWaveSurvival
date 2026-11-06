@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://iupean8caslq"]
+
+[ext_resource type="Script" uid="uid://cdtsxul0qdu2i" path="res://scripts/ability_upgrade.gd" id="1_gfsvi"]
+
+[resource]
+script = ExtResource("1_gfsvi")
+metadata/_custom_type_script = "uid://cdtsxul0qdu2i"

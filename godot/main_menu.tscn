@@ -80,6 +80,12 @@ size_flags_horizontal = 4
 theme = ExtResource("4_jix8l")
 text = "CONTROLS"
 
+[node name="InrunUpgradesEnabled" type="Label" parent="CanvasLayer/Control" unique_id=559808763]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 21.0
+text = "In-Run Upgrades: False"
+
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]

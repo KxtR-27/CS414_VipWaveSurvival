@@ -18,17 +18,18 @@ signal character_selected(selected_character: String, sprite_frames_path: String
 
 var background_frame: int = 0:
 	set(new_frame_index):
-		background_frame = clampi(new_frame_index, 0, 2)
+		background_frame = clampi(new_frame_index, 0, 3)
 
 var character_index: int = 0:
 	set(new_index):
-		character_index = wrapi(new_index, 0, 3)
+		character_index = wrapi(new_index, 0, 4)
 		player_character.frame = character_index
 		
 var characters: Dictionary = {
 	0: "swordsman",
 	1: "wizard",
-	2: "knight"
+	2: "knight",
+	3: "archer"
 }
 
 var character_has_been_selected: bool = false

@@ -4,7 +4,9 @@
 
 [node name="RegenEffect" type="Node2D" unique_id=972357761]
 script = ExtResource("1_e8b2u")
-status_name = "Burn"
+status_name = "Regen"
+effect_type = 1
+status_effect_label_color = Color(0, 0.8, 0.41960785, 1)
 
 [node name="TickTimer" type="Timer" parent="." unique_id=1812561946]
 wait_time = 0.5

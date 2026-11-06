@@ -13,4 +13,7 @@ tick_interval = 0.35
 damage = 5
 is_top_level = true
 path_to_vfx = "res://resources/ability_vfxs/fireball_spell/fireball_spell_vfx.tscn"
+enemy_status_effects = Dictionary[int, int]({
+0: 1
+})
 metadata/_custom_type_script = "uid://bsklgdiyay1ox"

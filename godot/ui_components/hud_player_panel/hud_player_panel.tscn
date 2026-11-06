@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dnr5kiifprrj8" path="res://assets/spritesheets/Swordsman.png" id="2_wk4oh"]
 [ext_resource type="Texture2D" uid="uid://cfg5d7arpfugj" path="res://assets/spritesheets/Knight.png" id="3_6lw7y"]
 [ext_resource type="Texture2D" uid="uid://dh4q2xth8dhet" path="res://assets/spritesheets/Wizard.png" id="4_towoq"]
+[ext_resource type="Texture2D" uid="uid://4pu4ft1v3qp2" path="res://assets/spritesheets/Archer.png" id="6_wt8wm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llgru"]
 bg_color = Color(0.8352941, 0.6431373, 0, 0)
@@ -55,6 +56,10 @@ region = Rect2(41, 39, 26, 21)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nu15o"]
 atlas = ExtResource("4_towoq")
 region = Rect2(43, 39, 17, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d35r"]
+atlas = ExtResource("6_wt8wm")
+region = Rect2(40, 40, 22, 17)
 
 [node name="HudPlayerPanel" type="Panel" unique_id=495433092]
 z_index = 10
@@ -156,6 +161,19 @@ offset_bottom = 90.0
 theme_override_styles/background = SubResource("StyleBoxFlat_udkgg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_215m8")
 value = 100.0
+show_percentage = false
+
+[node name="HealthTextLabel" type="Label" parent="HealthBar" unique_id=561112059]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+text = "?? / ??"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Ability1Cooldown" type="Timer" parent="." unique_id=608760141]
 one_shot = true
@@ -212,6 +230,20 @@ offset_bottom = -8.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_nu15o")
+
+[node name="archer" type="TextureRect" parent="PlayerIcon" unique_id=1628916208]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 8.5
+offset_right = -5.0
+offset_bottom = -8.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_7d35r")
 
 [node name="PlayerIndicator" type="Label" parent="." unique_id=1153640688]
 custom_minimum_size = Vector2(50, 50)

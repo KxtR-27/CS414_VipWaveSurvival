@@ -5,6 +5,7 @@
 [node name="BurnEffect" type="Node2D" unique_id=972357761]
 script = ExtResource("1_16jh3")
 status_name = "Burn"
+status_effect_label_color = Color(1, 0.60784316, 0, 1)
 
 [node name="TickTimer" type="Timer" parent="." unique_id=1812561946]
 wait_time = 0.5

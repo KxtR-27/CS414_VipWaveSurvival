@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cdt8vc2eo67in" path="res://assets/spritesheets/Character Frames w Arrows 1.png" id="3_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://dh4q2xth8dhet" path="res://assets/spritesheets/Wizard.png" id="4_lkumq"]
 [ext_resource type="Texture2D" uid="uid://cfg5d7arpfugj" path="res://assets/spritesheets/Knight.png" id="5_v1b0c"]
+[ext_resource type="Texture2D" uid="uid://4pu4ft1v3qp2" path="res://assets/spritesheets/Archer.png" id="6_6ucab"]
 [ext_resource type="Texture2D" uid="uid://ddusvv7uitiq0" path="res://assets/control hint icons/xbox-series_sheet_default.png" id="6_x1rb8"]
 [ext_resource type="Texture2D" uid="uid://cgafe56kutvgn" path="res://assets/control hint icons/keyboard-&-mouse_sheet_default.png" id="7_lkumq"]
 [ext_resource type="Script" uid="uid://ccwfuphkc4ejo" path="res://scripts/navigable_atlas_texture.gd" id="7_v1b0c"]
@@ -56,6 +57,10 @@ region = Rect2(0, 0, 100, 100)
 atlas = ExtResource("5_v1b0c")
 region = Rect2(0, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt7x3"]
+atlas = ExtResource("6_6ucab")
+region = Rect2(0, 0, 100, 100)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7h2xm"]
 animations = [{
 "frames": [{
@@ -67,6 +72,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pb6c2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt7x3")
 }],
 "loop": 1,
 "name": &"default",

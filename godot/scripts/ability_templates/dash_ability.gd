@@ -7,5 +7,6 @@ class_name DashAbility extends BaseAbility
 @export var landing_healing: int
 @export var distance: int
 
+
 func get_spell_type() -> BaseSpell.SPELL_TYPE:
 	return BaseSpell.SPELL_TYPE.DASH

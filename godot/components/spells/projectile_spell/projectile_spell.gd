@@ -10,6 +10,9 @@ var projectile_damage: int
 var projectile_healing: int
 var projectile_travel_time: float
 var distance: float
+var allied_status_effects: Dictionary[StatusEffect.STATUS_EFFECT_TYPE, int]
+var enemy_status_effects: Dictionary[StatusEffect.STATUS_EFFECT_TYPE, int]
+
 
 func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	var projectile_ability := ability as ProjectileAbility
@@ -21,6 +24,8 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	distance = projectile_ability.distance
 	projectile_damage = projectile_ability.damage
 	projectile_healing = projectile_ability.healing
+	allied_status_effects = projectile_ability.allied_status_effects
+	enemy_status_effects = projectile_ability.enemy_status_effects
 	
 	projectile_travel_time = projectile_ability.projectile_speed
 	
@@ -88,10 +93,20 @@ func spawn_projectile(direction: Vector2) -> Area2D:
 
 
 func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) -> void:
-	if target.is_in_group("enemies") and enemy_damage > 0.0:
-		target.health_changed.emit(enemy_damage, true)
-	elif (target.is_in_group("players") or target.is_in_group("vip")) and ally_healing > 0.0:
-		target.health_changed.emit(ally_healing, false)
+	if target.is_in_group("enemies"):
+		if enemy_damage > 0.0:
+			target.health_changed.emit(enemy_damage, true)
+		if not enemy_status_effects.is_empty():
+			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in enemy_status_effects.keys():
+				(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+						.apply_effect(status_effect, enemy_status_effects[status_effect])
+	elif (target.is_in_group("players") or target.is_in_group("vip")):
+		if ally_healing > 0.0:
+			target.health_changed.emit(ally_healing, false)
+		if not allied_status_effects.is_empty():
+			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in allied_status_effects.keys():
+				(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+						.apply_effect(status_effect, allied_status_effects[status_effect])
 
 
 func on_projectile_hit(unit: BaseCharacter) -> void:

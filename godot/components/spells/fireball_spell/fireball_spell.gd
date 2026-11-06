@@ -13,7 +13,6 @@ var tick_interval: float
 var tick_damage: int
 var tick_healing: int
 
-
 var units_in_area: Array[BaseCharacter] = []
 
 func spawn_explosion() -> void:
@@ -48,6 +47,8 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	tick_healing = fireball_ability.tick_healing
 	lifetime_timer.wait_time = fireball_ability.lifetime
 	tick_timer.wait_time = fireball_ability.tick_interval
+	allied_status_effects = fireball_ability.allied_status_effects
+	enemy_status_effects = fireball_ability.enemy_status_effects
 	
 	
 	projectile_travel_time = fireball_ability.projectile_speed
@@ -81,10 +82,20 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 
 
 func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) -> void:
-	if target.is_in_group("enemies") and enemy_damage > 0.0:
-		target.health_changed.emit(enemy_damage, true)
-	elif (target.is_in_group("players") or target.is_in_group("vip")) and ally_healing > 0.0:
-		target.health_changed.emit(ally_healing, false)
+	if target.is_in_group("enemies"):
+		if enemy_damage > 0.0:
+			target.health_changed.emit(enemy_damage, true)
+		if not enemy_status_effects.is_empty():
+			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in enemy_status_effects.keys():
+				(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+						.apply_effect(status_effect, enemy_status_effects[status_effect])
+	elif (target.is_in_group("players") or target.is_in_group("vip")):
+		if ally_healing > 0.0:
+			target.health_changed.emit(ally_healing, false)
+		if not allied_status_effects.is_empty():
+			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in allied_status_effects.keys():
+				(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+						.apply_effect(status_effect, allied_status_effects[status_effect])
 
 
 func on_projectile_hit(unit: BaseCharacter) -> void:
@@ -104,9 +115,6 @@ func on_explosion_entered(unit: BaseCharacter) -> void:
 func on_tick() -> void:
 	for target: BaseCharacter in units_in_area:
 		resolve_hit(target, tick_damage, tick_healing)
-		if target.is_in_group("enemies"):
-			(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
-				.apply_effect(StatusEffect.STATUS_EFFECT_TYPE.BURN, 1)
 
 
 func create_vfx(path_to_vfx: String) -> VFX:

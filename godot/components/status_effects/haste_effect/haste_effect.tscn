@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://i36doxk71sha"]
+
+[ext_resource type="Script" uid="uid://chwc4hv3wd5rf" path="res://components/status_effects/haste_effect/haste_effect.gd" id="1_yf8je"]
+
+[node name="HasteEffect" type="Node2D" unique_id=1143715187]
+script = ExtResource("1_yf8je")
+status_name = "Haste"
+effect_type = 6
+status_effect_label_color = Color(0.89411765, 0.89411765, 0, 1)
+metadata/_custom_type_script = "uid://uqkhayl6lxd5"
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=364992208]
+wait_time = 3.0
+one_shot = true
+
+[node name="TickTimer" type="Timer" parent="." unique_id=493607794]
+
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

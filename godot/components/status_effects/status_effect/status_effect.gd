@@ -2,7 +2,13 @@ class_name StatusEffect extends Node2D
 
 enum STATUS_EFFECT_TYPE {
 	BURN,
-	REGEN
+	REGEN,
+	FROZEN,
+	VOLLEY_THREE,
+	VOLLEY_FIVE,
+	EXTRA_RANGE,
+	HASTE,
+	VULNERABLE,
 }
 
 @export var status_name: String
@@ -12,8 +18,10 @@ enum STATUS_EFFECT_TYPE {
 @export var max_lifetime: float # set to 0 if you do not want a limit
 @export var affected_unit: BaseCharacter
 
+@export var status_effect_label_color: Color
+
 @onready var tick_timer: Timer = $TickTimer
-@onready var lifetime_timer: Timer = $TickTimer
+@onready var lifetime_timer: Timer = $LifetimeTimer
 
 signal finished
 
@@ -62,6 +70,10 @@ func on_remove_stack() -> void:
 
 
 func on_cleanse() -> void:
+	pass
+
+
+func on_damage_taken(_damage: float) -> void:
 	pass
 
 
