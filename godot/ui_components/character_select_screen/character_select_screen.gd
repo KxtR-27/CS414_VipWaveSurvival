@@ -45,6 +45,13 @@ const HERO_ABILITIES: Dictionary[String, Dictionary]  = {
 	},
 }
 
+var ability_upgrade_paths: Dictionary[String, Dictionary] = {
+	"wizard" : {
+		"ABILITY_1": preload("res://resources/ability_upgrade_paths/wizard_one_upgrade_path.tres"),
+		"ABILITY_2": preload("res://resources/ability_upgrade_paths/wizard_two_upgrade_path.tres")
+	}
+}
+
 const HERO_STATS: Dictionary[String, Dictionary] = {
 	"swordsman": {
 		"damage": 25.0,
@@ -104,11 +111,21 @@ func _on_character_selected(selected_character: String, sprite_frames_path: Stri
 	new_player.position = container.position + Vector2(device_id + 10, 0)
 	new_player.hero_name = selected_character
 	
-	new_player.override_abilities(HERO_ABILITIES[selected_character])
-	#if selected_character == "wizard": #set upgrade path
-		#new_player.upgrade_path = preload("res://resources/upgrade_paths/wizard_upgrade_path.tres")
+	var ability_1: BaseAbility = HERO_ABILITIES[selected_character]["ABILITY_1"].duplicate(true)
+	var ability_2: BaseAbility = HERO_ABILITIES[selected_character]["ABILITY_2"].duplicate(true)
+	var new_abilities: Dictionary[String, BaseAbility] = {
+		"ABILITY_1" : ability_1,
+		"ABILITY_2" : ability_2
+	}
+	new_player.override_abilities(new_abilities)
 	
-	if RANGED_HERO_ABILITIES.keys().find(selected_character) != -1:
+	if ability_upgrade_paths.has(selected_character): #set upgrade paths
+		new_player.upgrade_paths_updated.emit(
+			{1: ability_upgrade_paths[selected_character]["ABILITY_1"],
+			2: ability_upgrade_paths[selected_character]["ABILITY_2"]}
+		)
+	
+	if RANGED_HERO_ABILITIES.has(selected_character):
 		new_player.uses_ranged_attacks = true
 		new_player.ranged_attack_ability = RANGED_HERO_ABILITIES[selected_character]
 	
@@ -130,9 +147,18 @@ func _on_button_pressed() -> void:
 		get_tree().root.get_node("Main").add_child(player_hero)
 		GlobalPlayerManager.players.get_or_add(player_hero.hero_name, player_number)
 		
-		#set player indicator and hud up
+		#set player indicator up
 		set_up_indicator(player_hero, player_number)
 		
+		#assign stats for selected hero
+		var selected_stats: Dictionary = HERO_STATS[player_hero.hero_name]
+		player_hero.character_stats.damage = selected_stats["damage"]
+		player_hero.character_stats.max_health = selected_stats["max_health"]
+		player_hero.character_stats.speed = selected_stats["speed"]
+		player_hero.character_stats.apply_stats()
+		player_hero.health_component.refresh()
+		
+		#set hud up
 		var hud: Control = main_scene_node.get_node("HUD")
 		var panels: Control = hud.get_node("PlayerPanels")
 		for panel: HudPlayerPanel in panels.get_children():
@@ -144,14 +170,6 @@ func _on_button_pressed() -> void:
 					INDICATOR_COLOR_MAP[player_number]
 				)
 				break
-		
-		#assign stats for selected hero
-		var selected_stats: Dictionary = HERO_STATS[player_hero.hero_name]
-		player_hero.character_stats.damage = selected_stats["damage"]
-		player_hero.character_stats.max_health = selected_stats["max_health"]
-		player_hero.character_stats.speed = selected_stats["speed"]
-		player_hero.character_stats.apply_stats()
-		player_hero.health_component.refresh()
 	
 	await begin_button_sound.finished
 	get_tree().root.get_node("CharacterSelectScreen").queue_free()

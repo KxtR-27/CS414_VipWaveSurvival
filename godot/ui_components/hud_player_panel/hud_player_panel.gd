@@ -7,6 +7,7 @@ var currently_tracking: bool = false
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var player_icon: TextureRect = $PlayerIcon
 @onready var player_indicator: Label = $PlayerIndicator
+@onready var health_text: Label = $HealthBar/HealthTextLabel
 
 @onready var ability_icons: Dictionary[Ability, Control] = {
 	Ability.ABILITY_1: $Ability1Icon,
@@ -63,26 +64,36 @@ func connect_to_player(player: BasePlayer, hero_name: String, player_number: int
 				last_ability_cooldowns[index] = 5.0
 				break
 	)
-
+	
+	health_bar.value = player.character_stats.max_health
 	health_bar.max_value = player.character_stats.max_health
+	update_health_text(player.character_stats.max_health, player.character_stats.max_health)
 	
 	player.health_changed.connect(func(_amount: float, _negative: bool) -> void:
 		health_bar.value = player.health_component.current_health
 		health_bar.max_value = player.health_component.max_health
+		update_health_text(player.health_component.current_health, player.health_component.max_health)
 	)
 	
 	player.health_component.max_health_changed.connect(func(max_health: float, current_health: float) -> void:
 		health_bar.max_value = max_health
 		health_bar.value = current_health
+		update_health_text(current_health, max_health)
 	)
 	
 	player.health_component.health_refreshed.connect(func(new_max: float, current_value: float) -> void:
 		health_bar.max_value = new_max
 		health_bar.value = current_value
+		update_health_text(current_value, new_max)
 	)
 	
 	player.character_stats.stats_changed.connect(func(_damage: float, max_health: float, _speed: float) -> void:
+		var current_proportion: float = health_bar.value / health_bar.max_value
+		var new_value: float = max_health * current_proportion
+		
+		health_bar.value = new_value
 		health_bar.max_value = max_health
+		update_health_text(player.health_component.current_health, max_health)
 	)
 	
 	#set player icon
@@ -105,6 +116,9 @@ func trigger_cooldown(index: int, cooldown: float) -> void:
 	(ability_icons[index].get_node("CooldownProgress") as ProgressBar).visible = true
 	ability_on_cooldown[index] = true
 
+
+func update_health_text(current_health: float, max_health: float) -> void:
+	health_text.text = "%.1f / %.1f" % [current_health, max_health]
 
 
 func _on_ability_1_cooldown_timeout() -> void:

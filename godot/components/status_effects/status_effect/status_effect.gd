@@ -2,7 +2,8 @@ class_name StatusEffect extends Node2D
 
 enum STATUS_EFFECT_TYPE {
 	BURN,
-	REGEN
+	REGEN,
+	FROZEN
 }
 
 @export var status_name: String
@@ -12,8 +13,10 @@ enum STATUS_EFFECT_TYPE {
 @export var max_lifetime: float # set to 0 if you do not want a limit
 @export var affected_unit: BaseCharacter
 
+@export var status_effect_label_color: Color
+
 @onready var tick_timer: Timer = $TickTimer
-@onready var lifetime_timer: Timer = $TickTimer
+@onready var lifetime_timer: Timer = $LifetimeTimer
 
 signal finished
 

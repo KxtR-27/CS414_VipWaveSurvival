@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InRunAbilityUpgrade" format=3 uid="uid://ci3d2u5q6aw7m"]
+
+[ext_resource type="Script" uid="uid://cdtsxul0qdu2i" path="res://scripts/ability_upgrade.gd" id="1_3s8vd"]
+
+[resource]
+script = ExtResource("1_3s8vd")
+modifications = {
+"explosion_damage": 20
+}
+metadata/_custom_type_script = "uid://cdtsxul0qdu2i"

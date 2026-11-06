@@ -16,6 +16,9 @@ var landing_damage: int
 var landing_healing: int
 var duration: float
 var distance: float
+var allied_status_effects: Dictionary[StatusEffect.STATUS_EFFECT_TYPE, int]
+var enemy_status_effects: Dictionary[StatusEffect.STATUS_EFFECT_TYPE, int]
+
 
 func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	var dash_ability := ability as DashAbility
@@ -31,6 +34,8 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	landing_damage = dash_ability.landing_damage
 	landing_healing = dash_ability.landing_healing
 	duration = dash_ability.dash_time
+	allied_status_effects = dash_ability.allied_status_effects 
+	enemy_status_effects = dash_ability.enemy_status_effects
 	
 	dash_hits.append(caster)
 	landing_hits.append(caster)
@@ -65,10 +70,20 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 
 
 func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) -> void:
-	if target.is_in_group("enemies") and enemy_damage > 0.0:
-		target.health_changed.emit(enemy_damage, true)
-	elif (target.is_in_group("players") or target.is_in_group("vip")) and ally_healing > 0.0:
-		target.health_changed.emit(ally_healing, false)
+	if target.is_in_group("enemies"):
+		if enemy_damage > 0.0:
+			target.health_changed.emit(enemy_damage, true)
+		if not enemy_status_effects.is_empty():
+			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in enemy_status_effects.keys():
+				(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+						.apply_effect(status_effect, enemy_status_effects[status_effect])
+	elif (target.is_in_group("players") or target.is_in_group("vip")):
+		if ally_healing > 0.0:
+			target.health_changed.emit(ally_healing, false)
+		if not allied_status_effects.is_empty():
+			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in allied_status_effects.keys():
+				(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+						.apply_effect(status_effect, allied_status_effects[status_effect])
 
 
 func on_dash_hit(unit: BaseCharacter) -> void:

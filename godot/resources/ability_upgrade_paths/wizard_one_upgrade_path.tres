@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AbilityUpgradePath" format=3 uid="uid://dldsb07if747"]
+
+[ext_resource type="Script" uid="uid://nvoutfkxsapj" path="res://scripts/ability_upgrade_path.gd" id="1_ww38l"]
+[ext_resource type="Script" uid="uid://cdtsxul0qdu2i" path="res://scripts/ability_upgrade.gd" id="2_io17g"]
+[ext_resource type="Resource" uid="uid://5su7pkg7ldqh" path="res://resources/ability_upgrades/wizard_one_lvl1.tres" id="3_io17g"]
+[ext_resource type="Resource" uid="uid://ygw003034yxf" path="res://resources/ability_upgrades/wizard_one_lvl2.tres" id="4_gtdrg"]
+[ext_resource type="Resource" uid="uid://ci3d2u5q6aw7m" path="res://resources/ability_upgrades/wizard_one_lvl3.tres" id="5_jls1j"]
+
+[resource]
+script = ExtResource("1_ww38l")
+upgrades = Dictionary[int, ExtResource("2_io17g")]({
+1: ExtResource("3_io17g"),
+2: ExtResource("4_gtdrg"),
+3: ExtResource("5_jls1j")
+})
+metadata/_custom_type_script = "uid://nvoutfkxsapj"

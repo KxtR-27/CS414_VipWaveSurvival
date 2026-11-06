@@ -11,6 +11,9 @@ var healing: int
 var tick_damage: int
 var tick_healing: int
 
+var allied_status_effects: Dictionary[StatusEffect.STATUS_EFFECT_TYPE, int]
+var enemy_status_effects: Dictionary[StatusEffect.STATUS_EFFECT_TYPE, int]
+
 var targets_self: bool
 var targets_allies: bool
 var targets_vip: bool
@@ -34,6 +37,8 @@ func run(ability: BaseAbility, caster: BasePlayer) -> void:
 	targets_allies = targeted_ability.targets_allies
 	targets_vip = targeted_ability.targets_vip
 	targets_enemies = targeted_ability.targets_enemies
+	allied_status_effects = targeted_ability.allied_status_effects
+	enemy_status_effects = targeted_ability.enemy_status_effects
 	
 	
 	if not ability.path_to_vfx.is_empty():
@@ -67,12 +72,20 @@ func on_tick() -> void:
 		resolve_hit(target, tick_damage, tick_healing)
 
 func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) -> void:
-	if target.is_in_group("enemies") and enemy_damage > 0.0:
-		target.health_changed.emit(enemy_damage, true)
-	elif (target.is_in_group("players") or target.is_in_group("vip")) and ally_healing > 0.0:
-		target.health_changed.emit(ally_healing, false)
-		(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
-			.apply_effect(StatusEffect.STATUS_EFFECT_TYPE.REGEN, 8)
+	if target.is_in_group("enemies"):
+		if enemy_damage > 0.0:
+			target.health_changed.emit(enemy_damage, true)
+		if not enemy_status_effects.is_empty():
+			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in enemy_status_effects.keys():
+				(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+						.apply_effect(status_effect, enemy_status_effects[status_effect])
+	elif (target.is_in_group("players") or target.is_in_group("vip")):
+		if ally_healing > 0.0:
+			target.health_changed.emit(ally_healing, false)
+		if not allied_status_effects.is_empty():
+			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in allied_status_effects.keys():
+				(target.get_node("StatusEffectCreator") as StatusEffectCreator)\
+						.apply_effect(status_effect, allied_status_effects[status_effect])
 
 
 func create_vfx(path_to_vfx: String) -> VFX:

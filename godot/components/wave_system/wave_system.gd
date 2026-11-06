@@ -93,8 +93,7 @@ func _on_wave_timer_timeout() -> void:
 		player.character_stats.modify_stat("max_health", 15.0)
 		
 		#give players ability upgrades
-		#if player.hero_name == "wizard":
-			#player.upgrade_path.apply_upgrade(player, wave_tracker.current_wave)
+		player.ability_upgrader.upgrade_all_abilities()
 	
 	wave_start.emit()
 
