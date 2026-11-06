@@ -20,7 +20,11 @@ const LOCKED_ICON_COLOR := Color("#696969")
 
 @export var locked_by: Array[SkillComponent] = []
 
-@export var current_state := SkillState.locked as SkillState
+@export var current_state := SkillState.locked as SkillState:
+	set(new_state):
+		current_state = new_state
+		skill_state_changed.emit()
+
 @export var upgrade_icon: Texture
 @export var upgrade_name: String
 
@@ -49,7 +53,6 @@ func _gui_input(event: InputEvent) -> void:
 		# If unlocked, ability is activated when clicked
 		elif current_state == SkillState.unlocked:
 			current_state = SkillState.active
-			skill_state_changed.emit()
 			skill_activated.emit(self)
 			return
 		# If already activated, notify player that ability is already active
@@ -62,7 +65,6 @@ func _on_skill_activated(skill: SkillComponent) -> void:
 	for locked_by_child in locked_by:
 		if skill == locked_by_child:
 			current_state = SkillState.unlocked
-			skill_state_changed.emit()
 
 
 func _on_skill_state_changed() -> void:

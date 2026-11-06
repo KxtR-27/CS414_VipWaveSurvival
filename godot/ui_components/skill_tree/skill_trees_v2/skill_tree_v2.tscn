@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://dlqusj6pm8fg3" path="res://ui_components/skill_tree/skill_trees_v2/skill_tree_v2.gd" id="1_0582v"]
 [ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_components/skill_component.tscn" id="2_uib0g"]
 [ext_resource type="Resource" uid="uid://bgb1hllmbcip8" path="res://ui_components/skill_tree/skill_trees_v2/wizard_root_skill.tres" id="2_vp316"]
-[ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash.png" id="3_8xiu1"]
-[ext_resource type="Script" uid="uid://c4s7x16olpiw0" path="res://ui_components/skill_tree/skill_tree_components/skill_component.gd" id="4_8xiu1"]
-[ext_resource type="Texture2D" uid="uid://dolbxy427b34t" path="res://resources/fireball_atlas_texture.tres" id="6_8xiu1"]
+[ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash.png" id="5_dcgmp"]
+[ext_resource type="Texture2D" uid="uid://dolbxy427b34t" path="res://resources/fireball_atlas_texture.tres" id="6_no3jo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ysw5f"]
 font_size = 12
@@ -13,7 +12,7 @@ font_color = Color(0.72, 0.72, 0.72, 1)
 
 [node name="SkillTreeV2" type="VBoxContainer" unique_id=2100260644]
 propagate_maximum_size = false
-offset_right = 241.0
+offset_right = 262.0
 offset_bottom = 340.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
@@ -92,103 +91,77 @@ layout_mode = 2
 [node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer3/Generated_UnlockableSkillsRow/Generated_SkillComponentContainer3" unique_id=1519850524 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 
-[node name="RootSkillContainer" type="VBoxContainer" parent="." unique_id=963019722]
+[node name="RootSkillContainer" type="VBoxContainer" parent="." unique_id=1010632709]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Damaging DashSkill" type="VBoxContainer" parent="RootSkillContainer" unique_id=159805121 instance=ExtResource("2_uib0g")]
-custom_minimum_size = Vector2(60, -1)
+[node name="Damaging DashSkill" parent="RootSkillContainer" unique_id=159805121 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 2
-script = ExtResource("4_8xiu1")
-current_state = 1
-upgrade_icon = ExtResource("3_8xiu1")
+upgrade_icon = ExtResource("5_dcgmp")
 upgrade_name = "Damaging Dash"
 
-[node name="Damaging DashUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer" unique_id=1163353870]
+[node name="Damaging DashUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer" unique_id=792503067]
 layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
 
-[node name="DamagingFireballSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow" unique_id=290407148]
+[node name="DamagingFireballSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow" unique_id=558707962]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Damaging FireballSkill" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer" unique_id=1180699548 instance=ExtResource("2_uib0g")]
-custom_minimum_size = Vector2(60, -1)
+[node name="Damaging FireballSkill" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer" unique_id=414647662 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 2
-script = ExtResource("4_8xiu1")
-current_state = 1
-upgrade_icon = ExtResource("6_8xiu1")
+upgrade_icon = ExtResource("6_no3jo")
 upgrade_name = "Damaging Fireball"
 
-[node name="Damaging FireballUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer" unique_id=1713738497]
+[node name="Damaging FireballUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer" unique_id=1776543162]
 layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
 
-[node name="HealingAuraSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow" unique_id=528548039]
+[node name="HealingAuraSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow" unique_id=2036709907]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Healing AuraSkill" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow/HealingAuraSkillContainer" unique_id=1051877936 instance=ExtResource("2_uib0g")]
-custom_minimum_size = Vector2(60, -1)
+[node name="Healing AuraSkill" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow/HealingAuraSkillContainer" unique_id=1955865158 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 2
-script = ExtResource("4_8xiu1")
-current_state = 1
-upgrade_icon = ExtResource("6_8xiu1")
+upgrade_icon = ExtResource("6_no3jo")
 upgrade_name = "Healing Aura"
 
-[node name="Healing AuraUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow/HealingAuraSkillContainer" unique_id=1574491208]
+[node name="Healing AuraUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow/HealingAuraSkillContainer" unique_id=1189390158]
 layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
 
-[node name="DamagingAuraSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow" unique_id=1083243374]
+[node name="DamagingAuraSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow" unique_id=811312395]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Damaging AuraSkill" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer" unique_id=1498577789 instance=ExtResource("2_uib0g")]
-custom_minimum_size = Vector2(60, -1)
+[node name="Damaging AuraSkill" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer" unique_id=1074310672 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 2
-script = ExtResource("4_8xiu1")
-current_state = 1
-upgrade_icon = ExtResource("6_8xiu1")
+upgrade_icon = ExtResource("6_no3jo")
 upgrade_name = "Damaging Aura"
 
-[node name="Damaging AuraUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer" unique_id=1053016173]
+[node name="Damaging AuraUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer" unique_id=1228717702]
 layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
 
-[node name="DamagingProjectileSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow" unique_id=946906009]
+[node name="DamagingProjectileSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow" unique_id=1586965816]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Damaging ProjectileSkill" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow/DamagingProjectileSkillContainer" unique_id=624923157 instance=ExtResource("2_uib0g")]
-custom_minimum_size = Vector2(60, -1)
+[node name="Damaging ProjectileSkill" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow/DamagingProjectileSkillContainer" unique_id=1112604341 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 2
-script = ExtResource("4_8xiu1")
-current_state = 1
-upgrade_icon = ExtResource("6_8xiu1")
+upgrade_icon = ExtResource("6_no3jo")
 upgrade_name = "Damaging Projectile"
 
-[node name="Damaging ProjectileUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow/DamagingProjectileSkillContainer" unique_id=104818736]
+[node name="Damaging ProjectileUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow/DamagingProjectileSkillContainer" unique_id=1257199141]
 layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
-
-[connection signal="skill_state_changed" from="RootSkillContainer/Damaging DashSkill" to="RootSkillContainer/Damaging DashSkill" method="_on_skill_state_changed"]
-[connection signal="skill_state_changed" from="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballSkill" to="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballSkill" method="_on_skill_state_changed"]
-[connection signal="skill_state_changed" from="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow/HealingAuraSkillContainer/Healing AuraSkill" to="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow/HealingAuraSkillContainer/Healing AuraSkill" method="_on_skill_state_changed"]
-[connection signal="skill_state_changed" from="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraSkill" to="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraSkill" method="_on_skill_state_changed"]
-[connection signal="skill_state_changed" from="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow/DamagingProjectileSkillContainer/Damaging ProjectileSkill" to="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow/DamagingProjectileSkillContainer/Damaging ProjectileSkill" method="_on_skill_state_changed"]
