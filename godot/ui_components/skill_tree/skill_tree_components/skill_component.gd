@@ -18,7 +18,11 @@ const LOCKED_PANEL_COLOR := Color("007678ff")
 const LOCKED_ICON_COLOR := Color("#696969")
 
 
-@export var locked_by: Array[SkillComponent] = []
+@export var locked_by: Array[SkillComponent] = []:
+	set(new_locked_by):
+		locked_by = new_locked_by
+		if len(locked_by) == 0:
+			current_state = SkillState.unlocked
 
 @export var current_state := SkillState.locked as SkillState:
 	set(new_state):
@@ -72,18 +76,18 @@ func _on_skill_state_changed() -> void:
 
 
 func update_visuals() -> void:
-	_upgrade_icon_rect.texture = upgrade_icon
-	_label.text = upgrade_name
+	if _upgrade_icon_rect:
+		_upgrade_icon_rect.texture = upgrade_icon
+	if _label:
+		_label.text = upgrade_name
 	
-	if len(locked_by) == 0:
-		current_state = SkillState.unlocked
-	
-	match current_state:
-		SkillState.locked:
-			_ability_panel.modulate = LOCKED_PANEL_COLOR
-			_upgrade_icon_rect.modulate = LOCKED_ICON_COLOR
-		SkillState.unlocked:
-			_ability_panel.modulate = UNLOCKED_COLOR
-			_upgrade_icon_rect.modulate = Color("#ffffff")
-		SkillState.active:
-			_ability_panel.modulate = ACTIVE_COLOR
+	if _ability_panel:
+		match current_state:
+			SkillState.locked:
+				_ability_panel.modulate = LOCKED_PANEL_COLOR
+				_upgrade_icon_rect.modulate = LOCKED_ICON_COLOR
+			SkillState.unlocked:
+				_ability_panel.modulate = UNLOCKED_COLOR
+				_upgrade_icon_rect.modulate = Color("#ffffff")
+			SkillState.active:
+				_ability_panel.modulate = ACTIVE_COLOR

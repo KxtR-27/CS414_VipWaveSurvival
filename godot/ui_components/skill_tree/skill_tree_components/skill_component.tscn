@@ -56,3 +56,5 @@ label_settings = SubResource("LabelSettings_n3d2o")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[connection signal="skill_state_changed" from="." to="." method="_on_skill_state_changed"]
