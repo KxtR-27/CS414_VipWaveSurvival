@@ -99,8 +99,8 @@ func _add_new_skill_component(skill: SkillResource, add_to: Node) -> SkillCompon
 	skill_component.upgrade_name = skill.ability.ability_name
 	skill_component.upgrade_icon = skill.icon
 	skill_component.current_state = \
-			SkillComponent.SkillState.unlocked if skill.unlocked \
-			else SkillComponent.SkillState.locked
+			SkillComponent.SkillState.locked if not skill.unlocked \
+			else SkillComponent.SkillState.unlocked
 	
 	add_to.add_child(skill_component)
 	skill_component.owner = get_tree().edited_scene_root
