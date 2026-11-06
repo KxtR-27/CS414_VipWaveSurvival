@@ -14,6 +14,23 @@ func _ready() -> void:
 			or GlobalMusicManager.current_track != GlobalMusicManager.TrackOption.MENU
 	):
 		GlobalMusicManager.play(GlobalMusicManager.TrackOption.MENU, true)
+		
+		var text_label: Label = $CanvasLayer/Control/InrunUpgradesEnabled
+		if InrunAbilityUpgradeEnabler.is_enabled:
+			text_label.text = "In-Run Upgrades: True"
+		else:
+			text_label.text = "In-Run Upgrades: False"
+
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("toggle_in_run_upgrades"):
+		InrunAbilityUpgradeEnabler.is_enabled = not InrunAbilityUpgradeEnabler.is_enabled
+		
+		var text_label: Label = $CanvasLayer/Control/InrunUpgradesEnabled
+		if InrunAbilityUpgradeEnabler.is_enabled:
+			text_label.text = "In-Run Upgrades: True"
+		else:
+			text_label.text = "In-Run Upgrades: False"
 
 
 func _on_start_button_pressed() -> void:
