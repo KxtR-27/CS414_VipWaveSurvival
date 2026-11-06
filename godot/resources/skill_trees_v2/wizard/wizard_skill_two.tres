@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillResource" format=3 uid="uid://crkxb1a8b0xro"]
+
+[ext_resource type="Script" uid="uid://dhpf6c4fnej3t" path="res://ui_components/skill_tree/skill_trees_v2/skill_resource.gd" id="1_eh7vw"]
+[ext_resource type="Resource" uid="uid://bput4hsok40e7" path="res://resources/abilities/damaging_aura.tres" id="1_rdnlu"]
+[ext_resource type="Texture2D" uid="uid://dolbxy427b34t" path="res://resources/fireball_atlas_texture.tres" id="2_tyki3"]
+[ext_resource type="Resource" uid="uid://cyxbyxkytjw0m" path="res://resources/skill_trees_v2/wizard/wizard_skill_two_one.tres" id="4_tyki3"]
+
+[resource]
+script = ExtResource("1_eh7vw")
+ability = ExtResource("1_rdnlu")
+icon = ExtResource("2_tyki3")
+unlockable_skill_one = ExtResource("4_tyki3")
+metadata/_custom_type_script = "uid://dhpf6c4fnej3t"
