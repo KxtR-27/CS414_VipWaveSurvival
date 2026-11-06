@@ -2,6 +2,7 @@ class_name BasePlayer
 extends BaseCharacter
 
 signal respawned
+@warning_ignore("unused_signal")
 signal upgrade_paths_updated(paths: Dictionary)
 
 # when you add a new ability action to the InputMap,
