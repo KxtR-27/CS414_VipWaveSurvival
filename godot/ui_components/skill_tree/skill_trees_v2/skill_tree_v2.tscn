@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dlqusj6pm8fg3" path="res://ui_components/skill_tree/skill_trees_v2/skill_tree_v2.gd" id="1_0582v"]
 [ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_components/skill_component.tscn" id="2_uib0g"]
 [ext_resource type="Resource" uid="uid://bgb1hllmbcip8" path="res://ui_components/skill_tree/skill_trees_v2/wizard_root_skill.tres" id="2_vp316"]
+[ext_resource type="Script" uid="uid://c4s7x16olpiw0" path="res://ui_components/skill_tree/skill_tree_components/skill_component.gd" id="4_8xiu1"]
 [ext_resource type="Texture2D" uid="uid://b3014ufl71tny" path="res://assets/Dash.png" id="5_dcgmp"]
 [ext_resource type="Texture2D" uid="uid://dolbxy427b34t" path="res://resources/fireball_atlas_texture.tres" id="6_no3jo"]
 
@@ -12,7 +13,7 @@ font_color = Color(0.72, 0.72, 0.72, 1)
 
 [node name="SkillTreeV2" type="VBoxContainer" unique_id=2100260644]
 propagate_maximum_size = false
-offset_right = 262.0
+offset_right = 230.0
 offset_bottom = 340.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
@@ -30,7 +31,7 @@ visible = false
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="TemplateSkillContainer" unique_id=1802524570]
+[node name="TemplateDisclaimerLabel" type="Label" parent="TemplateSkillContainer" unique_id=1802524570]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "(Template Skill Tree)"
@@ -46,122 +47,138 @@ layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
 
-[node name="Generated_SkillComponentContainer2" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow" unique_id=161196829]
+[node name="Arbitrary_SkillContainer2" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow" unique_id=161196829]
 modulate = Color(0.5411765, 0.5411765, 0.5411765, 1)
 layout_mode = 2
 
-[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer2" unique_id=1245880306 instance=ExtResource("2_uib0g")]
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2" unique_id=1245880306 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 
-[node name="Generated_UnlockableSkillsRow2" type="HBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer2" unique_id=970608447]
+[node name="Arbitrary_UnlockableSkillsRow2" type="HBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2" unique_id=970608447]
 layout_mode = 2
 
-[node name="Generated_SkillComponentContainer2" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer2/Generated_UnlockableSkillsRow2" unique_id=1475264018]
+[node name="Arbitrary_SkillContainer2" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2/Arbitrary_UnlockableSkillsRow2" unique_id=1475264018]
 layout_mode = 2
 
-[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer2/Generated_UnlockableSkillsRow2/Generated_SkillComponentContainer2" unique_id=615269981 instance=ExtResource("2_uib0g")]
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2/Arbitrary_UnlockableSkillsRow2/Arbitrary_SkillContainer2" unique_id=615269981 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 
-[node name="Generated_SkillComponentContainer3" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer2/Generated_UnlockableSkillsRow2" unique_id=1224451321]
+[node name="Arbitrary_SkillContainer3" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2/Arbitrary_UnlockableSkillsRow2" unique_id=1224451321]
 layout_mode = 2
 
-[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer2/Generated_UnlockableSkillsRow2/Generated_SkillComponentContainer3" unique_id=373048535 instance=ExtResource("2_uib0g")]
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer2/Arbitrary_UnlockableSkillsRow2/Arbitrary_SkillContainer3" unique_id=373048535 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 
-[node name="Generated_SkillComponentContainer3" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow" unique_id=1893785212]
+[node name="Arbitrary_SkillContainer3" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow" unique_id=1893785212]
 modulate = Color(0.5411765, 0.5411765, 0.5411765, 1)
 layout_mode = 2
 
-[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer3" unique_id=684106941 instance=ExtResource("2_uib0g")]
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3" unique_id=684106941 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 
-[node name="Generated_UnlockableSkillsRow" type="HBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer3" unique_id=1249315901]
+[node name="Arbitrary_UnlockableSkillsRow" type="HBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3" unique_id=1249315901]
 layout_mode = 2
 
-[node name="Generated_SkillComponentContainer2" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer3/Generated_UnlockableSkillsRow" unique_id=670175803]
+[node name="Arbitrary_SkillContainer2" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3/Arbitrary_UnlockableSkillsRow" unique_id=670175803]
 layout_mode = 2
 
-[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer3/Generated_UnlockableSkillsRow/Generated_SkillComponentContainer2" unique_id=91452243 instance=ExtResource("2_uib0g")]
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3/Arbitrary_UnlockableSkillsRow/Arbitrary_SkillContainer2" unique_id=91452243 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 size_flags_horizontal = 17
 
-[node name="Generated_SkillComponentContainer3" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer3/Generated_UnlockableSkillsRow" unique_id=2086026816]
+[node name="Arbitrary_SkillContainer3" type="VBoxContainer" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3/Arbitrary_UnlockableSkillsRow" unique_id=2086026816]
 layout_mode = 2
 
-[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Generated_SkillComponentContainer3/Generated_UnlockableSkillsRow/Generated_SkillComponentContainer3" unique_id=1519850524 instance=ExtResource("2_uib0g")]
+[node name="SkillComponent" parent="TemplateSkillContainer/TemplateUnlockablesRow/Arbitrary_SkillContainer3/Arbitrary_UnlockableSkillsRow/Arbitrary_SkillContainer3" unique_id=1519850524 instance=ExtResource("2_uib0g")]
 layout_mode = 2
 
-[node name="RootSkillContainer" type="VBoxContainer" parent="." unique_id=1010632709]
+[node name="RootSkillContainer" type="VBoxContainer" parent="." unique_id=415394685]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Damaging DashSkill" parent="RootSkillContainer" unique_id=159805121 instance=ExtResource("2_uib0g")]
+[node name="Damaging DashSkill" type="VBoxContainer" parent="RootSkillContainer" unique_id=159805121 instance=ExtResource("2_uib0g")]
+custom_minimum_size = Vector2(60, -1)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 2
+script = ExtResource("4_8xiu1")
+current_state = 1
 upgrade_icon = ExtResource("5_dcgmp")
 upgrade_name = "Damaging Dash"
 
-[node name="Damaging DashUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer" unique_id=792503067]
+[node name="Damaging DashUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer" unique_id=184035713]
 layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
 
-[node name="DamagingFireballSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow" unique_id=558707962]
+[node name="DamagingFireballSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow" unique_id=2103467843]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Damaging FireballSkill" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer" unique_id=414647662 instance=ExtResource("2_uib0g")]
+[node name="Damaging FireballSkill" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer" unique_id=312750934 instance=ExtResource("2_uib0g")]
+custom_minimum_size = Vector2(60, -1)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 2
+script = ExtResource("4_8xiu1")
 upgrade_icon = ExtResource("6_no3jo")
 upgrade_name = "Damaging Fireball"
 
-[node name="Damaging FireballUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer" unique_id=1776543162]
+[node name="Damaging FireballUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer" unique_id=427733087]
 layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
 
-[node name="HealingAuraSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow" unique_id=2036709907]
+[node name="HealingAuraSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow" unique_id=1532557914]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Healing AuraSkill" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow/HealingAuraSkillContainer" unique_id=1955865158 instance=ExtResource("2_uib0g")]
+[node name="Healing AuraSkill" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow/HealingAuraSkillContainer" unique_id=422888183 instance=ExtResource("2_uib0g")]
+custom_minimum_size = Vector2(60, -1)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 2
+script = ExtResource("4_8xiu1")
 upgrade_icon = ExtResource("6_no3jo")
 upgrade_name = "Healing Aura"
 
-[node name="Healing AuraUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow/HealingAuraSkillContainer" unique_id=1189390158]
+[node name="Healing AuraUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingFireballSkillContainer/Damaging FireballUnlockablesRow/HealingAuraSkillContainer" unique_id=943562268]
 layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
 
-[node name="DamagingAuraSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow" unique_id=811312395]
+[node name="DamagingAuraSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow" unique_id=1544012356]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Damaging AuraSkill" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer" unique_id=1074310672 instance=ExtResource("2_uib0g")]
+[node name="Damaging AuraSkill" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer" unique_id=211163438 instance=ExtResource("2_uib0g")]
+custom_minimum_size = Vector2(60, -1)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 2
+script = ExtResource("4_8xiu1")
 upgrade_icon = ExtResource("6_no3jo")
 upgrade_name = "Damaging Aura"
 
-[node name="Damaging AuraUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer" unique_id=1228717702]
+[node name="Damaging AuraUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer" unique_id=1294750863]
 layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
 
-[node name="DamagingProjectileSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow" unique_id=1586965816]
+[node name="DamagingProjectileSkillContainer" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow" unique_id=1796477195]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Damaging ProjectileSkill" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow/DamagingProjectileSkillContainer" unique_id=1112604341 instance=ExtResource("2_uib0g")]
+[node name="Damaging ProjectileSkill" type="VBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow/DamagingProjectileSkillContainer" unique_id=1394616851 instance=ExtResource("2_uib0g")]
+custom_minimum_size = Vector2(60, -1)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 2
+script = ExtResource("4_8xiu1")
 upgrade_icon = ExtResource("6_no3jo")
 upgrade_name = "Damaging Projectile"
 
-[node name="Damaging ProjectileUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow/DamagingProjectileSkillContainer" unique_id=1257199141]
+[node name="Damaging ProjectileUnlockablesRow" type="HBoxContainer" parent="RootSkillContainer/Damaging DashUnlockablesRow/DamagingAuraSkillContainer/Damaging AuraUnlockablesRow/DamagingProjectileSkillContainer" unique_id=1367045326]
 layout_mode = 2
 size_flags_horizontal = 17
 alignment = 1
