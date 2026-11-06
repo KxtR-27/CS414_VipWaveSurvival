@@ -20,11 +20,11 @@ func upgrade_ability(ability: BaseAbility) -> void:
 			for modification: String in upgrade.modifications.keys():
 				ability.set(modification, upgrade.modifications[modification])
 			
-			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in upgrade.new_allied_status_effects:
-				ability.allied_status_effects[status_effect] = upgrade.new_allied_status_effects[status_effect]
+			if not upgrade.new_allied_status_effects.is_empty(): 
+				ability.allied_status_effects = upgrade.new_allied_status_effects
 			
-			for status_effect: StatusEffect.STATUS_EFFECT_TYPE in upgrade.new_enemy_status_effects:
-				ability.enemy_status_effects[status_effect] = upgrade.new_enemy_status_effects[status_effect]
+			if not upgrade.new_enemy_status_effects.is_empty(): 
+				ability.enemy_status_effects = upgrade.new_enemy_status_effects
 
 
 func upgrade_all_abilities() -> void:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://lxe2rqvk7pfc"]
+
+[ext_resource type="Script" uid="uid://cdtsxul0qdu2i" path="res://scripts/ability_upgrade.gd" id="1_kmp76"]
+
+[resource]
+script = ExtResource("1_kmp76")
+new_allied_status_effects = Dictionary[int, int]({
+1: 10
+})
+metadata/_custom_type_script = "uid://cdtsxul0qdu2i"

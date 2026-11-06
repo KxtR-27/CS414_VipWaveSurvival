@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://by0tn3fofjccp"]
+
+[ext_resource type="Script" uid="uid://cdtsxul0qdu2i" path="res://scripts/ability_upgrade.gd" id="1_ci4wq"]
+
+[resource]
+script = ExtResource("1_ci4wq")
+new_enemy_status_effects = Dictionary[int, int]({
+2: 2
+})
+metadata/_custom_type_script = "uid://cdtsxul0qdu2i"

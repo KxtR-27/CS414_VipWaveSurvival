@@ -104,6 +104,8 @@ func connect_to_player(player: BasePlayer, hero_name: String, player_number: int
 			(player_icon.get_node("knight") as TextureRect).visible = true
 		"wizard": 
 			(player_icon.get_node("wizard") as TextureRect).visible = true
+		"archer":
+			(player_icon.get_node("archer") as TextureRect).visible = true
 	
 	#set color and text for indicator label
 	($BackgroundPanel as Panel).modulate = color

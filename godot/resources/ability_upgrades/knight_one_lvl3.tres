@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://n0ybn4b1rs5t"]
+
+[ext_resource type="Script" uid="uid://cdtsxul0qdu2i" path="res://scripts/ability_upgrade.gd" id="1_pj24m"]
+
+[resource]
+script = ExtResource("1_pj24m")
+modifications = {
+"lifetime": 4.5,
+"tick_damage": 8,
+"tick_interval": 0.35
+}
+metadata/_custom_type_script = "uid://cdtsxul0qdu2i"

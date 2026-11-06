@@ -23,11 +23,13 @@ const INDICATOR_COLOR_MAP: Dictionary[int, Color] = {
 var characters: Dictionary = {
 	0: "swordsman",
 	1: "wizard",
-	2: "knight"
+	2: "knight",
+	3: "archer"
 }
 
 const RANGED_HERO_ABILITIES: Dictionary[String, BaseAbility] = {
-	"wizard": preload("res://resources/abilities/wizard_ranged_attack.tres")
+	"wizard": preload("res://resources/abilities/wizard_ranged_attack.tres"),
+	"archer": preload("res://resources/abilities/archer_ranged_attack.tres")
 }
 
 const HERO_ABILITIES: Dictionary[String, Dictionary]  = {
@@ -43,13 +45,29 @@ const HERO_ABILITIES: Dictionary[String, Dictionary]  = {
 		"ABILITY_1": preload("res://resources/abilities/knight_ability_one.tres"),
 		"ABILITY_2": preload("res://resources/abilities/knight_ability_two.tres"),
 	},
+	"archer": {
+		"ABILITY_1": preload("res://resources/abilities/archer_ability_one.tres"),
+		"ABILITY_2": preload("res://resources/abilities/archer_ability_two.tres"),
+	}
 }
 
 var ability_upgrade_paths: Dictionary[String, Dictionary] = {
+	"swordsman": {
+		"ABILITY_1": preload("res://resources/ability_upgrade_paths/swordsman_one_upgrade_path.tres"),
+		"ABILITY_2": preload("res://resources/ability_upgrade_paths/swordsman_two_upgrade_path.tres")
+	},
 	"wizard" : {
 		"ABILITY_1": preload("res://resources/ability_upgrade_paths/wizard_one_upgrade_path.tres"),
 		"ABILITY_2": preload("res://resources/ability_upgrade_paths/wizard_two_upgrade_path.tres")
-	}
+	},
+	"knight": {
+		"ABILITY_1": preload("res://resources/ability_upgrade_paths/knight_one_upgrade_path.tres"),
+		"ABILITY_2": preload("res://resources/ability_upgrade_paths/knight_two_upgrade_path.tres")
+	},
+	"archer": {
+		"ABILITY_1": preload("res://resources/ability_upgrade_paths/archer_one_upgrade_path.tres"),
+		"ABILITY_2": preload("res://resources/ability_upgrade_paths/archer_two_upgrade_path.tres")
+	},
 }
 
 const HERO_STATS: Dictionary[String, Dictionary] = {
@@ -67,6 +85,11 @@ const HERO_STATS: Dictionary[String, Dictionary] = {
 		"damage": 15.0,
 		"max_health": 125.0,
 		"speed": 3000.0,
+	},
+	"archer": {
+		"damage": 10.0,
+		"max_health": 60.0,
+		"speed": 4500.0
 	}
 }
 
@@ -111,8 +134,8 @@ func _on_character_selected(selected_character: String, sprite_frames_path: Stri
 	new_player.position = container.position + Vector2(device_id + 10, 0)
 	new_player.hero_name = selected_character
 	
-	var ability_1: BaseAbility = HERO_ABILITIES[selected_character]["ABILITY_1"].duplicate(true)
-	var ability_2: BaseAbility = HERO_ABILITIES[selected_character]["ABILITY_2"].duplicate(true)
+	var ability_1: BaseAbility = HERO_ABILITIES[selected_character]["ABILITY_1"]
+	var ability_2: BaseAbility = HERO_ABILITIES[selected_character]["ABILITY_2"]
 	var new_abilities: Dictionary[String, BaseAbility] = {
 		"ABILITY_1" : ability_1,
 		"ABILITY_2" : ability_2

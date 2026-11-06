@@ -22,6 +22,7 @@ var targets_enemies: bool
 var current_targets: Array[BaseCharacter] = []
 
 func run(ability: BaseAbility, caster: BasePlayer) -> void:
+	current_targets.clear()
 	var targeted_ability := ability as TargetedAbility
 	
 	#remember who cast this spell
@@ -71,7 +72,14 @@ func on_tick() -> void:
 	for target in current_targets:
 		resolve_hit(target, tick_damage, tick_healing)
 
+
 func resolve_hit(target: BaseCharacter, enemy_damage: int, ally_healing: int) -> void:
+	if not is_instance_valid(target):
+		return
+	
+	if target.is_queued_for_deletion():
+		return
+	
 	if target.is_in_group("enemies"):
 		if enemy_damage > 0.0:
 			target.health_changed.emit(enemy_damage, true)

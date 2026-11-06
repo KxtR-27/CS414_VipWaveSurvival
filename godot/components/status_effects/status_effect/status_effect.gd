@@ -3,7 +3,12 @@ class_name StatusEffect extends Node2D
 enum STATUS_EFFECT_TYPE {
 	BURN,
 	REGEN,
-	FROZEN
+	FROZEN,
+	VOLLEY_THREE,
+	VOLLEY_FIVE,
+	EXTRA_RANGE,
+	HASTE,
+	VULNERABLE,
 }
 
 @export var status_name: String
@@ -65,6 +70,10 @@ func on_remove_stack() -> void:
 
 
 func on_cleanse() -> void:
+	pass
+
+
+func on_damage_taken(_damage: float) -> void:
 	pass
 
 

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ProjectileAbility" format=3 uid="uid://bpe50xqrtfu4s"]
+
+[ext_resource type="Script" uid="uid://b6284iksgfbu3" path="res://scripts/ability_templates/projectile_ability.gd" id="1_gyutt"]
+
+[resource]
+script = ExtResource("1_gyutt")
+projectile_speed = 0.75
+distance = 225
+projectile_count = 1
+ability_name = "Archer Attack"
+damage = 10
+path_to_vfx = "res://resources/ability_vfxs/archer_attack/archer_attack.tscn"
+metadata/_custom_type_script = "uid://b6284iksgfbu3"

@@ -3,7 +3,12 @@ class_name StatusEffectCreator extends Node2D
 const STATUS_EFFECT_LOOKUP: Dictionary[StatusEffect.STATUS_EFFECT_TYPE, PackedScene] = {
 	StatusEffect.STATUS_EFFECT_TYPE.BURN: preload("res://components/status_effects/burn_effect/burn_effect.tscn"),
 	StatusEffect.STATUS_EFFECT_TYPE.REGEN: preload("res://components/status_effects/regen_effect/regen_effect.tscn"),
-	StatusEffect.STATUS_EFFECT_TYPE.FROZEN: preload("res://components/status_effects/frozen_effect/frozen_effect.tscn")
+	StatusEffect.STATUS_EFFECT_TYPE.FROZEN: preload("res://components/status_effects/frozen_effect/frozen_effect.tscn"),
+	StatusEffect.STATUS_EFFECT_TYPE.VOLLEY_THREE: preload("res://components/status_effects/volley_three_effect/volley_three_effect.tscn"),
+	StatusEffect.STATUS_EFFECT_TYPE.VOLLEY_FIVE: preload("res://components/status_effects/volley_five_effect/volley_five_effect.tscn"),
+	StatusEffect.STATUS_EFFECT_TYPE.EXTRA_RANGE: preload("res://components/status_effects/extra_range_effect/extra_range_effect.tscn"),
+	StatusEffect.STATUS_EFFECT_TYPE.HASTE: preload("res://components/status_effects/haste_effect/haste_effect.tscn"),
+	StatusEffect.STATUS_EFFECT_TYPE.VULNERABLE: preload("res://components/status_effects/vulnerable_effect/vulnerable_effect.tscn")
 }
 
 @onready var labels_vbox: VBoxContainer = $StatusEffectLabels/LabelsVBox
@@ -33,8 +38,15 @@ func apply_effect(status_effect_type: StatusEffect.STATUS_EFFECT_TYPE, stacks: i
 		current_status_effect_labels[status_effect] = new_label
 		labels_vbox.add_child(new_label)
 		
+		var health_changed_connection := func(amount: float, negative: bool) -> void:
+			if negative and is_instance_valid(status_effect):
+					status_effect.on_damage_taken(amount)
+					
+		status_effect.affected_unit.health_changed.connect(health_changed_connection)
+		
 		status_effect.finished.connect(
 			func() -> void:
+				status_effect.affected_unit.health_changed.disconnect(health_changed_connection)
 				current_status_effect_labels[status_effect].queue_free()
 				current_status_effect_labels.erase(status_effect)
 				

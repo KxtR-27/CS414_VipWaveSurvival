@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://cnjwv7i6rdo8m"]
+
+[ext_resource type="Script" uid="uid://cdtsxul0qdu2i" path="res://scripts/ability_upgrade.gd" id="1_k8fri"]
+
+[resource]
+script = ExtResource("1_k8fri")
+modifications = {
+"distance": 450
+}
+metadata/_custom_type_script = "uid://cdtsxul0qdu2i"
