@@ -3,7 +3,7 @@ class_name SkillTreeV2
 extends VBoxContainer
 
 
-const SKILL_COMPONENT_SCENE: PackedScene = preload("res://ui_components/skill_tree/skill_tree_components/skill_component.tscn")
+const SKILL_COMPONENT_SCENE: PackedScene = preload("res://ui_components/skill_tree/skill_component/skill_component.tscn")
 const ROOT_SKILL_CONTAINER_NAME: String = "RootSkillContainer"
 
 
@@ -21,10 +21,20 @@ const ROOT_SKILL_CONTAINER_NAME: String = "RootSkillContainer"
 @export_tool_button("Clear Generated Tree", "Remove") var clear_tree_btn := \
 	func() -> void: clear_generated_tree()
 
+@export var skills_dict: Dictionary[SkillComponent, SkillResource] = {}
 
 @onready var title_label := $Title as Label
 @onready var template_skill_container := $TemplateSkillContainer as VBoxContainer
 @onready var template_unlockables_row := $TemplateSkillContainer/TemplateUnlockablesRow as HBoxContainer
+
+
+func _ready() -> void:
+	if (
+			not Engine.is_editor_hint()
+			and self.root_skill != null 
+			and self.has_node(ROOT_SKILL_CONTAINER_NAME)
+	):
+		GlobalPlayerManager.skill_tree_ready(skills_dict)
 
 
 func generate_tree() -> void:
@@ -35,9 +45,11 @@ func generate_tree() -> void:
 	clear_generated_tree()
 	_recursively_generate_skill_tree(root_skill, self, true)
 	template_skill_container.visible = false
+	GlobalPlayerManager.skill_tree_ready(skills_dict)
 
 
 func clear_generated_tree() -> void:
+	skills_dict.clear()
 	template_skill_container.visible = true
 	if self.has_node(ROOT_SKILL_CONTAINER_NAME):
 		self.remove_child(self.get_node(ROOT_SKILL_CONTAINER_NAME))
@@ -102,6 +114,8 @@ func _add_new_skill_component(skill: SkillResource, add_to: Node) -> SkillCompon
 	skill_component.owner = get_tree().edited_scene_root
 	skill_component.name = "%sSkill" % _name_for_skill(skill)
 	skill_component.update_visuals.call_deferred()
+	
+	skills_dict.set(skill_component, skill)
 	
 	return skill_component
 

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dlqusj6pm8fg3" path="res://ui_components/skill_tree/skill_trees_v2/skill_tree_v2.gd" id="1_thlfm"]
 [ext_resource type="Resource" uid="uid://brqgipht06gor" path="res://resources/skill_trees_v2/knight/knight_root_skill.tres" id="2_thlfm"]
-[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_component/skill_component.tscn" id="3_nwpog"]
+[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_component/skill_component.tscn" id="3_nwpog"]
 [ext_resource type="Resource" uid="uid://dn8i72snfys1i" path="res://resources/skill_trees_v2/placeholder_skill.tres" id="4_xdewe"]
-[ext_resource type="Script" uid="uid://c4s7x16olpiw0" path="res://ui_components/skill_tree/skill_tree_component/skill_component.gd" id="5_240nc"]
+[ext_resource type="Script" uid="uid://c4s7x16olpiw0" path="res://ui_components/skill_tree/skill_component/skill_component.gd" id="5_240nc"]
 [ext_resource type="Resource" uid="uid://dn7ffmwttf3ns" path="res://resources/skill_trees_v2/knight/knight_skill_one.tres" id="6_8uugl"]
 [ext_resource type="Resource" uid="uid://f2rdpoljkqe4" path="res://resources/skill_trees_v2/knight/knight_skill_one_one.tres" id="7_nwpog"]
 [ext_resource type="Resource" uid="uid://bl6q7d7m8s0ab" path="res://resources/skill_trees_v2/knight/knight_skill_two.tres" id="8_xdewe"]

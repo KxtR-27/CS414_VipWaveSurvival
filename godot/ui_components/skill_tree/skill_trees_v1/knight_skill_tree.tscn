@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5c7gs14wt0fx"]
 
 [ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="1_7yllm"]
-[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_component/skill_component.tscn" id="2_mt2mi"]
+[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_component/skill_component.tscn" id="2_mt2mi"]
 [ext_resource type="Resource" uid="uid://brqgipht06gor" path="res://resources/skill_trees_v2/knight/knight_root_skill.tres" id="3_663vj"]
 [ext_resource type="Resource" uid="uid://dn7ffmwttf3ns" path="res://resources/skill_trees_v2/knight/knight_skill_one.tres" id="4_yiimn"]
 [ext_resource type="Resource" uid="uid://bl6q7d7m8s0ab" path="res://resources/skill_trees_v2/knight/knight_skill_two.tres" id="5_4ocyp"]

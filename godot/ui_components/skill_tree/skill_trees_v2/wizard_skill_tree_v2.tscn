@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlqusj6pm8fg3" path="res://ui_components/skill_tree/skill_trees_v2/skill_tree_v2.gd" id="1_jsdwg"]
 [ext_resource type="Resource" uid="uid://bgb1hllmbcip8" path="res://resources/skill_trees_v2/wizard/wizard_root_skill.tres" id="2_4vylh"]
-[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_component/skill_component.tscn" id="3_asvvg"]
+[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_component/skill_component.tscn" id="3_asvvg"]
 [ext_resource type="Resource" uid="uid://dn8i72snfys1i" path="res://resources/skill_trees_v2/placeholder_skill.tres" id="4_q47as"]
 [ext_resource type="Resource" uid="uid://c6fluqe3nlr0b" path="res://resources/skill_trees_v2/wizard/wizard_skill_one.tres" id="6_aksl6"]
 [ext_resource type="Resource" uid="uid://bc3y4fb4c1fhv" path="res://resources/skill_trees_v2/wizard/wizard_skill_one_one.tres" id="7_i1ojb"]

@@ -3,6 +3,8 @@ class_name SkillComponent
 extends Control
 
 
+signal skill_activated
+
 const SkillState = SkillResource.SkillState
 
 const ACTIVE_COLOR := Color("#00e667")
@@ -46,6 +48,7 @@ func _gui_input(event: InputEvent) -> void:
 			# If unlocked, ability is activated when clicked
 			SkillState.unlocked:
 				skill.state = SkillState.active
+				skill_activated.emit()
 			# If already activated, notify player that ability is already active
 			SkillState.active:
 				print("Ability is already active")
