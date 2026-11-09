@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dlqusj6pm8fg3" path="res://ui_components/skill_tree/skill_trees_v2/skill_tree_v2.gd" id="1_iqx2v"]
 [ext_resource type="Resource" uid="uid://bgb1hllmbcip8" path="res://resources/skill_trees_v2/wizard/wizard_root_skill.tres" id="2_8ij1d"]
-[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_components/skill_component.tscn" id="3_erf5x"]
+[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_component/skill_component.tscn" id="3_erf5x"]
 [ext_resource type="Resource" uid="uid://dn8i72snfys1i" path="res://resources/skill_trees_v2/placeholder_skill.tres" id="4_020sx"]
-[ext_resource type="Script" uid="uid://c4s7x16olpiw0" path="res://ui_components/skill_tree/skill_tree_components/skill_component.gd" id="5_t1bmo"]
+[ext_resource type="Script" uid="uid://c4s7x16olpiw0" path="res://ui_components/skill_tree/skill_tree_component/skill_component.gd" id="5_t1bmo"]
 [ext_resource type="Resource" uid="uid://c6fluqe3nlr0b" path="res://resources/skill_trees_v2/wizard/wizard_skill_one.tres" id="6_aosxo"]
 [ext_resource type="Resource" uid="uid://bc3y4fb4c1fhv" path="res://resources/skill_trees_v2/wizard/wizard_skill_one_one.tres" id="7_lawlv"]
 [ext_resource type="Resource" uid="uid://crkxb1a8b0xro" path="res://resources/skill_trees_v2/wizard/wizard_skill_two.tres" id="8_qv5jy"]

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://c2bae5251vm4s"]
+
+[ext_resource type="FontFile" uid="uid://cnikchxy6j4nx" path="res://assets/Silkscreen-Regular.ttf" id="1_wyxvt"]
+[ext_resource type="PackedScene" uid="uid://d4dsxueimx0ha" path="res://ui_components/skill_tree/skill_tree_component/skill_component.tscn" id="2_3vryn"]
+[ext_resource type="Resource" uid="uid://bgb1hllmbcip8" path="res://resources/skill_trees_v2/wizard/wizard_root_skill.tres" id="3_28bvw"]
+[ext_resource type="Resource" uid="uid://c6fluqe3nlr0b" path="res://resources/skill_trees_v2/wizard/wizard_skill_one.tres" id="4_gemar"]
+[ext_resource type="Resource" uid="uid://crkxb1a8b0xro" path="res://resources/skill_trees_v2/wizard/wizard_skill_two.tres" id="5_7dq4n"]
+[ext_resource type="Resource" uid="uid://bc3y4fb4c1fhv" path="res://resources/skill_trees_v2/wizard/wizard_skill_one_one.tres" id="6_yp8gn"]
+[ext_resource type="Resource" uid="uid://cyxbyxkytjw0m" path="res://resources/skill_trees_v2/wizard/wizard_skill_two_one.tres" id="7_j00k6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3qgx3"]
+font = ExtResource("1_wyxvt")
+font_size = 18
+
+[node name="WizardSkillTree" unique_id=317024339]
+custom_maximum_size = Vector2(200, -1)
+size_flags_horizontal = 19
+
+[node name="UpgradeNodes" type="CenterContainer" parent="." index="0" unique_id=720486989]
+layout_mode = 1
+offset_right = 195.0
+offset_bottom = 396.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeNodes" index="0" unique_id=1067992981]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UpgradeNodes/VBoxContainer" index="0" unique_id=1671553051]
+custom_minimum_size = Vector2(196, 50)
+layout_mode = 2
+text = "Swordsman Skill Tree"
+label_settings = SubResource("LabelSettings_3qgx3")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UpgradeNodes/VBoxContainer" index="1" unique_id=1954533242]
+layout_mode = 2
+
+[node name="Dash1" parent="UpgradeNodes/VBoxContainer/CenterContainer" index="0" unique_id=1319363514 instance=ExtResource("2_3vryn")]
+layout_mode = 2
+skill = ExtResource("3_28bvw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeNodes/VBoxContainer" index="2" unique_id=321328085]
+layout_mode = 2
+alignment = 1
+
+[node name="Fireball1" parent="UpgradeNodes/VBoxContainer/HBoxContainer" index="0" unique_id=1217730107 instance=ExtResource("2_3vryn")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+skill = ExtResource("4_gemar")
+
+[node name="Spacer" type="Panel" parent="UpgradeNodes/VBoxContainer/HBoxContainer" index="1" unique_id=1731240803]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 19
+
+[node name="Dash2" parent="UpgradeNodes/VBoxContainer/HBoxContainer" index="2" unique_id=1175910474 instance=ExtResource("2_3vryn")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+skill = ExtResource("5_7dq4n")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UpgradeNodes/VBoxContainer" index="3" unique_id=1098962098]
+layout_mode = 2
+alignment = 1
+
+[node name="Fireball2" parent="UpgradeNodes/VBoxContainer/HBoxContainer2" index="0" unique_id=1130015519 instance=ExtResource("2_3vryn")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+skill = ExtResource("6_yp8gn")
+
+[node name="Spacer" type="Panel" parent="UpgradeNodes/VBoxContainer/HBoxContainer2" index="1" unique_id=1505324869]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 19
+
+[node name="Dash3" parent="UpgradeNodes/VBoxContainer/HBoxContainer2" index="2" unique_id=2080325426 instance=ExtResource("2_3vryn")]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+skill = ExtResource("7_j00k6")
