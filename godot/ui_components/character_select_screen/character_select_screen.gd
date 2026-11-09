@@ -168,7 +168,7 @@ func _on_button_pressed() -> void:
 		
 		player_hero.name = "BasePlayer%d" % player_number
 		get_tree().root.get_node("Main").add_child(player_hero)
-		GlobalPlayerManager.players.get_or_add(player_hero.hero_name, player_number)
+		GlobalPlayerManager.players.append(player_hero)
 		
 		#set player indicator up
 		set_up_indicator(player_hero, player_number)
