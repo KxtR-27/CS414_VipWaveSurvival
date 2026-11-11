@@ -3,6 +3,7 @@ class_name DebuffAwarder extends Control
 @export var debuffs: Node
 @export var vip: BaseVIP
 @export var debuff_menu_canvas_layer: CanvasLayer
+@export var debuff_button_to_autofocus: Button
 
 const DEBUFFS_OPTION_POOL_SIZE: int = 2
 
@@ -14,6 +15,8 @@ func award_debuff() -> void:
 		populate_debuff_menu()
 		debuff_awarder_active.emit()
 		debuff_menu_canvas_layer.visible = true
+		debuff_button_to_autofocus.grab_focus()
+		
 
 
 func apply_debuff(debuff: Debuff) -> void:

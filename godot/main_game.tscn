@@ -35,9 +35,10 @@ position = Vector2(363, 171)
 
 [node name="ControlHintList" parent="CanvasLayer" unique_id=1754549092 instance=ExtResource("12_aomqu")]
 
-[node name="DebuffAwarder" parent="." unique_id=735813098 node_paths=PackedStringArray("vip", "debuff_menu_canvas_layer") instance=ExtResource("7_jgkyn")]
+[node name="DebuffAwarder" parent="." unique_id=735813098 node_paths=PackedStringArray("vip", "debuff_menu_canvas_layer", "debuff_button_to_autofocus") instance=ExtResource("7_jgkyn")]
 vip = NodePath("../BaseVIP")
 debuff_menu_canvas_layer = NodePath("DebuffMenu")
+debuff_button_to_autofocus = NodePath("DebuffMenu/Panel/VBoxContainer/DebuffPanelHBox/DebuffButtonPanel/Panel/Button")
 
 [node name="DebuffMenu" type="CanvasLayer" parent="DebuffAwarder" unique_id=344287137]
 process_mode = 3
@@ -89,6 +90,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_right = NodePath("../../../DebuffButtonPanel2/Panel/Button")
 theme_override_font_sizes/font_size = 24
 autowrap_mode = 2
 
@@ -115,6 +117,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../../DebuffButtonPanel/Panel/Button")
 theme_override_font_sizes/font_size = 24
 autowrap_mode = 2
 
