@@ -26,6 +26,20 @@ script = ExtResource("2_4hf73")
 current_position = Vector2i(5, 10)
 metadata/_custom_type_script = "uid://ccwfuphkc4ejo"
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyta4"]
+atlas = ExtResource("1_kykvu")
+region = Rect2(128, 512, 64, 64)
+script = ExtResource("2_4hf73")
+current_position = Vector2i(2, 8)
+metadata/_custom_type_script = "uid://ccwfuphkc4ejo"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnyox"]
+atlas = ExtResource("4_d2uaf")
+region = Rect2(960, 192, 64, 64)
+script = ExtResource("2_4hf73")
+current_position = Vector2i(15, 3)
+metadata/_custom_type_script = "uid://ccwfuphkc4ejo"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kykvu"]
 atlas = ExtResource("1_kykvu")
 region = Rect2(512, 384, 64, 64)
@@ -87,15 +101,31 @@ texture = SubResource("AtlasTexture_ay6cq")
 [node name="TextureRect4" type="TextureRect" parent="." unique_id=323360618]
 layout_mode = 2
 size_flags_horizontal = 4
-texture = SubResource("AtlasTexture_kykvu")
+texture = SubResource("AtlasTexture_tyta4")
 
 [node name="Label3" type="Label" parent="." unique_id=76292430]
+layout_mode = 2
+text = "Begin"
+label_settings = ExtResource("3_gw445")
+horizontal_alignment = 1
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=1191190759]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_pnyox")
+
+[node name="TextureRect6" type="TextureRect" parent="." unique_id=247530031]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_kykvu")
+
+[node name="Label4" type="Label" parent="." unique_id=1930384443]
 layout_mode = 2
 text = "Change Character"
 label_settings = ExtResource("3_gw445")
 horizontal_alignment = 1
 
-[node name="TextureRect5" type="TextureRect" parent="." unique_id=1191190759]
+[node name="TextureRect7" type="TextureRect" parent="." unique_id=1100756406]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_4hf73")
