@@ -45,7 +45,9 @@ func generate_tree() -> void:
 	clear_generated_tree()
 	_recursively_generate_skill_tree(root_skill, self, true)
 	template_skill_container.visible = false
-	GlobalPlayerManager.skill_tree_ready(skills_dict)
+	
+	if not Engine.is_editor_hint():
+		GlobalPlayerManager.skill_tree_ready(skills_dict)
 
 
 func clear_generated_tree() -> void:
