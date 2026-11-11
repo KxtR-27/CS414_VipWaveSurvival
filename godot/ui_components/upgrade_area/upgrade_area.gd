@@ -13,7 +13,8 @@ var skill_trees: Dictionary[String, PackedScene] = {
 func _ready() -> void:
 	start_button.grab_focus.call_deferred()
 	
-	for hero_name: String in GlobalPlayerManager.players.keys():
+	for hero: BasePlayer in GlobalPlayerManager.players:
+		var hero_name: String = hero.hero_name
 		var skill_tree: Control
 		match hero_name:
 			"wizard":
