@@ -81,7 +81,7 @@ func _input(event: InputEvent) -> void:
 		_on_right_arrow_pressed()
 	if event.is_action_pressed("ui_left") and !left_arrow.disabled:
 		_on_left_arrow_pressed()
-	if event.is_action_pressed("ui_select"):
+	if event.is_action_pressed("join"):
 		background_frame += 1
 		background.frame = background_frame
 		
