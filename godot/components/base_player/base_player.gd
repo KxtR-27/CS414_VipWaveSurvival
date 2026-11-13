@@ -30,6 +30,7 @@ const REGEN_BUFF_ABILITY := preload("res://resources/abilities/healing_regen_buf
 @export var use_kbm: bool
 
 var can_move: bool = true
+var attacking: bool = false
 var uses_ranged_attacks: bool = false
 var ranged_attack_ability: BaseAbility
 var hero_name: String
@@ -86,12 +87,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not _event_is_from_my_device(event):
-		return
-		
-	if is_dead:
+	if not _event_is_from_my_device(event) or is_dead:
 		return
 	
+	# process pressed action checks
 	var ability_action: String = _get_pressed_ability(event)
 	if ability_action:
 		_execute_ability(ability_action)
@@ -103,6 +102,10 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("stop_follow"):
 		_command_vips_to_stop_following()
 		stop_following_sound.play()
+	
+	# process released action checks
+	elif event.is_action_released("attack"):
+		attacking = false
 
 
 ## loops through all actions in ABILITY_ACTION_MAP.
@@ -134,12 +137,11 @@ func _execute_ability(ability_action: String) -> void:
 			var current_ability: BaseAbility = current_selected_abilities[Ability.ABILITY_2]
 			ability_used.emit(current_ability)
 		Ability.ATTACK:
-			# play attack animation
-			animated_sprite.play("attack")
-			# attack enemies
+			# attack enemies once.
+			# autoswing handles the rest in the cooldown timer
+			# if the input is held.
+			attacking = true
 			_attack()
-			if attack_sound:
-				attack_sound.play()
 	
 	return
 
@@ -189,9 +191,19 @@ func _on_ability_2_cooldown_timeout() -> void:
 
 func _on_attack_cooldown_timeout() -> void:
 	ability_on_cooldown[Ability.ATTACK] = false
+	
+	# if still holding the attack input
+	if attacking:
+		_trigger_cooldown(Ability.ATTACK)
+		_attack()
 
 
 func _attack() -> void:
+	# play attack animation
+	animated_sprite.play("attack")
+	if attack_sound:
+		attack_sound.play()
+	
 	if uses_ranged_attacks:
 		ability_used.emit(ranged_attack_ability)
 	else:
