@@ -3,7 +3,6 @@ extends Node2D
 
 @onready var character_select_scene := preload("res://ui_components/character_select_screen/character_select_screen.tscn") as PackedScene
 @onready var start_button := $CanvasLayer/Control/VBoxContainer/StartButton as Button
-@onready var start_button_sound := $CanvasLayer/Control/VBoxContainer/StartButton/ButtonSound as AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -32,7 +31,7 @@ func update_inrun_ability_progression_tag() -> void:
 		text_label.text = "In-Run Upgrades: False"
 
 func _on_start_button_pressed() -> void:
-	await start_button_sound.finished
+	GlobalSoundManager.play_button_click_sound()
 	get_tree().change_scene_to_packed(character_select_scene)
 
 

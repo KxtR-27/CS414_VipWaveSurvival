@@ -15,4 +15,5 @@ func clear_button_text() -> void:
 
 
 func _on_button_pressed() -> void:
+	GlobalSoundManager.play_debuff_select_sound()
 	button_pressed.emit(debuff)

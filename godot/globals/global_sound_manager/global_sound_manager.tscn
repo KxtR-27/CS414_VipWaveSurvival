@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://wyx7qxqd4w4t"]
+
+[ext_resource type="Script" uid="uid://lld3xbtork7x" path="res://globals/global_sound_manager/global_sound_manager.gd" id="1_x7knq"]
+[ext_resource type="AudioStream" uid="uid://dgmoqvi7mgn4i" path="res://assets/sfx/button_click.wav" id="2_skjcy"]
+[ext_resource type="AudioStream" uid="uid://dayjo5fsc3v3a" path="res://assets/sfx/debuff_select.wav" id="3_skjcy"]
+
+[node name="GlobalSoundManager" type="Node" unique_id=1461561319]
+script = ExtResource("1_x7knq")
+
+[node name="ButtonClickPlayer" type="AudioStreamPlayer" parent="." unique_id=567744234]
+stream = ExtResource("2_skjcy")
+volume_db = -12.0
+
+[node name="DebuffSelectPlayer" type="AudioStreamPlayer" parent="." unique_id=1935266834]
+stream = ExtResource("3_skjcy")
+volume_db = -12.0

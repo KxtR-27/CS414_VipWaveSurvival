@@ -21,6 +21,7 @@ DeviceManager="*uid://cgx36t5bra867"
 GlobalMusicManager="*uid://b3ptdr5fktyd6"
 GlobalPlayerManager="*uid://bnacg7g356orp"
 InrunAbilityUpgradeEnabler="*uid://pdtb0qccqgyq"
+GlobalSoundManager="*uid://wyx7qxqd4w4t"
 
 [debug]
 

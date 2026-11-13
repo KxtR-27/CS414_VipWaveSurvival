@@ -96,7 +96,6 @@ const HERO_STATS: Dictionary[String, Dictionary] = {
 @onready var container := $CanvasLayer/Control/HBoxContainer as HBoxContainer
 @onready var join_label := $CanvasLayer/Control/ClickToJoinLabel as Label
 @onready var begin_button := $CanvasLayer/Control/Button as Button
-@onready var begin_button_sound := $CanvasLayer/Control/Button/ButtonSound as AudioStreamPlayer
 @onready var join_sound := $JoinSound as AudioStreamPlayer
 @onready var ready_sound := $ReadySound as AudioStreamPlayer
 
@@ -194,7 +193,7 @@ func _on_button_pressed() -> void:
 				)
 				break
 	
-	await begin_button_sound.finished
+	GlobalSoundManager.play_button_click_sound()
 	get_tree().root.get_node("CharacterSelectScreen").queue_free()
 
 
