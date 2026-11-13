@@ -9,9 +9,9 @@ signal pause_menu_opened
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause") && !canvas_layer.visible && not get_tree().paused:
+	if event.is_action_pressed("pause") and !canvas_layer.visible and not get_tree().paused:
 		pause_menu_opened.emit()
-	elif event.is_action_pressed("pause") && canvas_layer.visible && get_tree().paused:
+	elif event.is_action_pressed("pause") and canvas_layer.visible and get_tree().paused:
 		pause_menu_closed.emit()
 
 
