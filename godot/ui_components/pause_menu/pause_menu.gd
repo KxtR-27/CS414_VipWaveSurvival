@@ -1,10 +1,11 @@
 extends Control
 
-@onready var canvas_layer := $CanvasLayer as CanvasLayer
-@onready var button_to_focus_on_first := $CanvasLayer/Panel/VBoxContainer/SaveButton as Button
 
 signal pause_menu_closed
 signal pause_menu_opened
+
+@onready var canvas_layer := $CanvasLayer as CanvasLayer
+@onready var button_to_focus_on_first := $CanvasLayer/Panel/VBoxContainer/SaveButton as Button
 
 
 func _input(event: InputEvent) -> void:
